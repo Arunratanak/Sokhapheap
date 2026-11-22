@@ -12,7 +12,8 @@
     "test:coverage": "vitest run --coverage",
     "data:download": "tsx scripts/download_data.ts",
     "data:clean": "tsx scripts/clean_facilities.ts",
-    "data:facilities": "npm run data:download && npm run data:clean"
+    "data:facilities": "npm run data:download && npm run data:clean",
+    "data:who-chart": "tsx scripts/extract_who_cvd_chart.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.12.0",
@@ -38,6 +39,7 @@
     "adm-zip": "^0.6.1",
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
+    "pdfjs-dist": "^4.10.38",
     "proj4": "^2.23.0",
     "shapefile": "^0.6.6",
     "tailwindcss": "4.3.3",

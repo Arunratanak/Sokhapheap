@@ -63,6 +63,11 @@ render.yaml
 - **Rate limiting:** an in-memory per-IP limiter. That's fine for a single Render instance, but it resets whenever the service sleeps.
 - **Fonts:** Noto Sans Khmer via `next/font/google`, with Kantumruy Pro as an option for headings.
 
+## Decisions (22 Nov 2026)
+
+- **WHO CVD chart:** Claude will try to obtain the official WHO 2019 chart. If it can't be downloaded or read reliably, the user provides the PDF.
+- **FINDRISC cut-offs:** the original validated FINDRISC cut-offs are the default. An Asian cut-off profile sits in the config but is switched off, with its values left as `TODO(VERIFY)`. Changing the cut-offs without re-weighting the points hasn't been validated, so it's left for a clinician to approve after the hackathon. Candidate sources are noted in code comments.
+
 ## Questions for you
 
 1. **WHO CVD chart:** Cambodia is in the WHO Western Pacific Region, but the 2019 charts place it in the **Southeast Asia** sub-region group. Do you want me to try to get the official WHO chart, or will you provide the PDF or image? I won't fill the table from memory.

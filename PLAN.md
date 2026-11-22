@@ -68,6 +68,14 @@ render.yaml
 - **WHO CVD chart:** Claude will try to obtain the official WHO 2019 chart. If it can't be downloaded or read reliably, the user provides the PDF.
 - **FINDRISC cut-offs:** the original validated FINDRISC cut-offs are the default. An Asian cut-off profile sits in the config but is switched off, with its values left as `TODO(VERIFY)`. Changing the cut-offs without re-weighting the points hasn't been validated, so it's left for a clinician to approve after the hackathon. Candidate sources are noted in code comments.
 
+- **AI provider (user decision):** Google Gemini instead of Anthropic. `AI_MODEL=gemini-3.8-flash` (latest stable Flash) and `AI_MODEL_FAST=gemini-3.5-flash-lite` (latest stable Flash-Lite), chosen from the live model list.
+- **Review stops (user decision):** build through all phases without waiting, never invent medical numbers, and collect everything that needs review in `REVIEW.md`.
+- **Keys file:** the user keeps secrets in `.env` (git-ignored). This works the same as `.env.local`.
+
+## Status (23 Nov 2026)
+
+Phases 0–12 are built and committed. Phase 11 (deploy) still needs the GitHub repo URL and the Supabase pooler connection string. See `REVIEW.md`.
+
 ## Questions for you
 
 1. **WHO CVD chart:** Cambodia is in the WHO Western Pacific Region, but the 2019 charts place it in the **Southeast Asia** sub-region group. Do you want me to try to get the official WHO chart, or will you provide the PDF or image? I won't fill the table from memory.

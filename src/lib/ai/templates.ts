@@ -26,7 +26,12 @@ export function templateExplanation(input: ExplainInput): string {
   const lang = input.lang as Locale;
   const t = getRawDictionary(lang);
   const sep = lang === "km" ? " " : " ";
-  const list = (items: string[]) => items.join(lang === "km" ? " និង " : ", ");
+  const list = (items: string[]) =>
+    items.length <= 1
+      ? items.join("")
+      : lang === "km"
+        ? `${items.slice(0, -1).join(" ")} និង ${items[items.length - 1]}`
+        : `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;
 
   if (input.kind === "risk" && input.risk) {
     const r = input.risk;

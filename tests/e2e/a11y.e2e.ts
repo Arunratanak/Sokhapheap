@@ -43,9 +43,7 @@ async function main() {
   // Results page via demo mode
   await page.goto(`${BASE}/km/risk?demo=1`, { waitUntil: "networkidle" });
   for (let i = 0; i < 13; i++) {
-    const btn = page.getByRole("button", { name: /បន្ទាប់|មើលលទ្ធផលរបស់ខ្ញុំ/ }).first();
-    if (await btn.count()) await btn.click();
-    else await page.getByRole("button", { pressed: true }).first().click();
+    await page.getByRole("button", { name: /បន្ទាប់|មើលលទ្ធផលរបស់ខ្ញុំ/ }).first().click();
     await page.waitForTimeout(250);
   }
   await page.getByRole("heading", { name: "លទ្ធផលរបស់អ្នក" }).waitFor({ timeout: 15000 });

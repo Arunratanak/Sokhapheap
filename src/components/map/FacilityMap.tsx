@@ -28,6 +28,7 @@ export default function FacilityMap({
   const [data, setData] = useState<{ types: FacilityItem["type"][]; rows: Row[] } | null>(null);
 
   useEffect(() => {
+    // The page preloads this URL (see map/page.tsx), so this usually resolves from the preload.
     fetch("/api/facilities/all").then((r) => r.json()).then(setData).catch(() => {});
   }, []);
 

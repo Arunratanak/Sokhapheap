@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { preload } from "react-dom";
 import { getDictionary, hasLocale } from "@/lib/i18n";
 import { FACILITY_TYPES, listAreas, type FacilityType } from "@/lib/facilities";
 import { MapExplorer } from "@/components/map/MapExplorer";
@@ -12,6 +13,8 @@ export default async function MapPage({ params, searchParams }: PageProps<"/[lan
   const t = getDictionary(lang);
   const sp = await searchParams;
   const typeFilter = FACILITY_TYPES.includes(sp.type as FacilityType) ? (sp.type as FacilityType) : null;
+  // Start downloading facility markers in parallel with the page's JS (big win on slow 3G).
+  preload("/api/facilities/all", { as: "fetch", crossOrigin: "anonymous" });
 
   return (
     <div className="flex flex-col gap-4 pt-2">

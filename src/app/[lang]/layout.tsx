@@ -1,19 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Kantumruy_Pro, Noto_Sans_Khmer } from "next/font/google";
+import { Noto_Sans_Khmer } from "next/font/google";
 import { getDictionary, hasLocale, locales } from "@/lib/i18n";
 import { LanguageSwitch } from "@/components/LanguageSwitch";
 import "../globals.css";
 
-// Noto Sans Khmer for Khmer body text; Kantumruy Pro covers Latin + Khmer headings.
+// One family (Noto Sans Khmer) covers Khmer and Latin — fewer font downloads on slow 3G.
 const khmer = Noto_Sans_Khmer({
-  subsets: ["khmer"],
+  subsets: ["khmer", "latin"],
   variable: "--font-khmer",
-  display: "swap",
-});
-const latin = Kantumruy_Pro({
-  subsets: ["latin", "khmer"],
-  variable: "--font-latin",
   display: "swap",
 });
 
@@ -56,7 +51,7 @@ export default async function RootLayout({
   const dict = getDictionary(lang);
 
   return (
-    <html lang={lang} className={`${khmer.variable} ${latin.variable} h-full antialiased`}>
+    <html lang={lang} className={`${khmer.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <header className="mx-auto flex w-full max-w-xl items-center justify-between px-4 py-3">
           <a href={`/${lang}`} className="text-xl font-bold text-brand-strong">

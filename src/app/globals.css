@@ -22,7 +22,7 @@
   --color-brand-soft: var(--brand-soft);
   --color-warn-soft: var(--warn-soft);
   --color-warn-border: var(--warn-border);
-  --font-sans: var(--font-khmer), var(--font-latin), system-ui, sans-serif;
+  --font-sans: var(--font-khmer), system-ui, sans-serif;
 }
 
 body {

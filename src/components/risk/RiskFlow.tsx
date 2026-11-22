@@ -163,9 +163,13 @@ export function RiskFlow({
 
       <StepInput key={step.key} step={step} t={t} answers={answers} set={set} next={next} provinces={provinces} lang={lang} />
 
-      <div className="mt-2 flex">
-        {stepIndex > 0 && (
+      <div className="mt-2 flex items-center justify-between">
+        {stepIndex > 0 ? (
           <button className="btn-ghost" onClick={() => setStepIndex(stepIndex - 1)}>← {t.common.back}</button>
+        ) : <span />}
+        {/* Choice steps auto-advance; when an answer already exists (demo mode, or after going back) offer Next. */}
+        {(step.kind === "yesno" || step.kind === "choice") && answers[step.key] !== undefined && (
+          <button className="btn-ghost" onClick={next}>{t.common.next} →</button>
         )}
       </div>
     </div>

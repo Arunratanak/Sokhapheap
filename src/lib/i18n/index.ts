@@ -51,6 +51,21 @@ export function getDictionary(locale: Locale): Dictionary {
   return dictionaries[locale];
 }
 
+/** Replace {name} placeholders. Numbers are shown in Khmer digits for Khmer text. */
+export function fmt(template: string, vars: Record<string, string | number>, locale: Locale = "en"): string {
+  return template.replace(/\{(\w+)\}/g, (_, k) => {
+    const v = vars[k];
+    if (v === undefined) return `{${k}}`;
+    return typeof v === "number" ? formatNumber(v, locale) : v;
+  });
+}
+
+const KHMER_DIGITS = "០១២៣៤៥៦៧៨៩";
+export function formatNumber(n: number, locale: Locale, maxFractionDigits = 1): string {
+  const s = Number.isInteger(n) ? String(n) : n.toFixed(maxFractionDigits).replace(/\.0+$/, "");
+  return locale === "km" ? s.replace(/\d/g, (d) => KHMER_DIGITS[Number(d)]) : s;
+}
+
 /** Raw strings, without line-break hints (for the Telegram bot and plain text). */
 export function getRawDictionary(locale: Locale): Dictionary {
   return locale === "km" ? km : en;

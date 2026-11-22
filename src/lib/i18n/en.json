@@ -8,7 +8,21 @@
     "disclaimer": "This is not a diagnosis. Please consult a doctor.",
     "switchLanguage": "ខ្មែរ",
     "backHome": "Back to home",
-    "comingSoon": "This feature is coming soon."
+    "comingSoon": "This feature is coming soon.",
+    "next": "Next",
+    "back": "Back",
+    "yes": "Yes",
+    "no": "No",
+    "dontKnow": "I don't know",
+    "skip": "Skip",
+    "start": "Start",
+    "loading": "Loading…",
+    "error": "Something went wrong. Please try again.",
+    "tryAgain": "Try again",
+    "findCare": "Find care near me",
+    "about": "About & data sources",
+    "stepOf": "Question {n} of {total}",
+    "demoBanner": "Demo mode — answers are pre-filled and nothing is saved."
   },
   "home": {
     "tagline": "Know your health risk early, and find care near you.",
@@ -16,12 +30,243 @@
     "checkRiskHint": "Diabetes and heart disease · about 3 minutes",
     "explainLab": "Explain my blood test",
     "explainLabHint": "Take a photo of your blood test and we'll explain it simply",
-    "privacy": "We don't store your name, phone number or photos."
+    "findCare": "Find a health facility",
+    "findCareHint": "Hospitals, health centres and clinics near you",
+    "privacy": "We don't store your name, phone number or photos.",
+    "telegram": "Also on Telegram"
+  },
+  "urgent": {
+    "title": "First, a safety check",
+    "question": "Do you have any of these right now?",
+    "chestPain": "Chest pain, pressure or tightness",
+    "fainting": "Fainting, or feeling like you will faint",
+    "highSugar": "Very high blood sugar signs: extreme thirst, passing a lot of urine, confusion or very sleepy",
+    "none": "None of these",
+    "goNowTitle": "Go to a hospital now",
+    "goNowBody": "These symptoms can be serious and need care today. Go to the nearest hospital now, or ask someone to take you. Do not drive yourself.",
+    "ambulance": "Ambulance: call 119",
+    "nearestHospital": "Nearest hospitals",
+    "continue": "I am safe, continue the risk check"
   },
   "risk": {
-    "title": "Risk check"
+    "title": "Risk check",
+    "sex": { "q": "Are you a man or a woman?", "male": "Man", "female": "Woman" },
+    "age": { "q": "How old are you?", "unit": "years", "help": "This check is for adults 18 and older." },
+    "height": { "q": "How tall are you?", "unit": "cm", "help": "If you don't know, stand against a wall, mark the top of your head, and measure from the floor." },
+    "weight": { "q": "How much do you weigh?", "unit": "kg", "help": "Use a scale at home, a pharmacy or a health centre." },
+    "waist": {
+      "q": "What is your waist size?",
+      "unit": "cm",
+      "help": "Use a string: wrap it around your belly at the level of your belly button, breathe out normally, mark the string, then measure it with a ruler or tape. You can also use your trouser waist size as a rough guide."
+    },
+    "activity": { "q": "Do you do at least 30 minutes of physical activity every day?", "help": "This includes physical work, walking, cycling, farming or exercise." },
+    "vegFruit": { "q": "Do you eat vegetables or fruit every day?" },
+    "bpMeds": { "q": "Have you ever taken medicine for high blood pressure?" },
+    "highGlucose": { "q": "Has a health worker ever told you that your blood sugar was high?", "help": "For example at a check-up, while you were sick, or during pregnancy." },
+    "family": {
+      "q": "Has anyone in your family had diabetes?",
+      "none": "No / I don't know",
+      "second": "Yes: grandparent, aunt, uncle or cousin",
+      "first": "Yes: parent, brother, sister or my own child"
+    },
+    "smoker": { "q": "Do you smoke now?", "help": "Cigarettes, hand-rolled tobacco or other smoked tobacco." },
+    "sbp": {
+      "q": "Do you know your blood pressure?",
+      "unit": "mmHg (top number)",
+      "help": "Blood pressure is written like 130/80. Enter the top (bigger) number from a recent measurement."
+    },
+    "province": { "q": "Which province do you live in?", "help": "Optional. Used only for anonymous statistics.", "skip": "Prefer not to say" },
+    "submit": "See my results",
+    "invalidNumber": "Please enter a number between {min} and {max}."
+  },
+  "results": {
+    "title": "Your results",
+    "diabetesTitle": "Type 2 diabetes risk",
+    "diabetesScore": "Score {score} out of 26",
+    "diabetesScoreRange": "Score {score}–{max} out of 26 (waist size unknown)",
+    "findriscBands": {
+      "low": "Low risk",
+      "slightly_elevated": "Slightly raised risk",
+      "moderate": "Moderate risk",
+      "high": "High risk",
+      "very_high": "Very high risk"
+    },
+    "heartTitle": "Heart attack and stroke risk (10 years)",
+    "cvdBands": {
+      "<5": "Low: less than 5%",
+      "5-10": "Moderate: 5% to less than 10%",
+      "10-20": "High: 10% to less than 20%",
+      "20-30": "Very high: 20% to less than 30%",
+      ">=30": "Very high: 30% or more"
+    },
+    "cvdUnavailable": {
+      "bp_unknown": "Check your blood pressure first. We need it to estimate your heart risk. Health centres and many pharmacies can measure it.",
+      "age_out_of_range": "The WHO heart risk chart is for people aged 40 to 74, so we cannot estimate it for your age. A doctor can still check your heart health.",
+      "bmi_unknown": "We need your height and weight to estimate your heart risk."
+    },
+    "factorsTitle": "What raised your score",
+    "factors": {
+      "age": "Your age",
+      "bmi": "Your weight for your height (BMI)",
+      "waist": "Your waist size",
+      "physical_activity": "Less than 30 minutes of activity a day",
+      "diet": "Not eating vegetables or fruit every day",
+      "bp_medication": "Blood pressure medicine",
+      "high_glucose_history": "High blood sugar in the past",
+      "family_history": "Diabetes in your family"
+    },
+    "noFactors": "No major risk factors from your answers.",
+    "nextStepTitle": "Your next step",
+    "nextSteps": {
+      "see_doctor_soon": "Visit a doctor or health centre in the next few weeks for a check-up. Show them these results.",
+      "glucose_test": "Ask a health centre for a blood sugar test.",
+      "check_bp": "Get your blood pressure measured at a health centre or pharmacy, then check again.",
+      "healthy_habits": "Keep up healthy habits and check again in about a year."
+    },
+    "bmiLabel": "BMI: {bmi}",
+    "glucoseTestRecommended": "A blood sugar test is recommended.",
+    "explanationTitle": "What this means",
+    "aiNote": "Written by AI from your scores. It may not be perfect.",
+    "templateNote": "Standard explanation.",
+    "startOver": "Start again",
+    "printNote": "Take a screenshot to show your doctor.",
+    "templates": {
+      "diabetesLine": "Your type 2 diabetes risk is: {band}.",
+      "factorsLine": "The main things that raised your score are: {factors}.",
+      "noFactorsLine": "Your answers did not show major risk factors.",
+      "heartLine": "Your 10-year heart attack and stroke risk is: {band}.",
+      "heartUnknownLine": "We could not estimate your heart risk yet."
+    }
+  },
+  "map": {
+    "title": "Health facilities near you",
+    "useLocation": "Use my location",
+    "locating": "Finding your location…",
+    "locationDenied": "We could not get your location. Choose your province and district instead.",
+    "chooseProvince": "Province",
+    "chooseDistrict": "District",
+    "allDistricts": "All districts",
+    "select": "Choose…",
+    "nearestTitle": "Nearest facilities",
+    "inAreaTitle": "Facilities in this area",
+    "directions": "Directions (Google Maps)",
+    "distanceKm": "{km} km away",
+    "types": {
+      "hospital": "Hospital",
+      "health_centre": "Health centre",
+      "health_post": "Health post",
+      "clinic": "Clinic",
+      "other": "Other"
+    },
+    "legend": "Legend",
+    "dataCredit": "Data: Ministry of Health (2010), © OpenStreetMap contributors (ODbL). Updated {date}.",
+    "noResults": "No facilities found here.",
+    "showingCount": "Showing {n} facilities",
+    "callAhead": "Opening hours and services may have changed. Call ahead if you can."
   },
   "lab": {
-    "title": "Blood test explainer"
+    "title": "Explain my blood test",
+    "intro": "Take a clear photo of your blood test report. We read the numbers, check them against normal ranges, and explain them simply.",
+    "takePhoto": "Take or choose a photo",
+    "privacyNote": "Your photo is not saved. It is deleted as soon as the numbers are read.",
+    "photoTips": "Tips: put the report on a flat table, use good light, and keep the whole table of results in the photo.",
+    "reading": "Reading your report…",
+    "confirmTitle": "Check the numbers",
+    "confirmIntro": "Please check that we read your report correctly. Fix any mistakes before continuing.",
+    "testName": "Test",
+    "value": "Result",
+    "unit": "Unit",
+    "range": "Normal range on report",
+    "remove": "Remove",
+    "addRow": "Add a test",
+    "evaluate": "Check my results",
+    "resultsTitle": "Your blood test",
+    "flags": {
+      "normal": "Within range",
+      "outside_range": "Outside range",
+      "could_not_read": "Could not check"
+    },
+    "direction": { "low": "lower than range", "high": "higher than range" },
+    "reasons": {
+      "low_confidence": "The photo was not clear enough to read this.",
+      "unknown_test": "We don't check this test yet.",
+      "no_value": "No number found.",
+      "unknown_unit": "Unit not recognised.",
+      "no_reference_range": "No normal range printed on the report for this test."
+    },
+    "rangeSource": { "report": "Range from your report", "table": "Range from guidelines" },
+    "nothingFound": "We could not find any test results in this photo. Try another photo, or type the numbers yourself.",
+    "typeManually": "Type the numbers myself",
+    "aiUnavailable": "Photo reading is not available right now. You can type the numbers yourself.",
+    "nextSteps": {
+      "lab_follow_up": "Show this report to a doctor, especially the results outside the range.",
+      "lab_all_normal": "Keep this report and show it at your next check-up."
+    },
+    "templates": {
+      "outsideLine": "These results are outside the range: {tests}.",
+      "allNormalLine": "The results we could check are within the range.",
+      "unreadLine": "We could not check: {tests}."
+    }
+  },
+  "about": {
+    "title": "About SokhaPheap",
+    "body": "SokhaPheap helps adults in Cambodia understand their risk of type 2 diabetes and heart disease early, explains blood test results in simple language, and shows the nearest health facilities using Cambodian open data. It was built for the Open Data × AI Venture Hackathon, Phnom Penh, 2026.",
+    "howTitle": "How it works",
+    "how1": "Diabetes risk uses the FINDRISC questionnaire (Finnish Diabetes Risk Score).",
+    "how2": "Heart risk uses the WHO 2019 non-laboratory cardiovascular risk chart for South-East Asia.",
+    "how3": "Scores are calculated by fixed rules, not by AI. AI is only used to read lab report photos and to explain results in simple words.",
+    "dataTitle": "Open data sources",
+    "limitsTitle": "Limitations",
+    "limit1": "These scores were developed outside Cambodia and have not been validated in Cambodia yet.",
+    "limit2": "Part of the facility data is from 2010. Some facilities may have moved, closed or changed.",
+    "limit3": "Lab normal ranges vary between laboratories. We use the range printed on your report when there is one.",
+    "privacyTitle": "Privacy",
+    "privacy": "We do not ask for or store your name, phone number or ID. Lab photos are deleted right after reading. Risk results are saved without any personal details, for anonymous statistics."
+  },
+  "org": {
+    "title": "Organization dashboard",
+    "codePrompt": "Enter the access code",
+    "submit": "Open dashboard",
+    "wrongCode": "Wrong access code or organization.",
+    "demoData": "Demo data",
+    "total": "Total screenings",
+    "diabetesByBand": "Diabetes risk by level",
+    "heartByBand": "Heart risk by level",
+    "hidden": "Fewer than 5 people (hidden for privacy)",
+    "privacyNote": "Only anonymous totals are shown. Groups with fewer than 5 people are hidden.",
+    "unknownCvd": "Not estimated",
+    "notFound": "No data for this organization yet."
+  },
+  "bot": {
+    "welcome": "Hello! I am the SokhaPheap bot. I can check your diabetes and heart disease risk, explain your blood test, and find health facilities near you.",
+    "help": "Commands:\n/check – start a risk check\n/lab – explain a blood test photo\n/near – find health facilities near you\n/remind – get a reminder to check again\n/language – change language\n/help – show this message",
+    "menuCheck": "Check my risk",
+    "menuLab": "Explain my blood test",
+    "menuNear": "Find care near me",
+    "sendLocation": "📍 Send my location",
+    "sendLocationPrompt": "Tap the button below to share your location, and I will find the nearest health facilities.",
+    "sendNumber": "Please type a number between {min} and {max}.",
+    "typeAge": "How old are you? Type a number, e.g. 45.",
+    "typeHeight": "How tall are you in cm? e.g. 160",
+    "typeWeight": "How much do you weigh in kg? e.g. 60",
+    "typeWaist": "What is your waist size in cm? Use a string around your belly at the belly button. Type a number, or tap \"I don't know\".",
+    "typeSbp": "Do you know your blood pressure? Type the top number (e.g. 130), or tap \"I don't know\".",
+    "labPrompt": "Send me a clear photo of your blood test report. Your photo is not saved.",
+    "labConfirm": "I read these results. Are they correct?",
+    "labCorrect": "✅ Correct",
+    "labWrong": "✏️ Something is wrong",
+    "labWrongHelp": "Sorry. Please use the website to correct the numbers, or send a clearer photo.",
+    "remindPrompt": "When should I remind you to check again?",
+    "remind6": "In 6 months",
+    "remind12": "In 12 months",
+    "remindNo": "No, thanks",
+    "remindSaved": "Done. I will remind you on {date}. Send /stopremind to cancel.",
+    "remindStopped": "Your reminders are cancelled.",
+    "reminderMessage": "Hello from SokhaPheap! It is time to check your health risk again. Send /check to start.",
+    "notUnderstood": "Sorry, I didn't understand. Send /help to see what I can do.",
+    "urgentQ": "First, do you have chest pain, fainting, or signs of very high blood sugar (extreme thirst, lots of urine, confusion) right now?",
+    "urgentYes": "Yes, I have one of these",
+    "urgentNo": "No",
+    "languageChanged": "Language: English"
   }
 }

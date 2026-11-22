@@ -1,0 +1,18 @@
+# Data sources
+
+All datasets were downloaded on **22 November 2026** by `npm run data:download`. Run `npm run data:facilities` to download and rebuild everything from scratch.
+
+| Dataset | Publisher | URL | Licence | Used for |
+|---|---|---|---|---|
+| Cambodia – Health Facilities (shapefile `health_facility.zip`; referral hospitals, health centres, health posts, operational districts) | Ministry of Health, Cambodia, via HDX. Data from 2010. | https://data.humdata.org/dataset/cambodia-health | Listed as "Other" on HDX. See the dataset page. | Facility locations (`source = moh_2010`) |
+| Health Facilities of Cambodia (OpenStreetMap export, GeoJSON). Snapshot 2026-11-03. | Humanitarian OpenStreetMap Team (HOT), via HDX. © OpenStreetMap contributors. | https://data.humdata.org/m/dataset/hotosm_khm_health_facilities | Open Database License (ODbL 1.0) | Facility locations (`source = osm`) |
+| Cambodia – Subnational Administrative Boundaries (ADM1 provinces, ADM2 districts) | Ministry of Land Management, Urbanization and Construction (2008), and WFP, via HDX (cod-ab-khm) | https://data.humdata.org/dataset/cod-ab-khm | CC BY-IGO | Assigning province and district to each facility, and the province/district dropdowns |
+
+## Attribution shown in the app
+
+> Data: Ministry of Health (2010), © OpenStreetMap contributors (ODbL), admin boundaries: MLMUPC/WFP via HDX.
+
+## Licence notes
+
+- **ODbL:** `data/clean/facilities.geojson` combines OSM data, so it is a derived database under ODbL. Credit OpenStreetMap and share the cleaned file under ODbL if it is redistributed.
+- **MoH dataset:** HDX lists its licence as "Other". Before Demo Day, check the dataset page for the exact terms.

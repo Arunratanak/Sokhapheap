@@ -15,3 +15,9 @@ data/raw/
 # misc
 .DS_Store
 *.log
+/build
+*.pem
+*.tsbuildinfo
+next-env.d.ts
+npm-debug.log*
+.vercel

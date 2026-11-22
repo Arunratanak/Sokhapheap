@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "title": "SokhaPheap — Know your health risk",
+    "description": "Check your diabetes and heart disease risk, understand your blood test, and find a health facility near you."
+  },
+  "common": {
+    "appName": "SokhaPheap",
+    "disclaimer": "This is not a diagnosis. Please consult a doctor.",
+    "switchLanguage": "ខ្មែរ",
+    "backHome": "Back to home",
+    "comingSoon": "This feature is coming soon."
+  },
+  "home": {
+    "tagline": "Know your health risk early, and find care near you.",
+    "checkRisk": "Check my risk",
+    "checkRiskHint": "Diabetes and heart disease · about 3 minutes",
+    "explainLab": "Explain my blood test",
+    "explainLabHint": "Take a photo of your blood test and we'll explain it simply",
+    "privacy": "We don't store your name, phone number or photos."
+  },
+  "risk": {
+    "title": "Risk check"
+  },
+  "lab": {
+    "title": "Blood test explainer"
+  }
+}

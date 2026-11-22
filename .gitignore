@@ -1,0 +1,17 @@
+# env / secrets
+.env
+.env.local
+.env.*.local
+
+# deps & build
+node_modules/
+.next/
+out/
+coverage/
+
+# data
+data/raw/
+
+# misc
+.DS_Store
+*.log

@@ -1,0 +1,16 @@
+[
+  {
+    "test_name": "Serum Creatinine",
+    "value": 132,
+    "unit": "µmol/L",
+    "printed_range_low": 62,
+    "printed_range_high": 106
+  },
+  {
+    "test_name": "Random Blood Sugar (RBS)",
+    "value": 118,
+    "unit": "mg/dL",
+    "printed_range_low": 70,
+    "printed_range_high": 140
+  }
+]

@@ -14,7 +14,11 @@
     "data:clean": "tsx scripts/clean_facilities.ts",
     "data:facilities": "npm run data:download && npm run data:clean",
     "data:who-chart": "tsx scripts/extract_who_cvd_chart.ts",
-    "db:migrate": "tsx scripts/db_migrate.ts"
+    "db:migrate": "tsx scripts/db_migrate.ts",
+    "bot:dev": "tsx --conditions=react-server scripts/bot_dev.ts",
+    "bot:webhook": "tsx scripts/bot_webhook.ts",
+    "ai:eval": "tsx --conditions=react-server scripts/eval_ai.ts",
+    "test:e2e": "tsx tests/e2e/risk-ui.e2e.ts && tsx tests/e2e/a11y.e2e.ts"
   },
   "dependencies": {
     "@google/genai": "^3.6.1",
@@ -41,9 +45,11 @@
     "@types/shapefile": "^0.6.4",
     "@vitest/coverage-v8": "^5.1.1",
     "adm-zip": "^0.6.1",
+    "axe-core": "^4.14.1",
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
     "pdfjs-dist": "^4.10.38",
+    "playwright-core": "^1.65.1",
     "proj4": "^2.23.0",
     "shapefile": "^0.6.6",
     "tailwindcss": "4.3.3",

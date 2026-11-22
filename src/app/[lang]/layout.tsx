@@ -27,8 +27,25 @@ export async function generateMetadata({
   const { lang } = await params;
   if (!hasLocale(lang)) return {};
   const dict = getDictionary(lang);
-  return { title: dict.meta.title, description: dict.meta.description };
+  const site = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const strip = (s: string) => s.replaceAll("​", "");
+  return {
+    metadataBase: new URL(site),
+    title: strip(dict.meta.title),
+    description: strip(dict.meta.description),
+    alternates: { canonical: `/${lang}`, languages: { km: "/km", en: "/en" } },
+    openGraph: {
+      title: strip(dict.meta.title),
+      description: strip(dict.meta.description),
+      siteName: "SokhaPheap",
+      locale: lang === "km" ? "km_KH" : "en_US",
+      type: "website",
+    },
+    twitter: { card: "summary_large_image" },
+  };
 }
+
+export const viewport = { themeColor: "#0f766e", width: "device-width", initialScale: 1 };
 
 export default async function RootLayout({
   children,
@@ -50,6 +67,9 @@ export default async function RootLayout({
         <main className="mx-auto flex w-full max-w-xl flex-1 flex-col px-4 pb-8">
           {children}
         </main>
+        <footer className="mx-auto w-full max-w-xl px-4 pb-6 text-sm text-muted">
+          <a href={`/${lang}/about`} className="underline underline-offset-4">{dict.common.about}</a>
+        </footer>
       </body>
     </html>
   );

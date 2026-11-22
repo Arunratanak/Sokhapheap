@@ -39,6 +39,28 @@ export interface GenerateOptions {
   preferFast?: boolean;
   temperature?: number;
   maxOutputTokens?: number;
+  /** Reject a model's output (e.g. wrong script) and try the next model instead. */
+  validate?: (text: string) => boolean;
+}
+
+/**
+ * True if text uses only Khmer, Latin/ASCII, digits, common punctuation and emoji —
+ * i.e. no stray Thai, Lao, Thaana or other scripts mixed into Khmer output.
+ */
+export function isCleanKhmerOrLatin(text: string): boolean {
+  for (const ch of text) {
+    const c = ch.codePointAt(0)!;
+    if (c <= 0x024f) continue; // ASCII + Latin-1 + Latin Extended
+    if (c >= 0x1780 && c <= 0x17ff) continue; // Khmer
+    if (c >= 0x19e0 && c <= 0x19ff) continue; // Khmer symbols
+    if (c >= 0x2000 && c <= 0x206f) continue; // general punctuation, ZWSP
+    if (c >= 0x20a0 && c <= 0x20cf) continue; // currency (៛ is in Khmer block)
+    if (c >= 0x2100 && c <= 0x2bff) continue; // letterlike, arrows, math, symbols
+    if (c >= 0x1f000) continue; // emoji
+    if (c === 0x00b5 || c === 0x03bc) continue; // µ
+    return false;
+  }
+  return true;
 }
 
 export async function generate(opts: GenerateOptions): Promise<{ text: string; model: string }> {
@@ -61,8 +83,8 @@ export async function generate(opts: GenerateOptions): Promise<{ text: string; m
         },
       });
       const text = res.text?.trim();
-      if (text) return { text, model };
-      lastError = new Error("empty response");
+      if (text && (!opts.validate || opts.validate(text))) return { text, model };
+      lastError = new Error(text ? "output failed validation" : "empty response");
     } catch (e) {
       lastError = e;
     }

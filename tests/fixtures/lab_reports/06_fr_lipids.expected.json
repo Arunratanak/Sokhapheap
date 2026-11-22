@@ -1,0 +1,23 @@
+[
+  {
+    "test_name": "Glycémie à jeun",
+    "value": 1.05,
+    "unit": "g/L",
+    "printed_range_low": 0.7,
+    "printed_range_high": 1.1
+  },
+  {
+    "test_name": "Cholestérol total",
+    "value": 2.3,
+    "unit": "g/L",
+    "printed_range_low": null,
+    "printed_range_high": 2
+  },
+  {
+    "test_name": "Triglycérides",
+    "value": 1.2,
+    "unit": "g/L",
+    "printed_range_low": null,
+    "printed_range_high": 1.5
+  }
+]

@@ -29,6 +29,13 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           <span className="block text-xl font-semibold">🩸 {t.home.explainLab}</span>
           <span className="mt-1 block text-sm text-muted">{t.home.explainLabHint}</span>
         </Link>
+        <Link
+          href={`/${lang}/map`}
+          className="block rounded-2xl border-2 border-black/10 bg-surface px-5 py-4 shadow-sm hover:bg-brand-soft"
+        >
+          <span className="block text-lg font-semibold">📍 {t.home.findCare}</span>
+          <span className="mt-1 block text-sm text-muted">{t.home.findCareHint}</span>
+        </Link>
       </nav>
 
       <p className="text-sm text-muted">🔒 {t.home.privacy}</p>

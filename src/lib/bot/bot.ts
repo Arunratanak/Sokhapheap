@@ -1,0 +1,362 @@
+import "server-only";
+import { Bot, InlineKeyboard, Keyboard, type Context } from "grammy";
+import { fmt, getRawDictionary, type Locale } from "../i18n";
+import { runRiskCheck, type RiskResult } from "../risk";
+import { riskInputSchema } from "../schemas";
+import { saveScreening } from "../screenings";
+import { explain } from "../ai/explain";
+import { extractLabValues } from "../ai/extract";
+import { evaluateLabValue, type EvaluatedLabValue, type ExtractedLabValue } from "../scoring/labRanges";
+import { nearestLocal } from "../facilities";
+import { getServiceClient } from "../db/supabase";
+
+/**
+ * Telegram bot. Same scoring, explanation and lab logic as the web app — no duplicated rules.
+ * Conversation state is kept in memory per chat (lost if the free Render service restarts).
+ */
+
+type Answers = Record<string, unknown>;
+interface Session {
+  lang: Locale;
+  step: string | null;
+  answers: Answers;
+  lab?: ExtractedLabValue[];
+  touched: number;
+}
+
+const sessions = new Map<number, Session>();
+const SESSION_TTL = 60 * 60 * 1000;
+
+export function getSession(chatId: number): Session {
+  const now = Date.now();
+  for (const [k, s] of sessions) if (now - s.touched > SESSION_TTL) sessions.delete(k);
+  let s = sessions.get(chatId);
+  if (!s) {
+    s = { lang: "km", step: null, answers: {}, touched: now };
+    sessions.set(chatId, s);
+  }
+  s.touched = now;
+  return s;
+}
+
+// ---------- question flow (mirrors the web questionnaire) ----------
+type Q =
+  | { key: string; kind: "number"; min: number; max: number; prompt: (t: T) => string; allowUnknown?: boolean; integer?: boolean }
+  | { key: string; kind: "yesno"; prompt: (t: T) => string }
+  | { key: string; kind: "choice"; prompt: (t: T) => string; options: (t: T) => [string, string][] };
+type T = ReturnType<typeof getRawDictionary>;
+
+export const QUESTIONS: Q[] = [
+  { key: "sex", kind: "choice", prompt: (t) => t.risk.sex.q, options: (t) => [["male", t.risk.sex.male], ["female", t.risk.sex.female]] },
+  { key: "age", kind: "number", min: 18, max: 120, integer: true, prompt: (t) => t.bot.typeAge },
+  { key: "heightCm", kind: "number", min: 100, max: 230, prompt: (t) => t.bot.typeHeight },
+  { key: "weightKg", kind: "number", min: 25, max: 300, prompt: (t) => t.bot.typeWeight },
+  { key: "waistCm", kind: "number", min: 40, max: 200, allowUnknown: true, prompt: (t) => t.bot.typeWaist },
+  { key: "physicallyActive", kind: "yesno", prompt: (t) => t.risk.activity.q },
+  { key: "dailyVegFruit", kind: "yesno", prompt: (t) => t.risk.vegFruit.q },
+  { key: "bpMedication", kind: "yesno", prompt: (t) => t.risk.bpMeds.q },
+  { key: "highGlucoseHistory", kind: "yesno", prompt: (t) => t.risk.highGlucose.q },
+  {
+    key: "familyHistory", kind: "choice", prompt: (t) => t.risk.family.q,
+    options: (t) => [["none", t.risk.family.none], ["second_degree", t.risk.family.second], ["first_degree", t.risk.family.first]],
+  },
+  { key: "smoker", kind: "yesno", prompt: (t) => t.risk.smoker.q },
+  { key: "sbp", kind: "number", min: 60, max: 300, allowUnknown: true, integer: true, prompt: (t) => t.bot.typeSbp },
+];
+
+const KHMER_DIGITS = "០១២៣៤៥៦៧៨៩";
+export function parseBotNumber(text: string): number | null {
+  const s = text.trim().replace(/[០-៩]/g, (d) => String(KHMER_DIGITS.indexOf(d))).replace(",", ".");
+  if (!/^\d+(\.\d+)?$/.test(s)) return null;
+  return Number(s);
+}
+
+function disclaimer(t: T) {
+  return `⚠️ ${t.common.disclaimer}`;
+}
+
+function mainMenu(t: T) {
+  return new InlineKeyboard()
+    .text(`❤️ ${t.bot.menuCheck}`, "menu:check").row()
+    .text(`🩸 ${t.bot.menuLab}`, "menu:lab").row()
+    .text(`📍 ${t.bot.menuNear}`, "menu:near");
+}
+
+function locationKeyboard(t: T) {
+  return new Keyboard().requestLocation(t.bot.sendLocation).resized().oneTime();
+}
+
+async function ask(ctx: Context, s: Session, index: number) {
+  const t = getRawDictionary(s.lang);
+  const q = QUESTIONS[index];
+  s.step = q.key;
+  const progress = `(${index + 1}/${QUESTIONS.length}) `;
+  if (q.kind === "yesno") {
+    await ctx.reply(progress + q.prompt(t), {
+      reply_markup: new InlineKeyboard().text(t.common.yes, `a:${q.key}:1`).text(t.common.no, `a:${q.key}:0`),
+    });
+  } else if (q.kind === "choice") {
+    const kb = new InlineKeyboard();
+    for (const [v, label] of q.options(t)) kb.text(label, `a:${q.key}:${v}`).row();
+    await ctx.reply(progress + q.prompt(t), { reply_markup: kb });
+  } else {
+    await ctx.reply(progress + q.prompt(t), {
+      reply_markup: q.allowUnknown ? new InlineKeyboard().text(t.common.dontKnow, `a:${q.key}:null`) : undefined,
+    });
+  }
+}
+
+async function next(ctx: Context, s: Session) {
+  const i = QUESTIONS.findIndex((q) => q.key === s.step);
+  if (i < QUESTIONS.length - 1) return ask(ctx, s, i + 1);
+  s.step = null;
+  return finishRisk(ctx, s);
+}
+
+/** Format a risk result as a Telegram message (exported for tests). */
+export function formatRiskMessage(r: RiskResult, lang: Locale): string {
+  const t = getRawDictionary(lang);
+  const f = r.findrisc;
+  const score = f.incomplete.length
+    ? fmt(t.results.diabetesScoreRange, { score: f.score, max: f.scoreMax }, lang)
+    : fmt(t.results.diabetesScore, { score: f.score }, lang);
+  const lines = [
+    `📋 ${t.results.title}`,
+    "",
+    `🩸 ${t.results.diabetesTitle}: ${t.results.findriscBands[f.band]}`,
+    `   ${score}`,
+    r.cvd.available
+      ? `❤️ ${t.results.heartTitle}: ${t.results.cvdBands[r.cvd.band]}`
+      : `❤️ ${t.results.heartTitle}: ${t.results.cvdUnavailable[r.cvd.reason]}`,
+  ];
+  if (f.factors.length) {
+    lines.push("", `${t.results.factorsTitle}:`);
+    for (const x of f.factors.slice(0, 3)) lines.push(`• ${t.results.factors[x.factor]}`);
+  }
+  lines.push("", `👉 ${t.results.nextStepTitle}: ${t.results.nextSteps[r.nextStep]}`, "", disclaimer(t));
+  return lines.join("\n");
+}
+
+async function finishRisk(ctx: Context, s: Session) {
+  const t = getRawDictionary(s.lang);
+  const parsed = riskInputSchema.safeParse({ ...s.answers, channel: "bot", save: true });
+  if (!parsed.success) {
+    s.answers = {};
+    return ctx.reply(t.common.error);
+  }
+  const result = runRiskCheck(parsed.data);
+  await ctx.reply(formatRiskMessage(result, s.lang));
+  void saveScreening(result, { channel: "bot" });
+
+  const f = result.findrisc;
+  const e = await explain({
+    lang: s.lang,
+    kind: "risk",
+    risk: {
+      findrisc: { score: f.score, scoreMax: f.scoreMax, band: f.band, factors: f.factors, recommendGlucoseTest: f.recommendGlucoseTest },
+      cvd: result.cvd.available ? { available: true, band: result.cvd.band } : { available: false, reason: result.cvd.reason },
+    },
+  });
+  await ctx.reply(`💬 ${e.text}\n\n${disclaimer(t)}`);
+  await ctx.reply(t.bot.sendLocationPrompt, { reply_markup: locationKeyboard(t) });
+  await ctx.reply(t.bot.remindPrompt, { reply_markup: remindKeyboard(t) });
+  s.answers = {};
+}
+
+function remindKeyboard(t: T) {
+  return new InlineKeyboard().text(t.bot.remind6, "remind:6").text(t.bot.remind12, "remind:12").row().text(t.bot.remindNo, "remind:no");
+}
+
+export function addMonths(d: Date, months: number): string {
+  const x = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + months, d.getUTCDate()));
+  return x.toISOString().slice(0, 10);
+}
+
+export function formatLabMessage(results: EvaluatedLabValue[], lang: Locale): string {
+  const t = getRawDictionary(lang);
+  const icon = { normal: "✅", outside_range: "⚠️", could_not_read: "❔" } as const;
+  const lines = [`🩸 ${t.lab.resultsTitle}`, ""];
+  for (const r of results) {
+    const name = r.name ? r.name[lang] : r.printedName;
+    lines.push(`${icon[r.flag]} ${name}: ${r.value ?? "—"} ${r.unit ?? ""} — ${t.lab.flags[r.flag]}${r.direction ? ` (${t.lab.direction[r.direction]})` : ""}`);
+  }
+  const outside = results.some((r) => r.flag === "outside_range");
+  lines.push("", `👉 ${t.lab.nextSteps[outside ? "lab_follow_up" : "lab_all_normal"]}`, "", disclaimer(t));
+  return lines.join("\n");
+}
+
+// ---------- bot factory ----------
+export function createBot(token: string) {
+  const bot = new Bot(token);
+
+  bot.command("start", async (ctx) => {
+    const s = getSession(ctx.chat.id);
+    const t = getRawDictionary(s.lang);
+    s.step = null;
+    await ctx.reply(`${t.bot.welcome}\n\n${disclaimer(t)}`, { reply_markup: mainMenu(t) });
+  });
+
+  bot.command("help", async (ctx) => {
+    const t = getRawDictionary(getSession(ctx.chat.id).lang);
+    await ctx.reply(`${t.bot.help}\n\n${disclaimer(t)}`);
+  });
+
+  bot.command("language", async (ctx) => {
+    const s = getSession(ctx.chat.id);
+    s.lang = s.lang === "km" ? "en" : "km";
+    const t = getRawDictionary(s.lang);
+    await ctx.reply(t.bot.languageChanged, { reply_markup: mainMenu(t) });
+  });
+
+  const startCheck = async (ctx: Context) => {
+    const s = getSession(ctx.chat!.id);
+    const t = getRawDictionary(s.lang);
+    s.answers = {};
+    s.step = "urgent";
+    await ctx.reply(t.bot.urgentQ, {
+      reply_markup: new InlineKeyboard().text(t.bot.urgentYes, "urgent:yes").row().text(t.bot.urgentNo, "urgent:no"),
+    });
+  };
+  const startLab = async (ctx: Context) => {
+    const s = getSession(ctx.chat!.id);
+    s.step = "lab";
+    await ctx.reply(getRawDictionary(s.lang).bot.labPrompt);
+  };
+  const startNear = async (ctx: Context) => {
+    const t = getRawDictionary(getSession(ctx.chat!.id).lang);
+    await ctx.reply(t.bot.sendLocationPrompt, { reply_markup: locationKeyboard(t) });
+  };
+
+  bot.command("check", startCheck);
+  bot.command("lab", startLab);
+  bot.command("near", startNear);
+  bot.command("remind", async (ctx) => {
+    const t = getRawDictionary(getSession(ctx.chat.id).lang);
+    await ctx.reply(t.bot.remindPrompt, { reply_markup: remindKeyboard(t) });
+  });
+  bot.command("stopremind", async (ctx) => {
+    const t = getRawDictionary(getSession(ctx.chat.id).lang);
+    await getServiceClient()?.from("reminders").delete().eq("telegram_chat_id", ctx.chat.id).is("sent_at", null);
+    await ctx.reply(t.bot.remindStopped);
+  });
+
+  bot.on("callback_query:data", async (ctx) => {
+    const data = ctx.callbackQuery.data;
+    const s = getSession(ctx.chat!.id);
+    const t = getRawDictionary(s.lang);
+    await ctx.answerCallbackQuery();
+
+    if (data === "menu:check") return startCheck(ctx);
+    if (data === "menu:lab") return startLab(ctx);
+    if (data === "menu:near") return startNear(ctx);
+
+    if (data === "urgent:yes") {
+      s.step = null;
+      await ctx.reply(`🚑 ${t.urgent.goNowTitle}\n\n${t.urgent.goNowBody}\n\n📞 ${t.urgent.ambulance}`);
+      return ctx.reply(t.bot.sendLocationPrompt, { reply_markup: locationKeyboard(t) });
+    }
+    if (data === "urgent:no") return ask(ctx, s, 0);
+
+    if (data.startsWith("a:")) {
+      const [, key, raw] = data.split(":");
+      if (s.step !== key) return; // stale button
+      s.answers[key] = raw === "null" ? null : raw === "1" ? true : raw === "0" ? false : raw;
+      return next(ctx, s);
+    }
+
+    if (data.startsWith("remind:")) {
+      const v = data.split(":")[1];
+      if (v === "no") return;
+      const months = v === "6" ? 6 : 12;
+      const remindOn = addMonths(new Date(), months);
+      const db = getServiceClient();
+      if (!db) return ctx.reply(t.common.error);
+      const { error } = await db.from("reminders").insert({
+        telegram_chat_id: ctx.chat!.id, remind_on: remindOn, type: months === 6 ? "6_months" : "12_months",
+      });
+      return ctx.reply(error ? t.common.error : fmt(t.bot.remindSaved, { date: remindOn }, s.lang));
+    }
+
+    if (data === "lab:ok" && s.lab) {
+      const results = s.lab.map((v) => evaluateLabValue({ ...v, confidence: Math.max(v.confidence, 0.9) }));
+      s.lab = undefined;
+      await ctx.reply(formatLabMessage(results, s.lang));
+      const e = await explain({
+        lang: s.lang,
+        kind: "lab",
+        lab: results.slice(0, 20).map((r) => ({
+          test: (r.name ? r.name[s.lang] : r.printedName).slice(0, 60), value: r.value,
+          unit: r.unit?.slice(0, 20) ?? null, flag: r.flag, ...(r.direction ? { direction: r.direction } : {}),
+        })),
+      });
+      return ctx.reply(`💬 ${e.text}\n\n${disclaimer(t)}`);
+    }
+    if (data === "lab:wrong") {
+      s.lab = undefined;
+      return ctx.reply(t.bot.labWrongHelp);
+    }
+  });
+
+  bot.on("message:location", async (ctx) => {
+    const t = getRawDictionary(getSession(ctx.chat.id).lang);
+    const s = getSession(ctx.chat.id);
+    const { latitude, longitude } = ctx.message.location;
+    const list = nearestLocal(latitude, longitude, 3);
+    const lines = list.map((f, i) => {
+      const name = s.lang === "km" && f.name_km ? f.name_km : f.name;
+      const km = (f.distance_m / 1000).toFixed(1);
+      return `${i + 1}. ${name}\n   ${t.map.types[f.type]} · ${fmt(t.map.distanceKm, { km }, s.lang)}\n   https://www.google.com/maps/dir/?api=1&destination=${f.lat},${f.lng}`;
+    });
+    await ctx.reply(`📍 ${t.map.nearestTitle}\n\n${lines.join("\n\n")}\n\n${t.map.callAhead}`, {
+      reply_markup: { remove_keyboard: true },
+      link_preview_options: { is_disabled: true },
+    });
+  });
+
+  bot.on("message:photo", async (ctx) => {
+    const s = getSession(ctx.chat.id);
+    const t = getRawDictionary(s.lang);
+    await ctx.reply(t.lab.reading);
+    try {
+      const photo = ctx.message.photo[ctx.message.photo.length - 1];
+      const file = await ctx.api.getFile(photo.file_id);
+      const res = await fetch(`https://api.telegram.org/file/bot${token}/${file.file_path}`);
+      let image: Buffer | null = Buffer.from(await res.arrayBuffer());
+      const values = await extractLabValues(image, "image/jpeg");
+      image.fill(0);
+      image = null; // never stored
+      if (!values.length) return ctx.reply(t.lab.nothingFound);
+      s.lab = values;
+      const preview = values.map((v) => `• ${v.test_name}: ${v.value ?? "?"} ${v.unit ?? ""}`).join("\n");
+      await ctx.reply(`${t.bot.labConfirm}\n\n${preview}`, {
+        reply_markup: new InlineKeyboard().text(t.bot.labCorrect, "lab:ok").text(t.bot.labWrong, "lab:wrong"),
+      });
+    } catch {
+      await ctx.reply(t.lab.aiUnavailable);
+    }
+  });
+
+  bot.on("message:text", async (ctx) => {
+    const s = getSession(ctx.chat.id);
+    const t = getRawDictionary(s.lang);
+    const q = QUESTIONS.find((x) => x.key === s.step);
+    if (q?.kind === "number") {
+      const n = parseBotNumber(ctx.message.text);
+      if (n === null || n < q.min || n > q.max) return ctx.reply(fmt(t.bot.sendNumber, { min: q.min, max: q.max }, s.lang));
+      s.answers[q.key] = q.integer ? Math.round(n) : n;
+      return next(ctx, s);
+    }
+    await ctx.reply(t.bot.notUnderstood, { reply_markup: mainMenu(t) });
+  });
+
+  bot.catch((err) => console.error("bot error:", err.message));
+  return bot;
+}
+
+let instance: Bot | null = null;
+export function getBot(): Bot | null {
+  const token = process.env.TELEGRAM_BOT_TOKEN;
+  if (!token) return null;
+  instance ??= createBot(token);
+  return instance;
+}

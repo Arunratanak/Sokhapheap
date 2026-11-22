@@ -1,0 +1,40 @@
+# Render Blueprint — one free Web Service in Singapore.
+# Dashboard → New → Blueprint → select this repo. You'll be asked for each env var (sync: false);
+# values are entered in the dashboard and are never committed.
+services:
+  - type: web
+    name: sokhapheap
+    runtime: node
+    region: singapore
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      - key: NEXT_TELEMETRY_DISABLED
+        value: "1"
+      - key: NEXT_PUBLIC_SUPABASE_URL
+        sync: false
+      - key: NEXT_PUBLIC_SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: AI_MODEL
+        sync: false
+      - key: AI_MODEL_FAST
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_WEBHOOK_SECRET
+        sync: false
+      - key: CRON_SECRET
+        sync: false
+      - key: ORG_DASHBOARD_ACCESS_CODE
+        sync: false
+      - key: NEXT_PUBLIC_SITE_URL
+        sync: false

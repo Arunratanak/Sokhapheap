@@ -33,6 +33,32 @@ body {
   overflow-wrap: anywhere;
 }
 
+@layer components {
+  .btn-primary {
+    @apply inline-flex min-h-14 items-center justify-center rounded-xl bg-brand px-5 py-3 text-lg font-semibold text-white shadow-sm hover:bg-brand-strong disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-secondary {
+    @apply inline-flex min-h-14 items-center justify-center rounded-xl border-2 border-brand bg-surface px-5 py-3 text-lg font-semibold text-brand-strong hover:bg-brand-soft;
+  }
+  .btn-ghost {
+    @apply inline-flex min-h-12 items-center justify-center rounded-xl px-4 font-medium text-brand-strong underline-offset-4 hover:underline;
+  }
+  .field {
+    @apply min-h-12 rounded-xl border-2 border-black/20 bg-surface px-3 text-base;
+  }
+}
+
+:focus-visible {
+  outline: 3px solid #f59e0b;
+  outline-offset: 2px;
+}
+
+/* Headings receive focus programmatically (for screen readers) — no visible ring needed. */
+[tabindex="-1"]:focus,
+[tabindex="-1"]:focus-visible {
+  outline: none;
+}
+
 /* Khmer script needs extra line height so stacked vowels and subscripts don't clip. */
 :lang(km) {
   line-height: 1.75;

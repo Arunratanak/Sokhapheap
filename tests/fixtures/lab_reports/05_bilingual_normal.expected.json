@@ -1,0 +1,23 @@
+[
+  {
+    "test_name": "FBS",
+    "value": 88,
+    "unit": "mg/dL",
+    "printed_range_low": 70,
+    "printed_range_high": 110
+  },
+  {
+    "test_name": "HbA1c",
+    "value": 5.3,
+    "unit": "%",
+    "printed_range_low": 4,
+    "printed_range_high": 6
+  },
+  {
+    "test_name": "Creatinine",
+    "value": 0.8,
+    "unit": "mg/dL",
+    "printed_range_low": 0.6,
+    "printed_range_high": 1.2
+  }
+]

@@ -95,6 +95,11 @@ async function main() {
   if (SHOTS) fs.mkdirSync(SHOTS, { recursive: true });
   const browser = await chromium.launch({ executablePath, headless: true });
   const page = await browser.newPage({ viewport: { width: 375, height: 812 }, deviceScaleFactor: 2, locale: "en-US" });
+  // Never save test runs to the real database (the local server uses the same Supabase project as PROD).
+  await page.route("**/api/risk", async (r) => {
+    const body = JSON.parse(r.request().postData() ?? "{}");
+    await r.continue({ postData: JSON.stringify({ ...body, save: false }) });
+  });
   let pass = 0;
   for (const [i, c] of CASES.entries()) {
     const expected = calculateFindrisc(c);

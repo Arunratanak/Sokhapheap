@@ -77,3 +77,21 @@ describe("evaluation returns exactly normal / outside_range / could_not_read", (
     }
   });
 });
+
+describe("verification checklist C14 — conversion both ways", () => {
+  // The app stores ranges in mg/dL and converts report values in mmol/L up to mg/dL.
+  // mg/dL → mmol/L is the inverse factor; check both directions against the checklist approximations.
+  const cases = [
+    { id: "fasting_glucose", mgdl: 180, approxDivisor: 18, mmol: 180 / 18.016 },
+    { id: "total_cholesterol", mgdl: 200, approxDivisor: 38.67, mmol: 200 / 38.67 },
+    { id: "triglycerides", mgdl: 150, approxDivisor: 88.57, mmol: 150 / 88.57 },
+  ] as const;
+  for (const c of cases) {
+    it(`${c.id}: ${c.mgdl} mg/dL ≈ ${(c.mgdl / c.approxDivisor).toFixed(2)} mmol/L and back`, () => {
+      const factor = LAB_RANGES[c.id].conversions["mmol/l"];
+      expect(c.mgdl / factor).toBeCloseTo(c.mgdl / c.approxDivisor, 1); // mg/dL → mmol/L
+      expect(toCanonical(c.id, c.mmol, "mmol/L")).toBeCloseTo(c.mgdl, 6); // mmol/L → mg/dL
+      expect(toCanonical(c.id, c.mgdl, "mg/dL")).toBe(c.mgdl); // already canonical
+    });
+  }
+});

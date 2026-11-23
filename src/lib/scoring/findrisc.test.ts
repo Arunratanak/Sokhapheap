@@ -107,3 +107,50 @@ describe("FINDRISC — bands, validation and config", () => {
     expect(() => calculateFindrisc(base, "asian")).toThrow(/not verified/);
   });
 });
+
+describe("FINDRISC — verification checklist C2–C7 (exact values)", () => {
+  // BMI targets on a 200 cm person: weight = BMI × 4.
+  const bmiScore = (bmi: number) => score({ heightCm: 200, weightKg: bmi * 4 });
+
+  it("C2: age 44/45, 54/55, 64/65", () => {
+    expect([44, 45, 54, 55, 64, 65].map((age) => score({ age }))).toEqual([0, 2, 2, 3, 3, 4]);
+  });
+  it("C2: BMI 24.9 / 25 / 30 / 30.1 → 0 / 1 / 1 / 3", () => {
+    expect([24.9, 25, 30, 30.1].map(bmiScore)).toEqual([0, 1, 1, 3]);
+  });
+  it("C2: waist men 93 / 94 / 102 / 103 → 0 / 3 / 3 / 4", () => {
+    expect([93, 94, 102, 103].map((waistCm) => score({ waistCm }))).toEqual([0, 3, 3, 4]);
+  });
+  it("C2: waist women 79 / 80 / 88 / 89 → 0 / 3 / 3 / 4", () => {
+    expect([79, 80, 88, 89].map((waistCm) => score({ sex: "female", waistCm }))).toEqual([0, 3, 3, 4]);
+  });
+  it("C3/C4: bands and glucose-test flag at 6, 7, 11, 12, 14, 15, 20, 21", () => {
+    const rows = [6, 7, 11, 12, 14, 15, 20, 21].map((s) => [s, findriscBand(s), s >= 12]);
+    expect(rows).toEqual([
+      [6, "low", false], [7, "slightly_elevated", false], [11, "slightly_elevated", false], [12, "moderate", true],
+      [14, "moderate", true], [15, "high", true], [20, "high", true], [21, "very_high", true],
+    ]);
+  });
+  it("C5: minimum 0 and maximum 26", () => {
+    expect(calculateFindrisc(base).score).toBe(0);
+    expect(calculateFindrisc({
+      age: 80, sex: "female", heightCm: 150, weightKg: 100, waistCm: 120, physicallyActive: false,
+      dailyVegFruit: false, bpMedication: true, highGlucoseHistory: true, familyHistory: "first_degree",
+    }).score).toBe(26);
+  });
+  it("C6: BMI = kg / m² with height in cm", () => {
+    expect(calculateFindrisc({ ...base, heightCm: 165, weightKg: 78 }).bmi).toBe(28.7); // 78 / 1.65² = 28.65
+    expect(calculateFindrisc({ ...base, heightCm: 150, weightKg: 45 }).bmi).toBe(20); // 45 / 1.5² = 20.0
+  });
+  it("C7: returned factors always add up to the total score", () => {
+    const people: Partial<FindriscInput>[] = [
+      {}, { age: 60, waistCm: 100, bpMedication: true }, { age: 50, sex: "female", waistCm: 85, familyHistory: "second_degree", dailyVegFruit: false },
+      { age: 70, heightCm: 160, weightKg: 90, waistCm: 110, physicallyActive: false, dailyVegFruit: false, bpMedication: true, highGlucoseHistory: true, familyHistory: "first_degree" },
+      { age: 58, waistCm: null, highGlucoseHistory: true },
+    ];
+    for (const p of people) {
+      const r = calculateFindrisc({ ...base, ...p });
+      expect(r.factors.reduce((s, f) => s + f.points, 0)).toBe(r.score);
+    }
+  });
+});

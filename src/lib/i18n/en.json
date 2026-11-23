@@ -430,5 +430,38 @@
       "people": "Many adults",
       "poverty": "Poverty"
     }
+  },
+  "area": {
+    "title": "Your area",
+    "intro": "See health facts about your area from Cambodian open data. Your location is used only to find your area and is not saved.",
+    "useLocation": "Use my location",
+    "locating": "Finding your area…",
+    "chooseProvince": "Province",
+    "chooseDistrict": "District",
+    "select": "Choose…",
+    "show": "Show my area",
+    "notFound": "We could not find a district in Cambodia for this location. Choose your province and district instead.",
+    "error": "Could not load the area information. Please try again.",
+    "heading": "{district}, {province}",
+    "overweight": "In {province}, about {pct}% of women aged 15–49 are overweight or obese.",
+    "smoke": "In {province}, about {pct}% of men aged 15–49 smoke.",
+    "travel": "People in {district} live on average {min} minutes by car or motorbike from the nearest health facility, and about {pct}% live more than an hour's walk from one.",
+    "nearestYou": "The nearest health centre to you is {name}, about {km} km away in a straight line.",
+    "nearestCommune": "The nearest health centre to the centre of {commune} is {name}, about {km} km away in a straight line.",
+    "national": "Nationally, about {hyp}% of adults aged 30–79 have high blood pressure ({hypYear}), and about {dm}% of adults have diabetes ({dmYear}).",
+    "veg": "Tip: {veg} costs about {price} riel per kg at markets in {province}.",
+    "areaNote": "These numbers describe everyone in the area, not you personally.",
+    "srcDhs": "DHS 2021–22",
+    "srcTravel": "Malaria Atlas Project 2019 · WorldPop 2025",
+    "srcFacilities": "Ministry of Health 2010 · OpenStreetMap 2026",
+    "srcWho": "WHO",
+    "srcWfp": "WFP market prices {from} to {to}",
+    "seeInsights": "See more about {district} on the Open Data Insights page",
+    "veggies": {
+      "Water spinach": "water spinach",
+      "Cabbage (chinese, flowering)": "flowering Chinese cabbage",
+      "Beans (yardlong, green)": "yardlong beans",
+      "Eggplants": "eggplant"
+    }
   }
 }

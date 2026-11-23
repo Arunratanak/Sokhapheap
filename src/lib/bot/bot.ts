@@ -8,6 +8,7 @@ import { explain } from "../ai/explain";
 import { extractLabValues } from "../ai/extract";
 import { evaluateLabValue, type EvaluatedLabValue, type ExtractedLabValue } from "../scoring/labRanges";
 import { nearestLocal } from "../facilities";
+import { areaSummary, type AreaSummary } from "../insights/area";
 import { getServiceClient } from "../db/supabase";
 
 /**
@@ -111,6 +112,25 @@ async function next(ctx: Context, s: Session) {
   if (i < QUESTIONS.length - 1) return ask(ctx, s, i + 1);
   s.step = null;
   return finishRisk(ctx, s);
+}
+
+/** "Your area" summary for the bot — same numbers and wording as the web card (exported for tests). */
+export function formatAreaMessage(a: AreaSummary, lang: Locale): string {
+  const t = getRawDictionary(lang).area;
+  const r = (v: number) => Math.round(v * 10) / 10;
+  const lines = [`📊 ${t.title}: ${fmt(t.heading, { district: a.district.name, province: a.province.name }, lang)}`, ""];
+  if (a.womenOverweightPct !== null) lines.push(`• ${fmt(t.overweight, { province: a.province.name, pct: r(a.womenOverweightPct) }, lang)} (${t.srcDhs})`);
+  if (a.menSmokePct !== null) lines.push(`• ${fmt(t.smoke, { province: a.province.name, pct: r(a.menSmokePct) }, lang)} (${t.srcDhs})`);
+  if (a.travelMotorMin !== null && a.pctWalkOver60 !== null)
+    lines.push(`• ${fmt(t.travel, { district: a.district.name, min: Math.round(a.travelMotorMin), pct: Math.round(a.pctWalkOver60) }, lang)} (${t.srcTravel})`);
+  if (a.nearestHealthCentre?.from === "you")
+    lines.push(`• ${fmt(t.nearestYou, { name: (lang === "km" && a.nearestHealthCentre.nameKm) || a.nearestHealthCentre.name, km: r(a.nearestHealthCentre.km) }, lang)}`);
+  if (a.nationalHypertensionPct && a.nationalDiabetesPct)
+    lines.push(`• ${fmt(t.national, { hyp: r(a.nationalHypertensionPct.value), hypYear: a.nationalHypertensionPct.year, dm: r(a.nationalDiabetesPct.value), dmYear: a.nationalDiabetesPct.year }, lang)} (${t.srcWho})`);
+  lines.push("", `ℹ️ ${t.areaNote}`);
+  const site = process.env.NEXT_PUBLIC_SITE_URL;
+  if (site) lines.push(`${fmt(t.seeInsights, { district: a.district.name }, lang)}: ${site.replace(/\/$/, "")}/${lang}/${a.insightsLink}`);
+  return lines.join("\n");
 }
 
 /** Format a risk result as a Telegram message (exported for tests). */
@@ -311,6 +331,9 @@ export function createBot(token: string) {
       reply_markup: { remove_keyboard: true },
       link_preview_options: { is_disabled: true },
     });
+    // "Your area" summary from open data. The location is used only for this lookup, never stored.
+    const area = areaSummary({ lat: latitude, lng: longitude });
+    if (area) await ctx.reply(formatAreaMessage(area, s.lang), { link_preview_options: { is_disabled: true } });
   });
 
   bot.on("message:photo", async (ctx) => {

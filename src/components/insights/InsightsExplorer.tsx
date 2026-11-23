@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { FeatureCollection, Geometry } from "geojson";
 import type { Dictionary, Locale } from "@/lib/i18n";
 import { fmtClient, toKhmerDigits } from "@/lib/client/util";
@@ -62,6 +62,13 @@ export function InsightsExplorer({ lang, t, ranking }: { lang: Locale; t: Dictio
     const json = await res.json();
     setData((d) => ({ ...d, [l]: json }));
   }
+
+  // Deep link from the "Your area" card: /insights?area=<district P-code> opens that district.
+  useEffect(() => {
+    const pc = new URLSearchParams(window.location.search).get("area");
+    if (pc && /^KHd{4}$/.test(pc)) void select(pc, "district");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   function toggleMap() {
     if (!showMap) void loadLevel(level);

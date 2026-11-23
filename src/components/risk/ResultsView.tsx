@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { Dictionary, Locale } from "@/lib/i18n";
 import { fmtClient } from "@/lib/client/util";
 import { Disclaimer } from "@/components/Disclaimer";
+import { AreaCard } from "@/components/area/AreaCard";
 import type { FindriscBand, FindriscResult } from "@/lib/scoring/findrisc";
 import type { CvdBand, CvdResult } from "@/lib/scoring/whoCvd";
 import type { NextStep } from "@/lib/risk";
@@ -132,6 +133,8 @@ export function ResultsView({
           <p className="mt-1 text-muted" role="status">{t.common.loading}</p>
         )}
       </section>
+
+      <AreaCard lang={lang} t={t} />
 
       <Disclaimer text={t.common.disclaimer} />
 

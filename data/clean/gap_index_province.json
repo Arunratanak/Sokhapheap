@@ -1,0 +1,614 @@
+{
+ "areas": [
+  {
+   "components": {
+    "access": 88.7,
+    "capacity": 83.2,
+    "people": 6.6,
+    "poverty": 100,
+    "risk": 73.8
+   },
+   "drivers": [
+    "poverty",
+    "access",
+    "capacity"
+   ],
+   "index": 70.5,
+   "name_en": "Stung Treng",
+   "pcode": "KH19",
+   "rank": 1
+  },
+  {
+   "components": {
+    "access": 74.1,
+    "capacity": 86.1,
+    "people": 60.4,
+    "poverty": 33.7,
+    "risk": 51.1
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "people"
+   ],
+   "index": 61.1,
+   "name_en": "Tboung Khmum",
+   "pcode": "KH25",
+   "rank": 2
+  },
+  {
+   "components": {
+    "access": 66.5,
+    "capacity": 83.2,
+    "people": 51.7,
+    "poverty": 48.5,
+    "risk": 50.5
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "people"
+   ],
+   "index": 60.1,
+   "name_en": "Kampong Thom",
+   "pcode": "KH06",
+   "rank": 3
+  },
+  {
+   "components": {
+    "access": 61.5,
+    "capacity": 62.6,
+    "people": 24.8,
+    "poverty": 71.4,
+    "risk": 78.2
+   },
+   "drivers": [
+    "risk",
+    "poverty",
+    "capacity"
+   ],
+   "index": 59.7,
+   "name_en": "Kratie",
+   "pcode": "KH10",
+   "rank": 4
+  },
+  {
+   "components": {
+    "access": 67,
+    "capacity": 51.9,
+    "people": 10.5,
+    "poverty": 100,
+    "risk": 66.7
+   },
+   "drivers": [
+    "poverty",
+    "access",
+    "risk"
+   ],
+   "index": 59.2,
+   "name_en": "Ratanak Kiri",
+   "pcode": "KH16",
+   "rank": 5
+  },
+  {
+   "components": {
+    "access": 68.6,
+    "capacity": 77.3,
+    "people": 70.2,
+    "poverty": 22.2,
+    "risk": 53.3
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "access"
+   ],
+   "index": 58.3,
+   "name_en": "Banteay Meanchey",
+   "pcode": "KH01",
+   "rank": 6
+  },
+  {
+   "components": {
+    "access": 72.9,
+    "capacity": 76.3,
+    "people": 28.5,
+    "poverty": 53.1,
+    "risk": 51.2
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "poverty"
+   ],
+   "index": 56.4,
+   "name_en": "Pursat",
+   "pcode": "KH15",
+   "rank": 7
+  },
+  {
+   "components": {
+    "access": 52.9,
+    "capacity": 100,
+    "people": 71.4,
+    "poverty": 22.5,
+    "risk": 26.7
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "access"
+   ],
+   "index": 54.7,
+   "name_en": "Kampong Speu",
+   "pcode": "KH05",
+   "rank": 8
+  },
+  {
+   "components": {
+    "access": 34.8,
+    "capacity": 63.6,
+    "people": 77.9,
+    "poverty": 38.7,
+    "risk": 51
+   },
+   "drivers": [
+    "people",
+    "capacity",
+    "risk"
+   ],
+   "index": 53.2,
+   "name_en": "Siemreap",
+   "pcode": "KH17",
+   "rank": 9
+  },
+  {
+   "components": {
+    "access": 42.1,
+    "capacity": 100,
+    "people": 15.8,
+    "poverty": 66.1,
+    "risk": 38.7
+   },
+   "drivers": [
+    "capacity",
+    "poverty",
+    "access"
+   ],
+   "index": 52.5,
+   "name_en": "Oddar Meanchey",
+   "pcode": "KH22",
+   "rank": 10
+  },
+  {
+   "components": {
+    "access": 50.4,
+    "capacity": 63.6,
+    "people": 78.7,
+    "poverty": 34.1,
+    "risk": 34.8
+   },
+   "drivers": [
+    "people",
+    "capacity",
+    "access"
+   ],
+   "index": 52.3,
+   "name_en": "Battambang",
+   "pcode": "KH02",
+   "rank": 11
+  },
+  {
+   "components": {
+    "access": 83.4,
+    "capacity": 19.6,
+    "people": 14.1,
+    "poverty": 90.7,
+    "risk": 51.2
+   },
+   "drivers": [
+    "poverty",
+    "access",
+    "risk"
+   ],
+   "index": 51.8,
+   "name_en": "Preah Vihear",
+   "pcode": "KH13",
+   "rank": 12
+  },
+  {
+   "components": {
+    "access": 56.8,
+    "capacity": 93,
+    "people": 38.7,
+    "poverty": 48.2,
+    "risk": 13.9
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "poverty"
+   ],
+   "index": 50.1,
+   "name_en": "Kampong Chhnang",
+   "pcode": "KH04",
+   "rank": 13
+  },
+  {
+   "components": {
+    "access": 36.2,
+    "capacity": 63.6,
+    "people": 73.3,
+    "poverty": 25.7,
+    "risk": 49.1
+   },
+   "drivers": [
+    "people",
+    "capacity",
+    "risk"
+   ],
+   "index": 49.6,
+   "name_en": "Kampong Cham",
+   "pcode": "KH03",
+   "rank": 14
+  },
+  {
+   "components": {
+    "access": 38.9,
+    "capacity": 79.3,
+    "people": 86.5,
+    "poverty": 12.8,
+    "risk": 22.2
+   },
+   "drivers": [
+    "people",
+    "capacity",
+    "access"
+   ],
+   "index": 47.9,
+   "name_en": "Prey Veng",
+   "pcode": "KH14",
+   "rank": 15
+  },
+  {
+   "components": {
+    "access": 45.2,
+    "capacity": 92,
+    "people": 40.9,
+    "poverty": 15.3,
+    "risk": 42.7
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 47.2,
+   "name_en": "Svay Rieng",
+   "pcode": "KH20",
+   "rank": 16
+  },
+  {
+   "components": {
+    "access": 12.3,
+    "capacity": 88.1,
+    "people": 100,
+    "poverty": 0,
+    "risk": 35.3
+   },
+   "drivers": [
+    "people",
+    "capacity",
+    "risk"
+   ],
+   "index": 47.1,
+   "name_en": "Kandal",
+   "pcode": "KH08",
+   "rank": 17
+  },
+  {
+   "components": {
+    "access": 50.7,
+    "capacity": 67.5,
+    "people": 46.4,
+    "poverty": 18.5,
+    "risk": 51
+   },
+   "drivers": [
+    "capacity",
+    "risk",
+    "access"
+   ],
+   "index": 46.8,
+   "name_en": "Kampot",
+   "pcode": "KH07",
+   "rank": 18
+  },
+  {
+   "components": {
+    "access": 1.5,
+    "capacity": 93,
+    "people": 100,
+    "poverty": 0,
+    "risk": 29.9
+   },
+   "drivers": [
+    "people",
+    "capacity",
+    "risk"
+   ],
+   "index": 44.9,
+   "name_en": "Phnom Penh",
+   "pcode": "KH12",
+   "rank": 19
+  },
+  {
+   "components": {
+    "access": 40.5,
+    "capacity": 73.4,
+    "people": 75.1,
+    "poverty": 8.3,
+    "risk": 24.9
+   },
+   "drivers": [
+    "people",
+    "capacity",
+    "access"
+   ],
+   "index": 44.5,
+   "name_en": "Takeo",
+   "pcode": "KH21",
+   "rank": 20
+  },
+  {
+   "components": {
+    "access": 58.3,
+    "capacity": 0,
+    "people": 0.8,
+    "poverty": 75.7,
+    "risk": 62.1
+   },
+   "drivers": [
+    "poverty",
+    "risk",
+    "access"
+   ],
+   "index": 39.4,
+   "name_en": "Mondul Kiri",
+   "pcode": "KH11",
+   "rank": 21
+  },
+  {
+   "components": {
+    "access": 62.7,
+    "capacity": 47,
+    "people": 4.4,
+    "poverty": 33,
+    "risk": 38.9
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "risk"
+   ],
+   "index": 37.2,
+   "name_en": "Koh Kong",
+   "pcode": "KH09",
+   "rank": 22
+  },
+  {
+   "components": {
+    "access": 46.8,
+    "capacity": 65.6,
+    "people": 15.2,
+    "poverty": 6,
+    "risk": 50.9
+   },
+   "drivers": [
+    "capacity",
+    "risk",
+    "access"
+   ],
+   "index": 36.9,
+   "name_en": "Preah Sihanouk",
+   "pcode": "KH18",
+   "rank": 23
+  },
+  {
+   "components": {
+    "access": 8.7,
+    "capacity": 64.6,
+    "people": 0,
+    "poverty": 31.5,
+    "risk": 38.5
+   },
+   "drivers": [
+    "capacity",
+    "risk",
+    "poverty"
+   ],
+   "index": 28.7,
+   "name_en": "Pailin",
+   "pcode": "KH24",
+   "rank": 24
+  },
+  {
+   "components": {
+    "access": 38,
+    "capacity": 0,
+    "people": 0,
+    "poverty": 4.7,
+    "risk": 22.9
+   },
+   "drivers": [
+    "access",
+    "risk",
+    "poverty"
+   ],
+   "index": 13.1,
+   "name_en": "Kep",
+   "pcode": "KH23",
+   "rank": 25
+  }
+ ],
+ "citation": "SokhaPheap Screening Gap Index (2026), from COD-AB, WorldPop, Malaria Atlas Project, MoH, OpenStreetMap and DHS 2021–22 — see data/manifest.json",
+ "clip_percentiles": [
+  0.05,
+  0.95
+ ],
+ "components": [
+  {
+   "id": "risk",
+   "indicators": [
+    {
+     "direction": "higher_is_worse",
+     "field": "dhs.women_overweight_or_obese_pct",
+     "label": {
+      "en": "Women overweight or obese (15–49)",
+      "km": "ស្ត្រីលើសទម្ងន់ ឬធាត់ (១៥–៤៩ ឆ្នាំ)"
+     },
+     "level": "province",
+     "source": "dhs-2021",
+     "year": "2021–22"
+    },
+    {
+     "direction": "higher_is_worse",
+     "field": "dhs.men_smoke_tobacco_pct",
+     "label": {
+      "en": "Men who smoke (15–49)",
+      "km": "បុរសជក់បារី (១៥–៤៩ ឆ្នាំ)"
+     },
+     "level": "province",
+     "source": "dhs-2021",
+     "year": "2021–22"
+    },
+    {
+     "direction": "higher_is_worse",
+     "field": "dhs.women_smoke_tobacco_pct",
+     "label": {
+      "en": "Women who smoke (15–49)",
+      "km": "ស្ត្រីជក់បារី (១៥–៤៩ ឆ្នាំ)"
+     },
+     "level": "province",
+     "source": "dhs-2021",
+     "year": "2021–22"
+    }
+   ],
+   "label": {
+    "en": "Risk factors",
+    "km": "កត្តាហានិភ័យ"
+   },
+   "weight": 1
+  },
+  {
+   "id": "access",
+   "indicators": [
+    {
+     "direction": "higher_is_worse",
+     "field": "travel_motor_mean_min",
+     "label": {
+      "en": "Average travel time by car or motorbike",
+      "km": "រយៈពេលធ្វើដំណើរជាមធ្យមដោយរថយន្ត ឬម៉ូតូ"
+     },
+     "level": "district",
+     "source": "map-travel-time",
+     "year": "2019"
+    },
+    {
+     "direction": "higher_is_worse",
+     "field": "pct_walk_over_60_min",
+     "label": {
+      "en": "People more than 1 hour's walk from care",
+      "km": "មនុស្សដែលដើរលើសពី ១ ម៉ោងទៅកន្លែងព្យាបាល"
+     },
+     "level": "district",
+     "source": "map-travel-time",
+     "year": "2019"
+    },
+    {
+     "direction": "higher_is_worse",
+     "field": "dhs.women_distance_is_problem_pct",
+     "label": {
+      "en": "Women who say distance is a problem",
+      "km": "ស្ត្រីដែលថាចម្ងាយជាបញ្ហា"
+     },
+     "level": "province",
+     "source": "dhs-2021",
+     "year": "2021–22"
+    }
+   ],
+   "label": {
+    "en": "Distance to care",
+    "km": "ចម្ងាយទៅកន្លែងព្យាបាល"
+   },
+   "weight": 1
+  },
+  {
+   "id": "capacity",
+   "indicators": [
+    {
+     "direction": "lower_is_worse",
+     "field": "facilities_per_10k",
+     "label": {
+      "en": "Health facilities per 10,000 people",
+      "km": "កន្លែងព្យាបាលក្នុងមនុស្ស ១០.០០០ នាក់"
+     },
+     "level": "district",
+     "source": "moh-facilities + osm-facilities",
+     "year": "2010 + 2026"
+    }
+   ],
+   "label": {
+    "en": "Few facilities",
+    "km": "កន្លែងព្យាបាលតិច"
+   },
+   "weight": 1
+  },
+  {
+   "id": "people",
+   "indicators": [
+    {
+     "direction": "higher_is_worse",
+     "field": "adults_20plus_est",
+     "label": {
+      "en": "Adults aged 20+ (estimate)",
+      "km": "មនុស្សពេញវ័យអាយុ ២០ ឆ្នាំឡើង (ប៉ាន់ស្មាន)"
+     },
+     "level": "district",
+     "source": "worldpop + cod-ps",
+     "year": "2025 / 2024"
+    }
+   ],
+   "label": {
+    "en": "Many adults",
+    "km": "មនុស្សពេញវ័យច្រើន"
+   },
+   "weight": 1
+  },
+  {
+   "id": "poverty",
+   "indicators": [
+    {
+     "direction": "higher_is_worse",
+     "field": "dhs.population_lowest_wealth_quintile_pct",
+     "label": {
+      "en": "People in the poorest fifth of households",
+      "km": "មនុស្សក្នុងក្រុមគ្រួសារក្រីក្របំផុត ២០%"
+     },
+     "level": "province",
+     "source": "dhs-2021",
+     "year": "2021–22"
+    }
+   ],
+   "label": {
+    "en": "Poverty",
+    "km": "ភាពក្រីក្រ"
+   },
+   "weight": 1
+  }
+ ],
+ "description": "Screening Gap Index: a planning tool showing where NCD screening could help most. It is not a measure of anyone's health.",
+ "formula": "Indicators capped at the 5th–95th percentile and min-max scaled to 0–1 (facilities per 10,000 inverted); component = mean of its indicators; index = 100 × weighted mean of components. Rank 1 = biggest gap.",
+ "level": "province",
+ "licence_of_this_file": "CC BY 4.0"
+}

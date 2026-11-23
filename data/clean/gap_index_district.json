@@ -1,0 +1,4104 @@
+{
+ "areas": [
+  {
+   "components": {
+    "access": 89.3,
+    "capacity": 90.7,
+    "people": 16.3,
+    "poverty": 100,
+    "risk": 74.3
+   },
+   "drivers": [
+    "poverty",
+    "capacity",
+    "access"
+   ],
+   "index": 74.1,
+   "name_en": "Thala Barivat",
+   "pcode": "KH1905",
+   "province_name": "Stung Treng",
+   "province_pcode": "KH19",
+   "rank": 1
+  },
+  {
+   "components": {
+    "access": 89.5,
+    "capacity": 100,
+    "people": 3.6,
+    "poverty": 100,
+    "risk": 74.3
+   },
+   "drivers": [
+    "capacity",
+    "poverty",
+    "access"
+   ],
+   "index": 73.5,
+   "name_en": "Siem Pang",
+   "pcode": "KH1903",
+   "province_name": "Stung Treng",
+   "province_pcode": "KH19",
+   "rank": 2
+  },
+  {
+   "components": {
+    "access": 61.2,
+    "capacity": 82.9,
+    "people": 43,
+    "poverty": 71.4,
+    "risk": 79.8
+   },
+   "drivers": [
+    "capacity",
+    "risk",
+    "poverty"
+   ],
+   "index": 67.7,
+   "name_en": "Snuol",
+   "pcode": "KH1005",
+   "province_name": "Kratie",
+   "province_pcode": "KH10",
+   "rank": 3
+  },
+  {
+   "components": {
+    "access": 88.1,
+    "capacity": 77.2,
+    "people": 81.2,
+    "poverty": 36.7,
+    "risk": 52.7
+   },
+   "drivers": [
+    "access",
+    "people",
+    "capacity"
+   ],
+   "index": 67.2,
+   "name_en": "Memot",
+   "pcode": "KH2503",
+   "province_name": "Tboung Khmum",
+   "province_pcode": "KH25",
+   "rank": 4
+  },
+  {
+   "components": {
+    "access": 65.4,
+    "capacity": 84.3,
+    "people": 96.4,
+    "poverty": 36.7,
+    "risk": 52.7
+   },
+   "drivers": [
+    "people",
+    "capacity",
+    "access"
+   ],
+   "index": 67.1,
+   "name_en": "Tboung Khmum",
+   "pcode": "KH2507",
+   "province_name": "Tboung Khmum",
+   "province_pcode": "KH25",
+   "rank": 5
+  },
+  {
+   "components": {
+    "access": 70,
+    "capacity": 80.1,
+    "people": 10.3,
+    "poverty": 100,
+    "risk": 74.3
+   },
+   "drivers": [
+    "poverty",
+    "capacity",
+    "risk"
+   ],
+   "index": 66.9,
+   "name_en": "Stueng Traeng",
+   "pcode": "KH1904",
+   "province_name": "Stung Treng",
+   "province_pcode": "KH19",
+   "rank": 6
+  },
+  {
+   "components": {
+    "access": 75,
+    "capacity": 70.8,
+    "people": 100,
+    "poverty": 26,
+    "risk": 55.1
+   },
+   "drivers": [
+    "people",
+    "access",
+    "capacity"
+   ],
+   "index": 65.4,
+   "name_en": "Mongkol Borei",
+   "pcode": "KH0102",
+   "province_name": "Banteay Meanchey",
+   "province_pcode": "KH01",
+   "rank": 7
+  },
+  {
+   "components": {
+    "access": 84.1,
+    "capacity": 70.1,
+    "people": 6,
+    "poverty": 100,
+    "risk": 66.7
+   },
+   "drivers": [
+    "poverty",
+    "access",
+    "capacity"
+   ],
+   "index": 65.4,
+   "name_en": "Koun Mom",
+   "pcode": "KH1604",
+   "province_name": "Ratanak Kiri",
+   "province_pcode": "KH16",
+   "rank": 8
+  },
+  {
+   "components": {
+    "access": 74.7,
+    "capacity": 79.3,
+    "people": 78.4,
+    "poverty": 36.7,
+    "risk": 52.7
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "access"
+   ],
+   "index": 64.4,
+   "name_en": "Ponhea Kraek",
+   "pcode": "KH2505",
+   "province_name": "Tboung Khmum",
+   "province_pcode": "KH25",
+   "rank": 9
+  },
+  {
+   "components": {
+    "access": 60.6,
+    "capacity": 67.9,
+    "people": 89.8,
+    "poverty": 50.3,
+    "risk": 51.8
+   },
+   "drivers": [
+    "people",
+    "capacity",
+    "access"
+   ],
+   "index": 64.1,
+   "name_en": "Baray",
+   "pcode": "KH0601",
+   "province_name": "Kampong Thom",
+   "province_pcode": "KH06",
+   "rank": 10
+  },
+  {
+   "components": {
+    "access": 90.1,
+    "capacity": 100,
+    "people": 26.1,
+    "poverty": 50.3,
+    "risk": 51.8
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 63.7,
+   "name_en": "Sandan",
+   "pcode": "KH0606",
+   "province_name": "Kampong Thom",
+   "province_pcode": "KH06",
+   "rank": 11
+  },
+  {
+   "components": {
+    "access": 77.4,
+    "capacity": 73.6,
+    "people": 60.3,
+    "poverty": 54.5,
+    "risk": 52.1
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "people"
+   ],
+   "index": 63.6,
+   "name_en": "Bakan",
+   "pcode": "KH1501",
+   "province_name": "Pursat",
+   "province_pcode": "KH15",
+   "rank": 12
+  },
+  {
+   "components": {
+    "access": 81,
+    "capacity": 63.7,
+    "people": 4.4,
+    "poverty": 100,
+    "risk": 66.7
+   },
+   "drivers": [
+    "poverty",
+    "access",
+    "risk"
+   ],
+   "index": 63.1,
+   "name_en": "Lumphat",
+   "pcode": "KH1605",
+   "province_name": "Ratanak Kiri",
+   "province_pcode": "KH16",
+   "rank": 13
+  },
+  {
+   "components": {
+    "access": 59.2,
+    "capacity": 77.9,
+    "people": 2.7,
+    "poverty": 100,
+    "risk": 74.3
+   },
+   "drivers": [
+    "poverty",
+    "capacity",
+    "risk"
+   ],
+   "index": 62.8,
+   "name_en": "Siem Bouk",
+   "pcode": "KH1902",
+   "province_name": "Stung Treng",
+   "province_pcode": "KH19",
+   "rank": 14
+  },
+  {
+   "components": {
+    "access": 56.5,
+    "capacity": 99.3,
+    "people": 100,
+    "poverty": 26.2,
+    "risk": 31.1
+   },
+   "drivers": [
+    "people",
+    "capacity",
+    "access"
+   ],
+   "index": 62.6,
+   "name_en": "Samraong Tong",
+   "pcode": "KH0507",
+   "province_name": "Kampong Speu",
+   "province_pcode": "KH05",
+   "rank": 15
+  },
+  {
+   "components": {
+    "access": 85.5,
+    "capacity": 92.2,
+    "people": 50.7,
+    "poverty": 26,
+    "risk": 55.1
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 61.9,
+   "name_en": "Paoy Paet",
+   "pcode": "KH0110",
+   "province_name": "Banteay Meanchey",
+   "province_pcode": "KH01",
+   "rank": 16
+  },
+  {
+   "components": {
+    "access": 83.4,
+    "capacity": 94.3,
+    "people": 42.2,
+    "poverty": 36.7,
+    "risk": 52.7
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 61.9,
+   "name_en": "Dambae",
+   "pcode": "KH2501",
+   "province_name": "Tboung Khmum",
+   "province_pcode": "KH25",
+   "rank": 17
+  },
+  {
+   "components": {
+    "access": 79.2,
+    "capacity": 49.4,
+    "people": 29.3,
+    "poverty": 71.4,
+    "risk": 79.8
+   },
+   "drivers": [
+    "risk",
+    "access",
+    "poverty"
+   ],
+   "index": 61.8,
+   "name_en": "Sambour",
+   "pcode": "KH1004",
+   "province_name": "Kratie",
+   "province_pcode": "KH10",
+   "rank": 18
+  },
+  {
+   "components": {
+    "access": 85.5,
+    "capacity": 67.2,
+    "people": 53.7,
+    "poverty": 50.3,
+    "risk": 51.8
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "people"
+   ],
+   "index": 61.7,
+   "name_en": "Stoung",
+   "pcode": "KH0608",
+   "province_name": "Kampong Thom",
+   "province_pcode": "KH06",
+   "rank": 19
+  },
+  {
+   "components": {
+    "access": 80.8,
+    "capacity": 67.9,
+    "people": 65.1,
+    "poverty": 41.2,
+    "risk": 52
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "people"
+   ],
+   "index": 61.4,
+   "name_en": "Chi Kraeng",
+   "pcode": "KH1704",
+   "province_name": "Siemreap",
+   "province_pcode": "KH17",
+   "rank": 20
+  },
+  {
+   "components": {
+    "access": 91.7,
+    "capacity": 48,
+    "people": 0,
+    "poverty": 100,
+    "risk": 66.7
+   },
+   "drivers": [
+    "poverty",
+    "access",
+    "risk"
+   ],
+   "index": 61.3,
+   "name_en": "Ta Veaeng",
+   "pcode": "KH1608",
+   "province_name": "Ratanak Kiri",
+   "province_pcode": "KH16",
+   "rank": 21
+  },
+  {
+   "components": {
+    "access": 64.3,
+    "capacity": 63,
+    "people": 26.8,
+    "poverty": 71.4,
+    "risk": 79.8
+   },
+   "drivers": [
+    "risk",
+    "poverty",
+    "access"
+   ],
+   "index": 61.1,
+   "name_en": "Prek Prasab",
+   "pcode": "KH1003",
+   "province_name": "Kratie",
+   "province_pcode": "KH10",
+   "rank": 22
+  },
+  {
+   "components": {
+    "access": 66.1,
+    "capacity": 87.2,
+    "people": 49.5,
+    "poverty": 50.3,
+    "risk": 51.8
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 61,
+   "name_en": "Santuk",
+   "pcode": "KH0607",
+   "province_name": "Kampong Thom",
+   "province_pcode": "KH06",
+   "rank": 23
+  },
+  {
+   "components": {
+    "access": 79.4,
+    "capacity": 91.5,
+    "people": 27,
+    "poverty": 54.5,
+    "risk": 52.1
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "poverty"
+   ],
+   "index": 60.9,
+   "name_en": "Phnum Kravanh",
+   "pcode": "KH1504",
+   "province_name": "Pursat",
+   "province_pcode": "KH15",
+   "rank": 24
+  },
+  {
+   "components": {
+    "access": 70.2,
+    "capacity": 61.5,
+    "people": 20.6,
+    "poverty": 71.4,
+    "risk": 79.8
+   },
+   "drivers": [
+    "risk",
+    "poverty",
+    "access"
+   ],
+   "index": 60.7,
+   "name_en": "Chhloung",
+   "pcode": "KH1001",
+   "province_name": "Kratie",
+   "province_pcode": "KH10",
+   "rank": 25
+  },
+  {
+   "components": {
+    "access": 62.8,
+    "capacity": 60.8,
+    "people": 25.6,
+    "poverty": 71.4,
+    "risk": 79.8
+   },
+   "drivers": [
+    "risk",
+    "poverty",
+    "access"
+   ],
+   "index": 60.1,
+   "name_en": "Chetr Borei",
+   "pcode": "KH1006",
+   "province_name": "Kratie",
+   "province_pcode": "KH10",
+   "rank": 26
+  },
+  {
+   "components": {
+    "access": 64.6,
+    "capacity": 64.4,
+    "people": 4.6,
+    "poverty": 100,
+    "risk": 66.7
+   },
+   "drivers": [
+    "poverty",
+    "risk",
+    "access"
+   ],
+   "index": 60,
+   "name_en": "Bar Kaev",
+   "pcode": "KH1603",
+   "province_name": "Ratanak Kiri",
+   "province_pcode": "KH16",
+   "rank": 27
+  },
+  {
+   "components": {
+    "access": 37,
+    "capacity": 89.3,
+    "people": 5.8,
+    "poverty": 100,
+    "risk": 66.7
+   },
+   "drivers": [
+    "poverty",
+    "capacity",
+    "risk"
+   ],
+   "index": 59.8,
+   "name_en": "Ban Lung",
+   "pcode": "KH1602",
+   "province_name": "Ratanak Kiri",
+   "province_pcode": "KH16",
+   "rank": 28
+  },
+  {
+   "components": {
+    "access": 63.4,
+    "capacity": 87.2,
+    "people": 40.1,
+    "poverty": 54.5,
+    "risk": 52.1
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "poverty"
+   ],
+   "index": 59.5,
+   "name_en": "Krakor",
+   "pcode": "KH1503",
+   "province_name": "Pursat",
+   "province_pcode": "KH15",
+   "rank": 29
+  },
+  {
+   "components": {
+    "access": 99.8,
+    "capacity": 50.9,
+    "people": 2.4,
+    "poverty": 89.3,
+    "risk": 52.3
+   },
+   "drivers": [
+    "access",
+    "poverty",
+    "risk"
+   ],
+   "index": 59,
+   "name_en": "Sangkum Thmei",
+   "pcode": "KH1306",
+   "province_name": "Preah Vihear",
+   "province_pcode": "KH13",
+   "rank": 30
+  },
+  {
+   "components": {
+    "access": 61.9,
+    "capacity": 100,
+    "people": 24.3,
+    "poverty": 66.6,
+    "risk": 41.8
+   },
+   "drivers": [
+    "capacity",
+    "poverty",
+    "access"
+   ],
+   "index": 58.9,
+   "name_en": "Trapeang Prasat",
+   "pcode": "KH2205",
+   "province_name": "Oddar Meanchey",
+   "province_pcode": "KH22",
+   "rank": 31
+  },
+  {
+   "components": {
+    "access": 65.9,
+    "capacity": 91.5,
+    "people": 79.5,
+    "poverty": 26.2,
+    "risk": 31.1
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "access"
+   ],
+   "index": 58.8,
+   "name_en": "Odongk",
+   "pcode": "KH0505",
+   "province_name": "Kampong Speu",
+   "province_pcode": "KH05",
+   "rank": 32
+  },
+  {
+   "components": {
+    "access": 82.4,
+    "capacity": 90.7,
+    "people": 17.6,
+    "poverty": 50.3,
+    "risk": 51.8
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 58.6,
+   "name_en": "Prasat Ballangk",
+   "pcode": "KH0604",
+   "province_name": "Kampong Thom",
+   "province_pcode": "KH06",
+   "rank": 33
+  },
+  {
+   "components": {
+    "access": 88.8,
+    "capacity": 96.4,
+    "people": 23.8,
+    "poverty": 26,
+    "risk": 55.1
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 58,
+   "name_en": "Malai",
+   "pcode": "KH0109",
+   "province_name": "Banteay Meanchey",
+   "province_pcode": "KH01",
+   "rank": 34
+  },
+  {
+   "components": {
+    "access": 95.8,
+    "capacity": 29.5,
+    "people": 20.7,
+    "poverty": 89.3,
+    "risk": 52.3
+   },
+   "drivers": [
+    "access",
+    "poverty",
+    "risk"
+   ],
+   "index": 57.5,
+   "name_en": "Choam Ksant",
+   "pcode": "KH1303",
+   "province_name": "Preah Vihear",
+   "province_pcode": "KH13",
+   "rank": 35
+  },
+  {
+   "components": {
+    "access": 70.1,
+    "capacity": 65.8,
+    "people": 66.6,
+    "poverty": 26,
+    "risk": 55.1
+   },
+   "drivers": [
+    "access",
+    "people",
+    "capacity"
+   ],
+   "index": 56.7,
+   "name_en": "Preah Netr Preah",
+   "pcode": "KH0104",
+   "province_name": "Banteay Meanchey",
+   "province_pcode": "KH01",
+   "rank": 36
+  },
+  {
+   "components": {
+    "access": 84.5,
+    "capacity": 89.3,
+    "people": 16.3,
+    "poverty": 41.2,
+    "risk": 52
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 56.7,
+   "name_en": "Varin",
+   "pcode": "KH1714",
+   "province_name": "Siemreap",
+   "province_pcode": "KH17",
+   "rank": 37
+  },
+  {
+   "components": {
+    "access": 71.8,
+    "capacity": 100,
+    "people": 54,
+    "poverty": 26.2,
+    "risk": 31.1
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "people"
+   ],
+   "index": 56.6,
+   "name_en": "Phnum Sruoch",
+   "pcode": "KH0506",
+   "province_name": "Kampong Speu",
+   "province_pcode": "KH05",
+   "rank": 38
+  },
+  {
+   "components": {
+    "access": 46.7,
+    "capacity": 77.2,
+    "people": 64.8,
+    "poverty": 41.2,
+    "risk": 52
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "risk"
+   ],
+   "index": 56.4,
+   "name_en": "Puok",
+   "pcode": "KH1707",
+   "province_name": "Siemreap",
+   "province_pcode": "KH17",
+   "rank": 39
+  },
+  {
+   "components": {
+    "access": 78.2,
+    "capacity": 75.8,
+    "people": 52.7,
+    "poverty": 22.6,
+    "risk": 52.4
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "people"
+   ],
+   "index": 56.3,
+   "name_en": "Chhuk",
+   "pcode": "KH0703",
+   "province_name": "Kampot",
+   "province_pcode": "KH07",
+   "rank": 40
+  },
+  {
+   "components": {
+    "access": 76.8,
+    "capacity": 87.2,
+    "people": 15,
+    "poverty": 50.3,
+    "risk": 51.8
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 56.2,
+   "name_en": "Prasat Sambour",
+   "pcode": "KH0605",
+   "province_name": "Kampong Thom",
+   "province_pcode": "KH06",
+   "rank": 41
+  },
+  {
+   "components": {
+    "access": 86.3,
+    "capacity": 86.5,
+    "people": 14.4,
+    "poverty": 41.2,
+    "risk": 52
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 56.1,
+   "name_en": "Svay Leu",
+   "pcode": "KH1713",
+   "province_name": "Siemreap",
+   "province_pcode": "KH17",
+   "rank": 42
+  },
+  {
+   "components": {
+    "access": 81.6,
+    "capacity": 76.5,
+    "people": 39.7,
+    "poverty": 26,
+    "risk": 55.1
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "risk"
+   ],
+   "index": 55.8,
+   "name_en": "Svay Chek",
+   "pcode": "KH0108",
+   "province_name": "Banteay Meanchey",
+   "province_pcode": "KH01",
+   "rank": 43
+  },
+  {
+   "components": {
+    "access": 83.2,
+    "capacity": 26.6,
+    "people": 2.1,
+    "poverty": 100,
+    "risk": 66.7
+   },
+   "drivers": [
+    "poverty",
+    "access",
+    "risk"
+   ],
+   "index": 55.7,
+   "name_en": "Ou Ya Dav",
+   "pcode": "KH1607",
+   "province_name": "Ratanak Kiri",
+   "province_pcode": "KH16",
+   "rank": 44
+  },
+  {
+   "components": {
+    "access": 83.4,
+    "capacity": 65.1,
+    "people": 40.8,
+    "poverty": 36.7,
+    "risk": 52.7
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "risk"
+   ],
+   "index": 55.7,
+   "name_en": "Krouch Chhmar",
+   "pcode": "KH2502",
+   "province_name": "Tboung Khmum",
+   "province_pcode": "KH25",
+   "rank": 45
+  },
+  {
+   "components": {
+    "access": 84,
+    "capacity": 23.1,
+    "people": 1.6,
+    "poverty": 100,
+    "risk": 66.7
+   },
+   "drivers": [
+    "poverty",
+    "access",
+    "risk"
+   ],
+   "index": 55.1,
+   "name_en": "Veun Sai",
+   "pcode": "KH1609",
+   "province_name": "Ratanak Kiri",
+   "province_pcode": "KH16",
+   "rank": 46
+  },
+  {
+   "components": {
+    "access": 62.5,
+    "capacity": 72.2,
+    "people": 97.3,
+    "poverty": 13.2,
+    "risk": 29
+   },
+   "drivers": [
+    "people",
+    "capacity",
+    "access"
+   ],
+   "index": 54.8,
+   "name_en": "Tram Kak",
+   "pcode": "KH2109",
+   "province_name": "Takeo",
+   "province_pcode": "KH21",
+   "rank": 47
+  },
+  {
+   "components": {
+    "access": 66.6,
+    "capacity": 61.5,
+    "people": 42.9,
+    "poverty": 50.3,
+    "risk": 51.8
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "risk"
+   ],
+   "index": 54.6,
+   "name_en": "Kampong Svay",
+   "pcode": "KH0602",
+   "province_name": "Kampong Thom",
+   "province_pcode": "KH06",
+   "rank": 48
+  },
+  {
+   "components": {
+    "access": 55.4,
+    "capacity": 85,
+    "people": 74.3,
+    "poverty": 26.2,
+    "risk": 31.1
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "access"
+   ],
+   "index": 54.4,
+   "name_en": "Basedth",
+   "pcode": "KH0501",
+   "province_name": "Kampong Speu",
+   "province_pcode": "KH05",
+   "rank": 49
+  },
+  {
+   "components": {
+    "access": 55.4,
+    "capacity": 82.2,
+    "people": 53.5,
+    "poverty": 29.2,
+    "risk": 51.1
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "people"
+   ],
+   "index": 54.3,
+   "name_en": "Stueng Trang",
+   "pcode": "KH0315",
+   "province_name": "Kampong Cham",
+   "province_pcode": "KH03",
+   "rank": 50
+  },
+  {
+   "components": {
+    "access": 67.6,
+    "capacity": 99.3,
+    "people": 38.1,
+    "poverty": 50,
+    "risk": 16.3
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "poverty"
+   ],
+   "index": 54.3,
+   "name_en": "Sameakki Mean Chey",
+   "pcode": "KH0407",
+   "province_name": "Kampong Chhnang",
+   "province_pcode": "KH04",
+   "rank": 51
+  },
+  {
+   "components": {
+    "access": 78.8,
+    "capacity": 25.2,
+    "people": 0,
+    "poverty": 100,
+    "risk": 66.7
+   },
+   "drivers": [
+    "poverty",
+    "access",
+    "risk"
+   ],
+   "index": 54.1,
+   "name_en": "Andoung Meas",
+   "pcode": "KH1601",
+   "province_name": "Ratanak Kiri",
+   "province_pcode": "KH16",
+   "rank": 52
+  },
+  {
+   "components": {
+    "access": 44.4,
+    "capacity": 89.3,
+    "people": 55.8,
+    "poverty": 29.2,
+    "risk": 51.1
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "risk"
+   ],
+   "index": 54,
+   "name_en": "Batheay",
+   "pcode": "KH0301",
+   "province_name": "Kampong Cham",
+   "province_pcode": "KH03",
+   "rank": 53
+  },
+  {
+   "components": {
+    "access": 42.8,
+    "capacity": 74.4,
+    "people": 72.5,
+    "poverty": 29.2,
+    "risk": 51.1
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "risk"
+   ],
+   "index": 54,
+   "name_en": "Prey Chhor",
+   "pcode": "KH0313",
+   "province_name": "Kampong Cham",
+   "province_pcode": "KH03",
+   "rank": 54
+  },
+  {
+   "components": {
+    "access": 65.8,
+    "capacity": 58.7,
+    "people": 3.9,
+    "poverty": 89.3,
+    "risk": 52.3
+   },
+   "drivers": [
+    "poverty",
+    "access",
+    "capacity"
+   ],
+   "index": 54,
+   "name_en": "Chey Saen",
+   "pcode": "KH1301",
+   "province_name": "Preah Vihear",
+   "province_pcode": "KH13",
+   "rank": 55
+  },
+  {
+   "components": {
+    "access": 72.1,
+    "capacity": 70.8,
+    "people": 51.6,
+    "poverty": 37,
+    "risk": 38
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "people"
+   ],
+   "index": 53.9,
+   "name_en": "Moung Ruessei",
+   "pcode": "KH0206",
+   "province_name": "Battambang",
+   "province_pcode": "KH02",
+   "rank": 56
+  },
+  {
+   "components": {
+    "access": 74.3,
+    "capacity": 67.9,
+    "people": 37.6,
+    "poverty": 36.7,
+    "risk": 52.7
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "risk"
+   ],
+   "index": 53.9,
+   "name_en": "Ou Reang Ov",
+   "pcode": "KH2504",
+   "province_name": "Tboung Khmum",
+   "province_pcode": "KH25",
+   "rank": 57
+  },
+  {
+   "components": {
+    "access": 31.3,
+    "capacity": 44.4,
+    "people": 100,
+    "poverty": 41.2,
+    "risk": 52
+   },
+   "drivers": [
+    "people",
+    "risk",
+    "capacity"
+   ],
+   "index": 53.8,
+   "name_en": "Siem Reap",
+   "pcode": "KH1710",
+   "province_name": "Siemreap",
+   "province_pcode": "KH17",
+   "rank": 58
+  },
+  {
+   "components": {
+    "access": 79,
+    "capacity": 100,
+    "people": 14.6,
+    "poverty": 37,
+    "risk": 38
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 53.7,
+   "name_en": "Rukh Kiri",
+   "pcode": "KH0214",
+   "province_name": "Battambang",
+   "province_pcode": "KH02",
+   "rank": 59
+  },
+  {
+   "components": {
+    "access": 66.3,
+    "capacity": 86.5,
+    "people": 49,
+    "poverty": 50,
+    "risk": 16.3
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "poverty"
+   ],
+   "index": 53.6,
+   "name_en": "Kampong Tralach",
+   "pcode": "KH0405",
+   "province_name": "Kampong Chhnang",
+   "province_pcode": "KH04",
+   "rank": 60
+  },
+  {
+   "components": {
+    "access": 66,
+    "capacity": 32.3,
+    "people": 2.9,
+    "poverty": 100,
+    "risk": 66.7
+   },
+   "drivers": [
+    "poverty",
+    "risk",
+    "access"
+   ],
+   "index": 53.6,
+   "name_en": "Ou Chum",
+   "pcode": "KH1606",
+   "province_name": "Ratanak Kiri",
+   "province_pcode": "KH16",
+   "rank": 61
+  },
+  {
+   "components": {
+    "access": 87.5,
+    "capacity": 34.5,
+    "people": 3.8,
+    "poverty": 89.3,
+    "risk": 52.3
+   },
+   "drivers": [
+    "poverty",
+    "access",
+    "risk"
+   ],
+   "index": 53.5,
+   "name_en": "Chhaeb",
+   "pcode": "KH1302",
+   "province_name": "Preah Vihear",
+   "province_pcode": "KH13",
+   "rank": 62
+  },
+  {
+   "components": {
+    "access": 37.7,
+    "capacity": 100,
+    "people": 21.5,
+    "poverty": 66.6,
+    "risk": 41.8
+   },
+   "drivers": [
+    "capacity",
+    "poverty",
+    "risk"
+   ],
+   "index": 53.5,
+   "name_en": "Anlong Veaeng",
+   "pcode": "KH2201",
+   "province_name": "Oddar Meanchey",
+   "province_pcode": "KH22",
+   "rank": 63
+  },
+  {
+   "components": {
+    "access": 51.6,
+    "capacity": 78.6,
+    "people": 79.3,
+    "poverty": 26.2,
+    "risk": 31.1
+   },
+   "drivers": [
+    "people",
+    "capacity",
+    "access"
+   ],
+   "index": 53.4,
+   "name_en": "Kong Pisei",
+   "pcode": "KH0503",
+   "province_name": "Kampong Speu",
+   "province_pcode": "KH05",
+   "rank": 64
+  },
+  {
+   "components": {
+    "access": 81.8,
+    "capacity": 73.6,
+    "people": 30,
+    "poverty": 26,
+    "risk": 55.1
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "risk"
+   ],
+   "index": 53.3,
+   "name_en": "Phnum Srok",
+   "pcode": "KH0103",
+   "province_name": "Banteay Meanchey",
+   "province_pcode": "KH01",
+   "rank": 65
+  },
+  {
+   "components": {
+    "access": 81.9,
+    "capacity": 6,
+    "people": 3.2,
+    "poverty": 100,
+    "risk": 74.3
+   },
+   "drivers": [
+    "poverty",
+    "access",
+    "risk"
+   ],
+   "index": 53.1,
+   "name_en": "Sesan",
+   "pcode": "KH1901",
+   "province_name": "Stung Treng",
+   "province_pcode": "KH19",
+   "rank": 66
+  },
+  {
+   "components": {
+    "access": 67.6,
+    "capacity": 76.5,
+    "people": 44.6,
+    "poverty": 37,
+    "risk": 38
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "people"
+   ],
+   "index": 52.7,
+   "name_en": "Bavel",
+   "pcode": "KH0204",
+   "province_name": "Battambang",
+   "province_pcode": "KH02",
+   "rank": 67
+  },
+  {
+   "components": {
+    "access": 74.3,
+    "capacity": 75.1,
+    "people": 38.1,
+    "poverty": 22.6,
+    "risk": 52.4
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 52.5,
+   "name_en": "Banteay Meas",
+   "pcode": "KH0702",
+   "province_name": "Kampot",
+   "province_pcode": "KH07",
+   "rank": 68
+  },
+  {
+   "components": {
+    "access": 51.4,
+    "capacity": 63,
+    "people": 54.4,
+    "poverty": 41.2,
+    "risk": 52
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "risk"
+   ],
+   "index": 52.4,
+   "name_en": "Soutr Nikom",
+   "pcode": "KH1711",
+   "province_name": "Siemreap",
+   "province_pcode": "KH17",
+   "rank": 69
+  },
+  {
+   "components": {
+    "access": 73,
+    "capacity": 65.1,
+    "people": 61,
+    "poverty": 11,
+    "risk": 52.1
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "people"
+   ],
+   "index": 52.4,
+   "name_en": "Prey Nob",
+   "pcode": "KH1802",
+   "province_name": "Preah Sihanouk",
+   "province_pcode": "KH18",
+   "rank": 70
+  },
+  {
+   "components": {
+    "access": 41.6,
+    "capacity": 86.5,
+    "people": 89.2,
+    "poverty": 13.2,
+    "risk": 29
+   },
+   "drivers": [
+    "people",
+    "capacity",
+    "access"
+   ],
+   "index": 51.9,
+   "name_en": "Bati",
+   "pcode": "KH2102",
+   "province_name": "Takeo",
+   "province_pcode": "KH21",
+   "rank": 71
+  },
+  {
+   "components": {
+    "access": 84.5,
+    "capacity": 82.9,
+    "people": 13.4,
+    "poverty": 35.9,
+    "risk": 41.2
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "risk"
+   ],
+   "index": 51.6,
+   "name_en": "Srae Ambel",
+   "pcode": "KH0906",
+   "province_name": "Koh Kong",
+   "province_pcode": "KH09",
+   "rank": 72
+  },
+  {
+   "components": {
+    "access": 88.8,
+    "capacity": 11.7,
+    "people": 15.8,
+    "poverty": 89.3,
+    "risk": 52.3
+   },
+   "drivers": [
+    "poverty",
+    "access",
+    "risk"
+   ],
+   "index": 51.6,
+   "name_en": "Rovieng",
+   "pcode": "KH1305",
+   "province_name": "Preah Vihear",
+   "province_pcode": "KH13",
+   "rank": 73
+  },
+  {
+   "components": {
+    "access": 43.1,
+    "capacity": 84.3,
+    "people": 65.6,
+    "poverty": 19.6,
+    "risk": 45
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "risk"
+   ],
+   "index": 51.5,
+   "name_en": "Svay Chrum",
+   "pcode": "KH2005",
+   "province_name": "Svay Rieng",
+   "province_pcode": "KH20",
+   "rank": 74
+  },
+  {
+   "components": {
+    "access": 56.6,
+    "capacity": 67.9,
+    "people": 57.5,
+    "poverty": 22.6,
+    "risk": 52.4
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "access"
+   ],
+   "index": 51.4,
+   "name_en": "Tuek Chhou",
+   "pcode": "KH0707",
+   "province_name": "Kampot",
+   "province_pcode": "KH07",
+   "rank": 75
+  },
+  {
+   "components": {
+    "access": 50.5,
+    "capacity": 87.9,
+    "people": 51.6,
+    "poverty": 50,
+    "risk": 16.3
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "access"
+   ],
+   "index": 51.3,
+   "name_en": "Rolea B'ier",
+   "pcode": "KH0406",
+   "province_name": "Kampong Chhnang",
+   "province_pcode": "KH04",
+   "rank": 76
+  },
+  {
+   "components": {
+    "access": 85.3,
+    "capacity": 100,
+    "people": 13.6,
+    "poverty": 26.2,
+    "risk": 31.1
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 51.2,
+   "name_en": "Aoral",
+   "pcode": "KH0504",
+   "province_name": "Kampong Speu",
+   "province_pcode": "KH05",
+   "rank": 77
+  },
+  {
+   "components": {
+    "access": 63.5,
+    "capacity": 95,
+    "people": 21,
+    "poverty": 37,
+    "risk": 38
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 50.9,
+   "name_en": "Kamrieng",
+   "pcode": "KH0212",
+   "province_name": "Battambang",
+   "province_pcode": "KH02",
+   "rank": 78
+  },
+  {
+   "components": {
+    "access": 76.4,
+    "capacity": 75.8,
+    "people": 9.3,
+    "poverty": 41.2,
+    "risk": 52
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "risk"
+   ],
+   "index": 50.9,
+   "name_en": "Srei Snam",
+   "pcode": "KH1712",
+   "province_name": "Siemreap",
+   "province_pcode": "KH17",
+   "rank": 79
+  },
+  {
+   "components": {
+    "access": 71,
+    "capacity": 65.1,
+    "people": 36.7,
+    "poverty": 26,
+    "risk": 55.1
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "risk"
+   ],
+   "index": 50.8,
+   "name_en": "Thma Puok",
+   "pcode": "KH0107",
+   "province_name": "Banteay Meanchey",
+   "province_pcode": "KH01",
+   "rank": 80
+  },
+  {
+   "components": {
+    "access": 74.5,
+    "capacity": 38,
+    "people": 0,
+    "poverty": 89.3,
+    "risk": 52.3
+   },
+   "drivers": [
+    "poverty",
+    "access",
+    "risk"
+   ],
+   "index": 50.8,
+   "name_en": "Tbaeng Mean Chey",
+   "pcode": "KH1307",
+   "province_name": "Preah Vihear",
+   "province_pcode": "KH13",
+   "rank": 81
+  },
+  {
+   "components": {
+    "access": 37.6,
+    "capacity": 77.9,
+    "people": 29.7,
+    "poverty": 66.6,
+    "risk": 41.8
+   },
+   "drivers": [
+    "capacity",
+    "poverty",
+    "risk"
+   ],
+   "index": 50.7,
+   "name_en": "Samraong",
+   "pcode": "KH2204",
+   "province_name": "Oddar Meanchey",
+   "province_pcode": "KH22",
+   "rank": 82
+  },
+  {
+   "components": {
+    "access": 56.3,
+    "capacity": 85.8,
+    "people": 68.9,
+    "poverty": 13.2,
+    "risk": 29
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "access"
+   ],
+   "index": 50.6,
+   "name_en": "Samraong",
+   "pcode": "KH2107",
+   "province_name": "Takeo",
+   "province_pcode": "KH21",
+   "rank": 83
+  },
+  {
+   "components": {
+    "access": 60.4,
+    "capacity": 72.9,
+    "people": 43,
+    "poverty": 22.6,
+    "risk": 52.4
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 50.3,
+   "name_en": "Kampong Trach",
+   "pcode": "KH0706",
+   "province_name": "Kampot",
+   "province_pcode": "KH07",
+   "rank": 84
+  },
+  {
+   "components": {
+    "access": 54.2,
+    "capacity": 70.1,
+    "people": 18.6,
+    "poverty": 66.6,
+    "risk": 41.8
+   },
+   "drivers": [
+    "capacity",
+    "poverty",
+    "access"
+   ],
+   "index": 50.3,
+   "name_en": "Banteay Ampil",
+   "pcode": "KH2202",
+   "province_name": "Oddar Meanchey",
+   "province_pcode": "KH22",
+   "rank": 85
+  },
+  {
+   "components": {
+    "access": 65.1,
+    "capacity": 55.8,
+    "people": 23.3,
+    "poverty": 54.5,
+    "risk": 52.1
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "poverty"
+   ],
+   "index": 50.2,
+   "name_en": "Pursat",
+   "pcode": "KH1505",
+   "province_name": "Pursat",
+   "province_pcode": "KH15",
+   "rank": 86
+  },
+  {
+   "components": {
+    "access": 68.4,
+    "capacity": 73.6,
+    "people": 14.9,
+    "poverty": 41.2,
+    "risk": 52
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 50,
+   "name_en": "Banteay Srei",
+   "pcode": "KH1703",
+   "province_name": "Siemreap",
+   "province_pcode": "KH17",
+   "rank": 87
+  },
+  {
+   "components": {
+    "access": 22.2,
+    "capacity": 84.3,
+    "people": 100,
+    "poverty": 4.4,
+    "risk": 38.6
+   },
+   "drivers": [
+    "people",
+    "capacity",
+    "risk"
+   ],
+   "index": 49.9,
+   "name_en": "S'ang",
+   "pcode": "KH0810",
+   "province_name": "Kandal",
+   "province_pcode": "KH08",
+   "rank": 88
+  },
+  {
+   "components": {
+    "access": 78.7,
+    "capacity": 60.8,
+    "people": 28.2,
+    "poverty": 26,
+    "risk": 55.1
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "risk"
+   ],
+   "index": 49.8,
+   "name_en": "Ou Chrov",
+   "pcode": "KH0105",
+   "province_name": "Banteay Meanchey",
+   "province_pcode": "KH01",
+   "rank": 89
+  },
+  {
+   "components": {
+    "access": 72.8,
+    "capacity": 90.7,
+    "people": 28.4,
+    "poverty": 26.2,
+    "risk": 31.1
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 49.8,
+   "name_en": "Thpong",
+   "pcode": "KH0508",
+   "province_name": "Kampong Speu",
+   "province_pcode": "KH05",
+   "rank": 90
+  },
+  {
+   "components": {
+    "access": 80.2,
+    "capacity": 23.8,
+    "people": 5,
+    "poverty": 75.4,
+    "risk": 62.4
+   },
+   "drivers": [
+    "access",
+    "poverty",
+    "risk"
+   ],
+   "index": 49.4,
+   "name_en": "Kaev Seima",
+   "pcode": "KH1101",
+   "province_name": "Mondul Kiri",
+   "province_pcode": "KH11",
+   "rank": 91
+  },
+  {
+   "components": {
+    "access": 17.4,
+    "capacity": 100,
+    "people": 100,
+    "poverty": 0,
+    "risk": 29.8
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "risk"
+   ],
+   "index": 49.4,
+   "name_en": "Praek Pnov",
+   "pcode": "KH1211",
+   "province_name": "Phnom Penh",
+   "province_pcode": "KH12",
+   "rank": 92
+  },
+  {
+   "components": {
+    "access": 57.9,
+    "capacity": 60.1,
+    "people": 53,
+    "poverty": 37,
+    "risk": 38
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "people"
+   ],
+   "index": 49.2,
+   "name_en": "Thma Koul",
+   "pcode": "KH0202",
+   "province_name": "Battambang",
+   "province_pcode": "KH02",
+   "rank": 93
+  },
+  {
+   "components": {
+    "access": 48.8,
+    "capacity": 72.9,
+    "people": 57.6,
+    "poverty": 19.6,
+    "risk": 45
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "access"
+   ],
+   "index": 48.8,
+   "name_en": "Romeas Haek",
+   "pcode": "KH2004",
+   "province_name": "Svay Rieng",
+   "province_pcode": "KH20",
+   "rank": 94
+  },
+  {
+   "components": {
+    "access": 86.5,
+    "capacity": 6,
+    "people": 8.9,
+    "poverty": 89.3,
+    "risk": 52.3
+   },
+   "drivers": [
+    "poverty",
+    "access",
+    "risk"
+   ],
+   "index": 48.6,
+   "name_en": "Kuleaen",
+   "pcode": "KH1304",
+   "province_name": "Preah Vihear",
+   "province_pcode": "KH13",
+   "rank": 95
+  },
+  {
+   "components": {
+    "access": 56,
+    "capacity": 60.1,
+    "people": 20.2,
+    "poverty": 54.5,
+    "risk": 52.1
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "poverty"
+   ],
+   "index": 48.6,
+   "name_en": "Kandieng",
+   "pcode": "KH1502",
+   "province_name": "Pursat",
+   "province_pcode": "KH15",
+   "rank": 96
+  },
+  {
+   "components": {
+    "access": 88.6,
+    "capacity": 90.7,
+    "people": 0,
+    "poverty": 11,
+    "risk": 52.1
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 48.5,
+   "name_en": "Kampong Seila",
+   "pcode": "KH1804",
+   "province_name": "Preah Sihanouk",
+   "province_pcode": "KH18",
+   "rank": 97
+  },
+  {
+   "components": {
+    "access": 80.2,
+    "capacity": 66.5,
+    "people": 19.5,
+    "poverty": 22.6,
+    "risk": 52.4
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "risk"
+   ],
+   "index": 48.2,
+   "name_en": "Chum Kiri",
+   "pcode": "KH0704",
+   "province_name": "Kampot",
+   "province_pcode": "KH07",
+   "rank": 98
+  },
+  {
+   "components": {
+    "access": 11.7,
+    "capacity": 98.6,
+    "people": 99.4,
+    "poverty": 0,
+    "risk": 29.8
+   },
+   "drivers": [
+    "people",
+    "capacity",
+    "risk"
+   ],
+   "index": 47.9,
+   "name_en": "Chraoy Chongvar",
+   "pcode": "KH1210",
+   "province_name": "Phnom Penh",
+   "province_pcode": "KH12",
+   "rank": 99
+  },
+  {
+   "components": {
+    "access": 72.1,
+    "capacity": 80.1,
+    "people": 11.5,
+    "poverty": 37,
+    "risk": 38
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 47.7,
+   "name_en": "Sampov Lun",
+   "pcode": "KH0210",
+   "province_name": "Battambang",
+   "province_pcode": "KH02",
+   "rank": 100
+  },
+  {
+   "components": {
+    "access": 48.3,
+    "capacity": 57.3,
+    "people": 52.4,
+    "poverty": 29.2,
+    "risk": 51.1
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "risk"
+   ],
+   "index": 47.7,
+   "name_en": "Chamkar Leu",
+   "pcode": "KH0302",
+   "province_name": "Kampong Cham",
+   "province_pcode": "KH03",
+   "rank": 101
+  },
+  {
+   "components": {
+    "access": 72,
+    "capacity": 74.4,
+    "people": 15.9,
+    "poverty": 37,
+    "risk": 38
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 47.5,
+   "name_en": "Phnum Proek",
+   "pcode": "KH0211",
+   "province_name": "Battambang",
+   "province_pcode": "KH02",
+   "rank": 102
+  },
+  {
+   "components": {
+    "access": 66,
+    "capacity": 88.6,
+    "people": 7.3,
+    "poverty": 37,
+    "risk": 38
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 47.4,
+   "name_en": "Koas Krala",
+   "pcode": "KH0213",
+   "province_name": "Battambang",
+   "province_pcode": "KH02",
+   "rank": 103
+  },
+  {
+   "components": {
+    "access": 49.2,
+    "capacity": 65.1,
+    "people": 42.3,
+    "poverty": 29.2,
+    "risk": 51.1
+   },
+   "drivers": [
+    "capacity",
+    "risk",
+    "access"
+   ],
+   "index": 47.4,
+   "name_en": "Kang Meas",
+   "pcode": "KH0307",
+   "province_name": "Kampong Cham",
+   "province_pcode": "KH03",
+   "rank": 104
+  },
+  {
+   "components": {
+    "access": 69,
+    "capacity": 66.5,
+    "people": 6.3,
+    "poverty": 41.2,
+    "risk": 52
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "risk"
+   ],
+   "index": 47,
+   "name_en": "Angkor Thum",
+   "pcode": "KH1702",
+   "province_name": "Siemreap",
+   "province_pcode": "KH17",
+   "rank": 105
+  },
+  {
+   "components": {
+    "access": 58,
+    "capacity": 63.7,
+    "people": 5.1,
+    "poverty": 66.6,
+    "risk": 41.8
+   },
+   "drivers": [
+    "poverty",
+    "capacity",
+    "access"
+   ],
+   "index": 47,
+   "name_en": "Chong Kal",
+   "pcode": "KH2203",
+   "province_name": "Oddar Meanchey",
+   "province_pcode": "KH22",
+   "rank": 106
+  },
+  {
+   "components": {
+    "access": 38.3,
+    "capacity": 72.9,
+    "people": 80.2,
+    "poverty": 4.4,
+    "risk": 38.6
+   },
+   "drivers": [
+    "people",
+    "capacity",
+    "risk"
+   ],
+   "index": 46.9,
+   "name_en": "Khsach Kandal",
+   "pcode": "KH0803",
+   "province_name": "Kandal",
+   "province_pcode": "KH08",
+   "rank": 107
+  },
+  {
+   "components": {
+    "access": 47.2,
+    "capacity": 82.2,
+    "people": 59.9,
+    "poverty": 17.3,
+    "risk": 26.8
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "access"
+   ],
+   "index": 46.7,
+   "name_en": "Pea Reang",
+   "pcode": "KH1408",
+   "province_name": "Prey Veng",
+   "province_pcode": "KH14",
+   "rank": 108
+  },
+  {
+   "components": {
+    "access": 42.9,
+    "capacity": 98.6,
+    "people": 26.6,
+    "poverty": 19.6,
+    "risk": 45
+   },
+   "drivers": [
+    "capacity",
+    "risk",
+    "access"
+   ],
+   "index": 46.5,
+   "name_en": "Svay Teab",
+   "pcode": "KH2007",
+   "province_name": "Svay Rieng",
+   "province_pcode": "KH20",
+   "rank": 109
+  },
+  {
+   "components": {
+    "access": 56.9,
+    "capacity": 58.7,
+    "people": 41.1,
+    "poverty": 37,
+    "risk": 38
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "people"
+   ],
+   "index": 46.3,
+   "name_en": "Banan",
+   "pcode": "KH0201",
+   "province_name": "Battambang",
+   "province_pcode": "KH02",
+   "rank": 110
+  },
+  {
+   "components": {
+    "access": 1.6,
+    "capacity": 100,
+    "people": 100,
+    "poverty": 0,
+    "risk": 29.8
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "risk"
+   ],
+   "index": 46.3,
+   "name_en": "Mean Chey",
+   "pcode": "KH1206",
+   "province_name": "Phnom Penh",
+   "province_pcode": "KH12",
+   "rank": 111
+  },
+  {
+   "components": {
+    "access": 1.6,
+    "capacity": 100,
+    "people": 100,
+    "poverty": 0,
+    "risk": 29.8
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "risk"
+   ],
+   "index": 46.3,
+   "name_en": "Russey Keo",
+   "pcode": "KH1207",
+   "province_name": "Phnom Penh",
+   "province_pcode": "KH12",
+   "rank": 112
+  },
+  {
+   "components": {
+    "access": 36.3,
+    "capacity": 63,
+    "people": 55.8,
+    "poverty": 37,
+    "risk": 38
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "risk"
+   ],
+   "index": 46,
+   "name_en": "Sangkae",
+   "pcode": "KH0208",
+   "province_name": "Battambang",
+   "province_pcode": "KH02",
+   "rank": 113
+  },
+  {
+   "components": {
+    "access": 67.8,
+    "capacity": 73.6,
+    "people": 22.3,
+    "poverty": 50,
+    "risk": 16.3
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "poverty"
+   ],
+   "index": 46,
+   "name_en": "Baribour",
+   "pcode": "KH0401",
+   "province_name": "Kampong Chhnang",
+   "province_pcode": "KH04",
+   "rank": 114
+  },
+  {
+   "components": {
+    "access": 26,
+    "capacity": 76.5,
+    "people": 47,
+    "poverty": 29.2,
+    "risk": 51.1
+   },
+   "drivers": [
+    "capacity",
+    "risk",
+    "people"
+   ],
+   "index": 45.9,
+   "name_en": "Cheung Prey",
+   "pcode": "KH0303",
+   "province_name": "Kampong Cham",
+   "province_pcode": "KH03",
+   "rank": 115
+  },
+  {
+   "components": {
+    "access": 2.6,
+    "capacity": 95.7,
+    "people": 100,
+    "poverty": 0,
+    "risk": 29.8
+   },
+   "drivers": [
+    "people",
+    "capacity",
+    "risk"
+   ],
+   "index": 45.6,
+   "name_en": "Pur SenChey",
+   "pcode": "KH1209",
+   "province_name": "Phnom Penh",
+   "province_pcode": "KH12",
+   "rank": 116
+  },
+  {
+   "components": {
+    "access": 84.5,
+    "capacity": 63.7,
+    "people": 0.6,
+    "poverty": 35.9,
+    "risk": 41.2
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "risk"
+   ],
+   "index": 45.2,
+   "name_en": "Botum Sakor",
+   "pcode": "KH0901",
+   "province_name": "Koh Kong",
+   "province_pcode": "KH09",
+   "rank": 117
+  },
+  {
+   "components": {
+    "access": 61.5,
+    "capacity": 64.4,
+    "people": 24.2,
+    "poverty": 22.6,
+    "risk": 52.4
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 45,
+   "name_en": "Dang Tong",
+   "pcode": "KH0705",
+   "province_name": "Kampot",
+   "province_pcode": "KH07",
+   "rank": 118
+  },
+  {
+   "components": {
+    "access": 44.4,
+    "capacity": 73.6,
+    "people": 63,
+    "poverty": 17.3,
+    "risk": 26.8
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "access"
+   ],
+   "index": 45,
+   "name_en": "Preah Sdach",
+   "pcode": "KH1409",
+   "province_name": "Prey Veng",
+   "province_pcode": "KH14",
+   "rank": 119
+  },
+  {
+   "components": {
+    "access": 55.5,
+    "capacity": 87.2,
+    "people": 16.7,
+    "poverty": 19.6,
+    "risk": 45
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 44.8,
+   "name_en": "Bavet",
+   "pcode": "KH2008",
+   "province_name": "Svay Rieng",
+   "province_pcode": "KH20",
+   "rank": 120
+  },
+  {
+   "components": {
+    "access": 29.3,
+    "capacity": 87.2,
+    "people": 63.9,
+    "poverty": 4.4,
+    "risk": 38.6
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "risk"
+   ],
+   "index": 44.7,
+   "name_en": "Kien Svay",
+   "pcode": "KH0802",
+   "province_name": "Kandal",
+   "province_pcode": "KH08",
+   "rank": 121
+  },
+  {
+   "components": {
+    "access": 3.2,
+    "capacity": 93.6,
+    "people": 96.2,
+    "poverty": 0,
+    "risk": 29.8
+   },
+   "drivers": [
+    "people",
+    "capacity",
+    "risk"
+   ],
+   "index": 44.5,
+   "name_en": "Dangkao",
+   "pcode": "KH1205",
+   "province_name": "Phnom Penh",
+   "province_pcode": "KH12",
+   "rank": 122
+  },
+  {
+   "components": {
+    "access": 67.7,
+    "capacity": 60.8,
+    "people": 26.7,
+    "poverty": 50,
+    "risk": 16.3
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "poverty"
+   ],
+   "index": 44.3,
+   "name_en": "Tuek Phos",
+   "pcode": "KH0408",
+   "province_name": "Kampong Chhnang",
+   "province_pcode": "KH04",
+   "rank": 123
+  },
+  {
+   "components": {
+    "access": 43.1,
+    "capacity": 53,
+    "people": 31.7,
+    "poverty": 41.2,
+    "risk": 52
+   },
+   "drivers": [
+    "capacity",
+    "risk",
+    "access"
+   ],
+   "index": 44.2,
+   "name_en": "Prasat Bakong",
+   "pcode": "KH1709",
+   "province_name": "Siemreap",
+   "province_pcode": "KH17",
+   "rank": 124
+  },
+  {
+   "components": {
+    "access": 59.1,
+    "capacity": 89.3,
+    "people": 8.2,
+    "poverty": 19.6,
+    "risk": 45
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 44.2,
+   "name_en": "Chantrea",
+   "pcode": "KH2001",
+   "province_name": "Svay Rieng",
+   "province_pcode": "KH20",
+   "rank": 125
+  },
+  {
+   "components": {
+    "access": 64.9,
+    "capacity": 73.6,
+    "people": 15.7,
+    "poverty": 50,
+    "risk": 16.3
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "poverty"
+   ],
+   "index": 44.1,
+   "name_en": "Kampong Leaeng",
+   "pcode": "KH0404",
+   "province_name": "Kampong Chhnang",
+   "province_pcode": "KH04",
+   "rank": 126
+  },
+  {
+   "components": {
+    "access": 49.4,
+    "capacity": 74.4,
+    "people": 30.9,
+    "poverty": 19.6,
+    "risk": 45
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 43.9,
+   "name_en": "Kampong Rou",
+   "pcode": "KH2002",
+   "province_name": "Svay Rieng",
+   "province_pcode": "KH20",
+   "rank": 127
+  },
+  {
+   "components": {
+    "access": 77.1,
+    "capacity": 3.8,
+    "people": 0,
+    "poverty": 75.4,
+    "risk": 62.4
+   },
+   "drivers": [
+    "access",
+    "poverty",
+    "risk"
+   ],
+   "index": 43.7,
+   "name_en": "Pech Chreada",
+   "pcode": "KH1104",
+   "province_name": "Mondul Kiri",
+   "province_pcode": "KH11",
+   "rank": 128
+  },
+  {
+   "components": {
+    "access": 67.8,
+    "capacity": 36.6,
+    "people": 20.2,
+    "poverty": 41.2,
+    "risk": 52
+   },
+   "drivers": [
+    "access",
+    "risk",
+    "poverty"
+   ],
+   "index": 43.6,
+   "name_en": "Kralanh",
+   "pcode": "KH1706",
+   "province_name": "Siemreap",
+   "province_pcode": "KH17",
+   "rank": 129
+  },
+  {
+   "components": {
+    "access": 59.9,
+    "capacity": 63,
+    "people": 53,
+    "poverty": 13.2,
+    "risk": 29
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "people"
+   ],
+   "index": 43.6,
+   "name_en": "Treang",
+   "pcode": "KH2110",
+   "province_name": "Takeo",
+   "province_pcode": "KH21",
+   "rank": 130
+  },
+  {
+   "components": {
+    "access": 33.3,
+    "capacity": 100,
+    "people": 19.6,
+    "poverty": 19.6,
+    "risk": 45
+   },
+   "drivers": [
+    "capacity",
+    "risk",
+    "access"
+   ],
+   "index": 43.5,
+   "name_en": "Rumduol",
+   "pcode": "KH2003",
+   "province_name": "Svay Rieng",
+   "province_pcode": "KH20",
+   "rank": 131
+  },
+  {
+   "components": {
+    "access": 45.2,
+    "capacity": 72.9,
+    "people": 55,
+    "poverty": 17.3,
+    "risk": 26.8
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "access"
+   ],
+   "index": 43.4,
+   "name_en": "Svay Antor",
+   "pcode": "KH1413",
+   "province_name": "Prey Veng",
+   "province_pcode": "KH14",
+   "rank": 132
+  },
+  {
+   "components": {
+    "access": 49,
+    "capacity": 60.8,
+    "people": 31.9,
+    "poverty": 37,
+    "risk": 38
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 43.3,
+   "name_en": "Aek Phnum",
+   "pcode": "KH0205",
+   "province_name": "Battambang",
+   "province_pcode": "KH02",
+   "rank": 133
+  },
+  {
+   "components": {
+    "access": 32.9,
+    "capacity": 86.5,
+    "people": 54,
+    "poverty": 4.4,
+    "risk": 38.6
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "risk"
+   ],
+   "index": 43.3,
+   "name_en": "Kandal Stueng",
+   "pcode": "KH0801",
+   "province_name": "Kandal",
+   "province_pcode": "KH08",
+   "rank": 134
+  },
+  {
+   "components": {
+    "access": 1.7,
+    "capacity": 85,
+    "people": 100,
+    "poverty": 0,
+    "risk": 29.8
+   },
+   "drivers": [
+    "people",
+    "capacity",
+    "risk"
+   ],
+   "index": 43.3,
+   "name_en": "Chbar Ampov",
+   "pcode": "KH1212",
+   "province_name": "Phnom Penh",
+   "province_pcode": "KH12",
+   "rank": 135
+  },
+  {
+   "components": {
+    "access": 67.4,
+    "capacity": 80.1,
+    "people": 6.1,
+    "poverty": 11,
+    "risk": 52.1
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 43.3,
+   "name_en": "Stueng Hav",
+   "pcode": "KH1803",
+   "province_name": "Preah Sihanouk",
+   "province_pcode": "KH18",
+   "rank": 136
+  },
+  {
+   "components": {
+    "access": 49.7,
+    "capacity": 72.9,
+    "people": 51.1,
+    "poverty": 13.2,
+    "risk": 29
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "access"
+   ],
+   "index": 43.2,
+   "name_en": "Prey Kabbas",
+   "pcode": "KH2106",
+   "province_name": "Takeo",
+   "province_pcode": "KH21",
+   "rank": 137
+  },
+  {
+   "components": {
+    "access": 41.2,
+    "capacity": 29.5,
+    "people": 3,
+    "poverty": 89.3,
+    "risk": 52.3
+   },
+   "drivers": [
+    "poverty",
+    "risk",
+    "access"
+   ],
+   "index": 43.1,
+   "name_en": "Preah Vihear",
+   "pcode": "KH1308",
+   "province_name": "Preah Vihear",
+   "province_pcode": "KH13",
+   "rank": 138
+  },
+  {
+   "components": {
+    "access": 39.7,
+    "capacity": 43,
+    "people": 50.9,
+    "poverty": 26,
+    "risk": 55.1
+   },
+   "drivers": [
+    "risk",
+    "people",
+    "capacity"
+   ],
+   "index": 42.9,
+   "name_en": "Serei Saophoan",
+   "pcode": "KH0106",
+   "province_name": "Banteay Meanchey",
+   "province_pcode": "KH01",
+   "rank": 139
+  },
+  {
+   "components": {
+    "access": 26.7,
+    "capacity": 58.7,
+    "people": 48.1,
+    "poverty": 29.2,
+    "risk": 51.1
+   },
+   "drivers": [
+    "capacity",
+    "risk",
+    "people"
+   ],
+   "index": 42.8,
+   "name_en": "Kampong Siem",
+   "pcode": "KH0306",
+   "province_name": "Kampong Cham",
+   "province_pcode": "KH03",
+   "rank": 140
+  },
+  {
+   "components": {
+    "access": 39.1,
+    "capacity": 75.8,
+    "people": 55.8,
+    "poverty": 4.4,
+    "risk": 38.6
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "access"
+   ],
+   "index": 42.7,
+   "name_en": "Ponhea Lueu",
+   "pcode": "KH0809",
+   "province_name": "Kandal",
+   "province_pcode": "KH08",
+   "rank": 141
+  },
+  {
+   "components": {
+    "access": 1.6,
+    "capacity": 82.2,
+    "people": 100,
+    "poverty": 0,
+    "risk": 29.8
+   },
+   "drivers": [
+    "people",
+    "capacity",
+    "risk"
+   ],
+   "index": 42.7,
+   "name_en": "Saensokh",
+   "pcode": "KH1208",
+   "province_name": "Phnom Penh",
+   "province_pcode": "KH12",
+   "rank": 142
+  },
+  {
+   "components": {
+    "access": 55.4,
+    "capacity": 45.9,
+    "people": 34.8,
+    "poverty": 22.6,
+    "risk": 52.4
+   },
+   "drivers": [
+    "access",
+    "risk",
+    "capacity"
+   ],
+   "index": 42.2,
+   "name_en": "Angkor Chey",
+   "pcode": "KH0701",
+   "province_name": "Kampot",
+   "province_pcode": "KH07",
+   "rank": 143
+  },
+  {
+   "components": {
+    "access": 54.6,
+    "capacity": 40.9,
+    "people": 21.6,
+    "poverty": 41.2,
+    "risk": 52
+   },
+   "drivers": [
+    "access",
+    "risk",
+    "poverty"
+   ],
+   "index": 42.1,
+   "name_en": "Angkor Chum",
+   "pcode": "KH1701",
+   "province_name": "Siemreap",
+   "province_pcode": "KH17",
+   "rank": 144
+  },
+  {
+   "components": {
+    "access": 33.1,
+    "capacity": 73.6,
+    "people": 60.3,
+    "poverty": 4.4,
+    "risk": 38.6
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "risk"
+   ],
+   "index": 42,
+   "name_en": "Angk Snuol",
+   "pcode": "KH0808",
+   "province_name": "Kandal",
+   "province_pcode": "KH08",
+   "rank": 145
+  },
+  {
+   "components": {
+    "access": 43.6,
+    "capacity": 87.2,
+    "people": 35.7,
+    "poverty": 4.4,
+    "risk": 38.6
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 41.9,
+   "name_en": "Mukh Kampul",
+   "pcode": "KH0807",
+   "province_name": "Kandal",
+   "province_pcode": "KH08",
+   "rank": 146
+  },
+  {
+   "components": {
+    "access": 71.9,
+    "capacity": 0,
+    "people": 0,
+    "poverty": 75.4,
+    "risk": 62.4
+   },
+   "drivers": [
+    "poverty",
+    "access",
+    "risk"
+   ],
+   "index": 41.9,
+   "name_en": "Ou Reang",
+   "pcode": "KH1103",
+   "province_name": "Mondul Kiri",
+   "province_pcode": "KH11",
+   "rank": 147
+  },
+  {
+   "components": {
+    "access": 63.7,
+    "capacity": 70.8,
+    "people": 8,
+    "poverty": 50,
+    "risk": 16.3
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "poverty"
+   ],
+   "index": 41.8,
+   "name_en": "Chol Kiri",
+   "pcode": "KH0402",
+   "province_name": "Kampong Chhnang",
+   "province_pcode": "KH04",
+   "rank": 148
+  },
+  {
+   "components": {
+    "access": 25.8,
+    "capacity": 60.1,
+    "people": 20.6,
+    "poverty": 50.3,
+    "risk": 51.8
+   },
+   "drivers": [
+    "capacity",
+    "risk",
+    "poverty"
+   ],
+   "index": 41.7,
+   "name_en": "Stueng Saen",
+   "pcode": "KH0603",
+   "province_name": "Kampong Thom",
+   "province_pcode": "KH06",
+   "rank": 149
+  },
+  {
+   "components": {
+    "access": 48,
+    "capacity": 67.2,
+    "people": 49,
+    "poverty": 17.3,
+    "risk": 26.8
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "access"
+   ],
+   "index": 41.7,
+   "name_en": "Me Sang",
+   "pcode": "KH1405",
+   "province_name": "Prey Veng",
+   "province_pcode": "KH14",
+   "rank": 150
+  },
+  {
+   "components": {
+    "access": 47,
+    "capacity": 89.3,
+    "people": 26.6,
+    "poverty": 17.3,
+    "risk": 26.8
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 41.4,
+   "name_en": "Peam Chor",
+   "pcode": "KH1406",
+   "province_name": "Prey Veng",
+   "province_pcode": "KH14",
+   "rank": 151
+  },
+  {
+   "components": {
+    "access": 28.8,
+    "capacity": 62.3,
+    "people": 71.3,
+    "poverty": 4.4,
+    "risk": 38.6
+   },
+   "drivers": [
+    "people",
+    "capacity",
+    "risk"
+   ],
+   "index": 41.1,
+   "name_en": "Kaoh Thum",
+   "pcode": "KH0804",
+   "province_name": "Kandal",
+   "province_pcode": "KH08",
+   "rank": 152
+  },
+  {
+   "components": {
+    "access": 42.3,
+    "capacity": 76.5,
+    "people": 9.9,
+    "poverty": 34.6,
+    "risk": 41.4
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 41,
+   "name_en": "Sala Krau",
+   "pcode": "KH2402",
+   "province_name": "Pailin",
+   "province_pcode": "KH24",
+   "rank": 153
+  },
+  {
+   "components": {
+    "access": 37.6,
+    "capacity": 97.9,
+    "people": 24.4,
+    "poverty": 17.3,
+    "risk": 26.8
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 40.8,
+   "name_en": "Pur Rieng",
+   "pcode": "KH1411",
+   "province_name": "Prey Veng",
+   "province_pcode": "KH14",
+   "rank": 154
+  },
+  {
+   "components": {
+    "access": 65.3,
+    "capacity": 50.9,
+    "people": 12.5,
+    "poverty": 37,
+    "risk": 38
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "risk"
+   ],
+   "index": 40.7,
+   "name_en": "Rotonak Mondol",
+   "pcode": "KH0207",
+   "province_name": "Battambang",
+   "province_pcode": "KH02",
+   "rank": 155
+  },
+  {
+   "components": {
+    "access": 50.4,
+    "capacity": 32.3,
+    "people": 40,
+    "poverty": 29.2,
+    "risk": 51.1
+   },
+   "drivers": [
+    "risk",
+    "access",
+    "people"
+   ],
+   "index": 40.6,
+   "name_en": "Srei Santhor",
+   "pcode": "KH0314",
+   "province_name": "Kampong Cham",
+   "province_pcode": "KH03",
+   "rank": 156
+  },
+  {
+   "components": {
+    "access": 32.2,
+    "capacity": 65.8,
+    "people": 59.2,
+    "poverty": 17.3,
+    "risk": 26.8
+   },
+   "drivers": [
+    "capacity",
+    "people",
+    "access"
+   ],
+   "index": 40.3,
+   "name_en": "Kampong Trabaek",
+   "pcode": "KH1403",
+   "province_name": "Prey Veng",
+   "province_pcode": "KH14",
+   "rank": 157
+  },
+  {
+   "components": {
+    "access": 61.2,
+    "capacity": 53,
+    "people": 44.6,
+    "poverty": 13.2,
+    "risk": 29
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "people"
+   ],
+   "index": 40.2,
+   "name_en": "Kiri Vong",
+   "pcode": "KH2104",
+   "province_name": "Takeo",
+   "province_pcode": "KH21",
+   "rank": 158
+  },
+  {
+   "components": {
+    "access": 47.4,
+    "capacity": 80.8,
+    "people": 27.5,
+    "poverty": 17.3,
+    "risk": 26.8
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "people"
+   ],
+   "index": 39.9,
+   "name_en": "Kanhchriech",
+   "pcode": "KH1404",
+   "province_name": "Prey Veng",
+   "province_pcode": "KH14",
+   "rank": 159
+  },
+  {
+   "components": {
+    "access": 42.4,
+    "capacity": 68.7,
+    "people": 38.4,
+    "poverty": 17.3,
+    "risk": 26.8
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "people"
+   ],
+   "index": 38.7,
+   "name_en": "Ba Phnum",
+   "pcode": "KH1401",
+   "province_name": "Prey Veng",
+   "province_pcode": "KH14",
+   "rank": 160
+  },
+  {
+   "components": {
+    "access": 47.1,
+    "capacity": 72.2,
+    "people": 28,
+    "poverty": 17.3,
+    "risk": 26.8
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "people"
+   ],
+   "index": 38.3,
+   "name_en": "Sithor Kandal",
+   "pcode": "KH1412",
+   "province_name": "Prey Veng",
+   "province_pcode": "KH14",
+   "rank": 161
+  },
+  {
+   "components": {
+    "access": 50,
+    "capacity": 0,
+    "people": 1.3,
+    "poverty": 75.4,
+    "risk": 62.4
+   },
+   "drivers": [
+    "poverty",
+    "risk",
+    "access"
+   ],
+   "index": 37.8,
+   "name_en": "Kaoh Nheaek",
+   "pcode": "KH1102",
+   "province_name": "Mondul Kiri",
+   "province_pcode": "KH11",
+   "rank": 162
+  },
+  {
+   "components": {
+    "access": 84.5,
+    "capacity": 26.6,
+    "people": 0,
+    "poverty": 35.9,
+    "risk": 41.2
+   },
+   "drivers": [
+    "access",
+    "risk",
+    "poverty"
+   ],
+   "index": 37.6,
+   "name_en": "Kiri Sakor",
+   "pcode": "KH0902",
+   "province_name": "Koh Kong",
+   "province_pcode": "KH09",
+   "rank": 163
+  },
+  {
+   "components": {
+    "access": 29.3,
+    "capacity": 78.6,
+    "people": 36.1,
+    "poverty": 4.4,
+    "risk": 38.6
+   },
+   "drivers": [
+    "capacity",
+    "risk",
+    "people"
+   ],
+   "index": 37.4,
+   "name_en": "Lvea Aem",
+   "pcode": "KH0806",
+   "province_name": "Kandal",
+   "province_pcode": "KH08",
+   "rank": 164
+  },
+  {
+   "components": {
+    "access": 24.6,
+    "capacity": 80.8,
+    "people": 20.3,
+    "poverty": 26.2,
+    "risk": 31.1
+   },
+   "drivers": [
+    "capacity",
+    "risk",
+    "poverty"
+   ],
+   "index": 36.6,
+   "name_en": "Chbar Mon",
+   "pcode": "KH0502",
+   "province_name": "Kampong Speu",
+   "province_pcode": "KH05",
+   "rank": 165
+  },
+  {
+   "components": {
+    "access": 25.4,
+    "capacity": 0.3,
+    "people": 5.6,
+    "poverty": 71.4,
+    "risk": 79.8
+   },
+   "drivers": [
+    "risk",
+    "poverty",
+    "access"
+   ],
+   "index": 36.5,
+   "name_en": "Kracheh",
+   "pcode": "KH1002",
+   "province_name": "Kratie",
+   "province_pcode": "KH10",
+   "rank": 166
+  },
+  {
+   "components": {
+    "access": 29.3,
+    "capacity": 84.3,
+    "people": 24.1,
+    "poverty": 4.4,
+    "risk": 38.6
+   },
+   "drivers": [
+    "capacity",
+    "risk",
+    "access"
+   ],
+   "index": 36.2,
+   "name_en": "Leuk Daek",
+   "pcode": "KH0805",
+   "province_name": "Kandal",
+   "province_pcode": "KH08",
+   "rank": 167
+  },
+  {
+   "components": {
+    "access": 43.3,
+    "capacity": 0,
+    "people": 0,
+    "poverty": 75.4,
+    "risk": 62.4
+   },
+   "drivers": [
+    "poverty",
+    "risk",
+    "access"
+   ],
+   "index": 36.2,
+   "name_en": "Saen Monourom",
+   "pcode": "KH1105",
+   "province_name": "Mondul Kiri",
+   "province_pcode": "KH11",
+   "rank": 168
+  },
+  {
+   "components": {
+    "access": 46.4,
+    "capacity": 49.4,
+    "people": 40.5,
+    "poverty": 17.3,
+    "risk": 26.8
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "people"
+   ],
+   "index": 36.1,
+   "name_en": "Kamchay Mear",
+   "pcode": "KH1402",
+   "province_name": "Prey Veng",
+   "province_pcode": "KH14",
+   "rank": 169
+  },
+  {
+   "components": {
+    "access": 15.5,
+    "capacity": 84.3,
+    "people": 13.8,
+    "poverty": 50,
+    "risk": 16.3
+   },
+   "drivers": [
+    "capacity",
+    "poverty",
+    "risk"
+   ],
+   "index": 36,
+   "name_en": "Kampong Chhnang",
+   "pcode": "KH0403",
+   "province_name": "Kampong Chhnang",
+   "province_pcode": "KH04",
+   "rank": 170
+  },
+  {
+   "components": {
+    "access": 38,
+    "capacity": 42.3,
+    "people": 10.4,
+    "poverty": 36.7,
+    "risk": 52.7
+   },
+   "drivers": [
+    "risk",
+    "capacity",
+    "access"
+   ],
+   "index": 36,
+   "name_en": "Suong",
+   "pcode": "KH2506",
+   "province_name": "Tboung Khmum",
+   "province_pcode": "KH25",
+   "rank": 171
+  },
+  {
+   "components": {
+    "access": 69.1,
+    "capacity": 17.4,
+    "people": 15.4,
+    "poverty": 37,
+    "risk": 38
+   },
+   "drivers": [
+    "access",
+    "risk",
+    "poverty"
+   ],
+   "index": 35.4,
+   "name_en": "Samlout",
+   "pcode": "KH0209",
+   "province_name": "Battambang",
+   "province_pcode": "KH02",
+   "rank": 172
+  },
+  {
+   "components": {
+    "access": 59.7,
+    "capacity": 0,
+    "people": 5.3,
+    "poverty": 54.5,
+    "risk": 52.1
+   },
+   "drivers": [
+    "access",
+    "poverty",
+    "risk"
+   ],
+   "index": 34.3,
+   "name_en": "Veal Veaeng",
+   "pcode": "KH1506",
+   "province_name": "Pursat",
+   "province_pcode": "KH15",
+   "rank": 173
+  },
+  {
+   "components": {
+    "access": 24.1,
+    "capacity": 45.2,
+    "people": 38.8,
+    "poverty": 11,
+    "risk": 52.1
+   },
+   "drivers": [
+    "risk",
+    "capacity",
+    "people"
+   ],
+   "index": 34.2,
+   "name_en": "Preah Sihanouk",
+   "pcode": "KH1801",
+   "province_name": "Preah Sihanouk",
+   "province_pcode": "KH18",
+   "rank": 174
+  },
+  {
+   "components": {
+    "access": 19.2,
+    "capacity": 65.8,
+    "people": 6.9,
+    "poverty": 35.9,
+    "risk": 41.2
+   },
+   "drivers": [
+    "capacity",
+    "risk",
+    "poverty"
+   ],
+   "index": 33.8,
+   "name_en": "Khemara Phoumin",
+   "pcode": "KH0904",
+   "province_name": "Koh Kong",
+   "province_pcode": "KH09",
+   "rank": 175
+  },
+  {
+   "components": {
+    "access": 41.3,
+    "capacity": 27.4,
+    "people": 19,
+    "poverty": 29.2,
+    "risk": 51.1
+   },
+   "drivers": [
+    "risk",
+    "access",
+    "poverty"
+   ],
+   "index": 33.6,
+   "name_en": "Kaoh Soutin",
+   "pcode": "KH0308",
+   "province_name": "Kampong Cham",
+   "province_pcode": "KH03",
+   "rank": 176
+  },
+  {
+   "components": {
+    "access": 40.3,
+    "capacity": 47.3,
+    "people": 0,
+    "poverty": 35.9,
+    "risk": 41.2
+   },
+   "drivers": [
+    "capacity",
+    "risk",
+    "access"
+   ],
+   "index": 32.9,
+   "name_en": "Mondol Seima",
+   "pcode": "KH0905",
+   "province_name": "Koh Kong",
+   "province_pcode": "KH09",
+   "rank": 177
+  },
+  {
+   "components": {
+    "access": 1.6,
+    "capacity": 35.9,
+    "people": 97.2,
+    "poverty": 0,
+    "risk": 29.8
+   },
+   "drivers": [
+    "people",
+    "capacity",
+    "risk"
+   ],
+   "index": 32.9,
+   "name_en": "Doun Penh",
+   "pcode": "KH1202",
+   "province_name": "Phnom Penh",
+   "province_pcode": "KH12",
+   "rank": 178
+  },
+  {
+   "components": {
+    "access": 15.2,
+    "capacity": 11.7,
+    "people": 60.9,
+    "poverty": 37,
+    "risk": 38
+   },
+   "drivers": [
+    "people",
+    "risk",
+    "poverty"
+   ],
+   "index": 32.6,
+   "name_en": "Battambang",
+   "pcode": "KH0203",
+   "province_name": "Battambang",
+   "province_pcode": "KH02",
+   "rank": 179
+  },
+  {
+   "components": {
+    "access": 1.6,
+    "capacity": 45.9,
+    "people": 85.4,
+    "poverty": 0,
+    "risk": 29.8
+   },
+   "drivers": [
+    "people",
+    "capacity",
+    "risk"
+   ],
+   "index": 32.5,
+   "name_en": "Tuol Kouk",
+   "pcode": "KH1204",
+   "province_name": "Phnom Penh",
+   "province_pcode": "KH12",
+   "rank": 180
+  },
+  {
+   "components": {
+    "access": 84.5,
+    "capacity": 0,
+    "people": 0,
+    "poverty": 35.9,
+    "risk": 41.2
+   },
+   "drivers": [
+    "access",
+    "risk",
+    "poverty"
+   ],
+   "index": 32.3,
+   "name_en": "Thma Bang",
+   "pcode": "KH0907",
+   "province_name": "Koh Kong",
+   "province_pcode": "KH09",
+   "rank": 181
+  },
+  {
+   "components": {
+    "access": 37.4,
+    "capacity": 41.6,
+    "people": 15.4,
+    "poverty": 19.6,
+    "risk": 45
+   },
+   "drivers": [
+    "risk",
+    "capacity",
+    "access"
+   ],
+   "index": 31.8,
+   "name_en": "Svay Rieng",
+   "pcode": "KH2006",
+   "province_name": "Svay Rieng",
+   "province_pcode": "KH20",
+   "rank": 182
+  },
+  {
+   "components": {
+    "access": 81.6,
+    "capacity": 0,
+    "people": 0,
+    "poverty": 35.9,
+    "risk": 41.2
+   },
+   "drivers": [
+    "access",
+    "risk",
+    "poverty"
+   ],
+   "index": 31.7,
+   "name_en": "Kaoh Kong",
+   "pcode": "KH0903",
+   "province_name": "Koh Kong",
+   "province_pcode": "KH09",
+   "rank": 183
+  },
+  {
+   "components": {
+    "access": 61.3,
+    "capacity": 39.5,
+    "people": 15,
+    "poverty": 13.2,
+    "risk": 29
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "risk"
+   ],
+   "index": 31.6,
+   "name_en": "Angkor Borei",
+   "pcode": "KH2101",
+   "province_name": "Takeo",
+   "province_pcode": "KH21",
+   "rank": 184
+  },
+  {
+   "components": {
+    "access": 21.4,
+    "capacity": 48,
+    "people": 11.5,
+    "poverty": 34.6,
+    "risk": 41.4
+   },
+   "drivers": [
+    "capacity",
+    "risk",
+    "poverty"
+   ],
+   "index": 31.4,
+   "name_en": "Pailin",
+   "pcode": "KH2401",
+   "province_name": "Pailin",
+   "province_pcode": "KH24",
+   "rank": 185
+  },
+  {
+   "components": {
+    "access": 2,
+    "capacity": 72.9,
+    "people": 37.8,
+    "poverty": 4.4,
+    "risk": 38.6
+   },
+   "drivers": [
+    "capacity",
+    "risk",
+    "people"
+   ],
+   "index": 31.1,
+   "name_en": "Ta Khmau",
+   "pcode": "KH0811",
+   "province_name": "Kandal",
+   "province_pcode": "KH08",
+   "rank": 186
+  },
+  {
+   "components": {
+    "access": 45,
+    "capacity": 43.7,
+    "people": 16.2,
+    "poverty": 13.2,
+    "risk": 29
+   },
+   "drivers": [
+    "access",
+    "capacity",
+    "risk"
+   ],
+   "index": 29.4,
+   "name_en": "Kaoh Andaet",
+   "pcode": "KH2105",
+   "province_name": "Takeo",
+   "province_pcode": "KH21",
+   "rank": 187
+  },
+  {
+   "components": {
+    "access": 40.3,
+    "capacity": 67.2,
+    "people": 1.1,
+    "poverty": 9.8,
+    "risk": 27.5
+   },
+   "drivers": [
+    "capacity",
+    "access",
+    "risk"
+   ],
+   "index": 29.2,
+   "name_en": "Damnak Chang'aeur",
+   "pcode": "KH2301",
+   "province_name": "Kep",
+   "province_pcode": "KH23",
+   "rank": 188
+  },
+  {
+   "components": {
+    "access": 20.8,
+    "capacity": 50.1,
+    "people": 26.6,
+    "poverty": 17.3,
+    "risk": 26.8
+   },
+   "drivers": [
+    "capacity",
+    "risk",
+    "people"
+   ],
+   "index": 28.3,
+   "name_en": "Peam Ro",
+   "pcode": "KH1407",
+   "province_name": "Prey Veng",
+   "province_pcode": "KH14",
+   "rank": 189
+  },
+  {
+   "components": {
+    "access": 1.6,
+    "capacity": 22.4,
+    "people": 84.1,
+    "poverty": 0,
+    "risk": 29.8
+   },
+   "drivers": [
+    "people",
+    "risk",
+    "capacity"
+   ],
+   "index": 27.6,
+   "name_en": "Chamkar Mon",
+   "pcode": "KH1201",
+   "province_name": "Phnom Penh",
+   "province_pcode": "KH12",
+   "rank": 190
+  },
+  {
+   "components": {
+    "access": 26.8,
+    "capacity": 45.2,
+    "people": 16.6,
+    "poverty": 13.2,
+    "risk": 29
+   },
+   "drivers": [
+    "capacity",
+    "risk",
+    "access"
+   ],
+   "index": 26.2,
+   "name_en": "Doun Kaev",
+   "pcode": "KH2108",
+   "province_name": "Takeo",
+   "province_pcode": "KH21",
+   "rank": 191
+  },
+  {
+   "components": {
+    "access": 2,
+    "capacity": 78.6,
+    "people": 3.7,
+    "poverty": 17.3,
+    "risk": 26.8
+   },
+   "drivers": [
+    "capacity",
+    "risk",
+    "poverty"
+   ],
+   "index": 25.7,
+   "name_en": "Prey Veng",
+   "pcode": "KH1410",
+   "province_name": "Prey Veng",
+   "province_pcode": "KH14",
+   "rank": 192
+  },
+  {
+   "components": {
+    "access": 33.6,
+    "capacity": 0,
+    "people": 9,
+    "poverty": 22.6,
+    "risk": 52.4
+   },
+   "drivers": [
+    "risk",
+    "access",
+    "poverty"
+   ],
+   "index": 23.5,
+   "name_en": "Kampot",
+   "pcode": "KH0708",
+   "province_name": "Kampot",
+   "province_pcode": "KH07",
+   "rank": 193
+  },
+  {
+   "components": {
+    "access": 65.9,
+    "capacity": 0,
+    "people": 3.9,
+    "poverty": 13.2,
+    "risk": 29
+   },
+   "drivers": [
+    "access",
+    "risk",
+    "poverty"
+   ],
+   "index": 22.4,
+   "name_en": "Borei Cholsar",
+   "pcode": "KH2103",
+   "province_name": "Takeo",
+   "province_pcode": "KH21",
+   "rank": 194
+  },
+  {
+   "components": {
+    "access": 1.6,
+    "capacity": 25.9,
+    "people": 38.2,
+    "poverty": 0,
+    "risk": 29.8
+   },
+   "drivers": [
+    "people",
+    "risk",
+    "capacity"
+   ],
+   "index": 19.1,
+   "name_en": "Prampir Meakkakra",
+   "pcode": "KH1203",
+   "province_name": "Phnom Penh",
+   "province_pcode": "KH12",
+   "rank": 195
+  },
+  {
+   "components": {
+    "access": 0.6,
+    "capacity": 0,
+    "people": 13,
+    "poverty": 29.2,
+    "risk": 51.1
+   },
+   "drivers": [
+    "risk",
+    "poverty",
+    "people"
+   ],
+   "index": 18.8,
+   "name_en": "Kampong Cham",
+   "pcode": "KH0305",
+   "province_name": "Kampong Cham",
+   "province_pcode": "KH03",
+   "rank": 196
+  },
+  {
+   "components": {
+    "access": 42.5,
+    "capacity": 0,
+    "people": 2.3,
+    "poverty": 9.8,
+    "risk": 27.5
+   },
+   "drivers": [
+    "access",
+    "risk",
+    "poverty"
+   ],
+   "index": 16.4,
+   "name_en": "Kaeb",
+   "pcode": "KH2302",
+   "province_name": "Kep",
+   "province_pcode": "KH23",
+   "rank": 197
+  }
+ ],
+ "citation": "SokhaPheap Screening Gap Index (2026), from COD-AB, WorldPop, Malaria Atlas Project, MoH, OpenStreetMap and DHS 2021–22 — see data/manifest.json",
+ "clip_percentiles": [
+  0.05,
+  0.95
+ ],
+ "components": [
+  {
+   "id": "risk",
+   "indicators": [
+    {
+     "direction": "higher_is_worse",
+     "field": "dhs.women_overweight_or_obese_pct",
+     "label": {
+      "en": "Women overweight or obese (15–49)",
+      "km": "ស្ត្រីលើសទម្ងន់ ឬធាត់ (១៥–៤៩ ឆ្នាំ)"
+     },
+     "level": "province",
+     "source": "dhs-2021",
+     "year": "2021–22"
+    },
+    {
+     "direction": "higher_is_worse",
+     "field": "dhs.men_smoke_tobacco_pct",
+     "label": {
+      "en": "Men who smoke (15–49)",
+      "km": "បុរសជក់បារី (១៥–៤៩ ឆ្នាំ)"
+     },
+     "level": "province",
+     "source": "dhs-2021",
+     "year": "2021–22"
+    },
+    {
+     "direction": "higher_is_worse",
+     "field": "dhs.women_smoke_tobacco_pct",
+     "label": {
+      "en": "Women who smoke (15–49)",
+      "km": "ស្ត្រីជក់បារី (១៥–៤៩ ឆ្នាំ)"
+     },
+     "level": "province",
+     "source": "dhs-2021",
+     "year": "2021–22"
+    }
+   ],
+   "label": {
+    "en": "Risk factors",
+    "km": "កត្តាហានិភ័យ"
+   },
+   "weight": 1
+  },
+  {
+   "id": "access",
+   "indicators": [
+    {
+     "direction": "higher_is_worse",
+     "field": "travel_motor_mean_min",
+     "label": {
+      "en": "Average travel time by car or motorbike",
+      "km": "រយៈពេលធ្វើដំណើរជាមធ្យមដោយរថយន្ត ឬម៉ូតូ"
+     },
+     "level": "district",
+     "source": "map-travel-time",
+     "year": "2019"
+    },
+    {
+     "direction": "higher_is_worse",
+     "field": "pct_walk_over_60_min",
+     "label": {
+      "en": "People more than 1 hour's walk from care",
+      "km": "មនុស្សដែលដើរលើសពី ១ ម៉ោងទៅកន្លែងព្យាបាល"
+     },
+     "level": "district",
+     "source": "map-travel-time",
+     "year": "2019"
+    },
+    {
+     "direction": "higher_is_worse",
+     "field": "dhs.women_distance_is_problem_pct",
+     "label": {
+      "en": "Women who say distance is a problem",
+      "km": "ស្ត្រីដែលថាចម្ងាយជាបញ្ហា"
+     },
+     "level": "province",
+     "source": "dhs-2021",
+     "year": "2021–22"
+    }
+   ],
+   "label": {
+    "en": "Distance to care",
+    "km": "ចម្ងាយទៅកន្លែងព្យាបាល"
+   },
+   "weight": 1
+  },
+  {
+   "id": "capacity",
+   "indicators": [
+    {
+     "direction": "lower_is_worse",
+     "field": "facilities_per_10k",
+     "label": {
+      "en": "Health facilities per 10,000 people",
+      "km": "កន្លែងព្យាបាលក្នុងមនុស្ស ១០.០០០ នាក់"
+     },
+     "level": "district",
+     "source": "moh-facilities + osm-facilities",
+     "year": "2010 + 2026"
+    }
+   ],
+   "label": {
+    "en": "Few facilities",
+    "km": "កន្លែងព្យាបាលតិច"
+   },
+   "weight": 1
+  },
+  {
+   "id": "people",
+   "indicators": [
+    {
+     "direction": "higher_is_worse",
+     "field": "adults_20plus_est",
+     "label": {
+      "en": "Adults aged 20+ (estimate)",
+      "km": "មនុស្សពេញវ័យអាយុ ២០ ឆ្នាំឡើង (ប៉ាន់ស្មាន)"
+     },
+     "level": "district",
+     "source": "worldpop + cod-ps",
+     "year": "2025 / 2024"
+    }
+   ],
+   "label": {
+    "en": "Many adults",
+    "km": "មនុស្សពេញវ័យច្រើន"
+   },
+   "weight": 1
+  },
+  {
+   "id": "poverty",
+   "indicators": [
+    {
+     "direction": "higher_is_worse",
+     "field": "dhs.population_lowest_wealth_quintile_pct",
+     "label": {
+      "en": "People in the poorest fifth of households",
+      "km": "មនុស្សក្នុងក្រុមគ្រួសារក្រីក្របំផុត ២០%"
+     },
+     "level": "province",
+     "source": "dhs-2021",
+     "year": "2021–22"
+    }
+   ],
+   "label": {
+    "en": "Poverty",
+    "km": "ភាពក្រីក្រ"
+   },
+   "weight": 1
+  }
+ ],
+ "description": "Screening Gap Index: a planning tool showing where NCD screening could help most. It is not a measure of anyone's health.",
+ "formula": "Indicators capped at the 5th–95th percentile and min-max scaled to 0–1 (facilities per 10,000 inverted); component = mean of its indicators; index = 100 × weighted mean of components. Rank 1 = biggest gap.",
+ "level": "district",
+ "licence_of_this_file": "CC BY 4.0"
+}

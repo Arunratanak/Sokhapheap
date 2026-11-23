@@ -22,7 +22,8 @@
     "findCare": "Find care near me",
     "about": "About & data sources",
     "stepOf": "Question {n} of {total}",
-    "demoBanner": "Demo mode — answers are pre-filled and nothing is saved."
+    "demoBanner": "Demo mode — answers are pre-filled and nothing is saved.",
+    "insights": "Open Data Insights"
   },
   "home": {
     "tagline": "Know your health risk early, and find care near you.",
@@ -33,7 +34,9 @@
     "findCare": "Find a health facility",
     "findCareHint": "Hospitals, health centres and clinics near you",
     "privacy": "We don't store your name, phone number or photos.",
-    "telegram": "Also on Telegram"
+    "telegram": "Also on Telegram",
+    "insights": "Open Data Insights",
+    "insightsHint": "Where people are furthest from care, from Cambodian open data"
   },
   "urgent": {
     "title": "First, a safety check",
@@ -50,32 +53,65 @@
   },
   "risk": {
     "title": "Risk check",
-    "sex": { "q": "Are you a man or a woman?", "male": "Man", "female": "Woman" },
-    "age": { "q": "How old are you?", "unit": "years", "help": "This check is for adults 18 and older." },
-    "height": { "q": "How tall are you?", "unit": "cm", "help": "If you don't know, stand against a wall, mark the top of your head, and measure from the floor." },
-    "weight": { "q": "How much do you weigh?", "unit": "kg", "help": "Use a scale at home, a pharmacy or a health centre." },
+    "sex": {
+      "q": "Are you a man or a woman?",
+      "male": "Man",
+      "female": "Woman"
+    },
+    "age": {
+      "q": "How old are you?",
+      "unit": "years",
+      "help": "This check is for adults 18 and older."
+    },
+    "height": {
+      "q": "How tall are you?",
+      "unit": "cm",
+      "help": "If you don't know, stand against a wall, mark the top of your head, and measure from the floor."
+    },
+    "weight": {
+      "q": "How much do you weigh?",
+      "unit": "kg",
+      "help": "Use a scale at home, a pharmacy or a health centre."
+    },
     "waist": {
       "q": "What is your waist size?",
       "unit": "cm",
       "help": "Use a string: wrap it around your belly at the level of your belly button, breathe out normally, mark the string, then measure it with a ruler or tape. You can also use your trouser waist size as a rough guide."
     },
-    "activity": { "q": "Do you do at least 30 minutes of physical activity every day?", "help": "This includes physical work, walking, cycling, farming or exercise." },
-    "vegFruit": { "q": "Do you eat vegetables or fruit every day?" },
-    "bpMeds": { "q": "Have you ever taken medicine for high blood pressure?" },
-    "highGlucose": { "q": "Has a health worker ever told you that your blood sugar was high?", "help": "For example at a check-up, while you were sick, or during pregnancy." },
+    "activity": {
+      "q": "Do you do at least 30 minutes of physical activity every day?",
+      "help": "This includes physical work, walking, cycling, farming or exercise."
+    },
+    "vegFruit": {
+      "q": "Do you eat vegetables or fruit every day?"
+    },
+    "bpMeds": {
+      "q": "Have you ever taken medicine for high blood pressure?"
+    },
+    "highGlucose": {
+      "q": "Has a health worker ever told you that your blood sugar was high?",
+      "help": "For example at a check-up, while you were sick, or during pregnancy."
+    },
     "family": {
       "q": "Has anyone in your family had diabetes?",
       "none": "No / I don't know",
       "second": "Yes: grandparent, aunt, uncle or cousin",
       "first": "Yes: parent, brother, sister or my own child"
     },
-    "smoker": { "q": "Do you smoke now?", "help": "Cigarettes, hand-rolled tobacco or other smoked tobacco." },
+    "smoker": {
+      "q": "Do you smoke now?",
+      "help": "Cigarettes, hand-rolled tobacco or other smoked tobacco."
+    },
     "sbp": {
       "q": "Do you know your blood pressure?",
       "unit": "mmHg (top number)",
       "help": "Blood pressure is written like 130/80. Enter the top (bigger) number from a recent measurement."
     },
-    "province": { "q": "Which province do you live in?", "help": "Optional. Used only for anonymous statistics.", "skip": "Prefer not to say" },
+    "province": {
+      "q": "Which province do you live in?",
+      "help": "Optional. Used only for anonymous statistics.",
+      "skip": "Prefer not to say"
+    },
     "submit": "See my results",
     "invalidNumber": "Please enter a number between {min} and {max}."
   },
@@ -188,7 +224,10 @@
       "outside_range": "Outside range",
       "could_not_read": "Could not check"
     },
-    "direction": { "low": "lower than range", "high": "higher than range" },
+    "direction": {
+      "low": "lower than range",
+      "high": "higher than range"
+    },
     "reasons": {
       "low_confidence": "The photo was not clear enough to read this.",
       "unknown_test": "We don't check this test yet.",
@@ -196,7 +235,10 @@
       "unknown_unit": "Unit not recognised.",
       "no_reference_range": "No normal range printed on the report for this test."
     },
-    "rangeSource": { "report": "Range from your report", "table": "Range from guidelines" },
+    "rangeSource": {
+      "report": "Range from your report",
+      "table": "Range from guidelines"
+    },
     "nothingFound": "We could not find any test results in this photo. Try another photo, or type the numbers yourself.",
     "typeManually": "Type the numbers myself",
     "aiUnavailable": "Photo reading is not available right now. You can type the numbers yourself.",
@@ -270,5 +312,123 @@
     "urgentYes": "Yes, I have one of these",
     "urgentNo": "No",
     "languageChanged": "Language: English"
+  },
+  "insights": {
+    "title": "Open Data Insights",
+    "intro": "Where in Cambodia are people furthest from care, and where could screening help most? Every number on this page comes from Cambodian open data.",
+    "planningNote": "The Screening Gap Index is a planning tool to choose where to run screening. It describes areas, not people, and it is not a measure of anyone's health.",
+    "levelLabel": "Show",
+    "level": {
+      "province": "Provinces",
+      "district": "Districts",
+      "commune": "Communes"
+    },
+    "layerLabel": "Map layer",
+    "layers": {
+      "gap": "Screening Gap Index",
+      "motor": "Travel time by car or motorbike",
+      "walk": "Travel time on foot",
+      "walk60": "People more than 1 hour's walk from care",
+      "per10k": "Health facilities per 10,000 people",
+      "population": "Population",
+      "women_owt": "Women overweight or obese (DHS)",
+      "men_smoke": "Men who smoke (DHS)",
+      "women_smoke": "Women who smoke (DHS)",
+      "distance": "Women who say distance is a problem (DHS)",
+      "poverty": "People in the poorest fifth (DHS)"
+    },
+    "communeNote": "Communes show travel time, facilities and population only. Survey data and the gap index are not available at this level.",
+    "legendTitle": "Legend",
+    "legendWorse": "Darker = bigger gap",
+    "legendBetter": "Darker = fewer facilities per person",
+    "legendHigher": "Darker = higher",
+    "noData": "No data",
+    "loadingMap": "Loading map…",
+    "tapHint": "Tap an area on the map, or choose one in the table below, to see its numbers.",
+    "panel": {
+      "close": "Close",
+      "gapIndex": "Screening Gap Index",
+      "rank": "Rank {rank} of {of}",
+      "drivers": "Main reasons",
+      "noDrivers": "No component stands out.",
+      "indicators": "Numbers for this area",
+      "population": "Population",
+      "adults": "Adults aged 20+ (estimate)",
+      "motor": "Average travel time by car or motorbike",
+      "walk": "Average travel time on foot",
+      "walk60": "People more than 1 hour's walk from care",
+      "motor30": "People more than 30 min by car or motorbike",
+      "facilities": "Health facilities",
+      "per10k": "Facilities per 10,000 people",
+      "breakdown": "{h} hospitals · {hc} health centres · {hp} health posts · {c} clinics",
+      "nearestHospital": "Nearest hospital from the commune centre",
+      "nearestHc": "Nearest health centre from the commune centre",
+      "kmAway": "{name}, {km} km (straight line)",
+      "survey": "Survey data for the province (ages 15–49)",
+      "officialPop": "Official population (2024)",
+      "showFacilities": "Show facilities on the map",
+      "hideFacilities": "Hide facilities",
+      "minutes": "{n} min",
+      "percent": "{n}%"
+    },
+    "ranking": {
+      "title": "Where screening could help most",
+      "subtitle": "Districts ranked by the Screening Gap Index (top 20). Search to find any district.",
+      "search": "Search for a district or province",
+      "rank": "Rank",
+      "district": "District",
+      "province": "Province",
+      "index": "Index",
+      "drivers": "Main reasons",
+      "travel": "Travel (min)",
+      "per10k": "Facilities / 10k",
+      "view": "View",
+      "noResults": "No district matches your search.",
+      "sortBy": "Sort by {col}"
+    },
+    "national": {
+      "title": "Cambodia at a glance",
+      "diabetes": "Adults with diabetes",
+      "hypertension": "Adults 30–79 with high blood pressure",
+      "hypertensionControlled": "of them have it under control",
+      "overweight": "Adults who are overweight",
+      "oop": "Health spending paid out of pocket",
+      "source": "{source}, {year}"
+    },
+    "method": {
+      "title": "How the Screening Gap Index works",
+      "p1": "We combine five parts, each scored from 0 (smallest gap) to 1 (biggest gap) across all districts:",
+      "risk": "Risk factors: women overweight or obese, men and women who smoke (DHS 2021–22, province level).",
+      "access": "Distance to care: average travel time by car or motorbike, people more than an hour's walk from care (Malaria Atlas Project 2019 with WorldPop 2025), and women who say distance is a problem (DHS).",
+      "capacity": "Few facilities: health facilities per 10,000 people (Ministry of Health 2010 and OpenStreetMap 2026, with WorldPop 2025).",
+      "people": "Many adults: estimated adults aged 20+ (WorldPop 2025 and official 2024 age structure).",
+      "poverty": "Poverty: people in the poorest fifth of households (DHS 2021–22).",
+      "p2": "Each number is capped at the 5th and 95th percentile and scaled from 0 to 1. The five parts have equal weight. The index is their average × 100, so it runs from 0 to 100. The three parts that add the most are shown as the main reasons.",
+      "limitsTitle": "Limitations",
+      "l1": "Survey figures exist only per province, so all districts in a province share them, and they cover ages 15–49 only.",
+      "l2": "Travel times are modelled for 2019 and may be different today. Facility data is partly from 2010.",
+      "l3": "There is no province-level data on blood pressure or blood sugar, so these are not in the index.",
+      "l4": "Changing the method changes the ranking. Our sensitivity check keeps 8 of the top 10 districts in a typical variation."
+    },
+    "sources": {
+      "title": "Data sources",
+      "licence": "Licence",
+      "year": "Data year",
+      "usedFor": "Used for"
+    },
+    "downloads": {
+      "title": "Download the data",
+      "body": "We give the processed data back as open data under the Creative Commons Attribution 4.0 licence (CC BY 4.0).",
+      "csv": "District table (CSV)",
+      "geojson": "Gap index map (GeoJSON)",
+      "citation": "Please cite: SokhaPheap Screening Gap Index (2026), based on COD-AB, WorldPop, Malaria Atlas Project, Ministry of Health, OpenStreetMap and DHS 2021–22."
+    },
+    "components": {
+      "risk": "Risk factors",
+      "access": "Distance to care",
+      "capacity": "Few facilities",
+      "people": "Many adults",
+      "poverty": "Poverty"
+    }
   }
 }

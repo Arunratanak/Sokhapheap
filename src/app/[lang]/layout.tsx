@@ -63,6 +63,7 @@ export default async function RootLayout({
           {children}
         </main>
         <footer className="mx-auto w-full max-w-xl px-4 pb-6 text-sm text-muted">
+          <a href={`/${lang}/insights`} className="mr-4 underline underline-offset-4">{dict.common.insights}</a>
           <a href={`/${lang}/about`} className="underline underline-offset-4">{dict.common.about}</a>
         </footer>
       </body>

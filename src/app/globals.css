@@ -63,3 +63,8 @@ body {
 :lang(km) {
   line-height: 1.75;
 }
+
+/* Wide pages (Open Data Insights): let the main column grow beyond the phone-width layout. */
+main:has(> .page-wide) {
+  max-width: 72rem;
+}

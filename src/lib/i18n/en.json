@@ -265,7 +265,14 @@
     "limit2": "Part of the facility data is from 2010. Some facilities may have moved, closed or changed.",
     "limit3": "Lab normal ranges vary between laboratories. We use the range printed on your report when there is one.",
     "privacyTitle": "Privacy",
-    "privacy": "We do not ask for or store your name, phone number or ID. Lab photos are deleted right after reading. Risk results are saved without any personal details, for anonymous statistics."
+    "privacy": "We do not ask for or store your name, phone number or ID. Lab photos are deleted right after reading. Risk results are saved without any personal details, for anonymous statistics.",
+    "how4": "Open Data Insights combines 12 Cambodian and international open datasets into a Screening Gap Index that shows where people are most at risk and furthest from care. Your results show facts about your area from the same data.",
+    "roadmapTitle": "Roadmap",
+    "roadmap1": "Keep facility data current: replace the Ministry of Health 2010 facility list with newer official data when it is published, and refresh the OpenStreetMap health facilities (HOT export) every month.",
+    "roadmap2": "Add province-level blood pressure and blood sugar data from the next Cambodia Demographic and Health Survey or WHO STEPS survey, so the gap index can include them.",
+    "roadmap3": "Refresh travel times each year with the Malaria Atlas Project and HeiGIT accessibility data, and population with WorldPop and the National Institute of Statistics (COD-PS).",
+    "roadmap4": "Use WFP market prices to give affordable healthy food tips in every province, and work with NGOs to check the Screening Gap Index against real screening results.",
+    "insightsLink": "See the Open Data Insights page"
   },
   "org": {
     "title": "Organization dashboard",

@@ -1,26 +1,11 @@
 import { notFound } from "next/navigation";
 import { getDictionary, hasLocale } from "@/lib/i18n";
+import Link from "next/link";
 import { Disclaimer } from "@/components/Disclaimer";
+import { manifest } from "@/lib/insights/data";
 
-const DATASETS = [
-  {
-    name: "Cambodia – Health Facilities (referral hospitals, health centres, health posts), 2010",
-    publisher: "Ministry of Health, Cambodia — via HDX",
-    url: "https://data.humdata.org/dataset/cambodia-health",
-    licence: "See dataset page (HDX: Other)",
-  },
-  {
-    name: "Health Facilities of Cambodia (OpenStreetMap export)",
-    publisher: "Humanitarian OpenStreetMap Team — © OpenStreetMap contributors, via HDX",
-    url: "https://data.humdata.org/m/dataset/hotosm_khm_health_facilities",
-    licence: "ODbL 1.0",
-  },
-  {
-    name: "Cambodia – Subnational Administrative Boundaries",
-    publisher: "Ministry of Land Management, Urbanization and Construction / WFP — via HDX",
-    url: "https://data.humdata.org/dataset/cod-ab-khm",
-    licence: "CC BY-IGO",
-  },
+/** Datasets used outside the open-data pipeline (the pipeline ones come from data/manifest.json). */
+const EXTRA_DATASETS = [
   {
     name: "WHO CVD risk non-laboratory-based chart — South-East Asia (HEARTS technical package, 2020)",
     publisher: "World Health Organization",
@@ -40,6 +25,10 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
   if (!hasLocale(lang)) notFound();
   const t = getDictionary(lang).about;
   const disclaimer = getDictionary(lang).common.disclaimer;
+  const DATASETS = [
+    ...manifest().map((m) => ({ name: m.name, publisher: m.publisher, url: m.url, licence: `${m.licence} · ${m.data_year}` })),
+    ...EXTRA_DATASETS,
+  ];
 
   return (
     <article className="flex flex-col gap-5 pt-2">
@@ -53,6 +42,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
           <li>{t.how1}</li>
           <li>{t.how2}</li>
           <li>{t.how3}</li>
+          <li>{t.how4} <Link href={`/${lang}/insights`} className="underline underline-offset-4">{t.insightsLink}</Link></li>
         </ul>
       </section>
 
@@ -60,7 +50,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
         <h2 className="text-lg font-bold">{t.dataTitle}</h2>
         <ul className="mt-2 flex flex-col gap-3">
           {DATASETS.map((d) => (
-            <li key={d.url} className="rounded-xl bg-surface p-3 shadow-sm" lang="en">
+            <li key={d.name} className="rounded-xl bg-surface p-3 shadow-sm" lang="en">
               <a href={d.url} className="font-semibold text-brand-strong underline underline-offset-4" target="_blank" rel="noopener noreferrer">
                 {d.name}
               </a>
@@ -76,6 +66,16 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
           <li>{t.limit1}</li>
           <li>{t.limit2}</li>
           <li>{t.limit3}</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold">{t.roadmapTitle}</h2>
+        <ul className="mt-2 list-disc space-y-1 pl-5">
+          <li>{t.roadmap1}</li>
+          <li>{t.roadmap2}</li>
+          <li>{t.roadmap3}</li>
+          <li>{t.roadmap4}</li>
         </ul>
       </section>
 

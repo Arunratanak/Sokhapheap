@@ -31,16 +31,49 @@ GitHub Actions (daily) ───┘   routes       ├─ src/lib/facilities  da
 | Tests | Vitest (unit and API), Playwright-core with Edge (UI e2e, axe accessibility) |
 | Hosting | Render free Web Service (Singapore) via `render.yaml`. Daily reminders run from GitHub Actions. |
 
-## Open data sources
+## Open data
 
-See [`data/SOURCES.md`](data/SOURCES.md) and the in-app About page.
+Open data is used throughout SokhaPheap: in the facility map, the personal results, the organisation planner and a public API. **12 open datasets from 11 publishers.** Every number shown in the app comes from a downloaded dataset, processed by a script in `/scripts` into `/data/clean`. Provenance (URL, licence, data year, SHA-256 of each raw file) is in [`data/manifest.json`](data/manifest.json). The checks are in [`data/clean/data_quality_report.md`](data/clean/data_quality_report.md), and the full inventory with what was not available is in [`data/INVENTORY.md`](data/INVENTORY.md).
 
-- **Ministry of Health health facilities (2010)**, via HDX: referral hospitals, health centres and health posts
-- **OpenStreetMap health facilities** (HOT export, via HDX, ODbL)
-- **Subnational administrative boundaries** (MLMUPC/WFP, via HDX, CC BY-IGO)
-- **WHO CVD risk charts**, HEARTS technical package 2020, p. 65 (CC BY-NC-SA 3.0 IGO)
+| Dataset | Publisher | Year | Licence | Used for |
+|---|---|---|---|---|
+| Admin boundaries (COD-AB): 25 provinces, 197 districts, 1,633 communes | OCHA / MLMUPC, via HDX | 2024 | CC BY-IGO | Geography for every join; maps; "Your area" lookup |
+| Population statistics (COD-PS) | UNFPA / NIS, via HDX | 2024 | CC BY-IGO | Official totals, adult share; WorldPop cross-check |
+| Population counts, 100 m (WorldPop R2025A) | WorldPop, via HDX | 2025 | CC BY 4.0 | District/commune population; population weights |
+| Travel time to healthcare, motorised and walking (Weiss et al. 2020) | Malaria Atlas Project | 2019 | CC BY 4.0 (to be confirmed) | Travel times; % beyond 1 h walk / 30 min motor |
+| Health facilities | Ministry of Health, via HDX | 2010 | Not stated | Facility map, counts, nearest care |
+| Health facilities (OpenStreetMap export) | HOT / OSM contributors, via HDX | 2026 | ODbL 1.0 | Facility map, counts, nearest care |
+| DHS 2021–22 subnational indicators (aggregated, no microdata) | The DHS Program / NIS / MoH | 2021–22 | DHS terms | Province risk factors, insurance, distance problem, poverty |
+| Noncommunicable disease indicators (GHO) | WHO | 2019–2025 | CC BY-NC-SA 3.0 IGO | National context (diabetes, hypertension, overweight…) |
+| CVD risk chart, South-East Asia (HEARTS) | WHO | 2020 | CC BY-NC-SA 3.0 IGO | Heart risk score |
+| Health indicators | World Bank, via HDX | 2023 | CC BY 4.0 | Health spending context |
+| Accessibility indicators | HeiGIT, via HDX | 2026 | CC BY-SA | Cross-check of travel times |
+| Food prices | WFP, via HDX | 2025–26 | CC BY-IGO | Vegetable price tip per province |
 
-The cleaning pipeline converts the MoH 2010 coordinates from Indian 1960 / UTM 48N to WGS84. Checked against OSM, the result is a median of about 75 m from the matching OSM hospital. The pipeline then assigns province and district by point-in-polygon and removes same-type duplicates within 200 m, keeping the OSM record. The result is **1,440 facilities in all 25 provinces** ([report](data/clean/facilities_report.md)).
+```mermaid
+flowchart LR
+  raw["data/raw (downloaded, git-ignored)<br/>COD-AB · COD-PS · WorldPop · MAP · MoH · OSM<br/>DHS · WHO · World Bank · HeiGIT · WFP"]
+  raw -->|npm run data:build| pipe["scripts/opendata/build.ts<br/>rasterise communes · population-weighted travel time<br/>facility counts · DHS name matching · manifest + SHA-256"]
+  pipe --> clean["data/clean<br/>areas_*.json · boundaries_*.geojson<br/>national_context.json · food_prices_province.json"]
+  clean -->|npm run data:gap-index| gap["Screening Gap Index<br/>gap_index_*.json · gap_index.geojson · areas_district.csv<br/>sensitivity report"]
+  clean --> app1["/insights map + ranking"]
+  gap --> app1
+  clean --> app2["'Your area' card (web + bot /area)"]
+  gap --> app3["Org screening planner + 1-page PDF"]
+  clean --> app4["Public API /api/open-data/* (CC BY 4.0)"]
+  gap --> app4
+```
+
+**Rebuild everything:** `npm run data:build` (about 30 seconds; downloads anything missing). Two runs give byte-identical outputs.
+
+**Screening Gap Index** (`src/lib/insights/gapIndexConfig.ts`): five equally weighted parts.
+- **Risk:** DHS women overweight, men and women smoking.
+- **Access:** MAP travel time, % more than 1 h walk, DHS "distance is a problem".
+- **Capacity:** facilities per 10,000 people, inverted.
+- **People:** adults 20+.
+- **Poverty:** DHS lowest wealth quintile.
+
+Each indicator is capped at the 5th–95th percentile and min-max scaled to 0–1; the index is 100 × the weighted mean. Sensitivity: `data/clean/gap_index_sensitivity.md` (median top-10 overlap 8/10 across 16 variants). **It is a planning tool, not a measure of anyone's health.**
 
 ## Run locally
 
@@ -53,8 +86,10 @@ npm test                      # unit + API tests
 npm run test:coverage         # scoring coverage (target ≥ 90%)
 npm run build && npx next start -p 3100
 BASE_URL=http://localhost:3100 npm run test:e2e   # 10 FINDRISC cases through the UI + axe a11y
+BASE_URL=http://localhost:3100 npx tsx tests/e2e/insights.e2e.ts   # insights: 3G, spot checks, downloads (also planner.e2e.ts)
 
 npm run data:facilities       # re-download + rebuild facilities.geojson
+npm run data:build            # whole open-data pipeline: facilities + areas + gap index (data/clean, manifest)
 npm run data:who-chart        # regenerate the WHO table from the official PDF
 npm run db:migrate            # apply supabase/migrations + seed facilities (needs SUPABASE_DB_URL, session pooler)
 npm run ai:eval               # extraction accuracy + tricky questions + Khmer samples (uses Gemini)
@@ -81,10 +116,14 @@ The free plan sleeps after 15 minutes without traffic, so the first request afte
 
 ## Known issues and roadmap
 
-See [`REVIEW.md`](REVIEW.md) for open items. Features cut or deferred for later:
+See [`REVIEW.md`](REVIEW.md) for open items. The roadmap is built on the open datasets above:
 
-- Asian-specific FINDRISC cut-offs. They need validation, so they're disabled.
-- Laboratory-based WHO chart (with cholesterol and diabetes status)
-- Storing the bot language preference and conversation state in Supabase
-- Facility opening hours, phone numbers and services, which the datasets don't include
-- Local validation study with a Cambodian partner clinic
+- **Facility data:** replace the **Ministry of Health 2010** facility list with newer official data when it is published, and refresh the **OpenStreetMap health facilities (HOT export)** every month.
+- **Blood pressure and blood sugar:** add province-level data from the next **Cambodia DHS** or **WHO STEPS** survey, so the gap index can include them. Not available in DHS 2021–22.
+- **Yearly refresh:** update travel times (**Malaria Atlas Project**, **HeiGIT**) and population (**WorldPop**, **COD-PS / NIS**) each year with `npm run data:build`.
+- **Food tips:** use **WFP food prices** to give affordable healthy food tips in every province.
+- **Validation:** validate the **Screening Gap Index** against real screening results with NGO partners.
+- **Asian FINDRISC cut-offs:** they need validation, so they are disabled for now.
+- **Laboratory-based WHO chart:** with cholesterol and diabetes status.
+- **Bot state:** store the bot language preference and conversation state in Supabase.
+- **Village search:** add it if a complete village dataset with Khmer names becomes available. The OSM populated places file has about 4,700 places and no Khmer names.

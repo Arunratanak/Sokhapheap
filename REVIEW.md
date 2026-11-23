@@ -4,23 +4,14 @@ You asked me to build through all phases without stopping, never invent medical 
 
 ---
 
-## 🔴 1. Blockers: needed before deploy
+## ✅ 1. Deploy: done (23 Nov 2026)
 
-### 1a. Supabase migrations: need the session pooler connection string
-The direct database host `db.<ref>.supabase.co` is IPv6-only, and this PC's network has no IPv6, so `npm run db:migrate` fails with `ENOTFOUND`.
-- **Fix:** in Supabase go to **Connect → Session pooler** and copy the URI. It looks like `postgresql://postgres.<ref>:<password>@aws-0-<region>.pooler.supabase.com:5432/postgres`. Paste it as `SUPABASE_DB_URL` in `.env`.
-- Then run `npm run db:migrate`, which applies `0001_init.sql` and `0002_demo_org.sql` and seeds the 1,440 facilities. After that, `npx tsx scripts/check_db.ts` runs the Checkpoint 4 checks, including that the anon key cannot read or insert screenings.
-- **Alternative:** paste the two SQL files into the Supabase SQL Editor, then run `npm run db:migrate` later just to seed facilities.
-- Until then, the app works: facilities come from the bundled file, but screenings and reminders are **not saved**.
-
-### 1b. GitHub repo URL and Render deploy (Phase 11 🛑)
-I haven't pushed anywhere, since I don't have a repo URL. When you send it:
-1. I add the remote and push.
-2. You open Render → **New → Blueprint**, select the repo, and paste each env var (`render.yaml` lists them; all are `sync: false`).
-3. After the first deploy, set `NEXT_PUBLIC_SITE_URL=https://<name>.onrender.com` in Render and in `.env`, then run `npm run bot:webhook`.
-4. In GitHub, go to **Settings → Secrets → Actions** and add `APP_URL` and `CRON_SECRET` for the daily reminders workflow.
-
-**Free vs paid (your decision; I won't upgrade anything):** the free service sleeps after 15 minutes idle, and the first request afterwards takes up to about a minute. You can (a) stay free and warm it up before Demo Day (steps in `DEMO_SCRIPT.md`), or (b) upgrade to the smallest paid instance for Demo Day week only.
+- **Live site:** https://sokhapheap-6c0l.onrender.com (Render free plan, Singapore). `/api/health` OK with 1,440 facilities.
+- **GitHub:** https://github.com/Arunratanak/Sokhapheap (`main`). CI is green.
+- **Database:** migrations 0001–0003 applied, 1,440 facilities seeded, and all `scripts/check_db.ts` checks pass (anon locked out, service role can write).
+- **Telegram:** the @SokhaPheapBot webhook points at the live site.
+- **Daily reminders:** GitHub Actions secrets `APP_URL` and `CRON_SECRET` are set, and a manual run is green.
+- **Free plan:** the service sleeps after 15 minutes idle. Warm it up before Demo Day (see `DEMO_SCRIPT.md`), or decide on a paid instance for that week. I won't upgrade anything without your yes.
 
 ### 1c. Gemini quota
 During testing, `gemini-3.8-flash` started returning **429 "exceeded your current quota"**. That's the free-tier daily limit, used up by my evaluation runs. `gemini-3.5-flash-lite` still works, and the app falls back automatically: Flash, then Flash-Lite, then template text. For Demo Day, consider enabling billing on the Gemini project, or check the quota in AI Studio the day before.

@@ -151,6 +151,9 @@ const MOH_LAYERS: { file: string; type: FacilityType }[] = [
 
 async function loadMoh(): Promise<Facility[]> {
   const out: Facility[] = [];
+  // FACILITCOD is not unique in the 2010 data (e.g. 10 Mondul Kiri health posts share 110108),
+  // so repeats get a numbered suffix to keep every facility with a unique id.
+  const seen = new Map<string, number>();
   for (const layer of MOH_LAYERS) {
     const src = await shapefile.open(path.join(RAW, "moh/Health", layer.file));
     for (let r = await src.read(); !r.done; r = await src.read()) {
@@ -163,8 +166,11 @@ async function loadMoh(): Promise<Facility[]> {
         layer.type as "hospital" | "health_centre" | "health_post"
       ];
       const name = !raw ? suffix : /hospital|health/i.test(raw) ? raw : `${raw} ${suffix}`;
+      const baseId = `moh_${layer.type}_${p.FACILITCOD ?? out.length}`;
+      const n = (seen.get(baseId) ?? 0) + 1;
+      seen.set(baseId, n);
       out.push({
-        id: `moh_${layer.type}_${p.FACILITCOD ?? out.length}`,
+        id: n === 1 ? baseId : `${baseId}_${n}`,
         name,
         name_km: null,
         type: layer.type,

@@ -61,6 +61,10 @@ describe.runIf(fs.existsSync(CLEAN))("clean facilities output (checkpoint 2)", (
     }
   });
 
+  it("every facility id is unique (the database primary key)", () => {
+    expect(new Set(facilities.map((x) => x.id)).size).toBe(facilities.length);
+  });
+
   it("no duplicates of the same type within 200 m remain", () => {
     const { removed } = dedupe(facilities, 200);
     expect(removed).toBe(0);

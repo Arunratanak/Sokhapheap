@@ -130,3 +130,57 @@ Checked 23 Nov 2026 (open-data Phase 8), against LOCAL production builds plus th
 | N7 | PASS | **Schema:** only `facilities` has lat/lng (facility locations). `screenings` and `reminders` have no location columns. **API:** `/api/area` uses the coordinates only for the lookup, returns no coordinates, and sends `Cache-Control: private, no-store` (tested); it doesn't log. **Code scan:** no `insert`, `upsert`, `writeFile`, `console.log` or service client in the area code (tested), and no `console.log` in `src/app/api` or `src/lib/insights`. **Bot:** the location is used for the nearest facilities and the area summary only, and nothing is saved. | Render logs record request paths. GET `/api/area?lat=…` puts rounded coordinates (5 decimals, about 1 m) in the URL, and the platform's access log may keep that path. To avoid it, the lookup could switch to POST. ❓ Should I make that change? |
 
 **Section N summary:** 7 PASS. One question for you (N7: switch the location lookup to POST so coordinates never appear in platform access logs).
+
+## Section D: Open data
+
+Checked 23 Nov 2026 against commit `5b3fb79`. PROD = https://sokhapheap-6c0l.onrender.com.
+
+| ID | Status | Evidence | Notes |
+|---|---|---|---|
+| D1 | PASS | `npm run data:build` (which runs `data:clean`) twice: `data/clean/facilities.geojson` is byte-identical across runs and to the committed file (sha256 `a5910c72…`; `git status` clean). | Same run as N1. |
+| D2 | PASS | All 1,440 facilities are inside Cambodia's bounding box (0 outside) and have a name and province (0 missing). Test "every facility is inside Cambodia with required fields" passes (`scripts/clean_facilities.test.ts`, 7/7). | |
+| D3 | PASS | **25 provinces** represented: Phnom Penh 168, Siemreap 111, Battambang 110, Kampong Cham 99, Prey Veng 99, Kandal 98, Takeo 90, Banteay Meanchey 82, Tboung Khmum 65, Kampot 63, Kampong Thom 60, Kampong Speu 54, Kratie 42, Svay Rieng 41, Preah Vihear 41, Kampong Chhnang 40, Pursat 40, Ratanak Kiri 27, Preah Sihanouk 24, Mondul Kiri 22, Oddar Meanchey 18, Koh Kong 16, Stung Treng 14, Kep 8, Pailin 8. | |
+| D4 | PASS | Test "no duplicates of the same type within 200 m remain" passes. | |
+| D5 | PASS (after fix) | `data/SOURCES.md` listed only the 4 original datasets. **Fix:** added a table of the 8 open-data-pipeline datasets, generated from `data/manifest.json` (name, publisher, URL, licence, data year, download date, use). It now lists all 12. | Documentation only. |
+| D6 | PASS | `scripts/check_db.ts`: `facilities: 1440 rows (file: 1440)`. | |
+| D7 | PASS | `/km/about` and `/en/about` on LOCAL and **PROD**: 11/11 manifest datasets shown with name, licence and link, plus the WHO CVD chart and map tiles (13 external links). | |
+| D8 | PASS | The README "Known issues and roadmap" section names the datasets (MoH facilities, OSM/HOT, DHS / WHO STEPS, Malaria Atlas, HeiGIT, WorldPop, COD-PS, WFP). The About page has a 4-item roadmap naming them in km and en. The pitch notes in `data/OPEN_DATA_STORY.md` name all 12. | |
+
+## Section E: Database and security (live Supabase)
+
+| ID | Status | Evidence | Notes |
+|---|---|---|---|
+| E1 | PASS | Live `information_schema` tables: `facilities`, `organizations`, `screenings`, `reminders` (plus `_migrations`). The columns match `0001_init.sql` exactly. `_migrations`: 0001, 0002, 0003 applied; these are the 3 files in `/supabase/migrations`. | |
+| E2 | PASS | `pg_class.relrowsecurity = true` on all 5 public tables. Only policy: `facilities are public` (SELECT, anon and authenticated). | |
+| E3 | PASS | `scripts/check_db.ts` with the anon key: reading screenings, reminders and organizations is denied (42501); inserting into screenings and facilities is denied (42501); reading facilities works (1440 rows); `nearest_facilities` RPC returns 5. | |
+| E4 | PASS | Columns: id, created_at, channel, findrisc_score, findrisc_band, cvd_band, province, org_code, is_demo. No name, phone or ID. 5 random rows checked: only scores, bands, province and org code. | Counts: 98 screenings (87 demo, 11 real), 1 reminder. |
+| E5 | PASS | The only `reminders` insert is in `src/lib/bot/bot.ts`, in the `remind:6` / `remind:12` button handler, so it runs only after the user taps it (opt-in). "No thanks" stores nothing, and `/stopremind` deletes unsent reminders. | `reminders.telegram_chat_id` is needed to send the message; it's pseudonymous, not a name or phone. |
+| E6 | PASS | The service key and `getServiceClient` are used only in server files: `lib/db/supabase.ts` (imports `server-only`), `lib/screenings.ts`, `lib/bot/bot.ts`, and the API routes health, org and cron. None of the `"use client"` files import it. The client bundle scan (A5) found no secret values. | |
+
+## Section F: API routes (LOCAL and PROD)
+
+Script: `tests/e2e/api-routes.e2e.ts`, run three ways:
+- **LOCAL** production build with an **invalid Gemini key**, to test the template fallback
+- **PROD** with `AI=1`
+- **PROD** with `SAME_IP=1`, which waits for the 1-minute rate-limit window between sections (on PROD, Cloudflare sets the client IP, so it can't be faked)
+
+| ID | Status | Evidence (LOCAL / PROD) | Notes |
+|---|---|---|---|
+| F1 | PASS | `GET /api/health` → 200 `{"ok":true,…,"facilities":1440,"ai":true,"db":true,"bot":true}` on both. | |
+| F2 | PASS | Valid → 200, score 15. Missing fields → 400 ("sex: Invalid option…"); age 200 → 400 ("Too big: expected number to be <=120"); negative weight → 400 (">=25"); text for a number → 400 ("expected number, received string"); not JSON → 400 ("Request body must be JSON"). Same on both. | |
+| F3 | PASS | Phnom Penh → 5 results, all in Phnom Penh. Siem Reap → 5, first in Siemreap (142 m). A point in the sea → 5 results, nearest 76 km away in Preah Sihanouk (sensible). Invalid lat → 400. Same on both. | The Phnom Penh nearest is the mislabelled OSM "Praram 9 Hospital Cambodia Office" (known, REVIEW.md). |
+| F4 | PASS | Kampot → 200, 63 facilities; "Atlantis" → 400 "Unknown province: Atlantis". | |
+| F5 | PASS (template) / **SKIPPED (AI unavailable on PROD)** | Missing `risk` → 400 on both. **LOCAL with an invalid key:** 200, `source: "template"`, Khmer text, so the fallback works. **PROD:** 200 with Khmer text, but `source: "template"`; Gemini did not answer, probably quota (see H). | Per rule 6, not retried. AI-written Khmer on PROD is still unverified today. |
+| F6 | PASS (validation) / **SKIPPED (AI unavailable on PROD)** | Non-image → 400 "Unsupported image type: text/plain"; 9 MB image → 400 "Image is too large (max 8 MB)"; empty request → 400 "Missing `image` file", on both. Valid fixture image on PROD → **503 `ai_unavailable`, `imageDeleted: true`** (handled cleanly, no crash). | Extraction worked 10/10 earlier (AI eval). It needs a re-check when the Gemini quota resets. |
+| F7 | PASS | One request with 4 values gives `normal`, `outside_range`, `could_not_read` (unknown test) and `could_not_read` (wrong unit g/L). Invalid body → 400. Same on both. | |
+| F8 | PASS | `POST /api/telegram` without the secret header → 401; with a wrong secret → 401. | |
+| F9 | PASS | `POST /api/cron/reminders` without CRON_SECRET → 401; with a wrong one → 401. | |
+| F10 | PASS | Limits: `/api/explain` 15 per minute per IP, `/api/lab/extract` 6 per minute per IP (checked before validation, so testing used no AI calls). 16th explain → **429**, 7th extract → **429**, on both. Also `/api/risk` 30 per minute and `/api/open-data/*` 60 per minute. **PROD:** 8 extract requests, each with a different fake `x-forwarded-for`, were still blocked at #7, because Cloudflare's `cf-connecting-ip` is used. | **LOCAL** (no Cloudflare) trusts `x-forwarded-for`, so the limit could be bypassed there. That doesn't apply on PROD. |
+| F11 | PASS | No stack traces, file paths or internal error names in 21 (LOCAL) and 22 (PROD) responses, including every 400, 401, 404, 429 and 503. | |
+
+**Fixes made in Sections D–F (not committed yet):** `data/SOURCES.md` gained the 8 pipeline datasets (D5), and there's a new test script `tests/e2e/api-routes.e2e.ts`.
+
+**Summary:**
+- **D:** 8 PASS (D5 after a doc fix)
+- **E:** 6 PASS
+- **F:** 11 PASS; for F5 and F6, the real AI part is SKIPPED on PROD because Gemini didn't answer (probably quota)

@@ -17,3 +17,18 @@ All datasets were downloaded on **22 November 2026** by `npm run data:download`.
 
 - **ODbL:** `data/clean/facilities.geojson` combines OSM data, so it is a derived database under ODbL. Credit OpenStreetMap and share the cleaned file under ODbL if it is redistributed.
 - **MoH dataset:** HDX lists its licence as "Other". Before Demo Day, check the dataset page for the exact terms.
+
+## Open data pipeline datasets (added 23 Nov 2026)
+
+Downloaded by `npm run data:opendata:download` and processed by `npm run data:build`. File-level SHA-256 hashes and exact download URLs are in [`data/manifest.json`](manifest.json).
+
+| Dataset | Publisher | URL | Licence | Data year | Downloaded | Used for |
+|---|---|---|---|---|---|---|
+| Cambodia – Subnational Population Statistics (COD-PS) | UNFPA / National Institute of Statistics, via HDX | https://data.humdata.org/dataset/cod-ps-khm | CC BY-IGO | 2024 (projection) | 2026-11-23 | Official population totals and age structure (cross-check for WorldPop; adult share per province) |
+| WorldPop – Cambodia population counts 2025 (constrained, 100 m, R2025A) | WorldPop, University of Southampton, via HDX | https://data.humdata.org/dataset/worldpop-population-counts-2015-2030-khm | CC BY 4.0 | 2025 | 2026-11-23 | Population per area (district/commune) and population weights for travel times |
+| Travel time to healthcare, motorised and walking-only (Weiss et al., Nature Medicine 2020) | Malaria Atlas Project | https://data.malariaatlas.org/ | CC BY 4.0 (to be confirmed) | 2019 (nominal; 2020 release) | 2026-11-23 | Population-weighted travel time to the nearest health facility; % of people > 60 min walking / > 30 min motorised |
+| Cambodia Demographic and Health Survey 2021–22 – subnational indicators (aggregated) | The DHS Program (ICF) / National Institute of Statistics / Ministry of Health | https://api.dhsprogram.com/ | DHS Program terms: published aggregated indicators, free to use with citation (no microdata used) | 2021–22 | 2026-11-23 | Province risk factors (women overweight/obese, smoking), access (distance problem, no insurance), poverty (lowest wealth quintile) |
+| WHO Global Health Observatory – Cambodia noncommunicable disease indicators | World Health Organization (HDX 'Cambodia - Health Indicators' + GHO OData API) | https://data.humdata.org/dataset/who-data-for-khm | CC BY-NC-SA 3.0 IGO | 2019–2025 (per indicator) | 2026-11-23 | National NCD context (diabetes, hypertension, overweight, obesity, inactivity, tobacco, NCD mortality) |
+| Cambodia – Health (World Bank indicators) | World Bank Group, via HDX | https://data.humdata.org/dataset/world-bank-health-indicators-for-cambodia | CC BY 4.0 | to 2025 (per indicator) | 2026-11-23 | National health spending context (per capita, out-of-pocket) |
+| Cambodia – Accessibility Indicators (primary health care and hospitals, by car) | HeiGIT (Heidelberg Institute for Geoinformation Technology), via HDX | https://data.humdata.org/dataset/cambodia-accessibility-indicators | CC BY-SA | 2026 (Feb 2026) | 2026-11-23 | Cross-check only: share of people within 30 / 60 min by car of primary health care (compared with MAP) |
+| Cambodia – Food Prices | WFP – World Food Programme, via HDX | https://data.humdata.org/dataset/wfp-food-prices-for-cambodia | CC BY-IGO | 2025–2026 (last 12 months of data used) | 2026-11-23 | Typical local vegetable and fruit prices per province (optional diet tip). No data for Kep. |

@@ -32,7 +32,7 @@ export async function POST(req: Request, ctx: RouteContext<"/api/org/[code]">) {
     const { data: org } = await withTimeout(db.from("organizations").select("name, is_demo").eq("org_code", code).maybeSingle());
     if (!org) return NextResponse.json({ error: "not_found" }, { status: 404 });
     const { data: rows, error } = await withTimeout(
-      db.from("screenings").select("findrisc_band, cvd_band").eq("org_code", code).limit(100_000),
+      db.from("screenings").select("findrisc_band, cvd_band, province").eq("org_code", code).limit(100_000),
       8000,
     );
     if (error) throw new Error(error.message);

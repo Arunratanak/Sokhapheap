@@ -35,3 +35,17 @@ describe("organization dashboard privacy", () => {
     expect((await orgPOST(req("test-org"), ctx)).status).toBe(503);
   });
 });
+
+describe("org stats — planner comparison fields", () => {
+  const row = (findrisc_band: string, province: string | null = "Phnom Penh") => ({ findrisc_band, cvd_band: null, province });
+  it("moderatePlus counts moderate/high/very high and is hidden under 5", () => {
+    const many = [...Array(6)].map(() => row("high")).concat([...Array(4)].map(() => row("low")));
+    expect(aggregate(many, false).moderatePlus).toBe(6);
+    expect(aggregate([row("high"), row("moderate"), row("low")], false).moderatePlus).toBeNull();
+  });
+  it("mainProvince is only revealed when at least 5 screenings come from it", () => {
+    const rows = [...Array(5)].map(() => row("low", "Takeo")).concat([row("low", "Kep")]);
+    expect(aggregate(rows, false).mainProvince).toBe("Takeo");
+    expect(aggregate([...Array(4)].map(() => row("low", "Takeo")), false).mainProvince).toBeNull();
+  });
+});

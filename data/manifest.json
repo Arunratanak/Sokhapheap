@@ -115,7 +115,7 @@
     "grid"
    ],
    "id": "map-travel-time",
-   "licence": "CC BY 4.0 (TODO(VERIFY): not stated by the WCS server; confirm on malariaatlas.org)",
+   "licence": "CC BY 4.0 (to be confirmed)",
    "licence_url": null,
    "name": "Travel time to healthcare, motorised and walking-only (Weiss et al., Nature Medicine 2020)",
    "notes": "Clipped server-side to 102.3–107.7°E, 10.4–14.7°N via the MAP WCS.",

@@ -109,7 +109,8 @@ export const DATASETS: Dataset[] = [
     name: "Travel time to healthcare, motorised and walking-only (Weiss et al., Nature Medicine 2020)",
     publisher: "Malaria Atlas Project",
     url: "https://data.malariaatlas.org/",
-    licence: "CC BY 4.0 (TODO(VERIFY): not stated by the WCS server; confirm on malariaatlas.org)",
+    // TODO(VERIFY): the licence is not stated by the WCS server; confirm CC BY 4.0 on malariaatlas.org.
+    licence: "CC BY 4.0 (to be confirmed)",
     dataYear: "2019 (nominal; 2020 release)",
     level: ["grid"],
     usedFor: "Population-weighted travel time to the nearest health facility; % of people > 60 min walking / > 30 min motorised",

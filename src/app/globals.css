@@ -68,3 +68,27 @@ body {
 main:has(> .page-wide) {
   max-width: 72rem;
 }
+
+/* Printable screening plan: one A4 page, without the site header and footer. */
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+  body:has(.print-page) > header,
+  body:has(.print-page) > footer {
+    display: none;
+  }
+  main:has(> .print-page) {
+    max-width: none;
+    padding: 0;
+  }
+  /* Khmer needs tall lines on screen; on the one-page print a little less is enough. */
+  .print-page,
+  .print-page * {
+    line-height: 1.45 !important;
+  }
+}
+main:has(> .print-page) {
+  max-width: 56rem;
+}

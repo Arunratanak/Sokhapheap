@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { Dictionary, Locale } from "@/lib/i18n";
 import { CVD_BANDS, FINDRISC_BANDS, type OrgStats, type SafeCount } from "@/lib/orgStats";
 import { toKhmerDigits } from "@/lib/client/util";
+import { ScreeningPlanner } from "./ScreeningPlanner";
 
 const COLORS = ["#2f9e5b", "#a3b81f", "#e0a100", "#e8590c", "#c0262d", "#9aa4b2"];
 
@@ -37,7 +38,7 @@ function Bars({ title, rows, lang, t }: { title: string; rows: { label: string; 
   );
 }
 
-export function OrgDashboard({ code, lang, t }: { code: string; lang: Locale; t: Dictionary }) {
+export function OrgDashboard({ code, lang, t, provinces }: { code: string; lang: Locale; t: Dictionary; provinces: { pcode: string; name: string }[] }) {
   const [accessCode, setAccessCode] = useState("");
   const [state, setState] = useState<"form" | "loading" | "error" | "ok">("form");
   const [error, setError] = useState("");
@@ -87,6 +88,7 @@ export function OrgDashboard({ code, lang, t }: { code: string; lang: Locale; t:
         rows={CVD_BANDS.map((b) => ({ label: b === "unknown" ? t.org.unknownCvd : t.results.cvdBands[b], value: s.cvd[b] }))}
       />
       <p className="text-sm text-muted">🔒 {t.org.privacyNote}</p>
+      <ScreeningPlanner lang={lang} t={t} provinces={provinces} stats={s} orgCode={code} />
     </div>
   );
 }

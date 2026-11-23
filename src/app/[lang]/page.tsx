@@ -2,11 +2,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getDictionary, hasLocale } from "@/lib/i18n";
 import { Disclaimer } from "@/components/Disclaimer";
+import { visibleModules } from "@/lib/modules/registry";
 
 export default async function Home({ params }: PageProps<"/[lang]">) {
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
   const t = getDictionary(lang);
+  // The multi-screening health check is listed only once a module is clinician-verified.
+  const healthCheckLive = visibleModules(false).length > 0;
 
   return (
     <div className="flex flex-1 flex-col gap-6 pt-4">
@@ -22,6 +25,15 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           <span className="block text-xl font-semibold">❤️ {t.home.checkRisk}</span>
           <span className="mt-1 block text-sm text-white/90">{t.home.checkRiskHint}</span>
         </Link>
+        {healthCheckLive && (
+          <Link
+            href={`/${lang}/check`}
+            className="block rounded-2xl border-2 border-brand bg-surface px-5 py-5 text-brand-strong shadow-sm hover:bg-brand-soft"
+          >
+            <span className="block text-xl font-semibold">🩺 {t.home.healthCheck}</span>
+            <span className="mt-1 block text-sm text-muted">{t.home.healthCheckHint}</span>
+          </Link>
+        )}
         <Link
           href={`/${lang}/lab`}
           className="block rounded-2xl border-2 border-brand bg-surface px-5 py-5 text-brand-strong shadow-sm hover:bg-brand-soft"

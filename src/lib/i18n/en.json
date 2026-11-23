@@ -36,7 +36,9 @@
     "privacy": "We don't store your name, phone number or photos.",
     "telegram": "Also on Telegram",
     "insights": "Open Data Insights",
-    "insightsHint": "Where people are furthest from care, from Cambodian open data"
+    "insightsHint": "Where people are furthest from care, from Cambodian open data",
+    "healthCheck": "My health check",
+    "healthCheckHint": "Several screenings with one set of questions"
   },
   "urgent": {
     "title": "First, a safety check",
@@ -541,5 +543,90 @@
     ],
     "note": "Area data describes populations, not individuals. The gap index is a planning tool, not a measure of anyone's health.",
     "back": "Back to Open Data Insights"
+  },
+  "check": {
+    "title": "My health check",
+    "intro": "Answer a few questions about yourself once. Then choose which screenings you want. This is a screening, not a diagnosis.",
+    "previewBanner": "Preview: draft screenings are shown. They are not visible on the public site until a clinician approves them.",
+    "noneLive": "Health check screenings are being reviewed by a clinician and will be available soon. You can already use the diabetes and heart risk check.",
+    "goRisk": "Go to the diabetes and heart risk check",
+    "profileTitle": "About you",
+    "profileIntro": "These answers are used by every screening, so you only answer them once. Nothing is saved.",
+    "profileSection": {
+      "body": "Your body",
+      "smoking": "Smoking",
+      "bp": "Blood pressure",
+      "conditions": "Health conditions",
+      "family": "Family",
+      "area": "Where you live (optional)"
+    },
+    "smokingStatus": {
+      "q": "Do you smoke?",
+      "never": "I have never smoked",
+      "former": "I used to smoke",
+      "current": "I smoke now"
+    },
+    "cigarettesPerDay": "About how many cigarettes a day (now, or when you smoked)?",
+    "smokingYears": "For how many years have you smoked in total?",
+    "sbp": "Top number of your last blood pressure reading (mmHg)",
+    "dbp": "Bottom number (mmHg)",
+    "bpUnknown": "I don't know my blood pressure",
+    "conditionsQ": "Has a doctor ever told you that you have any of these?",
+    "conditions": {
+      "knownDiabetes": "Diabetes",
+      "knownHighBp": "High blood pressure",
+      "knownHeartDisease": "Heart disease or stroke",
+      "knownKidneyDisease": "Kidney disease"
+    },
+    "pregnant": {
+      "q": "Are you pregnant?",
+      "yes": "Yes",
+      "no": "No",
+      "skip": "Prefer not to say"
+    },
+    "unknown": "I don't know",
+    "optional": "optional",
+    "continue": "Continue",
+    "fixErrors": "Please check the highlighted answers.",
+    "chooseTitle": "Choose your screenings",
+    "chooseIntro": "We suggest these screenings for you. Untick any you don't want.",
+    "recommended": "Recommended for you",
+    "optionalTitle": "Optional screenings",
+    "optionalIntro": "These ask about private topics. They are only done if you choose them, and your answers are never saved.",
+    "notForYou": "Not for you right now",
+    "reasons": {
+      "age_outside_40_74": "For ages 40 to 74 only.",
+      "age_under_18": "For adults 18 and older."
+    },
+    "noneSelected": "Choose at least one screening.",
+    "questionsTitle": "A few more questions",
+    "questionsIntro": "Only the questions your chosen screenings need.",
+    "seeResults": "See my results",
+    "dashboardTitle": "My health check results",
+    "dashboardIntro": "Most urgent first. Each card shows your result and what to do next.",
+    "urgentCard": "Needs urgent attention",
+    "score": "Score",
+    "nextStep": "Next step",
+    "findCare": "Find a health centre",
+    "topFactors": "What raised your result",
+    "areas": {
+      "heart": "Heart and blood vessels",
+      "metabolic": "Metabolic",
+      "kidney": "Kidney",
+      "lungs": "Lungs and breathing",
+      "liver": "Liver",
+      "mind": "Mind",
+      "bones": "Bones",
+      "womens_health": "Women's health"
+    },
+    "urgency": {
+      "red_flag": "Urgent",
+      "high": "High",
+      "moderate": "Moderate",
+      "low": "Low",
+      "incomplete": "Not checked yet"
+    },
+    "startOver": "Start again",
+    "draftTag": "Draft"
   }
 }

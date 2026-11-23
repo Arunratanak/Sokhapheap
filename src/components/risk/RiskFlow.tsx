@@ -306,7 +306,7 @@ function ChoiceButton({ selected, onClick, children }: { selected: boolean; onCl
   );
 }
 
-function UrgentScreen({
+export function UrgentScreen({
   t, headingRef, onUrgent, onSafe,
 }: { t: Dictionary; headingRef: React.RefObject<HTMLHeadingElement | null>; onUrgent: () => void; onSafe: () => void }) {
   const items = [t.urgent.chestPain, t.urgent.fainting, t.urgent.highSugar];
@@ -330,7 +330,7 @@ function UrgentScreen({
   );
 }
 
-function GoNowScreen({
+export function GoNowScreen({
   lang, t, headingRef, onContinue,
 }: { lang: Locale; t: Dictionary; headingRef: React.RefObject<HTMLHeadingElement | null>; onContinue: () => void }) {
   const [hospitals, setHospitals] = useState<FacilityItem[] | null>(null);

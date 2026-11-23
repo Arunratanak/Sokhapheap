@@ -13,7 +13,7 @@ You asked me to build through all phases without stopping, never invent medical 
 - **Daily reminders:** GitHub Actions secrets `APP_URL` and `CRON_SECRET` are set, and a manual run is green.
 - **Free plan:** the service sleeps after 15 minutes idle. Warm it up before Demo Day (see `DEMO_SCRIPT.md`), or decide on a paid instance for that week. I won't upgrade anything without your yes.
 
-### 1c. Gemini quota
+### ⚠️ Still open: Gemini quota
 During testing, `gemini-3.8-flash` started returning **429 "exceeded your current quota"**. That's the free-tier daily limit, used up by my evaluation runs. `gemini-3.5-flash-lite` still works, and the app falls back automatically: Flash, then Flash-Lite, then template text. For Demo Day, consider enabling billing on the Gemini project, or check the quota in AI Studio the day before.
 
 ---

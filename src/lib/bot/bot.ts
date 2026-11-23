@@ -8,7 +8,7 @@ import { explain } from "../ai/explain";
 import { extractLabValues } from "../ai/extract";
 import { evaluateLabValue, type EvaluatedLabValue, type ExtractedLabValue } from "../scoring/labRanges";
 import { nearestLocal } from "../facilities";
-import { areaSummary, type AreaSummary } from "../insights/area";
+import { areaSummary, matchProvinceName, type AreaSummary } from "../insights/area";
 import { getServiceClient } from "../db/supabase";
 
 /**
@@ -250,6 +250,12 @@ export function createBot(token: string) {
   bot.command("check", startCheck);
   bot.command("lab", startLab);
   bot.command("near", startNear);
+  bot.command("area", async (ctx) => {
+    const s = getSession(ctx.chat.id);
+    const t = getRawDictionary(s.lang);
+    s.step = "area";
+    await ctx.reply(t.bot.areaPrompt, { reply_markup: locationKeyboard(t) });
+  });
   bot.command("remind", async (ctx) => {
     const t = getRawDictionary(getSession(ctx.chat.id).lang);
     await ctx.reply(t.bot.remindPrompt, { reply_markup: remindKeyboard(t) });
@@ -321,6 +327,7 @@ export function createBot(token: string) {
     const t = getRawDictionary(getSession(ctx.chat.id).lang);
     const s = getSession(ctx.chat.id);
     const { latitude, longitude } = ctx.message.location;
+    if (s.step === "area") s.step = null;
     const list = nearestLocal(latitude, longitude, 3);
     const lines = list.map((f, i) => {
       const name = s.lang === "km" && f.name_km ? f.name_km : f.name;
@@ -368,6 +375,13 @@ export function createBot(token: string) {
       if (n === null || n < q.min || n > q.max) return ctx.reply(fmt(t.bot.sendNumber, { min: q.min, max: q.max }, s.lang));
       s.answers[q.key] = q.integer ? Math.round(n) : n;
       return next(ctx, s);
+    }
+    if (s.step === "area") {
+      const pcode = matchProvinceName(ctx.message.text);
+      const area = pcode ? areaSummary({ province: pcode }) : null;
+      if (!area) return ctx.reply(t.bot.areaNotFound);
+      s.step = null;
+      return ctx.reply(formatAreaMessage(area, s.lang), { reply_markup: { remove_keyboard: true }, link_preview_options: { is_disabled: true } });
     }
     await ctx.reply(t.bot.notUnderstood, { reply_markup: mainMenu(t) });
   });

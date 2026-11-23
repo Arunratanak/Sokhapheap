@@ -36,7 +36,7 @@ async function main() {
   const browser = await chromium.launch({ executablePath, headless: true });
   const page = await browser.newPage({ viewport: { width: 375, height: 812 } });
   let serious = 0;
-  for (const p of ["/km", "/en", "/km/risk", "/en/map", "/km/lab", "/en/about", "/km/insights", "/en/insights"]) {
+  for (const p of ["/km", "/en", "/km/risk", "/en/map", "/km/lab", "/en/about", "/km/insights", "/en/insights", "/km/insights/api"]) {
     await page.goto(BASE + p, { waitUntil: "networkidle" });
     serious += await audit(page, p);
   }

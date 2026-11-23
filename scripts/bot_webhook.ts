@@ -26,6 +26,7 @@ async function main() {
       { command: "check", description: "Risk check / ពិនិត្យហានិភ័យ" },
       { command: "lab", description: "Blood test / តេស្តឈាម" },
       { command: "near", description: "Nearest care / កន្លែងព្យាបាល" },
+      { command: "area", description: "Your area / តំបន់របស់អ្នក" },
       { command: "remind", description: "Reminder / ការរំលឹក" },
       { command: "language", description: "ខ្មែរ / English" },
       { command: "help", description: "Help / ជំនួយ" },

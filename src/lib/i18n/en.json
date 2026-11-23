@@ -283,7 +283,7 @@
   },
   "bot": {
     "welcome": "Hello! I am the SokhaPheap bot. I can check your diabetes and heart disease risk, explain your blood test, and find health facilities near you.",
-    "help": "Commands:\n/check – start a risk check\n/lab – explain a blood test photo\n/near – find health facilities near you\n/remind – get a reminder to check again\n/language – change language\n/help – show this message",
+    "help": "Commands:\n/check – start a risk check\n/lab – explain a blood test photo\n/near – find health facilities near you\n/area – health facts about your area (open data)\n/remind – get a reminder to check again\n/language – change language\n/help – show this message",
     "menuCheck": "Check my risk",
     "menuLab": "Explain my blood test",
     "menuNear": "Find care near me",
@@ -311,7 +311,9 @@
     "urgentQ": "First, do you have chest pain, fainting, or signs of very high blood sugar (extreme thirst, lots of urine, confusion) right now?",
     "urgentYes": "Yes, I have one of these",
     "urgentNo": "No",
-    "languageChanged": "Language: English"
+    "languageChanged": "Language: English",
+    "areaPrompt": "📊 Your area: send your location, or type your province (for example: Siem Reap).",
+    "areaNotFound": "We could not find that province. Type a province name (for example: Takeo), or send your location."
   },
   "insights": {
     "title": "Open Data Insights",
@@ -429,7 +431,8 @@
       "capacity": "Few facilities",
       "people": "Many adults",
       "poverty": "Poverty"
-    }
+    },
+    "apiLink": "Open data API for developers"
   },
   "area": {
     "title": "Your area",
@@ -508,5 +511,28 @@
       "facilities_per_10k",
       "health_centres"
     ]
+  },
+  "apiDocs": {
+    "title": "Open data API",
+    "intro": "SokhaPheap gives its processed open data back to everyone. These read-only endpoints return JSON. No key is needed.",
+    "licence": "Licence: CC BY 4.0. Please cite: SokhaPheap open data (2026), derived from COD-AB, COD-PS, WorldPop, Malaria Atlas Project, Ministry of Health, OpenStreetMap, DHS 2021–22 and WHO.",
+    "limits": "Limits: 60 requests per minute per user. Responses are cached for 1 hour. Data is updated when the pipeline is rebuilt.",
+    "endpoints": "Endpoints",
+    "areasDesc": "Every province or district with population, travel times, facilities, DHS indicators (province values) and the Screening Gap Index.",
+    "areaDesc": "One area by P-code: province (KH12), district (KH1201) or commune (KH120101). Communes include the nearest hospital and health centre.",
+    "sourcesDesc": "Every dataset used, with publisher, licence, data year and SHA-256 hashes of the raw files.",
+    "downloadsTitle": "Bulk downloads",
+    "downloadsDesc": "District table (CSV) and gap index map (GeoJSON), also CC BY 4.0.",
+    "fieldsTitle": "Main fields",
+    "fields": [
+      "population: people (WorldPop 2025)",
+      "travel_motor_mean_min / travel_walk_mean_min: population-weighted minutes to the nearest health facility (Malaria Atlas Project 2019)",
+      "pct_walk_over_60_min / pct_motor_over_30_min: share of people beyond 1 hour on foot / 30 minutes by car or motorbike",
+      "facilities, facilities_per_10k: facility counts by type (Ministry of Health 2010 + OpenStreetMap 2026)",
+      "dhs: province survey indicators, ages 15–49 (DHS 2021–22)",
+      "gap: Screening Gap Index (0–100), rank, component scores and main drivers"
+    ],
+    "note": "Area data describes populations, not individuals. The gap index is a planning tool, not a measure of anyone's health.",
+    "back": "Back to Open Data Insights"
   }
 }

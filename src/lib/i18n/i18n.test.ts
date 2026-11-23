@@ -39,3 +39,12 @@ describe("i18n", () => {
     );
   });
 });
+
+describe("dictionary arrays", () => {
+  it("Khmer line-break processing keeps arrays as arrays (CSV headers, API field lists)", () => {
+    const km = getDictionary("km");
+    expect(Array.isArray(km.planner.csvHeader)).toBe(true);
+    expect(Array.isArray(km.apiDocs.fields)).toBe(true);
+    expect(km.planner.csvHeader.join(",")).toMatch(/^plan_order,district,/);
+  });
+});

@@ -104,6 +104,7 @@ export default async function InsightsPage({ params }: PageProps<"/[lang]/insigh
           <a className="btn-secondary" href="/api/open-data/download/gap_index.geojson" download>⬇️ {ti.downloads.geojson}</a>
         </div>
         <p className="text-xs text-muted">{ti.downloads.citation}</p>
+        <a href={`/${lang}/insights/api`} className="text-sm font-medium text-brand-strong underline underline-offset-2">🔌 {ti.apiLink}</a>
       </section>
 
       <section aria-labelledby="sources-title" className="flex flex-col gap-2">

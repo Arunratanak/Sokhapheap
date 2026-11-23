@@ -67,6 +67,7 @@ export function InsightsExplorer({ lang, t, ranking }: { lang: Locale; t: Dictio
   useEffect(() => {
     const pc = new URLSearchParams(window.location.search).get("area");
     if (pc && /^KHd{4}$/.test(pc)) void select(pc, "district");
+    else if (pc && /^KHd{2}$/.test(pc)) void select(pc, "province");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

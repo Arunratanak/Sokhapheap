@@ -93,10 +93,11 @@ function vegPrice(province: string) {
 }
 
 /** Build the area card from a district P-code (dropdowns) or a point (location). */
-export function areaSummary(input: { district: string } | { lat: number; lng: number }): AreaSummary | null {
+export function areaSummary(input: { district: string } | { province: string } | { lat: number; lng: number }): AreaSummary | null {
   let districtPcode: string;
   let communePcode: string | null = null;
   let point: { lat: number; lng: number } | null = null;
+  if ("province" in input) return provinceSummary(input.province);
   if ("district" in input) districtPcode = input.district;
   else {
     const hit = locatePoint(input.lat, input.lng);
@@ -140,4 +141,55 @@ export function areaSummary(input: { district: string } | { lat: number; lng: nu
     vegPrice: vegPrice(prov.pcode),
     insightsLink: `insights?area=${d.pcode}`,
   };
+}
+
+/** Province-level summary (bot: user typed a province). "district" holds the province itself. */
+function provinceSummary(pcode: string): AreaSummary | null {
+  const p = areas("province").find((x) => x.pcode === pcode);
+  if (!p) return null;
+  const nat = nationalContext().indicators;
+  const pick = (k: string) => {
+    const x = nat[k];
+    return x && x.value !== null ? { value: x.value, year: x.year } : null;
+  };
+  return {
+    province: { pcode: p.pcode, name: p.name_en },
+    district: { pcode: p.pcode, name: p.name_en },
+    commune: null,
+    womenOverweightPct: p.dhs?.women_overweight_or_obese_pct ?? null,
+    menSmokePct: p.dhs?.men_smoke_tobacco_pct ?? null,
+    travelMotorMin: p.travel_motor_mean_min,
+    pctWalkOver60: p.pct_walk_over_60_min,
+    nearestHealthCentre: null,
+    nationalHypertensionPct: pick("hypertension_30_79_agestd_pct"),
+    nationalDiabetesPct: pick("diabetes_prevalence_agestd_pct"),
+    vegPrice: vegPrice(p.pcode),
+    insightsLink: `insights?area=${p.pcode}`,
+  };
+}
+
+/**
+ * Match a typed province name (English as in COD-AB, common spellings, or Khmer) to a P-code.
+ * Khmer names are used only for matching what users type. TODO(VERIFY): native-speaker check.
+ */
+const KHMER_PROVINCES: Record<string, string> = {
+  "បន្ទាយមានជ័យ": "KH01", "បាត់ដំបង": "KH02", "កំពង់ចាម": "KH03", "កំពង់ឆ្នាំង": "KH04", "កំពង់ស្ពឺ": "KH05",
+  "កំពង់ធំ": "KH06", "កំពត": "KH07", "កណ្តាល": "KH08", "កោះកុង": "KH09", "ក្រចេះ": "KH10", "មណ្ឌលគិរី": "KH11",
+  "ភ្នំពេញ": "KH12", "ព្រះវិហារ": "KH13", "ព្រៃវែង": "KH14", "ពោធិ៍សាត់": "KH15", "រតនគិរី": "KH16", "សៀមរាប": "KH17",
+  "ព្រះសីហនុ": "KH18", "ស្ទឹងត្រែង": "KH19", "ស្វាយរៀង": "KH20", "តាកែវ": "KH21", "ឧត្តរមានជ័យ": "KH22", "កែប": "KH23",
+  "ប៉ៃលិន": "KH24", "ត្បូងឃ្មុំ": "KH25",
+};
+const EN_ALIASES: Record<string, string> = {
+  siemreap: "KH17", kohkong: "KH09", kaohkong: "KH09", mondulkiri: "KH11", mondolkiri: "KH11", ratanakiri: "KH16",
+  rattanakiri: "KH16", ratanakkiri: "KH16", oddarmeanchey: "KH22", otdarmeanchey: "KH22", stungtreng: "KH19", steungtreng: "KH19",
+  sihanoukville: "KH18", preahsihanouk: "KH18", kampongsom: "KH18", pursat: "KH15", pouthisat: "KH15", tbongkhmum: "KH25",
+  tboungkhmum: "KH25", kep: "KH23", pailin: "KH24", phnompenh: "KH12", banteaymeanchey: "KH01", battambang: "KH02",
+};
+export function matchProvinceName(text: string): string | null {
+  const t = text.trim().replace(/[​\s]+/g, "").replace(/^(ខេត្ត|រាជធានី)/, "");
+  if (KHMER_PROVINCES[t]) return KHMER_PROVINCES[t];
+  const key = t.toLowerCase().replace(/[^a-z]/g, "").replace(/province$/, "");
+  if (!key) return null;
+  const byName = areas("province").find((p) => p.name_en.toLowerCase().replace(/[^a-z]/g, "") === key);
+  return byName?.pcode ?? EN_ALIASES[key] ?? null;
 }

@@ -1,0 +1,1946 @@
+{
+ "note": "Median retail price (KHR per kg) of vegetables and fruit at WFP-monitored markets, 2025-09-15 to 2026-09-15. Provinces without WFP markets are absent.",
+ "period": {
+  "from": "2025-09-15",
+  "to": "2026-09-15"
+ },
+ "provinces": {
+  "KH01": {
+   "Amaranth (spineless, fresh)": {
+    "median_khr_per_kg": 2750,
+    "observations": 6
+   },
+   "Bananas (ripe)": {
+    "median_khr_per_kg": 2500,
+    "observations": 6
+   },
+   "Bananas flower": {
+    "median_khr_per_kg": 1750,
+    "observations": 6
+   },
+   "Beans (yardlong, green)": {
+    "median_khr_per_kg": 3000,
+    "observations": 7
+   },
+   "Cabbage (bok choy)": {
+    "median_khr_per_kg": 2500,
+    "observations": 6
+   },
+   "Cabbage (chinese, flowering)": {
+    "median_khr_per_kg": 2500,
+    "observations": 6
+   },
+   "Cabbage (chinese, raw)": {
+    "median_khr_per_kg": 2500,
+    "observations": 6
+   },
+   "Carrots": {
+    "median_khr_per_kg": 3000,
+    "observations": 7
+   },
+   "Cauliflower": {
+    "median_khr_per_kg": 3000,
+    "observations": 7
+   },
+   "Eggplants": {
+    "median_khr_per_kg": 3000,
+    "observations": 7
+   },
+   "Eggplants (white, round)": {
+    "median_khr_per_kg": 3500,
+    "observations": 5
+   },
+   "Garlic": {
+    "median_khr_per_kg": 6500,
+    "observations": 19
+   },
+   "Gourd (ridge)": {
+    "median_khr_per_kg": 2000,
+    "observations": 7
+   },
+   "Ivygourd leaves": {
+    "median_khr_per_kg": 4000,
+    "observations": 5
+   },
+   "Kale (chinese)": {
+    "median_khr_per_kg": 3000,
+    "observations": 7
+   },
+   "Moringa leaves": {
+    "median_khr_per_kg": 5000,
+    "observations": 4
+   },
+   "Mustard leaves": {
+    "median_khr_per_kg": 2469,
+    "observations": 6
+   },
+   "Papaya (green)": {
+    "median_khr_per_kg": 1000,
+    "observations": 7
+   },
+   "Pumpkin": {
+    "median_khr_per_kg": 2000,
+    "observations": 7
+   },
+   "Pumpkin leaves": {
+    "median_khr_per_kg": 5000,
+    "observations": 4
+   },
+   "Sauropus sp. leaves": {
+    "median_khr_per_kg": 5000,
+    "observations": 3
+   },
+   "Snake gourd": {
+    "median_khr_per_kg": 2063,
+    "observations": 7
+   },
+   "Tamarind (ripe)": {
+    "median_khr_per_kg": 5000,
+    "observations": 7
+   },
+   "Tomatoes (red, ripe)": {
+    "median_khr_per_kg": 4000,
+    "observations": 7
+   },
+   "Water spinach": {
+    "median_khr_per_kg": 2250,
+    "observations": 6
+   },
+   "Wax gourd": {
+    "median_khr_per_kg": 1500,
+    "observations": 6
+   }
+  },
+  "KH02": {
+   "Amaranth (spineless, fresh)": {
+    "median_khr_per_kg": 4219,
+    "observations": 3
+   },
+   "Bananas (ripe)": {
+    "median_khr_per_kg": 2000,
+    "observations": 14
+   },
+   "Bananas flower": {
+    "median_khr_per_kg": 3000,
+    "observations": 3
+   },
+   "Beans (yardlong, green)": {
+    "median_khr_per_kg": 3000,
+    "observations": 6
+   },
+   "Cabbage (bok choy)": {
+    "median_khr_per_kg": 3000,
+    "observations": 6
+   },
+   "Cabbage (chinese, flowering)": {
+    "median_khr_per_kg": 2656,
+    "observations": 6
+   },
+   "Cabbage (chinese, raw)": {
+    "median_khr_per_kg": 3250,
+    "observations": 6
+   },
+   "Carrots": {
+    "median_khr_per_kg": 3000,
+    "observations": 3
+   },
+   "Cauliflower": {
+    "median_khr_per_kg": 3000,
+    "observations": 5
+   },
+   "Eggplants": {
+    "median_khr_per_kg": 3250,
+    "observations": 5
+   },
+   "Eggplants (white, round)": {
+    "median_khr_per_kg": 3000,
+    "observations": 5
+   },
+   "Garlic": {
+    "median_khr_per_kg": 6250,
+    "observations": 6
+   },
+   "Kale (chinese)": {
+    "median_khr_per_kg": 4000,
+    "observations": 3
+   },
+   "Mango (ripe)": {
+    "median_khr_per_kg": 2500,
+    "observations": 3
+   },
+   "Mustard leaves": {
+    "median_khr_per_kg": 2438,
+    "observations": 6
+   },
+   "Papaya (green)": {
+    "median_khr_per_kg": 1609,
+    "observations": 6
+   },
+   "Pumpkin": {
+    "median_khr_per_kg": 3313,
+    "observations": 5
+   },
+   "Snake gourd": {
+    "median_khr_per_kg": 3000,
+    "observations": 3
+   },
+   "Tamarind (ripe)": {
+    "median_khr_per_kg": 3000,
+    "observations": 3
+   },
+   "Tomatoes (red, ripe)": {
+    "median_khr_per_kg": 4500,
+    "observations": 6
+   },
+   "Water spinach": {
+    "median_khr_per_kg": 2250,
+    "observations": 6
+   },
+   "Wax gourd": {
+    "median_khr_per_kg": 3000,
+    "observations": 5
+   }
+  },
+  "KH03": {
+   "Amaranth (spineless, fresh)": {
+    "median_khr_per_kg": 4000,
+    "observations": 3
+   },
+   "Bananas (ripe)": {
+    "median_khr_per_kg": 2000,
+    "observations": 20
+   },
+   "Bananas flower": {
+    "median_khr_per_kg": 1813,
+    "observations": 4
+   },
+   "Beans (yardlong, green)": {
+    "median_khr_per_kg": 3250,
+    "observations": 10
+   },
+   "Bottle gourd": {
+    "median_khr_per_kg": 2500,
+    "observations": 1
+   },
+   "Cabbage (bok choy)": {
+    "median_khr_per_kg": 3500,
+    "observations": 12
+   },
+   "Cabbage (chinese, flowering)": {
+    "median_khr_per_kg": 3500,
+    "observations": 10
+   },
+   "Cabbage (chinese, raw)": {
+    "median_khr_per_kg": 3938,
+    "observations": 11
+   },
+   "Carrots": {
+    "median_khr_per_kg": 3000,
+    "observations": 13
+   },
+   "Cauliflower": {
+    "median_khr_per_kg": 4000,
+    "observations": 11
+   },
+   "Eggplants": {
+    "median_khr_per_kg": 2969,
+    "observations": 10
+   },
+   "Eggplants (white, round)": {
+    "median_khr_per_kg": 2813,
+    "observations": 11
+   },
+   "Garlic": {
+    "median_khr_per_kg": 6000,
+    "observations": 11
+   },
+   "Gourd (ridge)": {
+    "median_khr_per_kg": 2250,
+    "observations": 8
+   },
+   "Kale (chinese)": {
+    "median_khr_per_kg": 3656,
+    "observations": 12
+   },
+   "Mustard leaves": {
+    "median_khr_per_kg": 3500,
+    "observations": 10
+   },
+   "Papaya (green)": {
+    "median_khr_per_kg": 1000,
+    "observations": 10
+   },
+   "Pumpkin": {
+    "median_khr_per_kg": 2500,
+    "observations": 7
+   },
+   "Pumpkin leaves": {
+    "median_khr_per_kg": 2500,
+    "observations": 1
+   },
+   "Snake gourd": {
+    "median_khr_per_kg": 2500,
+    "observations": 9
+   },
+   "Tamarind (ripe)": {
+    "median_khr_per_kg": 5000,
+    "observations": 8
+   },
+   "Tomatoes (red, ripe)": {
+    "median_khr_per_kg": 4000,
+    "observations": 11
+   },
+   "Water spinach": {
+    "median_khr_per_kg": 3500,
+    "observations": 11
+   },
+   "Wax gourd": {
+    "median_khr_per_kg": 2313,
+    "observations": 12
+   }
+  },
+  "KH04": {
+   "Amaranth (spineless, fresh)": {
+    "median_khr_per_kg": 5000,
+    "observations": 7
+   },
+   "Bananas (ripe)": {
+    "median_khr_per_kg": 2500,
+    "observations": 14
+   },
+   "Bananas flower": {
+    "median_khr_per_kg": 3000,
+    "observations": 5
+   },
+   "Beans (yardlong, green)": {
+    "median_khr_per_kg": 3375,
+    "observations": 10
+   },
+   "Bottle gourd": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Cabbage (bok choy)": {
+    "median_khr_per_kg": 3938,
+    "observations": 10
+   },
+   "Cabbage (chinese, flowering)": {
+    "median_khr_per_kg": 3688,
+    "observations": 10
+   },
+   "Cabbage (chinese, raw)": {
+    "median_khr_per_kg": 3938,
+    "observations": 10
+   },
+   "Carrots": {
+    "median_khr_per_kg": 3125,
+    "observations": 10
+   },
+   "Cauliflower": {
+    "median_khr_per_kg": 5219,
+    "observations": 10
+   },
+   "Eggplants": {
+    "median_khr_per_kg": 3250,
+    "observations": 9
+   },
+   "Eggplants (white, round)": {
+    "median_khr_per_kg": 3000,
+    "observations": 9
+   },
+   "Garlic": {
+    "median_khr_per_kg": 6250,
+    "observations": 12
+   },
+   "Gourd (ridge)": {
+    "median_khr_per_kg": 3500,
+    "observations": 6
+   },
+   "Ivygourd leaves": {
+    "median_khr_per_kg": 5500,
+    "observations": 2
+   },
+   "Kale (chinese)": {
+    "median_khr_per_kg": 3750,
+    "observations": 10
+   },
+   "Mango (ripe)": {
+    "median_khr_per_kg": 2000,
+    "observations": 2
+   },
+   "Moringa leaves": {
+    "median_khr_per_kg": 7300,
+    "observations": 2
+   },
+   "Mustard leaves": {
+    "median_khr_per_kg": 3875,
+    "observations": 9
+   },
+   "Papaya (green)": {
+    "median_khr_per_kg": 1500,
+    "observations": 9
+   },
+   "Pumpkin": {
+    "median_khr_per_kg": 2500,
+    "observations": 9
+   },
+   "Pumpkin leaves": {
+    "median_khr_per_kg": 10000,
+    "observations": 1
+   },
+   "Sauropus sp. leaves": {
+    "median_khr_per_kg": 10000,
+    "observations": 2
+   },
+   "Snake gourd": {
+    "median_khr_per_kg": 3500,
+    "observations": 8
+   },
+   "Tamarind (ripe)": {
+    "median_khr_per_kg": 5000,
+    "observations": 10
+   },
+   "Tomatoes (red, ripe)": {
+    "median_khr_per_kg": 3750,
+    "observations": 8
+   },
+   "Water spinach": {
+    "median_khr_per_kg": 2500,
+    "observations": 7
+   },
+   "Wax gourd": {
+    "median_khr_per_kg": 2000,
+    "observations": 7
+   }
+  },
+  "KH05": {
+   "Amaranth (spineless, fresh)": {
+    "median_khr_per_kg": 2500,
+    "observations": 1
+   },
+   "Bananas flower": {
+    "median_khr_per_kg": 3000,
+    "observations": 1
+   },
+   "Beans (yardlong, green)": {
+    "median_khr_per_kg": 2500,
+    "observations": 1
+   },
+   "Carrots": {
+    "median_khr_per_kg": 2000,
+    "observations": 1
+   },
+   "Cauliflower": {
+    "median_khr_per_kg": 4000,
+    "observations": 1
+   },
+   "Eggplants": {
+    "median_khr_per_kg": 2500,
+    "observations": 1
+   },
+   "Eggplants (white, round)": {
+    "median_khr_per_kg": 2500,
+    "observations": 1
+   },
+   "Garlic": {
+    "median_khr_per_kg": 6250,
+    "observations": 2
+   },
+   "Gourd (ridge)": {
+    "median_khr_per_kg": 2500,
+    "observations": 1
+   },
+   "Ivygourd leaves": {
+    "median_khr_per_kg": 3000,
+    "observations": 1
+   },
+   "Moringa leaves": {
+    "median_khr_per_kg": 10000,
+    "observations": 1
+   },
+   "Mustard leaves": {
+    "median_khr_per_kg": 1500,
+    "observations": 1
+   },
+   "Papaya (green)": {
+    "median_khr_per_kg": 1000,
+    "observations": 1
+   },
+   "Pumpkin": {
+    "median_khr_per_kg": 1500,
+    "observations": 1
+   },
+   "Snake gourd": {
+    "median_khr_per_kg": 2500,
+    "observations": 1
+   },
+   "Tamarind (ripe)": {
+    "median_khr_per_kg": 6500,
+    "observations": 1
+   },
+   "Tomatoes (red, ripe)": {
+    "median_khr_per_kg": 3500,
+    "observations": 1
+   },
+   "Water spinach": {
+    "median_khr_per_kg": 1750,
+    "observations": 2
+   },
+   "Wax gourd": {
+    "median_khr_per_kg": 2000,
+    "observations": 1
+   }
+  },
+  "KH06": {
+   "Amaranth (spineless, fresh)": {
+    "median_khr_per_kg": 3563,
+    "observations": 12
+   },
+   "Bananas flower": {
+    "median_khr_per_kg": 2500,
+    "observations": 13
+   },
+   "Beans (yardlong, green)": {
+    "median_khr_per_kg": 4167,
+    "observations": 16
+   },
+   "Bottle gourd": {
+    "median_khr_per_kg": 2500,
+    "observations": 3
+   },
+   "Cabbage (bok choy)": {
+    "median_khr_per_kg": 3313,
+    "observations": 17
+   },
+   "Cabbage (chinese, flowering)": {
+    "median_khr_per_kg": 3094,
+    "observations": 17
+   },
+   "Cabbage (chinese, raw)": {
+    "median_khr_per_kg": 3750,
+    "observations": 17
+   },
+   "Carrots": {
+    "median_khr_per_kg": 3500,
+    "observations": 16
+   },
+   "Cauliflower": {
+    "median_khr_per_kg": 4844,
+    "observations": 16
+   },
+   "Eggplants": {
+    "median_khr_per_kg": 3084,
+    "observations": 16
+   },
+   "Eggplants (white, round)": {
+    "median_khr_per_kg": 3000,
+    "observations": 16
+   },
+   "Garlic": {
+    "median_khr_per_kg": 6500,
+    "observations": 16
+   },
+   "Gourd (ridge)": {
+    "median_khr_per_kg": 3250,
+    "observations": 8
+   },
+   "Ivygourd leaves": {
+    "median_khr_per_kg": 4641,
+    "observations": 14
+   },
+   "Kale (chinese)": {
+    "median_khr_per_kg": 5000,
+    "observations": 16
+   },
+   "Moringa leaves": {
+    "median_khr_per_kg": 6250,
+    "observations": 6
+   },
+   "Mustard leaves": {
+    "median_khr_per_kg": 3281,
+    "observations": 16
+   },
+   "Papaya (green)": {
+    "median_khr_per_kg": 1500,
+    "observations": 14
+   },
+   "Pumpkin": {
+    "median_khr_per_kg": 2500,
+    "observations": 15
+   },
+   "Pumpkin leaves": {
+    "median_khr_per_kg": 5000,
+    "observations": 3
+   },
+   "Sauropus sp. leaves": {
+    "median_khr_per_kg": 7250,
+    "observations": 4
+   },
+   "Snake gourd": {
+    "median_khr_per_kg": 2550,
+    "observations": 16
+   },
+   "Tamarind (ripe)": {
+    "median_khr_per_kg": 4755,
+    "observations": 14
+   },
+   "Tomatoes (red, ripe)": {
+    "median_khr_per_kg": 4917,
+    "observations": 16
+   },
+   "Water spinach": {
+    "median_khr_per_kg": 3500,
+    "observations": 17
+   },
+   "Wax gourd": {
+    "median_khr_per_kg": 2000,
+    "observations": 16
+   }
+  },
+  "KH07": {
+   "Bananas (ripe)": {
+    "median_khr_per_kg": 2500,
+    "observations": 1
+   },
+   "Garlic": {
+    "median_khr_per_kg": 6000,
+    "observations": 1
+   }
+  },
+  "KH08": {
+   "Amaranth (spineless, fresh)": {
+    "median_khr_per_kg": 3000,
+    "observations": 3
+   },
+   "Bananas (ripe)": {
+    "median_khr_per_kg": 3000,
+    "observations": 1
+   },
+   "Bananas flower": {
+    "median_khr_per_kg": 3000,
+    "observations": 3
+   },
+   "Beans (yardlong, green)": {
+    "median_khr_per_kg": 4250,
+    "observations": 3
+   },
+   "Bottle gourd": {
+    "median_khr_per_kg": 3000,
+    "observations": 1
+   },
+   "Cabbage (bok choy)": {
+    "median_khr_per_kg": 3750,
+    "observations": 4
+   },
+   "Cabbage (chinese, flowering)": {
+    "median_khr_per_kg": 4000,
+    "observations": 4
+   },
+   "Cabbage (chinese, raw)": {
+    "median_khr_per_kg": 4000,
+    "observations": 4
+   },
+   "Carrots": {
+    "median_khr_per_kg": 3250,
+    "observations": 4
+   },
+   "Cauliflower": {
+    "median_khr_per_kg": 7500,
+    "observations": 4
+   },
+   "Eggplants": {
+    "median_khr_per_kg": 3500,
+    "observations": 3
+   },
+   "Eggplants (white, round)": {
+    "median_khr_per_kg": 3500,
+    "observations": 3
+   },
+   "Garlic": {
+    "median_khr_per_kg": 6667,
+    "observations": 3
+   },
+   "Gourd (ridge)": {
+    "median_khr_per_kg": 4000,
+    "observations": 3
+   },
+   "Ivygourd leaves": {
+    "median_khr_per_kg": 4000,
+    "observations": 1
+   },
+   "Kale (chinese)": {
+    "median_khr_per_kg": 4000,
+    "observations": 3
+   },
+   "Moringa leaves": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Mustard leaves": {
+    "median_khr_per_kg": 4000,
+    "observations": 3
+   },
+   "Papaya (green)": {
+    "median_khr_per_kg": 2250,
+    "observations": 2
+   },
+   "Pumpkin": {
+    "median_khr_per_kg": 3000,
+    "observations": 3
+   },
+   "Sauropus sp. leaves": {
+    "median_khr_per_kg": 6000,
+    "observations": 1
+   },
+   "Snake gourd": {
+    "median_khr_per_kg": 3500,
+    "observations": 3
+   },
+   "Tamarind (ripe)": {
+    "median_khr_per_kg": 3500,
+    "observations": 1
+   },
+   "Tomatoes (red, ripe)": {
+    "median_khr_per_kg": 5500,
+    "observations": 3
+   },
+   "Water spinach": {
+    "median_khr_per_kg": 3750,
+    "observations": 4
+   },
+   "Wax gourd": {
+    "median_khr_per_kg": 4000,
+    "observations": 3
+   }
+  },
+  "KH09": {
+   "Bananas flower": {
+    "median_khr_per_kg": 2750,
+    "observations": 1
+   },
+   "Beans (yardlong, green)": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Cabbage (bok choy)": {
+    "median_khr_per_kg": 7500,
+    "observations": 3
+   },
+   "Cabbage (chinese, flowering)": {
+    "median_khr_per_kg": 4500,
+    "observations": 2
+   },
+   "Cabbage (chinese, raw)": {
+    "median_khr_per_kg": 7000,
+    "observations": 3
+   },
+   "Carrots": {
+    "median_khr_per_kg": 4000,
+    "observations": 3
+   },
+   "Cauliflower": {
+    "median_khr_per_kg": 11000,
+    "observations": 2
+   },
+   "Eggplants": {
+    "median_khr_per_kg": 4375,
+    "observations": 2
+   },
+   "Eggplants (white, round)": {
+    "median_khr_per_kg": 5500,
+    "observations": 3
+   },
+   "Garlic": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Gourd (ridge)": {
+    "median_khr_per_kg": 3500,
+    "observations": 1
+   },
+   "Ivygourd leaves": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Kale (chinese)": {
+    "median_khr_per_kg": 5500,
+    "observations": 1
+   },
+   "Mustard leaves": {
+    "median_khr_per_kg": 4000,
+    "observations": 1
+   },
+   "Papaya (green)": {
+    "median_khr_per_kg": 1000,
+    "observations": 3
+   },
+   "Pumpkin": {
+    "median_khr_per_kg": 3500,
+    "observations": 3
+   },
+   "Snake gourd": {
+    "median_khr_per_kg": 3500,
+    "observations": 1
+   },
+   "Tamarind (ripe)": {
+    "median_khr_per_kg": 5000,
+    "observations": 3
+   },
+   "Tomatoes (red, ripe)": {
+    "median_khr_per_kg": 4500,
+    "observations": 1
+   },
+   "Water spinach": {
+    "median_khr_per_kg": 3250,
+    "observations": 2
+   },
+   "Wax gourd": {
+    "median_khr_per_kg": 2750,
+    "observations": 2
+   }
+  },
+  "KH10": {
+   "Bananas (ripe)": {
+    "median_khr_per_kg": 2125,
+    "observations": 2
+   },
+   "Bananas flower": {
+    "median_khr_per_kg": 4000,
+    "observations": 1
+   },
+   "Beans (yardlong, green)": {
+    "median_khr_per_kg": 4000,
+    "observations": 3
+   },
+   "Cabbage (bok choy)": {
+    "median_khr_per_kg": 4000,
+    "observations": 3
+   },
+   "Cabbage (chinese, flowering)": {
+    "median_khr_per_kg": 4000,
+    "observations": 3
+   },
+   "Cabbage (chinese, raw)": {
+    "median_khr_per_kg": 4000,
+    "observations": 3
+   },
+   "Carrots": {
+    "median_khr_per_kg": 4000,
+    "observations": 3
+   },
+   "Cauliflower": {
+    "median_khr_per_kg": 8000,
+    "observations": 3
+   },
+   "Eggplants": {
+    "median_khr_per_kg": 4000,
+    "observations": 3
+   },
+   "Eggplants (white, round)": {
+    "median_khr_per_kg": 4000,
+    "observations": 3
+   },
+   "Garlic": {
+    "median_khr_per_kg": 8000,
+    "observations": 1
+   },
+   "Gourd (ridge)": {
+    "median_khr_per_kg": 4500,
+    "observations": 4
+   },
+   "Kale (chinese)": {
+    "median_khr_per_kg": 5000,
+    "observations": 3
+   },
+   "Mustard leaves": {
+    "median_khr_per_kg": 4000,
+    "observations": 3
+   },
+   "Papaya (green)": {
+    "median_khr_per_kg": 2125,
+    "observations": 2
+   },
+   "Pumpkin": {
+    "median_khr_per_kg": 4000,
+    "observations": 3
+   },
+   "Snake gourd": {
+    "median_khr_per_kg": 5000,
+    "observations": 3
+   },
+   "Tamarind (ripe)": {
+    "median_khr_per_kg": 6500,
+    "observations": 2
+   },
+   "Tomatoes (red, ripe)": {
+    "median_khr_per_kg": 6000,
+    "observations": 3
+   },
+   "Water spinach": {
+    "median_khr_per_kg": 4000,
+    "observations": 3
+   },
+   "Wax gourd": {
+    "median_khr_per_kg": 4000,
+    "observations": 4
+   }
+  },
+  "KH11": {
+   "Amaranth (spineless, fresh)": {
+    "median_khr_per_kg": 4500,
+    "observations": 2
+   },
+   "Beans (yardlong, green)": {
+    "median_khr_per_kg": 4500,
+    "observations": 2
+   },
+   "Cabbage (bok choy)": {
+    "median_khr_per_kg": 4000,
+    "observations": 2
+   },
+   "Cabbage (chinese, flowering)": {
+    "median_khr_per_kg": 3500,
+    "observations": 2
+   },
+   "Cabbage (chinese, raw)": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Carrots": {
+    "median_khr_per_kg": 3000,
+    "observations": 3
+   },
+   "Cauliflower": {
+    "median_khr_per_kg": 8000,
+    "observations": 2
+   },
+   "Eggplants": {
+    "median_khr_per_kg": 3250,
+    "observations": 2
+   },
+   "Eggplants (white, round)": {
+    "median_khr_per_kg": 2750,
+    "observations": 2
+   },
+   "Garlic": {
+    "median_khr_per_kg": 7500,
+    "observations": 2
+   },
+   "Gourd (ridge)": {
+    "median_khr_per_kg": 3000,
+    "observations": 1
+   },
+   "Ivygourd leaves": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Kale (chinese)": {
+    "median_khr_per_kg": 6500,
+    "observations": 2
+   },
+   "Moringa leaves": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Mustard leaves": {
+    "median_khr_per_kg": 3500,
+    "observations": 2
+   },
+   "Pumpkin": {
+    "median_khr_per_kg": 3000,
+    "observations": 3
+   },
+   "Snake gourd": {
+    "median_khr_per_kg": 3500,
+    "observations": 2
+   },
+   "Tomatoes (red, ripe)": {
+    "median_khr_per_kg": 5000,
+    "observations": 2
+   },
+   "Water spinach": {
+    "median_khr_per_kg": 3250,
+    "observations": 4
+   },
+   "Wax gourd": {
+    "median_khr_per_kg": 3000,
+    "observations": 2
+   }
+  },
+  "KH12": {
+   "Amaranth (spineless, fresh)": {
+    "median_khr_per_kg": 3250,
+    "observations": 2
+   },
+   "Bananas flower": {
+    "median_khr_per_kg": 2500,
+    "observations": 1
+   },
+   "Beans (yardlong, green)": {
+    "median_khr_per_kg": 4500,
+    "observations": 1
+   },
+   "Bottle gourd": {
+    "median_khr_per_kg": 4000,
+    "observations": 1
+   },
+   "Cabbage (bok choy)": {
+    "median_khr_per_kg": 3500,
+    "observations": 2
+   },
+   "Cabbage (chinese, flowering)": {
+    "median_khr_per_kg": 3000,
+    "observations": 2
+   },
+   "Cabbage (chinese, raw)": {
+    "median_khr_per_kg": 3500,
+    "observations": 2
+   },
+   "Carrots": {
+    "median_khr_per_kg": 3000,
+    "observations": 2
+   },
+   "Eggplants": {
+    "median_khr_per_kg": 4000,
+    "observations": 1
+   },
+   "Eggplants (white, round)": {
+    "median_khr_per_kg": 3000,
+    "observations": 1
+   },
+   "Garlic": {
+    "median_khr_per_kg": 6000,
+    "observations": 2
+   },
+   "Gourd (ridge)": {
+    "median_khr_per_kg": 3250,
+    "observations": 2
+   },
+   "Ivygourd leaves": {
+    "median_khr_per_kg": 6000,
+    "observations": 1
+   },
+   "Kale (chinese)": {
+    "median_khr_per_kg": 3750,
+    "observations": 2
+   },
+   "Mustard leaves": {
+    "median_khr_per_kg": 3500,
+    "observations": 2
+   },
+   "Papaya (green)": {
+    "median_khr_per_kg": 1500,
+    "observations": 2
+   },
+   "Pumpkin": {
+    "median_khr_per_kg": 3500,
+    "observations": 2
+   },
+   "Pumpkin leaves": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Snake gourd": {
+    "median_khr_per_kg": 3500,
+    "observations": 1
+   },
+   "Tomatoes (red, ripe)": {
+    "median_khr_per_kg": 8000,
+    "observations": 1
+   },
+   "Water spinach": {
+    "median_khr_per_kg": 3250,
+    "observations": 2
+   },
+   "Wax gourd": {
+    "median_khr_per_kg": 3500,
+    "observations": 2
+   }
+  },
+  "KH13": {
+   "Bananas (ripe)": {
+    "median_khr_per_kg": 2000,
+    "observations": 16
+   },
+   "Beans (yardlong, green)": {
+    "median_khr_per_kg": 4000,
+    "observations": 2
+   },
+   "Cabbage (bok choy)": {
+    "median_khr_per_kg": 4000,
+    "observations": 2
+   },
+   "Cabbage (chinese, flowering)": {
+    "median_khr_per_kg": 3000,
+    "observations": 2
+   },
+   "Cabbage (chinese, raw)": {
+    "median_khr_per_kg": 2000,
+    "observations": 2
+   },
+   "Carrots": {
+    "median_khr_per_kg": 4000,
+    "observations": 2
+   },
+   "Cauliflower": {
+    "median_khr_per_kg": 8000,
+    "observations": 2
+   },
+   "Eggplants": {
+    "median_khr_per_kg": 3000,
+    "observations": 2
+   },
+   "Eggplants (white, round)": {
+    "median_khr_per_kg": 2500,
+    "observations": 2
+   },
+   "Garlic": {
+    "median_khr_per_kg": 7000,
+    "observations": 3
+   },
+   "Kale (chinese)": {
+    "median_khr_per_kg": 5000,
+    "observations": 2
+   },
+   "Pumpkin": {
+    "median_khr_per_kg": 2000,
+    "observations": 2
+   },
+   "Tamarind (ripe)": {
+    "median_khr_per_kg": 2500,
+    "observations": 2
+   },
+   "Tomatoes (red, ripe)": {
+    "median_khr_per_kg": 4000,
+    "observations": 2
+   },
+   "Water spinach": {
+    "median_khr_per_kg": 3000,
+    "observations": 2
+   },
+   "Wax gourd": {
+    "median_khr_per_kg": 2000,
+    "observations": 2
+   }
+  },
+  "KH14": {
+   "Bananas (ripe)": {
+    "median_khr_per_kg": 2625,
+    "observations": 4
+   },
+   "Garlic": {
+    "median_khr_per_kg": 6000,
+    "observations": 1
+   }
+  },
+  "KH15": {
+   "Amaranth (spineless, fresh)": {
+    "median_khr_per_kg": 5000,
+    "observations": 11
+   },
+   "Bananas (ripe)": {
+    "median_khr_per_kg": 2500,
+    "observations": 9
+   },
+   "Bananas flower": {
+    "median_khr_per_kg": 3000,
+    "observations": 6
+   },
+   "Beans (yardlong, green)": {
+    "median_khr_per_kg": 3000,
+    "observations": 14
+   },
+   "Cabbage (bok choy)": {
+    "median_khr_per_kg": 3000,
+    "observations": 13
+   },
+   "Cabbage (chinese, flowering)": {
+    "median_khr_per_kg": 4000,
+    "observations": 13
+   },
+   "Cabbage (chinese, raw)": {
+    "median_khr_per_kg": 3500,
+    "observations": 13
+   },
+   "Carrots": {
+    "median_khr_per_kg": 3500,
+    "observations": 14
+   },
+   "Cauliflower": {
+    "median_khr_per_kg": 5000,
+    "observations": 12
+   },
+   "Eggplants": {
+    "median_khr_per_kg": 3750,
+    "observations": 12
+   },
+   "Eggplants (white, round)": {
+    "median_khr_per_kg": 3000,
+    "observations": 12
+   },
+   "Garlic": {
+    "median_khr_per_kg": 7000,
+    "observations": 12
+   },
+   "Gourd (ridge)": {
+    "median_khr_per_kg": 3000,
+    "observations": 7
+   },
+   "Ivygourd leaves": {
+    "median_khr_per_kg": 5000,
+    "observations": 5
+   },
+   "Kale (chinese)": {
+    "median_khr_per_kg": 5000,
+    "observations": 13
+   },
+   "Moringa leaves": {
+    "median_khr_per_kg": 2500,
+    "observations": 3
+   },
+   "Mustard leaves": {
+    "median_khr_per_kg": 3000,
+    "observations": 13
+   },
+   "Papaya (green)": {
+    "median_khr_per_kg": 1375,
+    "observations": 14
+   },
+   "Pumpkin": {
+    "median_khr_per_kg": 2000,
+    "observations": 14
+   },
+   "Pumpkin leaves": {
+    "median_khr_per_kg": 5000,
+    "observations": 3
+   },
+   "Sauropus sp. leaves": {
+    "median_khr_per_kg": 5000,
+    "observations": 2
+   },
+   "Snake gourd": {
+    "median_khr_per_kg": 3000,
+    "observations": 12
+   },
+   "Tamarind (ripe)": {
+    "median_khr_per_kg": 5000,
+    "observations": 9
+   },
+   "Tomatoes (red, ripe)": {
+    "median_khr_per_kg": 6000,
+    "observations": 10
+   },
+   "Water spinach": {
+    "median_khr_per_kg": 3000,
+    "observations": 9
+   },
+   "Wax gourd": {
+    "median_khr_per_kg": 3000,
+    "observations": 13
+   }
+  },
+  "KH16": {
+   "Beans (yardlong, green)": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Cabbage (bok choy)": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Cabbage (chinese, flowering)": {
+    "median_khr_per_kg": 4000,
+    "observations": 1
+   },
+   "Cabbage (chinese, raw)": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Carrots": {
+    "median_khr_per_kg": 3500,
+    "observations": 1
+   },
+   "Cauliflower": {
+    "median_khr_per_kg": 10000,
+    "observations": 1
+   },
+   "Eggplants": {
+    "median_khr_per_kg": 3500,
+    "observations": 1
+   },
+   "Eggplants (white, round)": {
+    "median_khr_per_kg": 3000,
+    "observations": 1
+   },
+   "Garlic": {
+    "median_khr_per_kg": 6500,
+    "observations": 2
+   },
+   "Gourd (ridge)": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Kale (chinese)": {
+    "median_khr_per_kg": 6000,
+    "observations": 1
+   },
+   "Mustard leaves": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Pumpkin": {
+    "median_khr_per_kg": 3000,
+    "observations": 1
+   },
+   "Snake gourd": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Tomatoes (red, ripe)": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Water spinach": {
+    "median_khr_per_kg": 3500,
+    "observations": 1
+   },
+   "Wax gourd": {
+    "median_khr_per_kg": 3500,
+    "observations": 1
+   }
+  },
+  "KH17": {
+   "Bananas (ripe)": {
+    "median_khr_per_kg": 2500,
+    "observations": 20
+   },
+   "Garlic": {
+    "median_khr_per_kg": 6250,
+    "observations": 11
+   }
+  },
+  "KH18": {
+   "Bananas (ripe)": {
+    "median_khr_per_kg": 4000,
+    "observations": 2
+   },
+   "Garlic": {
+    "median_khr_per_kg": 8000,
+    "observations": 2
+   }
+  },
+  "KH19": {
+   "Amaranth (spineless, fresh)": {
+    "median_khr_per_kg": 5000,
+    "observations": 7
+   },
+   "Bananas (ripe)": {
+    "median_khr_per_kg": 1500,
+    "observations": 6
+   },
+   "Bananas flower": {
+    "median_khr_per_kg": 2266,
+    "observations": 6
+   },
+   "Beans (yardlong, green)": {
+    "median_khr_per_kg": 4500,
+    "observations": 7
+   },
+   "Cabbage (bok choy)": {
+    "median_khr_per_kg": 4891,
+    "observations": 8
+   },
+   "Cabbage (chinese, flowering)": {
+    "median_khr_per_kg": 4781,
+    "observations": 7
+   },
+   "Cabbage (chinese, raw)": {
+    "median_khr_per_kg": 4891,
+    "observations": 8
+   },
+   "Carrots": {
+    "median_khr_per_kg": 3750,
+    "observations": 8
+   },
+   "Cauliflower": {
+    "median_khr_per_kg": 6500,
+    "observations": 7
+   },
+   "Eggplants": {
+    "median_khr_per_kg": 3250,
+    "observations": 7
+   },
+   "Eggplants (white, round)": {
+    "median_khr_per_kg": 3250,
+    "observations": 7
+   },
+   "Garlic": {
+    "median_khr_per_kg": 7000,
+    "observations": 9
+   },
+   "Gourd (ridge)": {
+    "median_khr_per_kg": 3500,
+    "observations": 3
+   },
+   "Ivygourd leaves": {
+    "median_khr_per_kg": 5500,
+    "observations": 7
+   },
+   "Kale (chinese)": {
+    "median_khr_per_kg": 6000,
+    "observations": 7
+   },
+   "Moringa leaves": {
+    "median_khr_per_kg": 6500,
+    "observations": 5
+   },
+   "Mustard leaves": {
+    "median_khr_per_kg": 4781,
+    "observations": 7
+   },
+   "Papaya (green)": {
+    "median_khr_per_kg": 1375,
+    "observations": 6
+   },
+   "Pumpkin": {
+    "median_khr_per_kg": 3000,
+    "observations": 7
+   },
+   "Pumpkin leaves": {
+    "median_khr_per_kg": 8000,
+    "observations": 5
+   },
+   "Sauropus sp. leaves": {
+    "median_khr_per_kg": 5563,
+    "observations": 2
+   },
+   "Snake gourd": {
+    "median_khr_per_kg": 3500,
+    "observations": 7
+   },
+   "Tamarind (ripe)": {
+    "median_khr_per_kg": 3500,
+    "observations": 7
+   },
+   "Tomatoes (red, ripe)": {
+    "median_khr_per_kg": 5000,
+    "observations": 7
+   },
+   "Water spinach": {
+    "median_khr_per_kg": 4200,
+    "observations": 8
+   },
+   "Wax gourd": {
+    "median_khr_per_kg": 2250,
+    "observations": 7
+   }
+  },
+  "KH20": {
+   "Amaranth (spineless, fresh)": {
+    "median_khr_per_kg": 3500,
+    "observations": 2
+   },
+   "Bananas (ripe)": {
+    "median_khr_per_kg": 3000,
+    "observations": 2
+   },
+   "Bananas flower": {
+    "median_khr_per_kg": 3500,
+    "observations": 2
+   },
+   "Beans (yardlong, green)": {
+    "median_khr_per_kg": 8000,
+    "observations": 1
+   },
+   "Bottle gourd": {
+    "median_khr_per_kg": 3000,
+    "observations": 1
+   },
+   "Cabbage (bok choy)": {
+    "median_khr_per_kg": 3750,
+    "observations": 4
+   },
+   "Cabbage (chinese, flowering)": {
+    "median_khr_per_kg": 3000,
+    "observations": 3
+   },
+   "Cabbage (chinese, raw)": {
+    "median_khr_per_kg": 3500,
+    "observations": 4
+   },
+   "Carrots": {
+    "median_khr_per_kg": 3500,
+    "observations": 4
+   },
+   "Cauliflower": {
+    "median_khr_per_kg": 8000,
+    "observations": 1
+   },
+   "Eggplants": {
+    "median_khr_per_kg": 3000,
+    "observations": 1
+   },
+   "Eggplants (white, round)": {
+    "median_khr_per_kg": 2500,
+    "observations": 1
+   },
+   "Garlic": {
+    "median_khr_per_kg": 7500,
+    "observations": 3
+   },
+   "Gourd (ridge)": {
+    "median_khr_per_kg": 3500,
+    "observations": 1
+   },
+   "Ivygourd leaves": {
+    "median_khr_per_kg": 3000,
+    "observations": 1
+   },
+   "Kale (chinese)": {
+    "median_khr_per_kg": 4000,
+    "observations": 1
+   },
+   "Moringa leaves": {
+    "median_khr_per_kg": 3300,
+    "observations": 1
+   },
+   "Mustard leaves": {
+    "median_khr_per_kg": 3500,
+    "observations": 3
+   },
+   "Papaya (green)": {
+    "median_khr_per_kg": 1000,
+    "observations": 1
+   },
+   "Pumpkin": {
+    "median_khr_per_kg": 3000,
+    "observations": 2
+   },
+   "Pumpkin leaves": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Sauropus sp. leaves": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Snake gourd": {
+    "median_khr_per_kg": 3000,
+    "observations": 1
+   },
+   "Tamarind (ripe)": {
+    "median_khr_per_kg": 4000,
+    "observations": 1
+   },
+   "Tomatoes (red, ripe)": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Water spinach": {
+    "median_khr_per_kg": 3650,
+    "observations": 4
+   },
+   "Wax gourd": {
+    "median_khr_per_kg": 4000,
+    "observations": 2
+   }
+  },
+  "KH21": {
+   "Amaranth (spineless, fresh)": {
+    "median_khr_per_kg": 4250,
+    "observations": 1
+   },
+   "Bananas (ripe)": {
+    "median_khr_per_kg": 2250,
+    "observations": 2
+   },
+   "Bananas flower": {
+    "median_khr_per_kg": 2250,
+    "observations": 1
+   },
+   "Beans (yardlong, green)": {
+    "median_khr_per_kg": 3200,
+    "observations": 1
+   },
+   "Cabbage (bok choy)": {
+    "median_khr_per_kg": 2459,
+    "observations": 2
+   },
+   "Cabbage (chinese, flowering)": {
+    "median_khr_per_kg": 2459,
+    "observations": 2
+   },
+   "Cabbage (chinese, raw)": {
+    "median_khr_per_kg": 3084,
+    "observations": 2
+   },
+   "Carrots": {
+    "median_khr_per_kg": 2875,
+    "observations": 2
+   },
+   "Cauliflower": {
+    "median_khr_per_kg": 5250,
+    "observations": 1
+   },
+   "Eggplants": {
+    "median_khr_per_kg": 2875,
+    "observations": 2
+   },
+   "Eggplants (white, round)": {
+    "median_khr_per_kg": 2250,
+    "observations": 1
+   },
+   "Garlic": {
+    "median_khr_per_kg": 5917,
+    "observations": 2
+   },
+   "Gourd (ridge)": {
+    "median_khr_per_kg": 3750,
+    "observations": 1
+   },
+   "Ivygourd leaves": {
+    "median_khr_per_kg": 2500,
+    "observations": 1
+   },
+   "Kale (chinese)": {
+    "median_khr_per_kg": 3750,
+    "observations": 1
+   },
+   "Moringa leaves": {
+    "median_khr_per_kg": 5825,
+    "observations": 2
+   },
+   "Mustard leaves": {
+    "median_khr_per_kg": 2125,
+    "observations": 2
+   },
+   "Papaya (green)": {
+    "median_khr_per_kg": 850,
+    "observations": 1
+   },
+   "Pumpkin": {
+    "median_khr_per_kg": 3125,
+    "observations": 2
+   },
+   "Pumpkin leaves": {
+    "median_khr_per_kg": 3150,
+    "observations": 1
+   },
+   "Sauropus sp. leaves": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Snake gourd": {
+    "median_khr_per_kg": 2500,
+    "observations": 1
+   },
+   "Tamarind (ripe)": {
+    "median_khr_per_kg": 4250,
+    "observations": 1
+   },
+   "Tomatoes (red, ripe)": {
+    "median_khr_per_kg": 4000,
+    "observations": 1
+   },
+   "Water spinach": {
+    "median_khr_per_kg": 2209,
+    "observations": 2
+   },
+   "Wax gourd": {
+    "median_khr_per_kg": 2750,
+    "observations": 2
+   }
+  },
+  "KH22": {
+   "Amaranth (spineless, fresh)": {
+    "median_khr_per_kg": 2938,
+    "observations": 13
+   },
+   "Bananas (ripe)": {
+    "median_khr_per_kg": 2500,
+    "observations": 3
+   },
+   "Bananas flower": {
+    "median_khr_per_kg": 3000,
+    "observations": 8
+   },
+   "Beans (yardlong, green)": {
+    "median_khr_per_kg": 4000,
+    "observations": 14
+   },
+   "Bottle gourd": {
+    "median_khr_per_kg": 1500,
+    "observations": 2
+   },
+   "Cabbage (bok choy)": {
+    "median_khr_per_kg": 4000,
+    "observations": 15
+   },
+   "Cabbage (chinese, flowering)": {
+    "median_khr_per_kg": 4000,
+    "observations": 15
+   },
+   "Cabbage (chinese, raw)": {
+    "median_khr_per_kg": 4000,
+    "observations": 15
+   },
+   "Carrots": {
+    "median_khr_per_kg": 4500,
+    "observations": 15
+   },
+   "Cauliflower": {
+    "median_khr_per_kg": 6000,
+    "observations": 11
+   },
+   "Eggplants": {
+    "median_khr_per_kg": 3740,
+    "observations": 12
+   },
+   "Eggplants (white, round)": {
+    "median_khr_per_kg": 3156,
+    "observations": 13
+   },
+   "Garlic": {
+    "median_khr_per_kg": 7000,
+    "observations": 8
+   },
+   "Gourd (ridge)": {
+    "median_khr_per_kg": 2750,
+    "observations": 6
+   },
+   "Ivygourd leaves": {
+    "median_khr_per_kg": 8500,
+    "observations": 8
+   },
+   "Kale (chinese)": {
+    "median_khr_per_kg": 4688,
+    "observations": 11
+   },
+   "Moringa leaves": {
+    "median_khr_per_kg": 4500,
+    "observations": 3
+   },
+   "Mustard leaves": {
+    "median_khr_per_kg": 4156,
+    "observations": 14
+   },
+   "Papaya (green)": {
+    "median_khr_per_kg": 1719,
+    "observations": 12
+   },
+   "Pumpkin": {
+    "median_khr_per_kg": 3000,
+    "observations": 13
+   },
+   "Pumpkin leaves": {
+    "median_khr_per_kg": 3500,
+    "observations": 6
+   },
+   "Sauropus sp. leaves": {
+    "median_khr_per_kg": 3300,
+    "observations": 1
+   },
+   "Snake gourd": {
+    "median_khr_per_kg": 3000,
+    "observations": 12
+   },
+   "Tamarind (ripe)": {
+    "median_khr_per_kg": 5500,
+    "observations": 9
+   },
+   "Tomatoes (red, ripe)": {
+    "median_khr_per_kg": 5000,
+    "observations": 13
+   },
+   "Water spinach": {
+    "median_khr_per_kg": 3500,
+    "observations": 15
+   },
+   "Wax gourd": {
+    "median_khr_per_kg": 3000,
+    "observations": 14
+   }
+  },
+  "KH24": {
+   "Amaranth (spineless, fresh)": {
+    "median_khr_per_kg": 4000,
+    "observations": 1
+   },
+   "Bananas (ripe)": {
+    "median_khr_per_kg": 2000,
+    "observations": 1
+   },
+   "Bananas flower": {
+    "median_khr_per_kg": 1500,
+    "observations": 1
+   },
+   "Beans (yardlong, green)": {
+    "median_khr_per_kg": 2000,
+    "observations": 1
+   },
+   "Cabbage (bok choy)": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Cabbage (chinese, flowering)": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Cabbage (chinese, raw)": {
+    "median_khr_per_kg": 3000,
+    "observations": 1
+   },
+   "Carrots": {
+    "median_khr_per_kg": 3000,
+    "observations": 1
+   },
+   "Cauliflower": {
+    "median_khr_per_kg": 4000,
+    "observations": 1
+   },
+   "Eggplants": {
+    "median_khr_per_kg": 2500,
+    "observations": 1
+   },
+   "Garlic": {
+    "median_khr_per_kg": 6000,
+    "observations": 1
+   },
+   "Gourd (ridge)": {
+    "median_khr_per_kg": 3500,
+    "observations": 1
+   },
+   "Ivygourd leaves": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Kale (chinese)": {
+    "median_khr_per_kg": 3500,
+    "observations": 1
+   },
+   "Moringa leaves": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Mustard leaves": {
+    "median_khr_per_kg": 2500,
+    "observations": 1
+   },
+   "Papaya (green)": {
+    "median_khr_per_kg": 1000,
+    "observations": 1
+   },
+   "Pumpkin": {
+    "median_khr_per_kg": 2000,
+    "observations": 1
+   },
+   "Pumpkin leaves": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Snake gourd": {
+    "median_khr_per_kg": 3500,
+    "observations": 1
+   },
+   "Tomatoes (red, ripe)": {
+    "median_khr_per_kg": 3000,
+    "observations": 1
+   },
+   "Water spinach": {
+    "median_khr_per_kg": 3000,
+    "observations": 1
+   },
+   "Wax gourd": {
+    "median_khr_per_kg": 2000,
+    "observations": 1
+   }
+  },
+  "KH25": {
+   "Beans (yardlong, green)": {
+    "median_khr_per_kg": 4000,
+    "observations": 1
+   },
+   "Cabbage (bok choy)": {
+    "median_khr_per_kg": 3750,
+    "observations": 2
+   },
+   "Cabbage (chinese, flowering)": {
+    "median_khr_per_kg": 2750,
+    "observations": 2
+   },
+   "Cabbage (chinese, raw)": {
+    "median_khr_per_kg": 3750,
+    "observations": 2
+   },
+   "Carrots": {
+    "median_khr_per_kg": 2875,
+    "observations": 2
+   },
+   "Cauliflower": {
+    "median_khr_per_kg": 6000,
+    "observations": 1
+   },
+   "Eggplants": {
+    "median_khr_per_kg": 1500,
+    "observations": 1
+   },
+   "Eggplants (white, round)": {
+    "median_khr_per_kg": 2500,
+    "observations": 1
+   },
+   "Garlic": {
+    "median_khr_per_kg": 6000,
+    "observations": 2
+   },
+   "Gourd (ridge)": {
+    "median_khr_per_kg": 3500,
+    "observations": 1
+   },
+   "Ivygourd leaves": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Kale (chinese)": {
+    "median_khr_per_kg": 3500,
+    "observations": 1
+   },
+   "Moringa leaves": {
+    "median_khr_per_kg": 7500,
+    "observations": 1
+   },
+   "Mustard leaves": {
+    "median_khr_per_kg": 2000,
+    "observations": 1
+   },
+   "Papaya (green)": {
+    "median_khr_per_kg": 750,
+    "observations": 1
+   },
+   "Pumpkin": {
+    "median_khr_per_kg": 2500,
+    "observations": 1
+   },
+   "Pumpkin leaves": {
+    "median_khr_per_kg": 5000,
+    "observations": 1
+   },
+   "Snake gourd": {
+    "median_khr_per_kg": 2500,
+    "observations": 1
+   },
+   "Tamarind (ripe)": {
+    "median_khr_per_kg": 4750,
+    "observations": 2
+   },
+   "Water spinach": {
+    "median_khr_per_kg": 2500,
+    "observations": 1
+   },
+   "Wax gourd": {
+    "median_khr_per_kg": 2000,
+    "observations": 1
+   }
+  }
+ },
+ "source": "wfp-food-prices"
+}

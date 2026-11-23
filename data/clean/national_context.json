@@ -1,0 +1,109 @@
+{
+ "dhs_national_2021": {
+  "men_no_health_insurance_pct": 86.8,
+  "men_smoke_tobacco_pct": 20.9,
+  "population_lowest_wealth_quintile_pct": 20,
+  "women_distance_is_problem_pct": 21.3,
+  "women_no_health_insurance_pct": 78.3,
+  "women_overweight_or_obese_pct": 28.3,
+  "women_smoke_tobacco_pct": 1.9
+ },
+ "indicators": {
+  "diabetes_prevalence_agestd_pct": {
+   "code": "NCD_DIABETES_PREVALENCE_AGESTD",
+   "high": 18,
+   "label": "Prevalence of diabetes, age-standardized",
+   "low": 10.6,
+   "source": "who-gho",
+   "value": 14.1,
+   "year": 2022
+  },
+  "health_expenditure_per_capita_usd": {
+   "code": "SH.XPD.CHEX.PC.CD",
+   "label": "Current health expenditure per capita (current US$)",
+   "source": "world-bank-health",
+   "value": 114.6,
+   "year": 2023
+  },
+  "hypertension_30_79_agestd_pct": {
+   "code": "NCD_HYP_PREVALENCE_A",
+   "high": 34.3,
+   "label": "Hypertension among adults aged 30-79 years, prevalence, age-standardized",
+   "low": 18.3,
+   "source": "who-gho",
+   "value": 25.7,
+   "year": 2019
+  },
+  "hypertension_controlled_pct": {
+   "code": "NCD_HYP_CONTROL_A",
+   "high": 37.4,
+   "label": "Hypertension effective treatment coverage (controlled) among adults aged 30-79, age-standardized",
+   "low": 10.2,
+   "source": "who-gho",
+   "value": 22,
+   "year": 2019
+  },
+  "hypertension_diagnosed_pct": {
+   "code": "NCD_HYP_DIAGNOSIS_A",
+   "high": 63.5,
+   "label": "Hypertension: diagnosis coverage among adults aged 30-79 with hypertension, age-standardized",
+   "low": 37.6,
+   "source": "who-gho",
+   "value": 50.8,
+   "year": 2019
+  },
+  "insufficient_physical_activity_pct": {
+   "code": "NCD_PAA",
+   "high": 18.7,
+   "label": "Prevalence of insufficient physical activity among adults aged 18+ years (age-standardized estimate) (%)",
+   "low": 8.9,
+   "source": "who-gho",
+   "value": 13.3,
+   "year": 2022
+  },
+  "ncd_premature_mortality_30_70_pct": {
+   "code": "NCDMORT3070",
+   "high": 35.1,
+   "label": "Probability (%) of dying between age 30 and exact age 70 from any of cardiovascular disease, cancer, diabetes, or chronic respiratory disease",
+   "low": 13.5,
+   "source": "who-gho",
+   "value": 23,
+   "year": 2023
+  },
+  "obesity_adults_agestd_pct": {
+   "code": "NCD_BMI_30A",
+   "high": 5.9,
+   "label": "Obesity among adults, BMI ≥ 30 kg/m2 (age-standardized estimate) (%)",
+   "low": 4.1,
+   "source": "who-gho",
+   "value": 4.9,
+   "year": 2024
+  },
+  "out_of_pocket_share_of_health_spending_pct": {
+   "code": "SH.XPD.OOPC.CH.ZS",
+   "label": "Out-of-pocket expenditure (% of current health expenditure)",
+   "source": "world-bank-health",
+   "value": 60.6,
+   "year": 2023
+  },
+  "overweight_adults_agestd_pct": {
+   "code": "NCD_BMI_25A",
+   "high": 28.8,
+   "label": "Overweight among adults, BMI ≥ 25 kg/m2 (age-standardized estimate) (%)",
+   "low": 24.6,
+   "source": "who-gho",
+   "value": 26.6,
+   "year": 2024
+  },
+  "tobacco_smoking_agestd_pct": {
+   "code": "M_Est_smk_curr_std",
+   "high": 18,
+   "label": "Estimate of current tobacco smoking prevalence (%) (age-standardized)",
+   "low": 11.7,
+   "source": "who-gho",
+   "value": 14.8,
+   "year": 2025
+  }
+ },
+ "note": "National estimates for Cambodia (both sexes). WHO values are modelled estimates with uncertainty ranges. Tobacco: latest year ≤ 2025 (WHO also publishes projections to 2030, not used)."
+}

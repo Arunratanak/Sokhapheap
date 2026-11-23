@@ -1,0 +1,341 @@
+{
+ "datasets": [
+  {
+   "data_year": "2024 (version valid 2018–2024, updated Aug 2026)",
+   "files": [
+    {
+     "bytes": 1015848,
+     "downloaded": "2026-11-22 (facility pipeline, see data/SOURCES.md)",
+     "path": "data/raw/admin/khm_admin1.geojson",
+     "sha256": "f92f8dece61a7b1f8ec4c91da4b8bea4e1fe9001eccea45d689d63e929c822a2",
+     "source_url": null
+    },
+    {
+     "bytes": 2352829,
+     "downloaded": "2026-11-22 (facility pipeline, see data/SOURCES.md)",
+     "path": "data/raw/admin/khm_admin2.geojson",
+     "sha256": "6aafcb6a7b0cf32211f8f638f591f551cef66ab8e46285c6315dc642993f4e5f",
+     "source_url": null
+    },
+    {
+     "bytes": 6415953,
+     "downloaded": "2026-11-22 (facility pipeline, see data/SOURCES.md)",
+     "path": "data/raw/admin/khm_admin3.geojson",
+     "sha256": "8e3e0aba39a2dee643f63a63bc0a6ecb68ec385f6f29c13b82ba939bb49fd4b0",
+     "source_url": null
+    }
+   ],
+   "geographic_level": [
+    "province",
+    "district",
+    "commune"
+   ],
+   "id": "cod-ab",
+   "licence": "CC BY-IGO",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0/igo/",
+   "name": "Cambodia – Subnational Administrative Boundaries (COD-AB)",
+   "notes": null,
+   "publisher": "OCHA / Ministry of Land Management, Urbanization and Construction, via HDX",
+   "url": "https://data.humdata.org/dataset/cod-ab-khm",
+   "used_for": "Province / district / commune polygons and P-codes; the geography every other dataset is joined to"
+  },
+  {
+   "data_year": "2024 (projection)",
+   "files": [
+    {
+     "bytes": 870,
+     "downloaded": "2026-11-23",
+     "path": "data/raw/opendata/cod-ps/khm_admpop_adm0_2024.csv",
+     "sha256": "d3896bd6b3c5bf7adbbdba76152ebfb669414178b19a2dc0cb098524721bebd2",
+     "source_url": "https://data.humdata.org/dataset/770386b0-d7c6-4ea7-abbc-beccac38c192/resource/a282139b-1957-4a1f-890f-bb610f514f71/download/khm_admpop_adm0_2024.csv"
+    },
+    {
+     "bytes": 9138,
+     "downloaded": "2026-11-23",
+     "path": "data/raw/opendata/cod-ps/khm_admpop_adm1_2024.csv",
+     "sha256": "e60ec6f5ec6559d86a9bb9ad937adcfef5c19e698cdeb08185fcf37fea5aa484",
+     "source_url": "https://data.humdata.org/dataset/770386b0-d7c6-4ea7-abbc-beccac38c192/resource/b7476c8d-33d7-4460-9a9a-6d63ba738056/download/khm_admpop_adm1_2024.csv"
+    }
+   ],
+   "geographic_level": [
+    "national",
+    "province"
+   ],
+   "id": "cod-ps",
+   "licence": "CC BY-IGO",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0/igo/",
+   "name": "Cambodia – Subnational Population Statistics (COD-PS)",
+   "notes": null,
+   "publisher": "UNFPA / National Institute of Statistics, via HDX",
+   "url": "https://data.humdata.org/dataset/cod-ps-khm",
+   "used_for": "Official population totals and age structure (cross-check for WorldPop; adult share per province)"
+  },
+  {
+   "data_year": "2025",
+   "files": [
+    {
+     "bytes": 20054137,
+     "downloaded": "2026-11-23",
+     "path": "data/raw/opendata/worldpop/khm_pop_2025_CN_100m_R2025A_v1.tif",
+     "sha256": "0e96c5ef89995645f121d28a94799a34cc9df2cbb06a75cd177a2c21faf1676d",
+     "source_url": "https://data.worldpop.org/GIS/Population/Global_2015_2030/R2025A/2025/KHM/v1/100m/constrained/khm_pop_2025_CN_100m_R2025A_v1.tif"
+    }
+   ],
+   "geographic_level": [
+    "grid"
+   ],
+   "id": "worldpop",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "name": "WorldPop – Cambodia population counts 2025 (constrained, 100 m, R2025A)",
+   "notes": null,
+   "publisher": "WorldPop, University of Southampton, via HDX",
+   "url": "https://data.humdata.org/dataset/worldpop-population-counts-2015-2030-khm",
+   "used_for": "Population per area (district/commune) and population weights for travel times"
+  },
+  {
+   "data_year": "2019 (nominal; 2020 release)",
+   "files": [
+    {
+     "bytes": 4194740,
+     "downloaded": "2026-11-23",
+     "path": "data/raw/opendata/map/motorized_travel_time_to_healthcare_2019.tif",
+     "sha256": "37f0b88ba7d57339196951032a90fe4d970d2c0bea0b014e2f054e6970f2fcee",
+     "source_url": "https://data.malariaatlas.org/geoserver/Accessibility/wcs?service=WCS&version=2.0.1&request=GetCoverage&coverageId=Accessibility__202001_Global_Motorized_Travel_Time_to_Healthcare&subset=Long(102.3,107.7)&subset=Lat(10.4,14.7)&format=image/tiff"
+    },
+    {
+     "bytes": 4194740,
+     "downloaded": "2026-11-23",
+     "path": "data/raw/opendata/map/walking_travel_time_to_healthcare_2019.tif",
+     "sha256": "b6d1427919ef1b839811ffc936e202e33f178b76b74f0f0454657b900ee24ddd",
+     "source_url": "https://data.malariaatlas.org/geoserver/Accessibility/wcs?service=WCS&version=2.0.1&request=GetCoverage&coverageId=Accessibility__202001_Global_Walking_Only_Travel_Time_To_Healthcare&subset=Long(102.3,107.7)&subset=Lat(10.4,14.7)&format=image/tiff"
+    }
+   ],
+   "geographic_level": [
+    "grid"
+   ],
+   "id": "map-travel-time",
+   "licence": "CC BY 4.0 (TODO(VERIFY): not stated by the WCS server; confirm on malariaatlas.org)",
+   "licence_url": null,
+   "name": "Travel time to healthcare, motorised and walking-only (Weiss et al., Nature Medicine 2020)",
+   "notes": "Clipped server-side to 102.3–107.7°E, 10.4–14.7°N via the MAP WCS.",
+   "publisher": "Malaria Atlas Project",
+   "url": "https://data.malariaatlas.org/",
+   "used_for": "Population-weighted travel time to the nearest health facility; % of people > 60 min walking / > 30 min motorised"
+  },
+  {
+   "data_year": "2010",
+   "files": [
+    {
+     "bytes": 2228,
+     "downloaded": "2026-11-22 (facility pipeline, see data/SOURCES.md)",
+     "path": "data/raw/moh/Health/khm_hltfacp_referral_gov.shp",
+     "sha256": "1e4e83b3cb4480a5dc49a0976d5fbfbd9c46cee95fb758c9a957316756ea2a39",
+     "source_url": null
+    },
+    {
+     "bytes": 26868,
+     "downloaded": "2026-11-22 (facility pipeline, see data/SOURCES.md)",
+     "path": "data/raw/moh/Health/khm_hltfacp_healthcenter_gov.shp",
+     "sha256": "82a101f5a1f91efe32c88fb7cf47b935a9bdd5ca34782231de47584e10d818a2",
+     "source_url": null
+    },
+    {
+     "bytes": 2592,
+     "downloaded": "2026-11-22 (facility pipeline, see data/SOURCES.md)",
+     "path": "data/raw/moh/Health/khm_hltfacp_healthpost_gov.shp",
+     "sha256": "65d99b31e7de3f7358a242c3df6d4608cd65019aa6ce0f9b3cd91ed332783b90",
+     "source_url": null
+    }
+   ],
+   "geographic_level": [
+    "points"
+   ],
+   "id": "moh-facilities",
+   "licence": "Other (not stated on HDX)",
+   "licence_url": null,
+   "name": "Cambodia – Health Facilities (Ministry of Health)",
+   "notes": null,
+   "publisher": "Ministry of Health, Cambodia, via HDX",
+   "url": "https://data.humdata.org/dataset/cambodia-health",
+   "used_for": "Facility counts per area, nearest hospital / health centre (via data/clean/facilities.geojson)"
+  },
+  {
+   "data_year": "2026 (snapshot 3 Nov 2026)",
+   "files": [
+    {
+     "bytes": 978868,
+     "downloaded": "2026-11-22 (facility pipeline, see data/SOURCES.md)",
+     "path": "data/raw/osm/health_facilities.geojson",
+     "sha256": "976caca32c24e817c47de8cb4191e1d75c5edbd647071572cedf2b5b5a2644cb",
+     "source_url": null
+    }
+   ],
+   "geographic_level": [
+    "points"
+   ],
+   "id": "osm-facilities",
+   "licence": "ODbL 1.0",
+   "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+   "name": "Health Facilities of Cambodia (OpenStreetMap export)",
+   "notes": null,
+   "publisher": "Humanitarian OpenStreetMap Team, via HDX. © OpenStreetMap contributors",
+   "url": "https://data.humdata.org/dataset/hotosm_khm_health_facilities",
+   "used_for": "Facility counts per area, nearest hospital / health centre (via data/clean/facilities.geojson)"
+  },
+  {
+   "data_year": "2021–22",
+   "files": [
+    {
+     "bytes": 150712,
+     "downloaded": "2026-11-23",
+     "path": "data/raw/opendata/dhs/kh2021dhs_subnational.json",
+     "sha256": "f9949041284aef0eb12e56018fae3f331417f68c38993a79cb94cb70939b71bb",
+     "source_url": "https://api.dhsprogram.com/rest/dhs/data?surveyIds=KH2021DHS&indicatorIds=AN_NUTS_W_OWT,AH_TOBC_M_ANY,AH_TOBC_W_ANY,AH_HINS_W_NON,AH_HINS_M_NON,RH_PAHC_W_DIS,HC_WIXQ_P_LOW&breakdown=subnational&perpage=1000&f=json"
+    },
+    {
+     "bytes": 4483,
+     "downloaded": "2026-11-23",
+     "path": "data/raw/opendata/dhs/kh2021dhs_national.json",
+     "sha256": "69161db13eab92f76c9a992ab6384c03f55521f2155c26e3ff983da177b9fc2d",
+     "source_url": "https://api.dhsprogram.com/rest/dhs/data?surveyIds=KH2021DHS&indicatorIds=AN_NUTS_W_OWT,AH_TOBC_M_ANY,AH_TOBC_W_ANY,AH_HINS_W_NON,AH_HINS_M_NON,RH_PAHC_W_DIS,HC_WIXQ_P_LOW&breakdown=national&perpage=1000&f=json"
+    }
+   ],
+   "geographic_level": [
+    "national",
+    "province"
+   ],
+   "id": "dhs-2021",
+   "licence": "DHS Program terms: published aggregated indicators, free to use with citation (no microdata used)",
+   "licence_url": "https://dhsprogram.com/data/Terms-of-Use.cfm",
+   "name": "Cambodia Demographic and Health Survey 2021–22 – subnational indicators (aggregated)",
+   "notes": "Indicators: AN_NUTS_W_OWT, AH_TOBC_M_ANY, AH_TOBC_W_ANY, AH_HINS_W_NON, AH_HINS_M_NON, RH_PAHC_W_DIS, HC_WIXQ_P_LOW. Ages 15–49 only.",
+   "publisher": "The DHS Program (ICF) / National Institute of Statistics / Ministry of Health",
+   "url": "https://api.dhsprogram.com/",
+   "used_for": "Province risk factors (women overweight/obese, smoking), access (distance problem, no insurance), poverty (lowest wealth quintile)"
+  },
+  {
+   "data_year": "2019–2025 (per indicator)",
+   "files": [
+    {
+     "bytes": 1691568,
+     "downloaded": "2026-11-23",
+     "path": "data/raw/opendata/who/noncommunicable_diseases_indicators_khm.csv",
+     "sha256": "4ceb8f06b128b58ab3b8de220a86c5adb28a3592f073c48bff8bbd797e561a56",
+     "source_url": "https://data.humdata.org/dataset/332d719b-b3e1-4c58-8bf7-faec61e2ac85/resource/ca9aa247-df1f-4240-99d4-df3f9a09de07/download/noncommunicable_diseases_indicators_khm.csv"
+    },
+    {
+     "bytes": 54424,
+     "downloaded": "2026-11-23",
+     "path": "data/raw/opendata/who/gho_NCD_HYP_PREVALENCE_A.json",
+     "sha256": "b734ede86c9140c59a01042c3c2d2c2f6aeaedcbed024cc1c0863e55d6b8084c",
+     "source_url": "https://ghoapi.azureedge.net/api/NCD_HYP_PREVALENCE_A?$filter=SpatialDim%20eq%20'KHM'"
+    },
+    {
+     "bytes": 54324,
+     "downloaded": "2026-11-23",
+     "path": "data/raw/opendata/who/gho_NCD_HYP_DIAGNOSIS_A.json",
+     "sha256": "4c21d9ae6e77856b39a6818d4cb34c9d9b6dde5eb07f923217a628c5208e437c",
+     "source_url": "https://ghoapi.azureedge.net/api/NCD_HYP_DIAGNOSIS_A?$filter=SpatialDim%20eq%20'KHM'"
+    },
+    {
+     "bytes": 53907,
+     "downloaded": "2026-11-23",
+     "path": "data/raw/opendata/who/gho_NCD_HYP_CONTROL_A.json",
+     "sha256": "d7d0e5f1fb8c8f32527e48dbbe237d0e57450f8c367a95584e65c62bbc59dc57",
+     "source_url": "https://ghoapi.azureedge.net/api/NCD_HYP_CONTROL_A?$filter=SpatialDim%20eq%20'KHM'"
+    }
+   ],
+   "geographic_level": [
+    "national"
+   ],
+   "id": "who-gho",
+   "licence": "CC BY-NC-SA 3.0 IGO",
+   "licence_url": "https://creativecommons.org/licenses/by-nc-sa/3.0/igo/",
+   "name": "WHO Global Health Observatory – Cambodia noncommunicable disease indicators",
+   "notes": null,
+   "publisher": "World Health Organization (HDX 'Cambodia - Health Indicators' + GHO OData API)",
+   "url": "https://data.humdata.org/dataset/who-data-for-khm",
+   "used_for": "National NCD context (diabetes, hypertension, overweight, obesity, inactivity, tobacco, NCD mortality)"
+  },
+  {
+   "data_year": "to 2025 (per indicator)",
+   "files": [
+    {
+     "bytes": 972086,
+     "downloaded": "2026-11-23",
+     "path": "data/raw/opendata/worldbank/health_khm.csv",
+     "sha256": "e103c298b626fdbc7ec3f1739a1bd15775c388ce9379416f01fd01bd02d711de",
+     "source_url": "https://data.humdata.org/dataset/a10e7a77-0fa5-402a-9beb-821f06a2fb20/resource/4edc58db-ee3a-4a70-ac11-31f321585004/download/health_khm.csv"
+    }
+   ],
+   "geographic_level": [
+    "national"
+   ],
+   "id": "world-bank-health",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "name": "Cambodia – Health (World Bank indicators)",
+   "notes": null,
+   "publisher": "World Bank Group, via HDX",
+   "url": "https://data.humdata.org/dataset/world-bank-health-indicators-for-cambodia",
+   "used_for": "National health spending context (per capita, out-of-pocket)"
+  },
+  {
+   "data_year": "2026 (Feb 2026)",
+   "files": [
+    {
+     "bytes": 463435,
+     "downloaded": "2026-11-23",
+     "path": "data/raw/opendata/heigit/KHM_primary_healthcare_access_wide.csv",
+     "sha256": "e4f23b0b37a1e6a852dd06c3f56a0db1d0cc7eb5dc2351f63ce4f50ec23f65fe",
+     "source_url": "https://hot.storage.heigit.org/heigit-hdx-public/access/khm/KHM_primary_healthcare_access_wide.csv"
+    }
+   ],
+   "geographic_level": [
+    "province",
+    "district"
+   ],
+   "id": "heigit-access",
+   "licence": "CC BY-SA",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "name": "Cambodia – Accessibility Indicators (primary health care and hospitals, by car)",
+   "notes": null,
+   "publisher": "HeiGIT (Heidelberg Institute for Geoinformation Technology), via HDX",
+   "url": "https://data.humdata.org/dataset/cambodia-accessibility-indicators",
+   "used_for": "Cross-check only: share of people within 30 / 60 min by car of primary health care (compared with MAP)"
+  },
+  {
+   "data_year": "2025–2026 (last 12 months of data used)",
+   "files": [
+    {
+     "bytes": 13131971,
+     "downloaded": "2026-11-23",
+     "path": "data/raw/opendata/wfp/wfp_food_prices_khm.csv",
+     "sha256": "71ddf4e8c555665625e0c875ed3dc9a4378f8ad2fc834a8668c669a5994eb371",
+     "source_url": "https://data.humdata.org/dataset/086162d6-7ad7-447d-83cc-1535201aa584/resource/3ff6e50c-0e28-422f-a181-d7a17e57174a/download/wfp_food_prices_khm.csv"
+    }
+   ],
+   "geographic_level": [
+    "market points",
+    "province"
+   ],
+   "id": "wfp-food-prices",
+   "licence": "CC BY-IGO",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0/igo/",
+   "name": "Cambodia – Food Prices",
+   "notes": null,
+   "publisher": "WFP – World Food Programme, via HDX",
+   "url": "https://data.humdata.org/dataset/wfp-food-prices-for-cambodia",
+   "used_for": "Typical local vegetable and fruit prices per province (optional diet tip). No data for Kep."
+  }
+ ],
+ "derived_inputs": [
+  {
+   "built_by": "npm run data:clean",
+   "path": "data/clean/facilities.geojson",
+   "sha256": "a5910c7294cff312927138588fedc1ed32407581956e04ea072f028f845d357c"
+  }
+ ],
+ "note": "Provenance of every open dataset used by SokhaPheap. SHA-256 of each raw input file as used for the current data/clean outputs."
+}

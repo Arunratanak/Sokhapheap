@@ -1,0 +1,5984 @@
+{
+ "areas": [
+  {
+   "adults_20plus_est": 138944,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.3,
+    "men_smoke_tobacco_pct": 27.7,
+    "population_lowest_wealth_quintile_pct": 17.7,
+    "women_distance_is_problem_pct": 44.5,
+    "women_no_health_insurance_pct": 86.2,
+    "women_overweight_or_obese_pct": 25.3,
+    "women_smoke_tobacco_pct": 5.7
+   },
+   "facilities": {
+    "clinic": 2,
+    "health_centre": 14,
+    "health_post": 1,
+    "hospital": 1,
+    "other": 0,
+    "total": 18
+   },
+   "facilities_per_10k": 0.82,
+   "level": "district",
+   "name_en": "Mongkol Borei",
+   "pcode": "KH0102",
+   "pct_motor_over_30_min": 27.4,
+   "pct_walk_over_60_min": 99.2,
+   "population": 219472,
+   "province_pcode": "KH01",
+   "travel_motor_mean_min": 25.5,
+   "travel_walk_mean_min": 197.2
+  },
+  {
+   "adults_20plus_est": 48542,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.3,
+    "men_smoke_tobacco_pct": 27.7,
+    "population_lowest_wealth_quintile_pct": 17.7,
+    "women_distance_is_problem_pct": 44.5,
+    "women_no_health_insurance_pct": 86.2,
+    "women_overweight_or_obese_pct": 25.3,
+    "women_smoke_tobacco_pct": 5.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 5,
+    "health_post": 1,
+    "hospital": 0,
+    "other": 0,
+    "total": 6
+   },
+   "facilities_per_10k": 0.78,
+   "level": "district",
+   "name_en": "Phnum Srok",
+   "pcode": "KH0103",
+   "pct_motor_over_30_min": 88.4,
+   "pct_walk_over_60_min": 100,
+   "population": 76676,
+   "province_pcode": "KH01",
+   "travel_motor_mean_min": 41.9,
+   "travel_walk_mean_min": 291.9
+  },
+  {
+   "adults_20plus_est": 92023,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.3,
+    "men_smoke_tobacco_pct": 27.7,
+    "population_lowest_wealth_quintile_pct": 17.7,
+    "women_distance_is_problem_pct": 44.5,
+    "women_no_health_insurance_pct": 86.2,
+    "women_overweight_or_obese_pct": 25.3,
+    "women_smoke_tobacco_pct": 5.7
+   },
+   "facilities": {
+    "clinic": 1,
+    "health_centre": 8,
+    "health_post": 3,
+    "hospital": 1,
+    "other": 0,
+    "total": 13
+   },
+   "facilities_per_10k": 0.89,
+   "level": "district",
+   "name_en": "Preah Netr Preah",
+   "pcode": "KH0104",
+   "pct_motor_over_30_min": 37.9,
+   "pct_walk_over_60_min": 87.3,
+   "population": 145356,
+   "province_pcode": "KH01",
+   "travel_motor_mean_min": 23.2,
+   "travel_walk_mean_min": 171
+  },
+  {
+   "adults_20plus_est": 46392,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.3,
+    "men_smoke_tobacco_pct": 27.7,
+    "population_lowest_wealth_quintile_pct": 17.7,
+    "women_distance_is_problem_pct": 44.5,
+    "women_no_health_insurance_pct": 86.2,
+    "women_overweight_or_obese_pct": 25.3,
+    "women_smoke_tobacco_pct": 5.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 4,
+    "health_post": 3,
+    "hospital": 0,
+    "other": 0,
+    "total": 7
+   },
+   "facilities_per_10k": 0.96,
+   "level": "district",
+   "name_en": "Ou Chrov",
+   "pcode": "KH0105",
+   "pct_motor_over_30_min": 52.7,
+   "pct_walk_over_60_min": 100,
+   "population": 73280,
+   "province_pcode": "KH01",
+   "travel_motor_mean_min": 34.1,
+   "travel_walk_mean_min": 245.2
+  },
+  {
+   "adults_20plus_est": 73328,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.3,
+    "men_smoke_tobacco_pct": 27.7,
+    "population_lowest_wealth_quintile_pct": 17.7,
+    "women_distance_is_problem_pct": 44.5,
+    "women_no_health_insurance_pct": 86.2,
+    "women_overweight_or_obese_pct": 25.3,
+    "women_smoke_tobacco_pct": 5.7
+   },
+   "facilities": {
+    "clinic": 7,
+    "health_centre": 6,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 14
+   },
+   "facilities_per_10k": 1.21,
+   "level": "district",
+   "name_en": "Serei Saophoan",
+   "pcode": "KH0106",
+   "pct_motor_over_30_min": 0.1,
+   "pct_walk_over_60_min": 19.4,
+   "population": 115827,
+   "province_pcode": "KH01",
+   "travel_motor_mean_min": 4.8,
+   "travel_walk_mean_min": 35.6
+  },
+  {
+   "adults_20plus_est": 56539,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.3,
+    "men_smoke_tobacco_pct": 27.7,
+    "population_lowest_wealth_quintile_pct": 17.7,
+    "women_distance_is_problem_pct": 44.5,
+    "women_no_health_insurance_pct": 86.2,
+    "women_overweight_or_obese_pct": 25.3,
+    "women_smoke_tobacco_pct": 5.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 5,
+    "health_post": 1,
+    "hospital": 2,
+    "other": 0,
+    "total": 8
+   },
+   "facilities_per_10k": 0.9,
+   "level": "district",
+   "name_en": "Thma Puok",
+   "pcode": "KH0107",
+   "pct_motor_over_30_min": 48,
+   "pct_walk_over_60_min": 84.9,
+   "population": 89308,
+   "province_pcode": "KH01",
+   "travel_motor_mean_min": 27.6,
+   "travel_walk_mean_min": 149.3
+  },
+  {
+   "adults_20plus_est": 60015,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.3,
+    "men_smoke_tobacco_pct": 27.7,
+    "population_lowest_wealth_quintile_pct": 17.7,
+    "women_distance_is_problem_pct": 44.5,
+    "women_no_health_insurance_pct": 86.2,
+    "women_overweight_or_obese_pct": 25.3,
+    "women_smoke_tobacco_pct": 5.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 6,
+    "health_post": 1,
+    "hospital": 0,
+    "other": 0,
+    "total": 7
+   },
+   "facilities_per_10k": 0.74,
+   "level": "district",
+   "name_en": "Svay Chek",
+   "pcode": "KH0108",
+   "pct_motor_over_30_min": 81.5,
+   "pct_walk_over_60_min": 100,
+   "population": 94798,
+   "province_pcode": "KH01",
+   "travel_motor_mean_min": 41.3,
+   "travel_walk_mean_min": 273.8
+  },
+  {
+   "adults_20plus_est": 41164,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.3,
+    "men_smoke_tobacco_pct": 27.7,
+    "population_lowest_wealth_quintile_pct": 17.7,
+    "women_distance_is_problem_pct": 44.5,
+    "women_no_health_insurance_pct": 86.2,
+    "women_overweight_or_obese_pct": 25.3,
+    "women_smoke_tobacco_pct": 5.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 3,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.46,
+   "level": "district",
+   "name_en": "Malai",
+   "pcode": "KH0109",
+   "pct_motor_over_30_min": 99,
+   "pct_walk_over_60_min": 100,
+   "population": 65022,
+   "province_pcode": "KH01",
+   "travel_motor_mean_min": 59.5,
+   "travel_walk_mean_min": 228.5
+  },
+  {
+   "adults_20plus_est": 73074,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.3,
+    "men_smoke_tobacco_pct": 27.7,
+    "population_lowest_wealth_quintile_pct": 17.7,
+    "women_distance_is_problem_pct": 44.5,
+    "women_no_health_insurance_pct": 86.2,
+    "women_overweight_or_obese_pct": 25.3,
+    "women_smoke_tobacco_pct": 5.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 4,
+    "health_post": 1,
+    "hospital": 1,
+    "other": 0,
+    "total": 6
+   },
+   "facilities_per_10k": 0.52,
+   "level": "district",
+   "name_en": "Paoy Paet",
+   "pcode": "KH0110",
+   "pct_motor_over_30_min": 97.6,
+   "pct_walk_over_60_min": 100,
+   "population": 115425,
+   "province_pcode": "KH01",
+   "travel_motor_mean_min": 51.2,
+   "travel_walk_mean_min": 145.5
+  },
+  {
+   "adults_20plus_est": 61683,
+   "dhs": {
+    "men_no_health_insurance_pct": 95.8,
+    "men_smoke_tobacco_pct": 19.1,
+    "population_lowest_wealth_quintile_pct": 25.2,
+    "women_distance_is_problem_pct": 18.2,
+    "women_no_health_insurance_pct": 77.7,
+    "women_overweight_or_obese_pct": 28,
+    "women_smoke_tobacco_pct": 1.4
+   },
+   "facilities": {
+    "clinic": 3,
+    "health_centre": 6,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 10
+   },
+   "facilities_per_10k": 0.99,
+   "level": "district",
+   "name_en": "Banan",
+   "pcode": "KH0201",
+   "pct_motor_over_30_min": 50,
+   "pct_walk_over_60_min": 100,
+   "population": 100948,
+   "province_pcode": "KH02",
+   "travel_motor_mean_min": 30.5,
+   "travel_walk_mean_min": 242.6
+  },
+  {
+   "adults_20plus_est": 75836,
+   "dhs": {
+    "men_no_health_insurance_pct": 95.8,
+    "men_smoke_tobacco_pct": 19.1,
+    "population_lowest_wealth_quintile_pct": 25.2,
+    "women_distance_is_problem_pct": 18.2,
+    "women_no_health_insurance_pct": 77.7,
+    "women_overweight_or_obese_pct": 28,
+    "women_smoke_tobacco_pct": 1.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 10,
+    "health_post": 0,
+    "hospital": 2,
+    "other": 0,
+    "total": 12
+   },
+   "facilities_per_10k": 0.97,
+   "level": "district",
+   "name_en": "Thma Koul",
+   "pcode": "KH0202",
+   "pct_motor_over_30_min": 69.1,
+   "pct_walk_over_60_min": 99.7,
+   "population": 124111,
+   "province_pcode": "KH02",
+   "travel_motor_mean_min": 33.1,
+   "travel_walk_mean_min": 243
+  },
+  {
+   "adults_20plus_est": 85241,
+   "dhs": {
+    "men_no_health_insurance_pct": 95.8,
+    "men_smoke_tobacco_pct": 19.1,
+    "population_lowest_wealth_quintile_pct": 25.2,
+    "women_distance_is_problem_pct": 18.2,
+    "women_no_health_insurance_pct": 77.7,
+    "women_overweight_or_obese_pct": 28,
+    "women_smoke_tobacco_pct": 1.4
+   },
+   "facilities": {
+    "clinic": 12,
+    "health_centre": 6,
+    "health_post": 0,
+    "hospital": 5,
+    "other": 0,
+    "total": 23
+   },
+   "facilities_per_10k": 1.65,
+   "level": "district",
+   "name_en": "Battambang",
+   "pcode": "KH0203",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 9.4,
+   "population": 139502,
+   "province_pcode": "KH02",
+   "travel_motor_mean_min": 2.8,
+   "travel_walk_mean_min": 22.2
+  },
+  {
+   "adults_20plus_est": 65890,
+   "dhs": {
+    "men_no_health_insurance_pct": 95.8,
+    "men_smoke_tobacco_pct": 19.1,
+    "population_lowest_wealth_quintile_pct": 25.2,
+    "women_distance_is_problem_pct": 18.2,
+    "women_no_health_insurance_pct": 77.7,
+    "women_overweight_or_obese_pct": 28,
+    "women_smoke_tobacco_pct": 1.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 8,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 8
+   },
+   "facilities_per_10k": 0.74,
+   "level": "district",
+   "name_en": "Bavel",
+   "pcode": "KH0204",
+   "pct_motor_over_30_min": 100,
+   "pct_walk_over_60_min": 100,
+   "population": 107833,
+   "province_pcode": "KH02",
+   "travel_motor_mean_min": 57.3,
+   "travel_walk_mean_min": 450.3
+  },
+  {
+   "adults_20plus_est": 50819,
+   "dhs": {
+    "men_no_health_insurance_pct": 95.8,
+    "men_smoke_tobacco_pct": 19.1,
+    "population_lowest_wealth_quintile_pct": 25.2,
+    "women_distance_is_problem_pct": 18.2,
+    "women_no_health_insurance_pct": 77.7,
+    "women_overweight_or_obese_pct": 28,
+    "women_smoke_tobacco_pct": 1.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 7,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 8
+   },
+   "facilities_per_10k": 0.96,
+   "level": "district",
+   "name_en": "Aek Phnum",
+   "pcode": "KH0205",
+   "pct_motor_over_30_min": 21.9,
+   "pct_walk_over_60_min": 75.6,
+   "population": 83168,
+   "province_pcode": "KH02",
+   "travel_motor_mean_min": 31.3,
+   "travel_walk_mean_min": 144.9
+  },
+  {
+   "adults_20plus_est": 74123,
+   "dhs": {
+    "men_no_health_insurance_pct": 95.8,
+    "men_smoke_tobacco_pct": 19.1,
+    "population_lowest_wealth_quintile_pct": 25.2,
+    "women_distance_is_problem_pct": 18.2,
+    "women_no_health_insurance_pct": 77.7,
+    "women_overweight_or_obese_pct": 28,
+    "women_smoke_tobacco_pct": 1.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 9,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 10
+   },
+   "facilities_per_10k": 0.82,
+   "level": "district",
+   "name_en": "Moung Ruessei",
+   "pcode": "KH0206",
+   "pct_motor_over_30_min": 100,
+   "pct_walk_over_60_min": 100,
+   "population": 121307,
+   "province_pcode": "KH02",
+   "travel_motor_mean_min": 68.7,
+   "travel_walk_mean_min": 510.8
+  },
+  {
+   "adults_20plus_est": 27807,
+   "dhs": {
+    "men_no_health_insurance_pct": 95.8,
+    "men_smoke_tobacco_pct": 19.1,
+    "population_lowest_wealth_quintile_pct": 25.2,
+    "women_distance_is_problem_pct": 18.2,
+    "women_no_health_insurance_pct": 77.7,
+    "women_overweight_or_obese_pct": 28,
+    "women_smoke_tobacco_pct": 1.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 3,
+    "health_post": 1,
+    "hospital": 1,
+    "other": 0,
+    "total": 5
+   },
+   "facilities_per_10k": 1.1,
+   "level": "district",
+   "name_en": "Rotonak Mondol",
+   "pcode": "KH0207",
+   "pct_motor_over_30_min": 99.2,
+   "pct_walk_over_60_min": 100,
+   "population": 45508,
+   "province_pcode": "KH02",
+   "travel_motor_mean_min": 51.6,
+   "travel_walk_mean_min": 379.6
+  },
+  {
+   "adults_20plus_est": 79105,
+   "dhs": {
+    "men_no_health_insurance_pct": 95.8,
+    "men_smoke_tobacco_pct": 19.1,
+    "population_lowest_wealth_quintile_pct": 25.2,
+    "women_distance_is_problem_pct": 18.2,
+    "women_no_health_insurance_pct": 77.7,
+    "women_overweight_or_obese_pct": 28,
+    "women_smoke_tobacco_pct": 1.4
+   },
+   "facilities": {
+    "clinic": 2,
+    "health_centre": 10,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 12
+   },
+   "facilities_per_10k": 0.93,
+   "level": "district",
+   "name_en": "Sangkae",
+   "pcode": "KH0208",
+   "pct_motor_over_30_min": 4.1,
+   "pct_walk_over_60_min": 60.4,
+   "population": 129461,
+   "province_pcode": "KH02",
+   "travel_motor_mean_min": 12.3,
+   "travel_walk_mean_min": 93.9
+  },
+  {
+   "adults_20plus_est": 31231,
+   "dhs": {
+    "men_no_health_insurance_pct": 95.8,
+    "men_smoke_tobacco_pct": 19.1,
+    "population_lowest_wealth_quintile_pct": 25.2,
+    "women_distance_is_problem_pct": 18.2,
+    "women_no_health_insurance_pct": 77.7,
+    "women_overweight_or_obese_pct": 28,
+    "women_smoke_tobacco_pct": 1.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 4,
+    "health_post": 2,
+    "hospital": 2,
+    "other": 0,
+    "total": 8
+   },
+   "facilities_per_10k": 1.57,
+   "level": "district",
+   "name_en": "Samlout",
+   "pcode": "KH0209",
+   "pct_motor_over_30_min": 100,
+   "pct_walk_over_60_min": 100,
+   "population": 51111,
+   "province_pcode": "KH02",
+   "travel_motor_mean_min": 61.2,
+   "travel_walk_mean_min": 355.8
+  },
+  {
+   "adults_20plus_est": 26542,
+   "dhs": {
+    "men_no_health_insurance_pct": 95.8,
+    "men_smoke_tobacco_pct": 19.1,
+    "population_lowest_wealth_quintile_pct": 25.2,
+    "women_distance_is_problem_pct": 18.2,
+    "women_no_health_insurance_pct": 77.7,
+    "women_overweight_or_obese_pct": 28,
+    "women_smoke_tobacco_pct": 1.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.69,
+   "level": "district",
+   "name_en": "Sampov Lun",
+   "pcode": "KH0210",
+   "pct_motor_over_30_min": 98.2,
+   "pct_walk_over_60_min": 100,
+   "population": 43438,
+   "province_pcode": "KH02",
+   "travel_motor_mean_min": 68.6,
+   "travel_walk_mean_min": 260.1
+  },
+  {
+   "adults_20plus_est": 31869,
+   "dhs": {
+    "men_no_health_insurance_pct": 95.8,
+    "men_smoke_tobacco_pct": 19.1,
+    "population_lowest_wealth_quintile_pct": 25.2,
+    "women_distance_is_problem_pct": 18.2,
+    "women_no_health_insurance_pct": 77.7,
+    "women_overweight_or_obese_pct": 28,
+    "women_smoke_tobacco_pct": 1.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 3,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 4
+   },
+   "facilities_per_10k": 0.77,
+   "level": "district",
+   "name_en": "Phnum Proek",
+   "pcode": "KH0211",
+   "pct_motor_over_30_min": 93.1,
+   "pct_walk_over_60_min": 100,
+   "population": 52155,
+   "province_pcode": "KH02",
+   "travel_motor_mean_min": 68.3,
+   "travel_walk_mean_min": 261.7
+  },
+  {
+   "adults_20plus_est": 37884,
+   "dhs": {
+    "men_no_health_insurance_pct": 95.8,
+    "men_smoke_tobacco_pct": 19.1,
+    "population_lowest_wealth_quintile_pct": 25.2,
+    "women_distance_is_problem_pct": 18.2,
+    "women_no_health_insurance_pct": 77.7,
+    "women_overweight_or_obese_pct": 28,
+    "women_smoke_tobacco_pct": 1.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 3,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.48,
+   "level": "district",
+   "name_en": "Kamrieng",
+   "pcode": "KH0212",
+   "pct_motor_over_30_min": 97,
+   "pct_walk_over_60_min": 95.5,
+   "population": 61999,
+   "province_pcode": "KH02",
+   "travel_motor_mean_min": 50.9,
+   "travel_walk_mean_min": 149.9
+  },
+  {
+   "adults_20plus_est": 21570,
+   "dhs": {
+    "men_no_health_insurance_pct": 95.8,
+    "men_smoke_tobacco_pct": 19.1,
+    "population_lowest_wealth_quintile_pct": 25.2,
+    "women_distance_is_problem_pct": 18.2,
+    "women_no_health_insurance_pct": 77.7,
+    "women_overweight_or_obese_pct": 28,
+    "women_smoke_tobacco_pct": 1.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 2
+   },
+   "facilities_per_10k": 0.57,
+   "level": "district",
+   "name_en": "Koas Krala",
+   "pcode": "KH0213",
+   "pct_motor_over_30_min": 100,
+   "pct_walk_over_60_min": 100,
+   "population": 35301,
+   "province_pcode": "KH02",
+   "travel_motor_mean_min": 53.3,
+   "travel_walk_mean_min": 411.2
+  },
+  {
+   "adults_20plus_est": 30217,
+   "dhs": {
+    "men_no_health_insurance_pct": 95.8,
+    "men_smoke_tobacco_pct": 19.1,
+    "population_lowest_wealth_quintile_pct": 25.2,
+    "women_distance_is_problem_pct": 18.2,
+    "women_no_health_insurance_pct": 77.7,
+    "women_overweight_or_obese_pct": 28,
+    "women_smoke_tobacco_pct": 1.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 2
+   },
+   "facilities_per_10k": 0.4,
+   "level": "district",
+   "name_en": "Rukh Kiri",
+   "pcode": "KH0214",
+   "pct_motor_over_30_min": 100,
+   "pct_walk_over_60_min": 100,
+   "population": 49452,
+   "province_pcode": "KH02",
+   "travel_motor_mean_min": 96.1,
+   "travel_walk_mean_min": 663.5
+  },
+  {
+   "adults_20plus_est": 79103,
+   "dhs": {
+    "men_no_health_insurance_pct": 92.5,
+    "men_smoke_tobacco_pct": 25.2,
+    "population_lowest_wealth_quintile_pct": 19.9,
+    "women_distance_is_problem_pct": 3.1,
+    "women_no_health_insurance_pct": 80.9,
+    "women_overweight_or_obese_pct": 34.2,
+    "women_smoke_tobacco_pct": 0.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 6,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 7
+   },
+   "facilities_per_10k": 0.56,
+   "level": "district",
+   "name_en": "Batheay",
+   "pcode": "KH0301",
+   "pct_motor_over_30_min": 36.8,
+   "pct_walk_over_60_min": 100,
+   "population": 125065,
+   "province_pcode": "KH03",
+   "travel_motor_mean_min": 28.4,
+   "travel_walk_mean_min": 215.3
+  },
+  {
+   "adults_20plus_est": 75165,
+   "dhs": {
+    "men_no_health_insurance_pct": 92.5,
+    "men_smoke_tobacco_pct": 25.2,
+    "population_lowest_wealth_quintile_pct": 19.9,
+    "women_distance_is_problem_pct": 3.1,
+    "women_no_health_insurance_pct": 80.9,
+    "women_overweight_or_obese_pct": 34.2,
+    "women_smoke_tobacco_pct": 0.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 11,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 12
+   },
+   "facilities_per_10k": 1.01,
+   "level": "district",
+   "name_en": "Chamkar Leu",
+   "pcode": "KH0302",
+   "pct_motor_over_30_min": 84.6,
+   "pct_walk_over_60_min": 100,
+   "population": 118838,
+   "province_pcode": "KH03",
+   "travel_motor_mean_min": 38.2,
+   "travel_walk_mean_min": 309.2
+  },
+  {
+   "adults_20plus_est": 68670,
+   "dhs": {
+    "men_no_health_insurance_pct": 92.5,
+    "men_smoke_tobacco_pct": 25.2,
+    "population_lowest_wealth_quintile_pct": 19.9,
+    "women_distance_is_problem_pct": 3.1,
+    "women_no_health_insurance_pct": 80.9,
+    "women_overweight_or_obese_pct": 34.2,
+    "women_smoke_tobacco_pct": 0.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 7,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 8
+   },
+   "facilities_per_10k": 0.74,
+   "level": "district",
+   "name_en": "Cheung Prey",
+   "pcode": "KH0303",
+   "pct_motor_over_30_min": 0.2,
+   "pct_walk_over_60_min": 64.9,
+   "population": 108569,
+   "province_pcode": "KH03",
+   "travel_motor_mean_min": 11.9,
+   "travel_walk_mean_min": 92.4
+  },
+  {
+   "adults_20plus_est": 28321,
+   "dhs": {
+    "men_no_health_insurance_pct": 92.5,
+    "men_smoke_tobacco_pct": 25.2,
+    "population_lowest_wealth_quintile_pct": 19.9,
+    "women_distance_is_problem_pct": 3.1,
+    "women_no_health_insurance_pct": 80.9,
+    "women_overweight_or_obese_pct": 34.2,
+    "women_smoke_tobacco_pct": 0.4
+   },
+   "facilities": {
+    "clinic": 6,
+    "health_centre": 3,
+    "health_post": 0,
+    "hospital": 2,
+    "other": 0,
+    "total": 11
+   },
+   "facilities_per_10k": 2.46,
+   "level": "district",
+   "name_en": "Kampong Cham",
+   "pcode": "KH0305",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 0.1,
+   "population": 44777,
+   "province_pcode": "KH03",
+   "travel_motor_mean_min": 1.4,
+   "travel_walk_mean_min": 11.4
+  },
+  {
+   "adults_20plus_est": 69988,
+   "dhs": {
+    "men_no_health_insurance_pct": 92.5,
+    "men_smoke_tobacco_pct": 25.2,
+    "population_lowest_wealth_quintile_pct": 19.9,
+    "women_distance_is_problem_pct": 3.1,
+    "women_no_health_insurance_pct": 80.9,
+    "women_overweight_or_obese_pct": 34.2,
+    "women_smoke_tobacco_pct": 0.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 9,
+    "health_post": 0,
+    "hospital": 2,
+    "other": 0,
+    "total": 11
+   },
+   "facilities_per_10k": 0.99,
+   "level": "district",
+   "name_en": "Kampong Siem",
+   "pcode": "KH0306",
+   "pct_motor_over_30_min": 3.6,
+   "pct_walk_over_60_min": 67.6,
+   "population": 110654,
+   "province_pcode": "KH03",
+   "travel_motor_mean_min": 11.5,
+   "travel_walk_mean_min": 94.8
+  },
+  {
+   "adults_20plus_est": 63092,
+   "dhs": {
+    "men_no_health_insurance_pct": 92.5,
+    "men_smoke_tobacco_pct": 25.2,
+    "population_lowest_wealth_quintile_pct": 19.9,
+    "women_distance_is_problem_pct": 3.1,
+    "women_no_health_insurance_pct": 80.9,
+    "women_overweight_or_obese_pct": 34.2,
+    "women_smoke_tobacco_pct": 0.4
+   },
+   "facilities": {
+    "clinic": 1,
+    "health_centre": 8,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 9
+   },
+   "facilities_per_10k": 0.9,
+   "level": "district",
+   "name_en": "Kang Meas",
+   "pcode": "KH0307",
+   "pct_motor_over_30_min": 85.8,
+   "pct_walk_over_60_min": 100,
+   "population": 99751,
+   "province_pcode": "KH03",
+   "travel_motor_mean_min": 40.4,
+   "travel_walk_mean_min": 293.2
+  },
+  {
+   "adults_20plus_est": 35484,
+   "dhs": {
+    "men_no_health_insurance_pct": 92.5,
+    "men_smoke_tobacco_pct": 25.2,
+    "population_lowest_wealth_quintile_pct": 19.9,
+    "women_distance_is_problem_pct": 3.1,
+    "women_no_health_insurance_pct": 80.9,
+    "women_overweight_or_obese_pct": 34.2,
+    "women_smoke_tobacco_pct": 0.4
+   },
+   "facilities": {
+    "clinic": 1,
+    "health_centre": 7,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 8
+   },
+   "facilities_per_10k": 1.43,
+   "level": "district",
+   "name_en": "Kaoh Soutin",
+   "pcode": "KH0308",
+   "pct_motor_over_30_min": 7,
+   "pct_walk_over_60_min": 100,
+   "population": 56101,
+   "province_pcode": "KH03",
+   "travel_motor_mean_min": 20.5,
+   "travel_walk_mean_min": 181.6
+  },
+  {
+   "adults_20plus_est": 98957,
+   "dhs": {
+    "men_no_health_insurance_pct": 92.5,
+    "men_smoke_tobacco_pct": 25.2,
+    "population_lowest_wealth_quintile_pct": 19.9,
+    "women_distance_is_problem_pct": 3.1,
+    "women_no_health_insurance_pct": 80.9,
+    "women_overweight_or_obese_pct": 34.2,
+    "women_smoke_tobacco_pct": 0.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 11,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 12
+   },
+   "facilities_per_10k": 0.77,
+   "level": "district",
+   "name_en": "Prey Chhor",
+   "pcode": "KH0313",
+   "pct_motor_over_30_min": 28.7,
+   "pct_walk_over_60_min": 99.4,
+   "population": 156455,
+   "province_pcode": "KH03",
+   "travel_motor_mean_min": 25,
+   "travel_walk_mean_min": 193.2
+  },
+  {
+   "adults_20plus_est": 60446,
+   "dhs": {
+    "men_no_health_insurance_pct": 92.5,
+    "men_smoke_tobacco_pct": 25.2,
+    "population_lowest_wealth_quintile_pct": 19.9,
+    "women_distance_is_problem_pct": 3.1,
+    "women_no_health_insurance_pct": 80.9,
+    "women_overweight_or_obese_pct": 34.2,
+    "women_smoke_tobacco_pct": 0.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 9,
+    "health_post": 0,
+    "hospital": 4,
+    "other": 0,
+    "total": 13
+   },
+   "facilities_per_10k": 1.36,
+   "level": "district",
+   "name_en": "Srei Santhor",
+   "pcode": "KH0314",
+   "pct_motor_over_30_min": 98.5,
+   "pct_walk_over_60_min": 100,
+   "population": 95567,
+   "province_pcode": "KH03",
+   "travel_motor_mean_min": 43.4,
+   "travel_walk_mean_min": 343.1
+  },
+  {
+   "adults_20plus_est": 76385,
+   "dhs": {
+    "men_no_health_insurance_pct": 92.5,
+    "men_smoke_tobacco_pct": 25.2,
+    "population_lowest_wealth_quintile_pct": 19.9,
+    "women_distance_is_problem_pct": 3.1,
+    "women_no_health_insurance_pct": 80.9,
+    "women_overweight_or_obese_pct": 34.2,
+    "women_smoke_tobacco_pct": 0.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 8,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 8
+   },
+   "facilities_per_10k": 0.66,
+   "level": "district",
+   "name_en": "Stueng Trang",
+   "pcode": "KH0315",
+   "pct_motor_over_30_min": 96.9,
+   "pct_walk_over_60_min": 100,
+   "population": 120768,
+   "province_pcode": "KH03",
+   "travel_motor_mean_min": 56.1,
+   "travel_walk_mean_min": 457.8
+  },
+  {
+   "adults_20plus_est": 39381,
+   "dhs": {
+    "men_no_health_insurance_pct": 79.4,
+    "men_smoke_tobacco_pct": 22.4,
+    "population_lowest_wealth_quintile_pct": 34.1,
+    "women_distance_is_problem_pct": 22.3,
+    "women_no_health_insurance_pct": 70.1,
+    "women_overweight_or_obese_pct": 14.7,
+    "women_smoke_tobacco_pct": 1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 4,
+    "health_post": 1,
+    "hospital": 0,
+    "other": 0,
+    "total": 5
+   },
+   "facilities_per_10k": 0.78,
+   "level": "district",
+   "name_en": "Baribour",
+   "pcode": "KH0401",
+   "pct_motor_over_30_min": 98.2,
+   "pct_walk_over_60_min": 100,
+   "population": 64204,
+   "province_pcode": "KH04",
+   "travel_motor_mean_min": 49.9,
+   "travel_walk_mean_min": 380.4
+  },
+  {
+   "adults_20plus_est": 22466,
+   "dhs": {
+    "men_no_health_insurance_pct": 79.4,
+    "men_smoke_tobacco_pct": 22.4,
+    "population_lowest_wealth_quintile_pct": 34.1,
+    "women_distance_is_problem_pct": 22.3,
+    "women_no_health_insurance_pct": 70.1,
+    "women_overweight_or_obese_pct": 14.7,
+    "women_smoke_tobacco_pct": 1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 3,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.82,
+   "level": "district",
+   "name_en": "Chol Kiri",
+   "pcode": "KH0402",
+   "pct_motor_over_30_min": 90.4,
+   "pct_walk_over_60_min": 100,
+   "population": 36627,
+   "province_pcode": "KH04",
+   "travel_motor_mean_min": 39.6,
+   "travel_walk_mean_min": 275.9
+  },
+  {
+   "adults_20plus_est": 29306,
+   "dhs": {
+    "men_no_health_insurance_pct": 79.4,
+    "men_smoke_tobacco_pct": 22.4,
+    "population_lowest_wealth_quintile_pct": 34.1,
+    "women_distance_is_problem_pct": 22.3,
+    "women_no_health_insurance_pct": 70.1,
+    "women_overweight_or_obese_pct": 14.7,
+    "women_smoke_tobacco_pct": 1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.63,
+   "level": "district",
+   "name_en": "Kampong Chhnang",
+   "pcode": "KH0403",
+   "pct_motor_over_30_min": 0.7,
+   "pct_walk_over_60_min": 1,
+   "population": 47779,
+   "province_pcode": "KH04",
+   "travel_motor_mean_min": 2.2,
+   "travel_walk_mean_min": 17.4
+  },
+  {
+   "adults_20plus_est": 31560,
+   "dhs": {
+    "men_no_health_insurance_pct": 79.4,
+    "men_smoke_tobacco_pct": 22.4,
+    "population_lowest_wealth_quintile_pct": 34.1,
+    "women_distance_is_problem_pct": 22.3,
+    "women_no_health_insurance_pct": 70.1,
+    "women_overweight_or_obese_pct": 14.7,
+    "women_smoke_tobacco_pct": 1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 4,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 4
+   },
+   "facilities_per_10k": 0.78,
+   "level": "district",
+   "name_en": "Kampong Leaeng",
+   "pcode": "KH0404",
+   "pct_motor_over_30_min": 47,
+   "pct_walk_over_60_min": 100,
+   "population": 51453,
+   "province_pcode": "KH04",
+   "travel_motor_mean_min": 42.7,
+   "travel_walk_mean_min": 240
+  },
+  {
+   "adults_20plus_est": 71096,
+   "dhs": {
+    "men_no_health_insurance_pct": 79.4,
+    "men_smoke_tobacco_pct": 22.4,
+    "population_lowest_wealth_quintile_pct": 34.1,
+    "women_distance_is_problem_pct": 22.3,
+    "women_no_health_insurance_pct": 70.1,
+    "women_overweight_or_obese_pct": 14.7,
+    "women_smoke_tobacco_pct": 1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 6,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 7
+   },
+   "facilities_per_10k": 0.6,
+   "level": "district",
+   "name_en": "Kampong Tralach",
+   "pcode": "KH0405",
+   "pct_motor_over_30_min": 99.8,
+   "pct_walk_over_60_min": 100,
+   "population": 115910,
+   "province_pcode": "KH04",
+   "travel_motor_mean_min": 46.1,
+   "travel_walk_mean_min": 350.5
+  },
+  {
+   "adults_20plus_est": 74179,
+   "dhs": {
+    "men_no_health_insurance_pct": 79.4,
+    "men_smoke_tobacco_pct": 22.4,
+    "population_lowest_wealth_quintile_pct": 34.1,
+    "women_distance_is_problem_pct": 22.3,
+    "women_no_health_insurance_pct": 70.1,
+    "women_overweight_or_obese_pct": 14.7,
+    "women_smoke_tobacco_pct": 1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 7,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 7
+   },
+   "facilities_per_10k": 0.58,
+   "level": "district",
+   "name_en": "Rolea B'ier",
+   "pcode": "KH0406",
+   "pct_motor_over_30_min": 12.5,
+   "pct_walk_over_60_min": 86.6,
+   "population": 120937,
+   "province_pcode": "KH04",
+   "travel_motor_mean_min": 17.9,
+   "travel_walk_mean_min": 141.8
+  },
+  {
+   "adults_20plus_est": 58149,
+   "dhs": {
+    "men_no_health_insurance_pct": 79.4,
+    "men_smoke_tobacco_pct": 22.4,
+    "population_lowest_wealth_quintile_pct": 34.1,
+    "women_distance_is_problem_pct": 22.3,
+    "women_no_health_insurance_pct": 70.1,
+    "women_overweight_or_obese_pct": 14.7,
+    "women_smoke_tobacco_pct": 1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 4,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 4
+   },
+   "facilities_per_10k": 0.42,
+   "level": "district",
+   "name_en": "Sameakki Mean Chey",
+   "pcode": "KH0407",
+   "pct_motor_over_30_min": 100,
+   "pct_walk_over_60_min": 100,
+   "population": 94802,
+   "province_pcode": "KH04",
+   "travel_motor_mean_min": 49.4,
+   "travel_walk_mean_min": 388.2
+  },
+  {
+   "adults_20plus_est": 44682,
+   "dhs": {
+    "men_no_health_insurance_pct": 79.4,
+    "men_smoke_tobacco_pct": 22.4,
+    "population_lowest_wealth_quintile_pct": 34.1,
+    "women_distance_is_problem_pct": 22.3,
+    "women_no_health_insurance_pct": 70.1,
+    "women_overweight_or_obese_pct": 14.7,
+    "women_smoke_tobacco_pct": 1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 4,
+    "health_post": 2,
+    "hospital": 1,
+    "other": 0,
+    "total": 7
+   },
+   "facilities_per_10k": 0.96,
+   "level": "district",
+   "name_en": "Tuek Phos",
+   "pcode": "KH0408",
+   "pct_motor_over_30_min": 90.5,
+   "pct_walk_over_60_min": 100,
+   "population": 72846,
+   "province_pcode": "KH04",
+   "travel_motor_mean_min": 49.5,
+   "travel_walk_mean_min": 409.6
+  },
+  {
+   "adults_20plus_est": 101120,
+   "dhs": {
+    "men_no_health_insurance_pct": 86.5,
+    "men_smoke_tobacco_pct": 13.8,
+    "population_lowest_wealth_quintile_pct": 17.9,
+    "women_distance_is_problem_pct": 30.7,
+    "women_no_health_insurance_pct": 52.8,
+    "women_overweight_or_obese_pct": 26.4,
+    "women_smoke_tobacco_pct": 2.1
+   },
+   "facilities": {
+    "clinic": 1,
+    "health_centre": 9,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 10
+   },
+   "facilities_per_10k": 0.62,
+   "level": "district",
+   "name_en": "Basedth",
+   "pcode": "KH0501",
+   "pct_motor_over_30_min": 3,
+   "pct_walk_over_60_min": 84.6,
+   "population": 160598,
+   "province_pcode": "KH05",
+   "travel_motor_mean_min": 15.5,
+   "travel_walk_mean_min": 124.1
+  },
+  {
+   "adults_20plus_est": 37072,
+   "dhs": {
+    "men_no_health_insurance_pct": 86.5,
+    "men_smoke_tobacco_pct": 13.8,
+    "population_lowest_wealth_quintile_pct": 17.9,
+    "women_distance_is_problem_pct": 30.7,
+    "women_no_health_insurance_pct": 52.8,
+    "women_overweight_or_obese_pct": 26.4,
+    "women_smoke_tobacco_pct": 2.1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 3,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 4
+   },
+   "facilities_per_10k": 0.68,
+   "level": "district",
+   "name_en": "Chbar Mon",
+   "pcode": "KH0502",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 8.2,
+   "population": 58878,
+   "province_pcode": "KH05",
+   "travel_motor_mean_min": 3.2,
+   "travel_walk_mean_min": 26.9
+  },
+  {
+   "adults_20plus_est": 106992,
+   "dhs": {
+    "men_no_health_insurance_pct": 86.5,
+    "men_smoke_tobacco_pct": 13.8,
+    "population_lowest_wealth_quintile_pct": 17.9,
+    "women_distance_is_problem_pct": 30.7,
+    "women_no_health_insurance_pct": 52.8,
+    "women_overweight_or_obese_pct": 26.4,
+    "women_smoke_tobacco_pct": 2.1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 11,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 12
+   },
+   "facilities_per_10k": 0.71,
+   "level": "district",
+   "name_en": "Kong Pisei",
+   "pcode": "KH0503",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 77.9,
+   "population": 169925,
+   "province_pcode": "KH05",
+   "travel_motor_mean_min": 11.6,
+   "travel_walk_mean_min": 94.1
+  },
+  {
+   "adults_20plus_est": 29079,
+   "dhs": {
+    "men_no_health_insurance_pct": 86.5,
+    "men_smoke_tobacco_pct": 13.8,
+    "population_lowest_wealth_quintile_pct": 17.9,
+    "women_distance_is_problem_pct": 30.7,
+    "women_no_health_insurance_pct": 52.8,
+    "women_overweight_or_obese_pct": 26.4,
+    "women_smoke_tobacco_pct": 2.1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 1,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 1
+   },
+   "facilities_per_10k": 0.22,
+   "level": "district",
+   "name_en": "Aoral",
+   "pcode": "KH0504",
+   "pct_motor_over_30_min": 100,
+   "pct_walk_over_60_min": 100,
+   "population": 46183,
+   "province_pcode": "KH05",
+   "travel_motor_mean_min": 77.5,
+   "travel_walk_mean_min": 633.3
+  },
+  {
+   "adults_20plus_est": 107311,
+   "dhs": {
+    "men_no_health_insurance_pct": 86.5,
+    "men_smoke_tobacco_pct": 13.8,
+    "population_lowest_wealth_quintile_pct": 17.9,
+    "women_distance_is_problem_pct": 30.7,
+    "women_no_health_insurance_pct": 52.8,
+    "women_overweight_or_obese_pct": 26.4,
+    "women_smoke_tobacco_pct": 2.1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 8,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 9
+   },
+   "facilities_per_10k": 0.53,
+   "level": "district",
+   "name_en": "Odongk",
+   "pcode": "KH0505",
+   "pct_motor_over_30_min": 40.4,
+   "pct_walk_over_60_min": 100,
+   "population": 170432,
+   "province_pcode": "KH05",
+   "travel_motor_mean_min": 28.8,
+   "travel_walk_mean_min": 227.1
+  },
+  {
+   "adults_20plus_est": 77047,
+   "dhs": {
+    "men_no_health_insurance_pct": 86.5,
+    "men_smoke_tobacco_pct": 13.8,
+    "population_lowest_wealth_quintile_pct": 17.9,
+    "women_distance_is_problem_pct": 30.7,
+    "women_no_health_insurance_pct": 52.8,
+    "women_overweight_or_obese_pct": 26.4,
+    "women_smoke_tobacco_pct": 2.1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 5,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 5
+   },
+   "facilities_per_10k": 0.41,
+   "level": "district",
+   "name_en": "Phnum Sruoch",
+   "pcode": "KH0506",
+   "pct_motor_over_30_min": 71.4,
+   "pct_walk_over_60_min": 100,
+   "population": 122366,
+   "province_pcode": "KH05",
+   "travel_motor_mean_min": 43.6,
+   "travel_walk_mean_min": 337.9
+  },
+  {
+   "adults_20plus_est": 134674,
+   "dhs": {
+    "men_no_health_insurance_pct": 86.5,
+    "men_smoke_tobacco_pct": 13.8,
+    "population_lowest_wealth_quintile_pct": 17.9,
+    "women_distance_is_problem_pct": 30.7,
+    "women_no_health_insurance_pct": 52.8,
+    "women_overweight_or_obese_pct": 26.4,
+    "women_smoke_tobacco_pct": 2.1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 9,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 9
+   },
+   "facilities_per_10k": 0.42,
+   "level": "district",
+   "name_en": "Samraong Tong",
+   "pcode": "KH0507",
+   "pct_motor_over_30_min": 1.3,
+   "pct_walk_over_60_min": 89.4,
+   "population": 213889,
+   "province_pcode": "KH05",
+   "travel_motor_mean_min": 14.1,
+   "travel_walk_mean_min": 114.9
+  },
+  {
+   "adults_20plus_est": 46609,
+   "dhs": {
+    "men_no_health_insurance_pct": 86.5,
+    "men_smoke_tobacco_pct": 13.8,
+    "population_lowest_wealth_quintile_pct": 17.9,
+    "women_distance_is_problem_pct": 30.7,
+    "women_no_health_insurance_pct": 52.8,
+    "women_overweight_or_obese_pct": 26.4,
+    "women_smoke_tobacco_pct": 2.1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 4,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 4
+   },
+   "facilities_per_10k": 0.54,
+   "level": "district",
+   "name_en": "Thpong",
+   "pcode": "KH0508",
+   "pct_motor_over_30_min": 94.4,
+   "pct_walk_over_60_min": 100,
+   "population": 74025,
+   "province_pcode": "KH05",
+   "travel_motor_mean_min": 46,
+   "travel_walk_mean_min": 387.7
+  },
+  {
+   "adults_20plus_est": 119531,
+   "dhs": {
+    "men_no_health_insurance_pct": 93,
+    "men_smoke_tobacco_pct": 27.4,
+    "population_lowest_wealth_quintile_pct": 34.3,
+    "women_distance_is_problem_pct": 32.6,
+    "women_no_health_insurance_pct": 89.3,
+    "women_overweight_or_obese_pct": 31,
+    "women_smoke_tobacco_pct": 1
+   },
+   "facilities": {
+    "clinic": 2,
+    "health_centre": 14,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 17
+   },
+   "facilities_per_10k": 0.86,
+   "level": "district",
+   "name_en": "Baray",
+   "pcode": "KH0601",
+   "pct_motor_over_30_min": 36.1,
+   "pct_walk_over_60_min": 86.1,
+   "population": 197389,
+   "province_pcode": "KH06",
+   "travel_motor_mean_min": 23.6,
+   "travel_walk_mean_min": 177.2
+  },
+  {
+   "adults_20plus_est": 63881,
+   "dhs": {
+    "men_no_health_insurance_pct": 93,
+    "men_smoke_tobacco_pct": 27.4,
+    "population_lowest_wealth_quintile_pct": 34.3,
+    "women_distance_is_problem_pct": 32.6,
+    "women_no_health_insurance_pct": 89.3,
+    "women_overweight_or_obese_pct": 31,
+    "women_smoke_tobacco_pct": 1
+   },
+   "facilities": {
+    "clinic": 2,
+    "health_centre": 8,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 10
+   },
+   "facilities_per_10k": 0.95,
+   "level": "district",
+   "name_en": "Kampong Svay",
+   "pcode": "KH0602",
+   "pct_motor_over_30_min": 31.4,
+   "pct_walk_over_60_min": 91,
+   "population": 105490,
+   "province_pcode": "KH06",
+   "travel_motor_mean_min": 34.6,
+   "travel_walk_mean_min": 200.7
+  },
+  {
+   "adults_20plus_est": 37425,
+   "dhs": {
+    "men_no_health_insurance_pct": 93,
+    "men_smoke_tobacco_pct": 27.4,
+    "population_lowest_wealth_quintile_pct": 34.3,
+    "women_distance_is_problem_pct": 32.6,
+    "women_no_health_insurance_pct": 89.3,
+    "women_overweight_or_obese_pct": 31,
+    "women_smoke_tobacco_pct": 1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 4,
+    "health_post": 0,
+    "hospital": 2,
+    "other": 0,
+    "total": 6
+   },
+   "facilities_per_10k": 0.97,
+   "level": "district",
+   "name_en": "Stueng Saen",
+   "pcode": "KH0603",
+   "pct_motor_over_30_min": 0.7,
+   "pct_walk_over_60_min": 6.2,
+   "population": 61803,
+   "province_pcode": "KH06",
+   "travel_motor_mean_min": 4.2,
+   "travel_walk_mean_min": 30
+  },
+  {
+   "adults_20plus_est": 33841,
+   "dhs": {
+    "men_no_health_insurance_pct": 93,
+    "men_smoke_tobacco_pct": 27.4,
+    "population_lowest_wealth_quintile_pct": 34.3,
+    "women_distance_is_problem_pct": 32.6,
+    "women_no_health_insurance_pct": 89.3,
+    "women_overweight_or_obese_pct": 31,
+    "women_smoke_tobacco_pct": 1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 3,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.54,
+   "level": "district",
+   "name_en": "Prasat Ballangk",
+   "pcode": "KH0604",
+   "pct_motor_over_30_min": 99.2,
+   "pct_walk_over_60_min": 100,
+   "population": 55884,
+   "province_pcode": "KH06",
+   "travel_motor_mean_min": 66.6,
+   "travel_walk_mean_min": 512.1
+  },
+  {
+   "adults_20plus_est": 30689,
+   "dhs": {
+    "men_no_health_insurance_pct": 93,
+    "men_smoke_tobacco_pct": 27.4,
+    "population_lowest_wealth_quintile_pct": 34.3,
+    "women_distance_is_problem_pct": 32.6,
+    "women_no_health_insurance_pct": 89.3,
+    "women_overweight_or_obese_pct": 31,
+    "women_smoke_tobacco_pct": 1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 3,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.59,
+   "level": "district",
+   "name_en": "Prasat Sambour",
+   "pcode": "KH0605",
+   "pct_motor_over_30_min": 99.1,
+   "pct_walk_over_60_min": 100,
+   "population": 50679,
+   "province_pcode": "KH06",
+   "travel_motor_mean_min": 52.5,
+   "travel_walk_mean_min": 406.4
+  },
+  {
+   "adults_20plus_est": 43886,
+   "dhs": {
+    "men_no_health_insurance_pct": 93,
+    "men_smoke_tobacco_pct": 27.4,
+    "population_lowest_wealth_quintile_pct": 34.3,
+    "women_distance_is_problem_pct": 32.6,
+    "women_no_health_insurance_pct": 89.3,
+    "women_overweight_or_obese_pct": 31,
+    "women_smoke_tobacco_pct": 1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 3,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.41,
+   "level": "district",
+   "name_en": "Sandan",
+   "pcode": "KH0606",
+   "pct_motor_over_30_min": 100,
+   "pct_walk_over_60_min": 100,
+   "population": 72471,
+   "province_pcode": "KH06",
+   "travel_motor_mean_min": 90.8,
+   "travel_walk_mean_min": 721.4
+  },
+  {
+   "adults_20plus_est": 71658,
+   "dhs": {
+    "men_no_health_insurance_pct": 93,
+    "men_smoke_tobacco_pct": 27.4,
+    "population_lowest_wealth_quintile_pct": 34.3,
+    "women_distance_is_problem_pct": 32.6,
+    "women_no_health_insurance_pct": 89.3,
+    "women_overweight_or_obese_pct": 31,
+    "women_smoke_tobacco_pct": 1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 7,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 7
+   },
+   "facilities_per_10k": 0.59,
+   "level": "district",
+   "name_en": "Santuk",
+   "pcode": "KH0607",
+   "pct_motor_over_30_min": 32.6,
+   "pct_walk_over_60_min": 90.9,
+   "population": 118334,
+   "province_pcode": "KH06",
+   "travel_motor_mean_min": 33.4,
+   "travel_walk_mean_min": 238.6
+  },
+  {
+   "adults_20plus_est": 76681,
+   "dhs": {
+    "men_no_health_insurance_pct": 93,
+    "men_smoke_tobacco_pct": 27.4,
+    "population_lowest_wealth_quintile_pct": 34.3,
+    "women_distance_is_problem_pct": 32.6,
+    "women_no_health_insurance_pct": 89.3,
+    "women_overweight_or_obese_pct": 31,
+    "women_smoke_tobacco_pct": 1
+   },
+   "facilities": {
+    "clinic": 2,
+    "health_centre": 8,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 11
+   },
+   "facilities_per_10k": 0.87,
+   "level": "district",
+   "name_en": "Stoung",
+   "pcode": "KH0608",
+   "pct_motor_over_30_min": 100,
+   "pct_walk_over_60_min": 100,
+   "population": 126628,
+   "province_pcode": "KH06",
+   "travel_motor_mean_min": 74.4,
+   "travel_walk_mean_min": 526.9
+  },
+  {
+   "adults_20plus_est": 54262,
+   "dhs": {
+    "men_no_health_insurance_pct": 85.2,
+    "men_smoke_tobacco_pct": 28.3,
+    "population_lowest_wealth_quintile_pct": 15.4,
+    "women_distance_is_problem_pct": 48.4,
+    "women_no_health_insurance_pct": 87,
+    "women_overweight_or_obese_pct": 28.9,
+    "women_smoke_tobacco_pct": 2.2
+   },
+   "facilities": {
+    "clinic": 1,
+    "health_centre": 7,
+    "health_post": 0,
+    "hospital": 2,
+    "other": 0,
+    "total": 10
+   },
+   "facilities_per_10k": 1.17,
+   "level": "district",
+   "name_en": "Angkor Chey",
+   "pcode": "KH0701",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 57.6,
+   "population": 85792,
+   "province_pcode": "KH07",
+   "travel_motor_mean_min": 10,
+   "travel_walk_mean_min": 78.1
+  },
+  {
+   "adults_20plus_est": 58165,
+   "dhs": {
+    "men_no_health_insurance_pct": 85.2,
+    "men_smoke_tobacco_pct": 28.3,
+    "population_lowest_wealth_quintile_pct": 15.4,
+    "women_distance_is_problem_pct": 48.4,
+    "women_no_health_insurance_pct": 87,
+    "women_overweight_or_obese_pct": 28.9,
+    "women_smoke_tobacco_pct": 2.2
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 7,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 7
+   },
+   "facilities_per_10k": 0.76,
+   "level": "district",
+   "name_en": "Banteay Meas",
+   "pcode": "KH0702",
+   "pct_motor_over_30_min": 12.4,
+   "pct_walk_over_60_min": 100,
+   "population": 91963,
+   "province_pcode": "KH07",
+   "travel_motor_mean_min": 21.3,
+   "travel_walk_mean_min": 144.9
+  },
+  {
+   "adults_20plus_est": 75446,
+   "dhs": {
+    "men_no_health_insurance_pct": 85.2,
+    "men_smoke_tobacco_pct": 28.3,
+    "population_lowest_wealth_quintile_pct": 15.4,
+    "women_distance_is_problem_pct": 48.4,
+    "women_no_health_insurance_pct": 87,
+    "women_overweight_or_obese_pct": 28.9,
+    "women_smoke_tobacco_pct": 2.2
+   },
+   "facilities": {
+    "clinic": 2,
+    "health_centre": 6,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 9
+   },
+   "facilities_per_10k": 0.75,
+   "level": "district",
+   "name_en": "Chhuk",
+   "pcode": "KH0703",
+   "pct_motor_over_30_min": 29.9,
+   "pct_walk_over_60_min": 100,
+   "population": 119285,
+   "province_pcode": "KH07",
+   "travel_motor_mean_min": 31.2,
+   "travel_walk_mean_min": 241.4
+  },
+  {
+   "adults_20plus_est": 36074,
+   "dhs": {
+    "men_no_health_insurance_pct": 85.2,
+    "men_smoke_tobacco_pct": 28.3,
+    "population_lowest_wealth_quintile_pct": 15.4,
+    "women_distance_is_problem_pct": 48.4,
+    "women_no_health_insurance_pct": 87,
+    "women_overweight_or_obese_pct": 28.9,
+    "women_smoke_tobacco_pct": 2.2
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 4,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 5
+   },
+   "facilities_per_10k": 0.88,
+   "level": "district",
+   "name_en": "Chum Kiri",
+   "pcode": "KH0704",
+   "pct_motor_over_30_min": 89.5,
+   "pct_walk_over_60_min": 100,
+   "population": 57036,
+   "province_pcode": "KH07",
+   "travel_motor_mean_min": 36.1,
+   "travel_walk_mean_min": 301.9
+  },
+  {
+   "adults_20plus_est": 41691,
+   "dhs": {
+    "men_no_health_insurance_pct": 85.2,
+    "men_smoke_tobacco_pct": 28.3,
+    "population_lowest_wealth_quintile_pct": 15.4,
+    "women_distance_is_problem_pct": 48.4,
+    "women_no_health_insurance_pct": 87,
+    "women_overweight_or_obese_pct": 28.9,
+    "women_smoke_tobacco_pct": 2.2
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 6,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 6
+   },
+   "facilities_per_10k": 0.91,
+   "level": "district",
+   "name_en": "Dang Tong",
+   "pcode": "KH0705",
+   "pct_motor_over_30_min": 0.1,
+   "pct_walk_over_60_min": 74.6,
+   "population": 65916,
+   "province_pcode": "KH07",
+   "travel_motor_mean_min": 10.8,
+   "travel_walk_mean_min": 86.5
+  },
+  {
+   "adults_20plus_est": 63935,
+   "dhs": {
+    "men_no_health_insurance_pct": 85.2,
+    "men_smoke_tobacco_pct": 28.3,
+    "population_lowest_wealth_quintile_pct": 15.4,
+    "women_distance_is_problem_pct": 48.4,
+    "women_no_health_insurance_pct": 87,
+    "women_overweight_or_obese_pct": 28.9,
+    "women_smoke_tobacco_pct": 2.2
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 7,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 8
+   },
+   "facilities_per_10k": 0.79,
+   "level": "district",
+   "name_en": "Kampong Trach",
+   "pcode": "KH0706",
+   "pct_motor_over_30_min": 1.1,
+   "pct_walk_over_60_min": 70.5,
+   "population": 101085,
+   "province_pcode": "KH07",
+   "travel_motor_mean_min": 11.6,
+   "travel_walk_mean_min": 83.3
+  },
+  {
+   "adults_20plus_est": 81182,
+   "dhs": {
+    "men_no_health_insurance_pct": 85.2,
+    "men_smoke_tobacco_pct": 28.3,
+    "population_lowest_wealth_quintile_pct": 15.4,
+    "women_distance_is_problem_pct": 48.4,
+    "women_no_health_insurance_pct": 87,
+    "women_overweight_or_obese_pct": 28.9,
+    "women_smoke_tobacco_pct": 2.2
+   },
+   "facilities": {
+    "clinic": 1,
+    "health_centre": 8,
+    "health_post": 0,
+    "hospital": 2,
+    "other": 0,
+    "total": 11
+   },
+   "facilities_per_10k": 0.86,
+   "level": "district",
+   "name_en": "Tuek Chhou",
+   "pcode": "KH0707",
+   "pct_motor_over_30_min": 5.1,
+   "pct_walk_over_60_min": 59,
+   "population": 128354,
+   "province_pcode": "KH07",
+   "travel_motor_mean_min": 11.8,
+   "travel_walk_mean_min": 89.3
+  },
+  {
+   "adults_20plus_est": 23626,
+   "dhs": {
+    "men_no_health_insurance_pct": 85.2,
+    "men_smoke_tobacco_pct": 28.3,
+    "population_lowest_wealth_quintile_pct": 15.4,
+    "women_distance_is_problem_pct": 48.4,
+    "women_no_health_insurance_pct": 87,
+    "women_overweight_or_obese_pct": 28.9,
+    "women_smoke_tobacco_pct": 2.2
+   },
+   "facilities": {
+    "clinic": 3,
+    "health_centre": 3,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 7
+   },
+   "facilities_per_10k": 1.87,
+   "level": "district",
+   "name_en": "Kampot",
+   "pcode": "KH0708",
+   "pct_motor_over_30_min": 0.1,
+   "pct_walk_over_60_min": 1.8,
+   "population": 37354,
+   "province_pcode": "KH07",
+   "travel_motor_mean_min": 2.6,
+   "travel_walk_mean_min": 20.4
+  },
+  {
+   "adults_20plus_est": 77026,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.7,
+    "men_smoke_tobacco_pct": 14.4,
+    "population_lowest_wealth_quintile_pct": 3,
+    "women_distance_is_problem_pct": 4.9,
+    "women_no_health_insurance_pct": 78.1,
+    "women_overweight_or_obese_pct": 32.6,
+    "women_smoke_tobacco_pct": 0.5
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 6,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 7
+   },
+   "facilities_per_10k": 0.6,
+   "level": "district",
+   "name_en": "Kandal Stueng",
+   "pcode": "KH0801",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 83.5,
+   "population": 117494,
+   "province_pcode": "KH08",
+   "travel_motor_mean_min": 10,
+   "travel_walk_mean_min": 81.4
+  },
+  {
+   "adults_20plus_est": 88810,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.7,
+    "men_smoke_tobacco_pct": 14.4,
+    "population_lowest_wealth_quintile_pct": 3,
+    "women_distance_is_problem_pct": 4.9,
+    "women_no_health_insurance_pct": 78.1,
+    "women_overweight_or_obese_pct": 32.6,
+    "women_smoke_tobacco_pct": 0.5
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 7,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 8
+   },
+   "facilities_per_10k": 0.59,
+   "level": "district",
+   "name_en": "Kien Svay",
+   "pcode": "KH0802",
+   "pct_motor_over_30_min": 5.6,
+   "pct_walk_over_60_min": 69.3,
+   "population": 135470,
+   "province_pcode": "KH08",
+   "travel_motor_mean_min": 13.1,
+   "travel_walk_mean_min": 101.9
+  },
+  {
+   "adults_20plus_est": 108083,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.7,
+    "men_smoke_tobacco_pct": 14.4,
+    "population_lowest_wealth_quintile_pct": 3,
+    "women_distance_is_problem_pct": 4.9,
+    "women_no_health_insurance_pct": 78.1,
+    "women_overweight_or_obese_pct": 32.6,
+    "women_smoke_tobacco_pct": 0.5
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 9,
+    "health_post": 0,
+    "hospital": 4,
+    "other": 0,
+    "total": 13
+   },
+   "facilities_per_10k": 0.79,
+   "level": "district",
+   "name_en": "Khsach Kandal",
+   "pcode": "KH0803",
+   "pct_motor_over_30_min": 29.1,
+   "pct_walk_over_60_min": 83.4,
+   "population": 164868,
+   "province_pcode": "KH08",
+   "travel_motor_mean_min": 23.6,
+   "travel_walk_mean_min": 185.1
+  },
+  {
+   "adults_20plus_est": 97574,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.7,
+    "men_smoke_tobacco_pct": 14.4,
+    "population_lowest_wealth_quintile_pct": 3,
+    "women_distance_is_problem_pct": 4.9,
+    "women_no_health_insurance_pct": 78.1,
+    "women_overweight_or_obese_pct": 32.6,
+    "women_smoke_tobacco_pct": 0.5
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 13,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 14
+   },
+   "facilities_per_10k": 0.94,
+   "level": "district",
+   "name_en": "Kaoh Thum",
+   "pcode": "KH0804",
+   "pct_motor_over_30_min": 6,
+   "pct_walk_over_60_min": 68.7,
+   "population": 148839,
+   "province_pcode": "KH08",
+   "travel_motor_mean_min": 12.3,
+   "travel_walk_mean_min": 85
+  },
+  {
+   "adults_20plus_est": 41584,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.7,
+    "men_smoke_tobacco_pct": 14.4,
+    "population_lowest_wealth_quintile_pct": 3,
+    "women_distance_is_problem_pct": 4.9,
+    "women_no_health_insurance_pct": 78.1,
+    "women_overweight_or_obese_pct": 32.6,
+    "women_smoke_tobacco_pct": 0.5
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 4,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 4
+   },
+   "facilities_per_10k": 0.63,
+   "level": "district",
+   "name_en": "Leuk Daek",
+   "pcode": "KH0805",
+   "pct_motor_over_30_min": 24.1,
+   "pct_walk_over_60_min": 64.7,
+   "population": 63432,
+   "province_pcode": "KH08",
+   "travel_motor_mean_min": 17.1,
+   "travel_walk_mean_min": 129.3
+  },
+  {
+   "adults_20plus_est": 55723,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.7,
+    "men_smoke_tobacco_pct": 14.4,
+    "population_lowest_wealth_quintile_pct": 3,
+    "women_distance_is_problem_pct": 4.9,
+    "women_no_health_insurance_pct": 78.1,
+    "women_overweight_or_obese_pct": 32.6,
+    "women_smoke_tobacco_pct": 0.5
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 6,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 6
+   },
+   "facilities_per_10k": 0.71,
+   "level": "district",
+   "name_en": "Lvea Aem",
+   "pcode": "KH0806",
+   "pct_motor_over_30_min": 16.3,
+   "pct_walk_over_60_min": 65.1,
+   "population": 85000,
+   "province_pcode": "KH08",
+   "travel_motor_mean_min": 16.6,
+   "travel_walk_mean_min": 115.3
+  },
+  {
+   "adults_20plus_est": 55297,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.7,
+    "men_smoke_tobacco_pct": 14.4,
+    "population_lowest_wealth_quintile_pct": 3,
+    "women_distance_is_problem_pct": 4.9,
+    "women_no_health_insurance_pct": 78.1,
+    "women_overweight_or_obese_pct": 32.6,
+    "women_smoke_tobacco_pct": 0.5
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 5,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 5
+   },
+   "facilities_per_10k": 0.59,
+   "level": "district",
+   "name_en": "Mukh Kampul",
+   "pcode": "KH0807",
+   "pct_motor_over_30_min": 48.6,
+   "pct_walk_over_60_min": 95.2,
+   "population": 84349,
+   "province_pcode": "KH08",
+   "travel_motor_mean_min": 26.9,
+   "travel_walk_mean_min": 236.6
+  },
+  {
+   "adults_20plus_est": 84479,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.7,
+    "men_smoke_tobacco_pct": 14.4,
+    "population_lowest_wealth_quintile_pct": 3,
+    "women_distance_is_problem_pct": 4.9,
+    "women_no_health_insurance_pct": 78.1,
+    "women_overweight_or_obese_pct": 32.6,
+    "women_smoke_tobacco_pct": 0.5
+   },
+   "facilities": {
+    "clinic": 1,
+    "health_centre": 6,
+    "health_post": 0,
+    "hospital": 3,
+    "other": 0,
+    "total": 10
+   },
+   "facilities_per_10k": 0.78,
+   "level": "district",
+   "name_en": "Angk Snuol",
+   "pcode": "KH0808",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 79.7,
+   "population": 128864,
+   "province_pcode": "KH08",
+   "travel_motor_mean_min": 13.7,
+   "travel_walk_mean_min": 110.6
+  },
+  {
+   "adults_20plus_est": 79184,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.7,
+    "men_smoke_tobacco_pct": 14.4,
+    "population_lowest_wealth_quintile_pct": 3,
+    "women_distance_is_problem_pct": 4.9,
+    "women_no_health_insurance_pct": 78.1,
+    "women_overweight_or_obese_pct": 32.6,
+    "women_smoke_tobacco_pct": 0.5
+   },
+   "facilities": {
+    "clinic": 1,
+    "health_centre": 7,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 9
+   },
+   "facilities_per_10k": 0.75,
+   "level": "district",
+   "name_en": "Ponhea Lueu",
+   "pcode": "KH0809",
+   "pct_motor_over_30_min": 4,
+   "pct_walk_over_60_min": 90.7,
+   "population": 120786,
+   "province_pcode": "KH08",
+   "travel_motor_mean_min": 19.4,
+   "travel_walk_mean_min": 146.3
+  },
+  {
+   "adults_20plus_est": 157127,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.7,
+    "men_smoke_tobacco_pct": 14.4,
+    "population_lowest_wealth_quintile_pct": 3,
+    "women_distance_is_problem_pct": 4.9,
+    "women_no_health_insurance_pct": 78.1,
+    "women_overweight_or_obese_pct": 32.6,
+    "women_smoke_tobacco_pct": 0.5
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 13,
+    "health_post": 0,
+    "hospital": 2,
+    "other": 0,
+    "total": 15
+   },
+   "facilities_per_10k": 0.63,
+   "level": "district",
+   "name_en": "S'ang",
+   "pcode": "KH0810",
+   "pct_motor_over_30_min": 0.4,
+   "pct_walk_over_60_min": 52.5,
+   "population": 239680,
+   "province_pcode": "KH08",
+   "travel_motor_mean_min": 9.6,
+   "travel_walk_mean_min": 73.8
+  },
+  {
+   "adults_20plus_est": 57843,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.7,
+    "men_smoke_tobacco_pct": 14.4,
+    "population_lowest_wealth_quintile_pct": 3,
+    "women_distance_is_problem_pct": 4.9,
+    "women_no_health_insurance_pct": 78.1,
+    "women_overweight_or_obese_pct": 32.6,
+    "women_smoke_tobacco_pct": 0.5
+   },
+   "facilities": {
+    "clinic": 1,
+    "health_centre": 3,
+    "health_post": 0,
+    "hospital": 3,
+    "other": 0,
+    "total": 7
+   },
+   "facilities_per_10k": 0.79,
+   "level": "district",
+   "name_en": "Ta Khmau",
+   "pcode": "KH0811",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 0.3,
+   "population": 88233,
+   "province_pcode": "KH08",
+   "travel_motor_mean_min": 1.9,
+   "travel_walk_mean_min": 14.7
+  },
+  {
+   "adults_20plus_est": 13642,
+   "dhs": {
+    "men_no_health_insurance_pct": 85.9,
+    "men_smoke_tobacco_pct": 27.5,
+    "population_lowest_wealth_quintile_pct": 24.5,
+    "women_distance_is_problem_pct": 25.3,
+    "women_no_health_insurance_pct": 85.4,
+    "women_overweight_or_obese_pct": 26.2,
+    "women_smoke_tobacco_pct": 0.1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 2
+   },
+   "facilities_per_10k": 0.92,
+   "level": "district",
+   "name_en": "Botum Sakor",
+   "pcode": "KH0901",
+   "pct_motor_over_30_min": 100,
+   "pct_walk_over_60_min": 100,
+   "population": 21775,
+   "province_pcode": "KH09",
+   "travel_motor_mean_min": 122.2,
+   "travel_walk_mean_min": 1206.9
+  },
+  {
+   "adults_20plus_est": 4361,
+   "dhs": {
+    "men_no_health_insurance_pct": 85.9,
+    "men_smoke_tobacco_pct": 27.5,
+    "population_lowest_wealth_quintile_pct": 24.5,
+    "women_distance_is_problem_pct": 25.3,
+    "women_no_health_insurance_pct": 85.4,
+    "women_overweight_or_obese_pct": 26.2,
+    "women_smoke_tobacco_pct": 0.1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 1,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 1
+   },
+   "facilities_per_10k": 1.44,
+   "level": "district",
+   "name_en": "Kiri Sakor",
+   "pcode": "KH0902",
+   "pct_motor_over_30_min": 100,
+   "pct_walk_over_60_min": 100,
+   "population": 6961,
+   "province_pcode": "KH09",
+   "travel_motor_mean_min": 148.3,
+   "travel_walk_mean_min": 1191.3
+  },
+  {
+   "adults_20plus_est": 5128,
+   "dhs": {
+    "men_no_health_insurance_pct": 85.9,
+    "men_smoke_tobacco_pct": 27.5,
+    "population_lowest_wealth_quintile_pct": 24.5,
+    "women_distance_is_problem_pct": 25.3,
+    "women_no_health_insurance_pct": 85.4,
+    "women_overweight_or_obese_pct": 26.2,
+    "women_smoke_tobacco_pct": 0.1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 1,
+    "health_post": 2,
+    "hospital": 0,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 3.67,
+   "level": "district",
+   "name_en": "Kaoh Kong",
+   "pcode": "KH0903",
+   "pct_motor_over_30_min": 95.3,
+   "pct_walk_over_60_min": 100,
+   "population": 8185,
+   "province_pcode": "KH09",
+   "travel_motor_mean_min": 78.6,
+   "travel_walk_mean_min": 525.8
+  },
+  {
+   "adults_20plus_est": 21120,
+   "dhs": {
+    "men_no_health_insurance_pct": 85.9,
+    "men_smoke_tobacco_pct": 27.5,
+    "population_lowest_wealth_quintile_pct": 24.5,
+    "women_distance_is_problem_pct": 25.3,
+    "women_no_health_insurance_pct": 85.4,
+    "women_overweight_or_obese_pct": 26.2,
+    "women_smoke_tobacco_pct": 0.1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.89,
+   "level": "district",
+   "name_en": "Khemara Phoumin",
+   "pcode": "KH0904",
+   "pct_motor_over_30_min": 0.1,
+   "pct_walk_over_60_min": 5.6,
+   "population": 33710,
+   "province_pcode": "KH09",
+   "travel_motor_mean_min": 2.3,
+   "travel_walk_mean_min": 19.5
+  },
+  {
+   "adults_20plus_est": 10881,
+   "dhs": {
+    "men_no_health_insurance_pct": 85.9,
+    "men_smoke_tobacco_pct": 27.5,
+    "population_lowest_wealth_quintile_pct": 24.5,
+    "women_distance_is_problem_pct": 25.3,
+    "women_no_health_insurance_pct": 85.4,
+    "women_overweight_or_obese_pct": 26.2,
+    "women_smoke_tobacco_pct": 0.1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 2
+   },
+   "facilities_per_10k": 1.15,
+   "level": "district",
+   "name_en": "Mondol Seima",
+   "pcode": "KH0905",
+   "pct_motor_over_30_min": 23.8,
+   "pct_walk_over_60_min": 47.5,
+   "population": 17367,
+   "province_pcode": "KH09",
+   "travel_motor_mean_min": 19.7,
+   "travel_walk_mean_min": 99
+  },
+  {
+   "adults_20plus_est": 28835,
+   "dhs": {
+    "men_no_health_insurance_pct": 85.9,
+    "men_smoke_tobacco_pct": 27.5,
+    "population_lowest_wealth_quintile_pct": 24.5,
+    "women_distance_is_problem_pct": 25.3,
+    "women_no_health_insurance_pct": 85.4,
+    "women_overweight_or_obese_pct": 26.2,
+    "women_smoke_tobacco_pct": 0.1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.65,
+   "level": "district",
+   "name_en": "Srae Ambel",
+   "pcode": "KH0906",
+   "pct_motor_over_30_min": 100,
+   "pct_walk_over_60_min": 100,
+   "population": 46024,
+   "province_pcode": "KH09",
+   "travel_motor_mean_min": 115.3,
+   "travel_walk_mean_min": 869
+  },
+  {
+   "adults_20plus_est": 5085,
+   "dhs": {
+    "men_no_health_insurance_pct": 85.9,
+    "men_smoke_tobacco_pct": 27.5,
+    "population_lowest_wealth_quintile_pct": 24.5,
+    "women_distance_is_problem_pct": 25.3,
+    "women_no_health_insurance_pct": 85.4,
+    "women_overweight_or_obese_pct": 26.2,
+    "women_smoke_tobacco_pct": 0.1
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 1,
+    "health_post": 1,
+    "hospital": 0,
+    "other": 0,
+    "total": 2
+   },
+   "facilities_per_10k": 2.46,
+   "level": "district",
+   "name_en": "Thma Bang",
+   "pcode": "KH0907",
+   "pct_motor_over_30_min": 99.7,
+   "pct_walk_over_60_min": 100,
+   "population": 8116,
+   "province_pcode": "KH09",
+   "travel_motor_mean_min": 126.8,
+   "travel_walk_mean_min": 988.9
+  },
+  {
+   "adults_20plus_est": 37443,
+   "dhs": {
+    "men_no_health_insurance_pct": 89.4,
+    "men_smoke_tobacco_pct": 30.4,
+    "population_lowest_wealth_quintile_pct": 48.7,
+    "women_distance_is_problem_pct": 27.4,
+    "women_no_health_insurance_pct": 78.9,
+    "women_overweight_or_obese_pct": 27.3,
+    "women_smoke_tobacco_pct": 12
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 5,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 6
+   },
+   "facilities_per_10k": 0.95,
+   "level": "district",
+   "name_en": "Chhloung",
+   "pcode": "KH1001",
+   "pct_motor_over_30_min": 93,
+   "pct_walk_over_60_min": 100,
+   "population": 63086,
+   "province_pcode": "KH10",
+   "travel_motor_mean_min": 45.9,
+   "travel_walk_mean_min": 347
+  },
+  {
+   "adults_20plus_est": 19652,
+   "dhs": {
+    "men_no_health_insurance_pct": 89.4,
+    "men_smoke_tobacco_pct": 30.4,
+    "population_lowest_wealth_quintile_pct": 48.7,
+    "women_distance_is_problem_pct": 27.4,
+    "women_no_health_insurance_pct": 78.9,
+    "women_overweight_or_obese_pct": 27.3,
+    "women_smoke_tobacco_pct": 12
+   },
+   "facilities": {
+    "clinic": 3,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 6
+   },
+   "facilities_per_10k": 1.81,
+   "level": "district",
+   "name_en": "Kracheh",
+   "pcode": "KH1002",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 16.3,
+   "population": 33111,
+   "province_pcode": "KH10",
+   "travel_motor_mean_min": 4.6,
+   "travel_walk_mean_min": 37.1
+  },
+  {
+   "adults_20plus_est": 44723,
+   "dhs": {
+    "men_no_health_insurance_pct": 89.4,
+    "men_smoke_tobacco_pct": 30.4,
+    "population_lowest_wealth_quintile_pct": 48.7,
+    "women_distance_is_problem_pct": 27.4,
+    "women_no_health_insurance_pct": 78.9,
+    "women_overweight_or_obese_pct": 27.3,
+    "women_smoke_tobacco_pct": 12
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 6,
+    "health_post": 1,
+    "hospital": 0,
+    "other": 0,
+    "total": 7
+   },
+   "facilities_per_10k": 0.93,
+   "level": "district",
+   "name_en": "Prek Prasab",
+   "pcode": "KH1003",
+   "pct_motor_over_30_min": 54.7,
+   "pct_walk_over_60_min": 94.7,
+   "population": 75351,
+   "province_pcode": "KH10",
+   "travel_motor_mean_min": 35.8,
+   "travel_walk_mean_min": 254.4
+  },
+  {
+   "adults_20plus_est": 47681,
+   "dhs": {
+    "men_no_health_insurance_pct": 89.4,
+    "men_smoke_tobacco_pct": 30.4,
+    "population_lowest_wealth_quintile_pct": 48.7,
+    "women_distance_is_problem_pct": 27.4,
+    "women_no_health_insurance_pct": 78.9,
+    "women_overweight_or_obese_pct": 27.3,
+    "women_smoke_tobacco_pct": 12
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 4,
+    "health_post": 5,
+    "hospital": 0,
+    "other": 0,
+    "total": 9
+   },
+   "facilities_per_10k": 1.12,
+   "level": "district",
+   "name_en": "Sambour",
+   "pcode": "KH1004",
+   "pct_motor_over_30_min": 93.6,
+   "pct_walk_over_60_min": 100,
+   "population": 80335,
+   "province_pcode": "KH10",
+   "travel_motor_mean_min": 68.7,
+   "travel_walk_mean_min": 476.9
+  },
+  {
+   "adults_20plus_est": 64019,
+   "dhs": {
+    "men_no_health_insurance_pct": 89.4,
+    "men_smoke_tobacco_pct": 30.4,
+    "population_lowest_wealth_quintile_pct": 48.7,
+    "women_distance_is_problem_pct": 27.4,
+    "women_no_health_insurance_pct": 78.9,
+    "women_overweight_or_obese_pct": 27.3,
+    "women_smoke_tobacco_pct": 12
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 4,
+    "health_post": 3,
+    "hospital": 0,
+    "other": 0,
+    "total": 7
+   },
+   "facilities_per_10k": 0.65,
+   "level": "district",
+   "name_en": "Snuol",
+   "pcode": "KH1005",
+   "pct_motor_over_30_min": 49.8,
+   "pct_walk_over_60_min": 84.8,
+   "population": 107862,
+   "province_pcode": "KH10",
+   "travel_motor_mean_min": 36.4,
+   "travel_walk_mean_min": 207.2
+  },
+  {
+   "adults_20plus_est": 43372,
+   "dhs": {
+    "men_no_health_insurance_pct": 89.4,
+    "men_smoke_tobacco_pct": 30.4,
+    "population_lowest_wealth_quintile_pct": 48.7,
+    "women_distance_is_problem_pct": 27.4,
+    "women_no_health_insurance_pct": 78.9,
+    "women_overweight_or_obese_pct": 27.3,
+    "women_smoke_tobacco_pct": 12
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 5,
+    "health_post": 2,
+    "hospital": 0,
+    "other": 0,
+    "total": 7
+   },
+   "facilities_per_10k": 0.96,
+   "level": "district",
+   "name_en": "Chetr Borei",
+   "pcode": "KH1006",
+   "pct_motor_over_30_min": 35.4,
+   "pct_walk_over_60_min": 98.2,
+   "population": 73076,
+   "province_pcode": "KH10",
+   "travel_motor_mean_min": 28.9,
+   "travel_walk_mean_min": 212.7
+  },
+  {
+   "adults_20plus_est": 18866,
+   "dhs": {
+    "men_no_health_insurance_pct": 89.2,
+    "men_smoke_tobacco_pct": 37.7,
+    "population_lowest_wealth_quintile_pct": 51.4,
+    "women_distance_is_problem_pct": 31.2,
+    "women_no_health_insurance_pct": 87.3,
+    "women_overweight_or_obese_pct": 25.1,
+    "women_smoke_tobacco_pct": 4.4
+   },
+   "facilities": {
+    "clinic": 1,
+    "health_centre": 2,
+    "health_post": 2,
+    "hospital": 0,
+    "other": 0,
+    "total": 5
+   },
+   "facilities_per_10k": 1.48,
+   "level": "district",
+   "name_en": "Kaev Seima",
+   "pcode": "KH1101",
+   "pct_motor_over_30_min": 52.4,
+   "pct_walk_over_60_min": 73.9,
+   "population": 33730,
+   "province_pcode": "KH11",
+   "travel_motor_mean_min": 87.4,
+   "travel_walk_mean_min": 278
+  },
+  {
+   "adults_20plus_est": 14525,
+   "dhs": {
+    "men_no_health_insurance_pct": 89.2,
+    "men_smoke_tobacco_pct": 37.7,
+    "population_lowest_wealth_quintile_pct": 51.4,
+    "women_distance_is_problem_pct": 31.2,
+    "women_no_health_insurance_pct": 87.3,
+    "women_overweight_or_obese_pct": 25.1,
+    "women_smoke_tobacco_pct": 4.4
+   },
+   "facilities": {
+    "clinic": 3,
+    "health_centre": 1,
+    "health_post": 2,
+    "hospital": 0,
+    "other": 0,
+    "total": 6
+   },
+   "facilities_per_10k": 2.31,
+   "level": "district",
+   "name_en": "Kaoh Nheaek",
+   "pcode": "KH1102",
+   "pct_motor_over_30_min": 28.2,
+   "pct_walk_over_60_min": 46.5,
+   "population": 25969,
+   "province_pcode": "KH11",
+   "travel_motor_mean_min": 33.3,
+   "travel_walk_mean_min": 159.5
+  },
+  {
+   "adults_20plus_est": 4334,
+   "dhs": {
+    "men_no_health_insurance_pct": 89.2,
+    "men_smoke_tobacco_pct": 37.7,
+    "population_lowest_wealth_quintile_pct": 51.4,
+    "women_distance_is_problem_pct": 31.2,
+    "women_no_health_insurance_pct": 87.3,
+    "women_overweight_or_obese_pct": 25.1,
+    "women_smoke_tobacco_pct": 4.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 1,
+    "health_post": 2,
+    "hospital": 0,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 3.87,
+   "level": "district",
+   "name_en": "Ou Reang",
+   "pcode": "KH1103",
+   "pct_motor_over_30_min": 34.3,
+   "pct_walk_over_60_min": 100,
+   "population": 7749,
+   "province_pcode": "KH11",
+   "travel_motor_mean_min": 42.9,
+   "travel_walk_mean_min": 209.5
+  },
+  {
+   "adults_20plus_est": 12742,
+   "dhs": {
+    "men_no_health_insurance_pct": 89.2,
+    "men_smoke_tobacco_pct": 37.7,
+    "population_lowest_wealth_quintile_pct": 51.4,
+    "women_distance_is_problem_pct": 31.2,
+    "women_no_health_insurance_pct": 87.3,
+    "women_overweight_or_obese_pct": 25.1,
+    "women_smoke_tobacco_pct": 4.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 1,
+    "health_post": 3,
+    "hospital": 0,
+    "other": 0,
+    "total": 4
+   },
+   "facilities_per_10k": 1.76,
+   "level": "district",
+   "name_en": "Pech Chreada",
+   "pcode": "KH1104",
+   "pct_motor_over_30_min": 91.5,
+   "pct_walk_over_60_min": 100,
+   "population": 22781,
+   "province_pcode": "KH11",
+   "travel_motor_mean_min": 55.9,
+   "travel_walk_mean_min": 328.6
+  },
+  {
+   "adults_20plus_est": 8662,
+   "dhs": {
+    "men_no_health_insurance_pct": 89.2,
+    "men_smoke_tobacco_pct": 37.7,
+    "population_lowest_wealth_quintile_pct": 51.4,
+    "women_distance_is_problem_pct": 31.2,
+    "women_no_health_insurance_pct": 87.3,
+    "women_overweight_or_obese_pct": 25.1,
+    "women_smoke_tobacco_pct": 4.4
+   },
+   "facilities": {
+    "clinic": 1,
+    "health_centre": 1,
+    "health_post": 1,
+    "hospital": 1,
+    "other": 0,
+    "total": 4
+   },
+   "facilities_per_10k": 2.58,
+   "level": "district",
+   "name_en": "Saen Monourom",
+   "pcode": "KH1105",
+   "pct_motor_over_30_min": 5.3,
+   "pct_walk_over_60_min": 55.7,
+   "population": 15487,
+   "province_pcode": "KH11",
+   "travel_motor_mean_min": 8.7,
+   "travel_walk_mean_min": 64
+  },
+  {
+   "adults_20plus_est": 112752,
+   "dhs": {
+    "men_no_health_insurance_pct": 80.5,
+    "men_smoke_tobacco_pct": 9.8,
+    "population_lowest_wealth_quintile_pct": 0,
+    "women_distance_is_problem_pct": 4.4,
+    "women_no_health_insurance_pct": 73.2,
+    "women_overweight_or_obese_pct": 30.5,
+    "women_smoke_tobacco_pct": 0.6
+   },
+   "facilities": {
+    "clinic": 15,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 7,
+    "other": 0,
+    "total": 24
+   },
+   "facilities_per_10k": 1.5,
+   "level": "district",
+   "name_en": "Chamkar Mon",
+   "pcode": "KH1201",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 0,
+   "population": 160398,
+   "province_pcode": "KH12",
+   "travel_motor_mean_min": 0.4,
+   "travel_walk_mean_min": 3.3
+  },
+  {
+   "adults_20plus_est": 128298,
+   "dhs": {
+    "men_no_health_insurance_pct": 80.5,
+    "men_smoke_tobacco_pct": 9.8,
+    "population_lowest_wealth_quintile_pct": 0,
+    "women_distance_is_problem_pct": 4.4,
+    "women_no_health_insurance_pct": 73.2,
+    "women_overweight_or_obese_pct": 30.5,
+    "women_smoke_tobacco_pct": 0.6
+   },
+   "facilities": {
+    "clinic": 15,
+    "health_centre": 1,
+    "health_post": 0,
+    "hospital": 8,
+    "other": 0,
+    "total": 24
+   },
+   "facilities_per_10k": 1.31,
+   "level": "district",
+   "name_en": "Doun Penh",
+   "pcode": "KH1202",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 0,
+   "population": 182513,
+   "province_pcode": "KH12",
+   "travel_motor_mean_min": 0.1,
+   "travel_walk_mean_min": 0.7
+  },
+  {
+   "adults_20plus_est": 58216,
+   "dhs": {
+    "men_no_health_insurance_pct": 80.5,
+    "men_smoke_tobacco_pct": 9.8,
+    "population_lowest_wealth_quintile_pct": 0,
+    "women_distance_is_problem_pct": 4.4,
+    "women_no_health_insurance_pct": 73.2,
+    "women_overweight_or_obese_pct": 30.5,
+    "women_smoke_tobacco_pct": 0.6
+   },
+   "facilities": {
+    "clinic": 6,
+    "health_centre": 1,
+    "health_post": 0,
+    "hospital": 5,
+    "other": 0,
+    "total": 12
+   },
+   "facilities_per_10k": 1.45,
+   "level": "district",
+   "name_en": "Prampir Meakkakra",
+   "pcode": "KH1203",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 0,
+   "population": 82817,
+   "province_pcode": "KH12",
+   "travel_motor_mean_min": 0.5,
+   "travel_walk_mean_min": 3.9
+  },
+  {
+   "adults_20plus_est": 114270,
+   "dhs": {
+    "men_no_health_insurance_pct": 80.5,
+    "men_smoke_tobacco_pct": 9.8,
+    "population_lowest_wealth_quintile_pct": 0,
+    "women_distance_is_problem_pct": 4.4,
+    "women_no_health_insurance_pct": 73.2,
+    "women_overweight_or_obese_pct": 30.5,
+    "women_smoke_tobacco_pct": 0.6
+   },
+   "facilities": {
+    "clinic": 12,
+    "health_centre": 1,
+    "health_post": 0,
+    "hospital": 6,
+    "other": 0,
+    "total": 19
+   },
+   "facilities_per_10k": 1.17,
+   "level": "district",
+   "name_en": "Tuol Kouk",
+   "pcode": "KH1204",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 0,
+   "population": 162557,
+   "province_pcode": "KH12",
+   "travel_motor_mean_min": 0.5,
+   "travel_walk_mean_min": 4
+  },
+  {
+   "adults_20plus_est": 127036,
+   "dhs": {
+    "men_no_health_insurance_pct": 80.5,
+    "men_smoke_tobacco_pct": 9.8,
+    "population_lowest_wealth_quintile_pct": 0,
+    "women_distance_is_problem_pct": 4.4,
+    "women_no_health_insurance_pct": 73.2,
+    "women_overweight_or_obese_pct": 30.5,
+    "women_smoke_tobacco_pct": 0.6
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 4,
+    "health_post": 0,
+    "hospital": 5,
+    "other": 0,
+    "total": 9
+   },
+   "facilities_per_10k": 0.5,
+   "level": "district",
+   "name_en": "Dangkao",
+   "pcode": "KH1205",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 5.3,
+   "population": 180718,
+   "province_pcode": "KH12",
+   "travel_motor_mean_min": 3,
+   "travel_walk_mean_min": 25.8
+  },
+  {
+   "adults_20plus_est": 224454,
+   "dhs": {
+    "men_no_health_insurance_pct": 80.5,
+    "men_smoke_tobacco_pct": 9.8,
+    "population_lowest_wealth_quintile_pct": 0,
+    "women_distance_is_problem_pct": 4.4,
+    "women_no_health_insurance_pct": 73.2,
+    "women_overweight_or_obese_pct": 30.5,
+    "women_smoke_tobacco_pct": 0.6
+   },
+   "facilities": {
+    "clinic": 4,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 4,
+    "other": 0,
+    "total": 10
+   },
+   "facilities_per_10k": 0.31,
+   "level": "district",
+   "name_en": "Mean Chey",
+   "pcode": "KH1206",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 0,
+   "population": 319302,
+   "province_pcode": "KH12",
+   "travel_motor_mean_min": 0.7,
+   "travel_walk_mean_min": 5.7
+  },
+  {
+   "adults_20plus_est": 212136,
+   "dhs": {
+    "men_no_health_insurance_pct": 80.5,
+    "men_smoke_tobacco_pct": 9.8,
+    "population_lowest_wealth_quintile_pct": 0,
+    "women_distance_is_problem_pct": 4.4,
+    "women_no_health_insurance_pct": 73.2,
+    "women_overweight_or_obese_pct": 30.5,
+    "women_smoke_tobacco_pct": 0.6
+   },
+   "facilities": {
+    "clinic": 6,
+    "health_centre": 1,
+    "health_post": 0,
+    "hospital": 5,
+    "other": 0,
+    "total": 12
+   },
+   "facilities_per_10k": 0.4,
+   "level": "district",
+   "name_en": "Russey Keo",
+   "pcode": "KH1207",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 0,
+   "population": 301779,
+   "province_pcode": "KH12",
+   "travel_motor_mean_min": 1.6,
+   "travel_walk_mean_min": 13.3
+  },
+  {
+   "adults_20plus_est": 160293,
+   "dhs": {
+    "men_no_health_insurance_pct": 80.5,
+    "men_smoke_tobacco_pct": 9.8,
+    "population_lowest_wealth_quintile_pct": 0,
+    "women_distance_is_problem_pct": 4.4,
+    "women_no_health_insurance_pct": 73.2,
+    "women_overweight_or_obese_pct": 30.5,
+    "women_smoke_tobacco_pct": 0.6
+   },
+   "facilities": {
+    "clinic": 7,
+    "health_centre": 3,
+    "health_post": 0,
+    "hospital": 5,
+    "other": 0,
+    "total": 15
+   },
+   "facilities_per_10k": 0.66,
+   "level": "district",
+   "name_en": "Saensokh",
+   "pcode": "KH1208",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 0,
+   "population": 228029,
+   "province_pcode": "KH12",
+   "travel_motor_mean_min": 1,
+   "travel_walk_mean_min": 8.6
+  },
+  {
+   "adults_20plus_est": 239446,
+   "dhs": {
+    "men_no_health_insurance_pct": 80.5,
+    "men_smoke_tobacco_pct": 9.8,
+    "population_lowest_wealth_quintile_pct": 0,
+    "women_distance_is_problem_pct": 4.4,
+    "women_no_health_insurance_pct": 73.2,
+    "women_overweight_or_obese_pct": 30.5,
+    "women_smoke_tobacco_pct": 0.6
+   },
+   "facilities": {
+    "clinic": 7,
+    "health_centre": 3,
+    "health_post": 0,
+    "hospital": 6,
+    "other": 0,
+    "total": 16
+   },
+   "facilities_per_10k": 0.47,
+   "level": "district",
+   "name_en": "Pur SenChey",
+   "pcode": "KH1209",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 4.3,
+   "population": 340629,
+   "province_pcode": "KH12",
+   "travel_motor_mean_min": 1.9,
+   "travel_walk_mean_min": 15.7
+  },
+  {
+   "adults_20plus_est": 130829,
+   "dhs": {
+    "men_no_health_insurance_pct": 80.5,
+    "men_smoke_tobacco_pct": 9.8,
+    "population_lowest_wealth_quintile_pct": 0,
+    "women_distance_is_problem_pct": 4.4,
+    "women_no_health_insurance_pct": 73.2,
+    "women_overweight_or_obese_pct": 30.5,
+    "women_smoke_tobacco_pct": 0.6
+   },
+   "facilities": {
+    "clinic": 1,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 5,
+    "other": 0,
+    "total": 8
+   },
+   "facilities_per_10k": 0.43,
+   "level": "district",
+   "name_en": "Chraoy Chongvar",
+   "pcode": "KH1210",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 27.5,
+   "population": 186114,
+   "province_pcode": "KH12",
+   "travel_motor_mean_min": 5.5,
+   "travel_walk_mean_min": 42.5
+  },
+  {
+   "adults_20plus_est": 155199,
+   "dhs": {
+    "men_no_health_insurance_pct": 80.5,
+    "men_smoke_tobacco_pct": 9.8,
+    "population_lowest_wealth_quintile_pct": 0,
+    "women_distance_is_problem_pct": 4.4,
+    "women_no_health_insurance_pct": 73.2,
+    "women_overweight_or_obese_pct": 30.5,
+    "women_smoke_tobacco_pct": 0.6
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 3,
+    "health_post": 0,
+    "hospital": 4,
+    "other": 0,
+    "total": 7
+   },
+   "facilities_per_10k": 0.32,
+   "level": "district",
+   "name_en": "Praek Pnov",
+   "pcode": "KH1211",
+   "pct_motor_over_30_min": 0.1,
+   "pct_walk_over_60_min": 42.2,
+   "population": 220782,
+   "province_pcode": "KH12",
+   "travel_motor_mean_min": 7.1,
+   "travel_walk_mean_min": 62.1
+  },
+  {
+   "adults_20plus_est": 135102,
+   "dhs": {
+    "men_no_health_insurance_pct": 80.5,
+    "men_smoke_tobacco_pct": 9.8,
+    "population_lowest_wealth_quintile_pct": 0,
+    "women_distance_is_problem_pct": 4.4,
+    "women_no_health_insurance_pct": 73.2,
+    "women_overweight_or_obese_pct": 30.5,
+    "women_smoke_tobacco_pct": 0.6
+   },
+   "facilities": {
+    "clinic": 2,
+    "health_centre": 4,
+    "health_post": 0,
+    "hospital": 6,
+    "other": 0,
+    "total": 12
+   },
+   "facilities_per_10k": 0.62,
+   "level": "district",
+   "name_en": "Chbar Ampov",
+   "pcode": "KH1212",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 1.7,
+   "population": 192193,
+   "province_pcode": "KH12",
+   "travel_motor_mean_min": 2.3,
+   "travel_walk_mean_min": 18.6
+  },
+  {
+   "adults_20plus_est": 17583,
+   "dhs": {
+    "men_no_health_insurance_pct": 89.4,
+    "men_smoke_tobacco_pct": 34.9,
+    "population_lowest_wealth_quintile_pct": 60.9,
+    "women_distance_is_problem_pct": 45.4,
+    "women_no_health_insurance_pct": 89.4,
+    "women_overweight_or_obese_pct": 25.2,
+    "women_smoke_tobacco_pct": 1.9
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.99,
+   "level": "district",
+   "name_en": "Chey Saen",
+   "pcode": "KH1301",
+   "pct_motor_over_30_min": 28.1,
+   "pct_walk_over_60_min": 71.6,
+   "population": 30240,
+   "province_pcode": "KH13",
+   "travel_motor_mean_min": 24.1,
+   "travel_walk_mean_min": 145.4
+  },
+  {
+   "adults_20plus_est": 17456,
+   "dhs": {
+    "men_no_health_insurance_pct": 89.4,
+    "men_smoke_tobacco_pct": 34.9,
+    "population_lowest_wealth_quintile_pct": 60.9,
+    "women_distance_is_problem_pct": 45.4,
+    "women_no_health_insurance_pct": 89.4,
+    "women_overweight_or_obese_pct": 25.2,
+    "women_smoke_tobacco_pct": 1.9
+   },
+   "facilities": {
+    "clinic": 1,
+    "health_centre": 1,
+    "health_post": 2,
+    "hospital": 0,
+    "other": 0,
+    "total": 4
+   },
+   "facilities_per_10k": 1.33,
+   "level": "district",
+   "name_en": "Chhaeb",
+   "pcode": "KH1302",
+   "pct_motor_over_30_min": 71.1,
+   "pct_walk_over_60_min": 99.9,
+   "population": 30022,
+   "province_pcode": "KH13",
+   "travel_motor_mean_min": 54.6,
+   "travel_walk_mean_min": 271.3
+  },
+  {
+   "adults_20plus_est": 37451,
+   "dhs": {
+    "men_no_health_insurance_pct": 89.4,
+    "men_smoke_tobacco_pct": 34.9,
+    "population_lowest_wealth_quintile_pct": 60.9,
+    "women_distance_is_problem_pct": 45.4,
+    "women_no_health_insurance_pct": 89.4,
+    "women_overweight_or_obese_pct": 25.2,
+    "women_smoke_tobacco_pct": 1.9
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 3,
+    "health_post": 3,
+    "hospital": 3,
+    "other": 0,
+    "total": 9
+   },
+   "facilities_per_10k": 1.4,
+   "level": "district",
+   "name_en": "Choam Ksant",
+   "pcode": "KH1303",
+   "pct_motor_over_30_min": 97.7,
+   "pct_walk_over_60_min": 99.5,
+   "population": 64412,
+   "province_pcode": "KH13",
+   "travel_motor_mean_min": 75.8,
+   "travel_walk_mean_min": 335.6
+  },
+  {
+   "adults_20plus_est": 23470,
+   "dhs": {
+    "men_no_health_insurance_pct": 89.4,
+    "men_smoke_tobacco_pct": 34.9,
+    "population_lowest_wealth_quintile_pct": 60.9,
+    "women_distance_is_problem_pct": 45.4,
+    "women_no_health_insurance_pct": 89.4,
+    "women_overweight_or_obese_pct": 25.2,
+    "women_smoke_tobacco_pct": 1.9
+   },
+   "facilities": {
+    "clinic": 1,
+    "health_centre": 2,
+    "health_post": 3,
+    "hospital": 1,
+    "other": 0,
+    "total": 7
+   },
+   "facilities_per_10k": 1.73,
+   "level": "district",
+   "name_en": "Kuleaen",
+   "pcode": "KH1304",
+   "pct_motor_over_30_min": 67.3,
+   "pct_walk_over_60_min": 98.2,
+   "population": 40366,
+   "province_pcode": "KH13",
+   "travel_motor_mean_min": 53.5,
+   "travel_walk_mean_min": 323.7
+  },
+  {
+   "adults_20plus_est": 31689,
+   "dhs": {
+    "men_no_health_insurance_pct": 89.4,
+    "men_smoke_tobacco_pct": 34.9,
+    "population_lowest_wealth_quintile_pct": 60.9,
+    "women_distance_is_problem_pct": 45.4,
+    "women_no_health_insurance_pct": 89.4,
+    "women_overweight_or_obese_pct": 25.2,
+    "women_smoke_tobacco_pct": 1.9
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 3,
+    "health_post": 5,
+    "hospital": 1,
+    "other": 0,
+    "total": 9
+   },
+   "facilities_per_10k": 1.65,
+   "level": "district",
+   "name_en": "Rovieng",
+   "pcode": "KH1305",
+   "pct_motor_over_30_min": 99,
+   "pct_walk_over_60_min": 100,
+   "population": 54502,
+   "province_pcode": "KH13",
+   "travel_motor_mean_min": 57.7,
+   "travel_walk_mean_min": 454.1
+  },
+  {
+   "adults_20plus_est": 15838,
+   "dhs": {
+    "men_no_health_insurance_pct": 89.4,
+    "men_smoke_tobacco_pct": 34.9,
+    "population_lowest_wealth_quintile_pct": 60.9,
+    "women_distance_is_problem_pct": 45.4,
+    "women_no_health_insurance_pct": 89.4,
+    "women_overweight_or_obese_pct": 25.2,
+    "women_smoke_tobacco_pct": 1.9
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 1,
+    "health_post": 2,
+    "hospital": 0,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 1.1,
+   "level": "district",
+   "name_en": "Sangkum Thmei",
+   "pcode": "KH1306",
+   "pct_motor_over_30_min": 100,
+   "pct_walk_over_60_min": 100,
+   "population": 27240,
+   "province_pcode": "KH13",
+   "travel_motor_mean_min": 85.5,
+   "travel_walk_mean_min": 454.6
+  },
+  {
+   "adults_20plus_est": 9065,
+   "dhs": {
+    "men_no_health_insurance_pct": 89.4,
+    "men_smoke_tobacco_pct": 34.9,
+    "population_lowest_wealth_quintile_pct": 60.9,
+    "women_distance_is_problem_pct": 45.4,
+    "women_no_health_insurance_pct": 89.4,
+    "women_overweight_or_obese_pct": 25.2,
+    "women_smoke_tobacco_pct": 1.9
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 0,
+    "health_post": 2,
+    "hospital": 0,
+    "other": 0,
+    "total": 2
+   },
+   "facilities_per_10k": 1.28,
+   "level": "district",
+   "name_en": "Tbaeng Mean Chey",
+   "pcode": "KH1307",
+   "pct_motor_over_30_min": 29.4,
+   "pct_walk_over_60_min": 99.3,
+   "population": 15591,
+   "province_pcode": "KH13",
+   "travel_motor_mean_min": 22.3,
+   "travel_walk_mean_min": 156
+  },
+  {
+   "adults_20plus_est": 16560,
+   "dhs": {
+    "men_no_health_insurance_pct": 89.4,
+    "men_smoke_tobacco_pct": 34.9,
+    "population_lowest_wealth_quintile_pct": 60.9,
+    "women_distance_is_problem_pct": 45.4,
+    "women_no_health_insurance_pct": 89.4,
+    "women_overweight_or_obese_pct": 25.2,
+    "women_smoke_tobacco_pct": 1.9
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 1,
+    "health_post": 1,
+    "hospital": 2,
+    "other": 0,
+    "total": 4
+   },
+   "facilities_per_10k": 1.4,
+   "level": "district",
+   "name_en": "Preah Vihear",
+   "pcode": "KH1308",
+   "pct_motor_over_30_min": 1.8,
+   "pct_walk_over_60_min": 20.1,
+   "population": 28482,
+   "province_pcode": "KH13",
+   "travel_motor_mean_min": 6.1,
+   "travel_walk_mean_min": 40.3
+  },
+  {
+   "adults_20plus_est": 58488,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.4,
+    "men_smoke_tobacco_pct": 13.7,
+    "population_lowest_wealth_quintile_pct": 11.8,
+    "women_distance_is_problem_pct": 2.3,
+    "women_no_health_insurance_pct": 85.8,
+    "women_overweight_or_obese_pct": 26.3,
+    "women_smoke_tobacco_pct": 0.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 8,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 8
+   },
+   "facilities_per_10k": 0.85,
+   "level": "district",
+   "name_en": "Ba Phnum",
+   "pcode": "KH1401",
+   "pct_motor_over_30_min": 20.4,
+   "pct_walk_over_60_min": 99.6,
+   "population": 94456,
+   "province_pcode": "KH14",
+   "travel_motor_mean_min": 25.2,
+   "travel_walk_mean_min": 195.3
+  },
+  {
+   "adults_20plus_est": 60957,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.4,
+    "men_smoke_tobacco_pct": 13.7,
+    "population_lowest_wealth_quintile_pct": 11.8,
+    "women_distance_is_problem_pct": 2.3,
+    "women_no_health_insurance_pct": 85.8,
+    "women_overweight_or_obese_pct": 26.3,
+    "women_smoke_tobacco_pct": 0.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 7,
+    "health_post": 0,
+    "hospital": 4,
+    "other": 0,
+    "total": 11
+   },
+   "facilities_per_10k": 1.12,
+   "level": "district",
+   "name_en": "Kamchay Mear",
+   "pcode": "KH1402",
+   "pct_motor_over_30_min": 66.1,
+   "pct_walk_over_60_min": 99.7,
+   "population": 98443,
+   "province_pcode": "KH14",
+   "travel_motor_mean_min": 35.2,
+   "travel_walk_mean_min": 260
+  },
+  {
+   "adults_20plus_est": 83241,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.4,
+    "men_smoke_tobacco_pct": 13.7,
+    "population_lowest_wealth_quintile_pct": 11.8,
+    "women_distance_is_problem_pct": 2.3,
+    "women_no_health_insurance_pct": 85.8,
+    "women_overweight_or_obese_pct": 26.3,
+    "women_smoke_tobacco_pct": 0.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 11,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 12
+   },
+   "facilities_per_10k": 0.89,
+   "level": "district",
+   "name_en": "Kampong Trabaek",
+   "pcode": "KH1403",
+   "pct_motor_over_30_min": 6.5,
+   "pct_walk_over_60_min": 81,
+   "population": 134431,
+   "province_pcode": "KH14",
+   "travel_motor_mean_min": 15.5,
+   "travel_walk_mean_min": 112.3
+  },
+  {
+   "adults_20plus_est": 45579,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.4,
+    "men_smoke_tobacco_pct": 13.7,
+    "population_lowest_wealth_quintile_pct": 11.8,
+    "women_distance_is_problem_pct": 2.3,
+    "women_no_health_insurance_pct": 85.8,
+    "women_overweight_or_obese_pct": 26.3,
+    "women_smoke_tobacco_pct": 0.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 5,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 5
+   },
+   "facilities_per_10k": 0.68,
+   "level": "district",
+   "name_en": "Kanhchriech",
+   "pcode": "KH1404",
+   "pct_motor_over_30_min": 94.8,
+   "pct_walk_over_60_min": 100,
+   "population": 73608,
+   "province_pcode": "KH14",
+   "travel_motor_mean_min": 37.4,
+   "travel_walk_mean_min": 305.2
+  },
+  {
+   "adults_20plus_est": 71140,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.4,
+    "men_smoke_tobacco_pct": 13.7,
+    "population_lowest_wealth_quintile_pct": 11.8,
+    "women_distance_is_problem_pct": 2.3,
+    "women_no_health_insurance_pct": 85.8,
+    "women_overweight_or_obese_pct": 26.3,
+    "women_smoke_tobacco_pct": 0.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 9,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 10
+   },
+   "facilities_per_10k": 0.87,
+   "level": "district",
+   "name_en": "Me Sang",
+   "pcode": "KH1405",
+   "pct_motor_over_30_min": 79.5,
+   "pct_walk_over_60_min": 100,
+   "population": 114888,
+   "province_pcode": "KH14",
+   "travel_motor_mean_min": 38.9,
+   "travel_walk_mean_min": 282.4
+  },
+  {
+   "adults_20plus_est": 44452,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.4,
+    "men_smoke_tobacco_pct": 13.7,
+    "population_lowest_wealth_quintile_pct": 11.8,
+    "women_distance_is_problem_pct": 2.3,
+    "women_no_health_insurance_pct": 85.8,
+    "women_overweight_or_obese_pct": 26.3,
+    "women_smoke_tobacco_pct": 0.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 4,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 4
+   },
+   "facilities_per_10k": 0.56,
+   "level": "district",
+   "name_en": "Peam Chor",
+   "pcode": "KH1406",
+   "pct_motor_over_30_min": 68.9,
+   "pct_walk_over_60_min": 98.4,
+   "population": 71788,
+   "province_pcode": "KH14",
+   "travel_motor_mean_min": 37.8,
+   "travel_walk_mean_min": 208.7
+  },
+  {
+   "adults_20plus_est": 44484,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.4,
+    "men_smoke_tobacco_pct": 13.7,
+    "population_lowest_wealth_quintile_pct": 11.8,
+    "women_distance_is_problem_pct": 2.3,
+    "women_no_health_insurance_pct": 85.8,
+    "women_overweight_or_obese_pct": 26.3,
+    "women_smoke_tobacco_pct": 0.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 7,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 8
+   },
+   "facilities_per_10k": 1.11,
+   "level": "district",
+   "name_en": "Peam Ro",
+   "pcode": "KH1407",
+   "pct_motor_over_30_min": 0.5,
+   "pct_walk_over_60_min": 54,
+   "population": 71839,
+   "province_pcode": "KH14",
+   "travel_motor_mean_min": 9.9,
+   "travel_walk_mean_min": 73.5
+  },
+  {
+   "adults_20plus_est": 83991,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.4,
+    "men_smoke_tobacco_pct": 13.7,
+    "population_lowest_wealth_quintile_pct": 11.8,
+    "women_distance_is_problem_pct": 2.3,
+    "women_no_health_insurance_pct": 85.8,
+    "women_overweight_or_obese_pct": 26.3,
+    "women_smoke_tobacco_pct": 0.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 8,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 9
+   },
+   "facilities_per_10k": 0.66,
+   "level": "district",
+   "name_en": "Pea Reang",
+   "pcode": "KH1408",
+   "pct_motor_over_30_min": 81.5,
+   "pct_walk_over_60_min": 100,
+   "population": 135642,
+   "province_pcode": "KH14",
+   "travel_motor_mean_min": 37.1,
+   "travel_walk_mean_min": 285.3
+  },
+  {
+   "adults_20plus_est": 87659,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.4,
+    "men_smoke_tobacco_pct": 13.7,
+    "population_lowest_wealth_quintile_pct": 11.8,
+    "women_distance_is_problem_pct": 2.3,
+    "women_no_health_insurance_pct": 85.8,
+    "women_overweight_or_obese_pct": 26.3,
+    "women_smoke_tobacco_pct": 0.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 10,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 11
+   },
+   "facilities_per_10k": 0.78,
+   "level": "district",
+   "name_en": "Preah Sdach",
+   "pcode": "KH1409",
+   "pct_motor_over_30_min": 47.1,
+   "pct_walk_over_60_min": 99.7,
+   "population": 141566,
+   "province_pcode": "KH14",
+   "travel_motor_mean_min": 30.1,
+   "travel_walk_mean_min": 195.8
+  },
+  {
+   "adults_20plus_est": 17369,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.4,
+    "men_smoke_tobacco_pct": 13.7,
+    "population_lowest_wealth_quintile_pct": 11.8,
+    "women_distance_is_problem_pct": 2.3,
+    "women_no_health_insurance_pct": 85.8,
+    "women_overweight_or_obese_pct": 26.3,
+    "women_smoke_tobacco_pct": 0.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 1,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 2
+   },
+   "facilities_per_10k": 0.71,
+   "level": "district",
+   "name_en": "Prey Veng",
+   "pcode": "KH1410",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 6.7,
+   "population": 28050,
+   "province_pcode": "KH14",
+   "travel_motor_mean_min": 2.9,
+   "travel_walk_mean_min": 24
+  },
+  {
+   "adults_20plus_est": 41928,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.4,
+    "men_smoke_tobacco_pct": 13.7,
+    "population_lowest_wealth_quintile_pct": 11.8,
+    "women_distance_is_problem_pct": 2.3,
+    "women_no_health_insurance_pct": 85.8,
+    "women_overweight_or_obese_pct": 26.3,
+    "women_smoke_tobacco_pct": 0.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 3,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.44,
+   "level": "district",
+   "name_en": "Pur Rieng",
+   "pcode": "KH1411",
+   "pct_motor_over_30_min": 11.7,
+   "pct_walk_over_60_min": 93.1,
+   "population": 67712,
+   "province_pcode": "KH14",
+   "travel_motor_mean_min": 18.7,
+   "travel_walk_mean_min": 140.9
+  },
+  {
+   "adults_20plus_est": 46195,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.4,
+    "men_smoke_tobacco_pct": 13.7,
+    "population_lowest_wealth_quintile_pct": 11.8,
+    "women_distance_is_problem_pct": 2.3,
+    "women_no_health_insurance_pct": 85.8,
+    "women_overweight_or_obese_pct": 26.3,
+    "women_smoke_tobacco_pct": 0.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 6,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 6
+   },
+   "facilities_per_10k": 0.8,
+   "level": "district",
+   "name_en": "Sithor Kandal",
+   "pcode": "KH1412",
+   "pct_motor_over_30_min": 84.4,
+   "pct_walk_over_60_min": 100,
+   "population": 74603,
+   "province_pcode": "KH14",
+   "travel_motor_mean_min": 36.7,
+   "travel_walk_mean_min": 314.9
+  },
+  {
+   "adults_20plus_est": 78190,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.4,
+    "men_smoke_tobacco_pct": 13.7,
+    "population_lowest_wealth_quintile_pct": 11.8,
+    "women_distance_is_problem_pct": 2.3,
+    "women_no_health_insurance_pct": 85.8,
+    "women_overweight_or_obese_pct": 26.3,
+    "women_smoke_tobacco_pct": 0.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 10,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 10
+   },
+   "facilities_per_10k": 0.79,
+   "level": "district",
+   "name_en": "Svay Antor",
+   "pcode": "KH1413",
+   "pct_motor_over_30_min": 58.3,
+   "pct_walk_over_60_min": 100,
+   "population": 126273,
+   "province_pcode": "KH14",
+   "travel_motor_mean_min": 31.9,
+   "travel_walk_mean_min": 230.7
+  },
+  {
+   "adults_20plus_est": 84492,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.3,
+    "men_smoke_tobacco_pct": 29.9,
+    "population_lowest_wealth_quintile_pct": 37.2,
+    "women_distance_is_problem_pct": 24.3,
+    "women_no_health_insurance_pct": 89.9,
+    "women_overweight_or_obese_pct": 30.7,
+    "women_smoke_tobacco_pct": 0.3
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 10,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 11
+   },
+   "facilities_per_10k": 0.78,
+   "level": "district",
+   "name_en": "Bakan",
+   "pcode": "KH1501",
+   "pct_motor_over_30_min": 100,
+   "pct_walk_over_60_min": 100,
+   "population": 141597,
+   "province_pcode": "KH15",
+   "travel_motor_mean_min": 70,
+   "travel_walk_mean_min": 471.1
+  },
+  {
+   "adults_20plus_est": 36913,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.3,
+    "men_smoke_tobacco_pct": 29.9,
+    "population_lowest_wealth_quintile_pct": 37.2,
+    "women_distance_is_problem_pct": 24.3,
+    "women_no_health_insurance_pct": 89.9,
+    "women_overweight_or_obese_pct": 30.7,
+    "women_smoke_tobacco_pct": 0.3
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 5,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 6
+   },
+   "facilities_per_10k": 0.97,
+   "level": "district",
+   "name_en": "Kandieng",
+   "pcode": "KH1502",
+   "pct_motor_over_30_min": 36.1,
+   "pct_walk_over_60_min": 87.5,
+   "population": 61862,
+   "province_pcode": "KH15",
+   "travel_motor_mean_min": 26.9,
+   "travel_walk_mean_min": 156.1
+  },
+  {
+   "adults_20plus_est": 60579,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.3,
+    "men_smoke_tobacco_pct": 29.9,
+    "population_lowest_wealth_quintile_pct": 37.2,
+    "women_distance_is_problem_pct": 24.3,
+    "women_no_health_insurance_pct": 89.9,
+    "women_overweight_or_obese_pct": 30.7,
+    "women_smoke_tobacco_pct": 0.3
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 6,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 6
+   },
+   "facilities_per_10k": 0.59,
+   "level": "district",
+   "name_en": "Krakor",
+   "pcode": "KH1503",
+   "pct_motor_over_30_min": 60.1,
+   "pct_walk_over_60_min": 97.2,
+   "population": 101523,
+   "province_pcode": "KH15",
+   "travel_motor_mean_min": 37.4,
+   "travel_walk_mean_min": 280.3
+  },
+  {
+   "adults_20plus_est": 44940,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.3,
+    "men_smoke_tobacco_pct": 29.9,
+    "population_lowest_wealth_quintile_pct": 37.2,
+    "women_distance_is_problem_pct": 24.3,
+    "women_no_health_insurance_pct": 89.9,
+    "women_overweight_or_obese_pct": 30.7,
+    "women_smoke_tobacco_pct": 0.3
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 4,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 4
+   },
+   "facilities_per_10k": 0.53,
+   "level": "district",
+   "name_en": "Phnum Kravanh",
+   "pcode": "KH1504",
+   "pct_motor_over_30_min": 100,
+   "pct_walk_over_60_min": 100,
+   "population": 75314,
+   "province_pcode": "KH15",
+   "travel_motor_mean_min": 75,
+   "travel_walk_mean_min": 559.1
+  },
+  {
+   "adults_20plus_est": 40651,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.3,
+    "men_smoke_tobacco_pct": 29.9,
+    "population_lowest_wealth_quintile_pct": 37.2,
+    "women_distance_is_problem_pct": 24.3,
+    "women_no_health_insurance_pct": 89.9,
+    "women_overweight_or_obese_pct": 30.7,
+    "women_smoke_tobacco_pct": 0.3
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 5,
+    "health_post": 0,
+    "hospital": 2,
+    "other": 0,
+    "total": 7
+   },
+   "facilities_per_10k": 1.03,
+   "level": "district",
+   "name_en": "Pursat",
+   "pcode": "KH1505",
+   "pct_motor_over_30_min": 93.1,
+   "pct_walk_over_60_min": 100,
+   "population": 68125,
+   "province_pcode": "KH15",
+   "travel_motor_mean_min": 39.1,
+   "travel_walk_mean_min": 264.1
+  },
+  {
+   "adults_20plus_est": 19198,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.3,
+    "men_smoke_tobacco_pct": 29.9,
+    "population_lowest_wealth_quintile_pct": 37.2,
+    "women_distance_is_problem_pct": 24.3,
+    "women_no_health_insurance_pct": 89.9,
+    "women_overweight_or_obese_pct": 30.7,
+    "women_smoke_tobacco_pct": 0.3
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 2,
+    "health_post": 3,
+    "hospital": 1,
+    "other": 0,
+    "total": 6
+   },
+   "facilities_per_10k": 1.86,
+   "level": "district",
+   "name_en": "Veal Veaeng",
+   "pcode": "KH1506",
+   "pct_motor_over_30_min": 51.3,
+   "pct_walk_over_60_min": 81.6,
+   "population": 32174,
+   "province_pcode": "KH15",
+   "travel_motor_mean_min": 41.4,
+   "travel_walk_mean_min": 254.8
+  },
+  {
+   "adults_20plus_est": 11459,
+   "dhs": {
+    "men_no_health_insurance_pct": 96.6,
+    "men_smoke_tobacco_pct": 39.1,
+    "population_lowest_wealth_quintile_pct": 75.4,
+    "women_distance_is_problem_pct": 41.2,
+    "women_no_health_insurance_pct": 97.9,
+    "women_overweight_or_obese_pct": 9.2,
+    "women_smoke_tobacco_pct": 21.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 1,
+    "health_post": 2,
+    "hospital": 0,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 1.46,
+   "level": "district",
+   "name_en": "Andoung Meas",
+   "pcode": "KH1601",
+   "pct_motor_over_30_min": 59.1,
+   "pct_walk_over_60_min": 100,
+   "population": 20603,
+   "province_pcode": "KH16",
+   "travel_motor_mean_min": 40.9,
+   "travel_walk_mean_min": 280.6
+  },
+  {
+   "adults_20plus_est": 19783,
+   "dhs": {
+    "men_no_health_insurance_pct": 96.6,
+    "men_smoke_tobacco_pct": 39.1,
+    "population_lowest_wealth_quintile_pct": 75.4,
+    "women_distance_is_problem_pct": 41.2,
+    "women_no_health_insurance_pct": 97.9,
+    "women_overweight_or_obese_pct": 9.2,
+    "women_smoke_tobacco_pct": 21.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 1,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 2
+   },
+   "facilities_per_10k": 0.56,
+   "level": "district",
+   "name_en": "Ban Lung",
+   "pcode": "KH1602",
+   "pct_motor_over_30_min": 3.6,
+   "pct_walk_over_60_min": 17.1,
+   "population": 35569,
+   "province_pcode": "KH16",
+   "travel_motor_mean_min": 6.4,
+   "travel_walk_mean_min": 48.8
+  },
+  {
+   "adults_20plus_est": 18416,
+   "dhs": {
+    "men_no_health_insurance_pct": 96.6,
+    "men_smoke_tobacco_pct": 39.1,
+    "population_lowest_wealth_quintile_pct": 75.4,
+    "women_distance_is_problem_pct": 41.2,
+    "women_no_health_insurance_pct": 97.9,
+    "women_overweight_or_obese_pct": 9.2,
+    "women_smoke_tobacco_pct": 21.4
+   },
+   "facilities": {
+    "clinic": 1,
+    "health_centre": 1,
+    "health_post": 1,
+    "hospital": 0,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.91,
+   "level": "district",
+   "name_en": "Bar Kaev",
+   "pcode": "KH1603",
+   "pct_motor_over_30_min": 12.3,
+   "pct_walk_over_60_min": 84.3,
+   "population": 33110,
+   "province_pcode": "KH16",
+   "travel_motor_mean_min": 18.4,
+   "travel_walk_mean_min": 121
+  },
+  {
+   "adults_20plus_est": 20014,
+   "dhs": {
+    "men_no_health_insurance_pct": 96.6,
+    "men_smoke_tobacco_pct": 39.1,
+    "population_lowest_wealth_quintile_pct": 75.4,
+    "women_distance_is_problem_pct": 41.2,
+    "women_no_health_insurance_pct": 97.9,
+    "women_overweight_or_obese_pct": 9.2,
+    "women_smoke_tobacco_pct": 21.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 1,
+    "health_post": 2,
+    "hospital": 0,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.83,
+   "level": "district",
+   "name_en": "Koun Mom",
+   "pcode": "KH1604",
+   "pct_motor_over_30_min": 80.4,
+   "pct_walk_over_60_min": 100,
+   "population": 35984,
+   "province_pcode": "KH16",
+   "travel_motor_mean_min": 54,
+   "travel_walk_mean_min": 366.8
+  },
+  {
+   "adults_20plus_est": 18158,
+   "dhs": {
+    "men_no_health_insurance_pct": 96.6,
+    "men_smoke_tobacco_pct": 39.1,
+    "population_lowest_wealth_quintile_pct": 75.4,
+    "women_distance_is_problem_pct": 41.2,
+    "women_no_health_insurance_pct": 97.9,
+    "women_overweight_or_obese_pct": 9.2,
+    "women_smoke_tobacco_pct": 21.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 1,
+    "health_post": 2,
+    "hospital": 0,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.92,
+   "level": "district",
+   "name_en": "Lumphat",
+   "pcode": "KH1605",
+   "pct_motor_over_30_min": 89.2,
+   "pct_walk_over_60_min": 100,
+   "population": 32647,
+   "province_pcode": "KH16",
+   "travel_motor_mean_min": 46.3,
+   "travel_walk_mean_min": 308.5
+  },
+  {
+   "adults_20plus_est": 16412,
+   "dhs": {
+    "men_no_health_insurance_pct": 96.6,
+    "men_smoke_tobacco_pct": 39.1,
+    "population_lowest_wealth_quintile_pct": 75.4,
+    "women_distance_is_problem_pct": 41.2,
+    "women_no_health_insurance_pct": 97.9,
+    "women_overweight_or_obese_pct": 9.2,
+    "women_smoke_tobacco_pct": 21.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 1,
+    "health_post": 2,
+    "hospital": 1,
+    "other": 0,
+    "total": 4
+   },
+   "facilities_per_10k": 1.36,
+   "level": "district",
+   "name_en": "Ou Chum",
+   "pcode": "KH1606",
+   "pct_motor_over_30_min": 20,
+   "pct_walk_over_60_min": 85,
+   "population": 29508,
+   "province_pcode": "KH16",
+   "travel_motor_mean_min": 21.5,
+   "travel_walk_mean_min": 148.7
+  },
+  {
+   "adults_20plus_est": 15482,
+   "dhs": {
+    "men_no_health_insurance_pct": 96.6,
+    "men_smoke_tobacco_pct": 39.1,
+    "population_lowest_wealth_quintile_pct": 75.4,
+    "women_distance_is_problem_pct": 41.2,
+    "women_no_health_insurance_pct": 97.9,
+    "women_overweight_or_obese_pct": 9.2,
+    "women_smoke_tobacco_pct": 21.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 1,
+    "health_post": 3,
+    "hospital": 0,
+    "other": 0,
+    "total": 4
+   },
+   "facilities_per_10k": 1.44,
+   "level": "district",
+   "name_en": "Ou Ya Dav",
+   "pcode": "KH1607",
+   "pct_motor_over_30_min": 89.4,
+   "pct_walk_over_60_min": 100,
+   "population": 27836,
+   "province_pcode": "KH16",
+   "travel_motor_mean_min": 51.9,
+   "travel_walk_mean_min": 244.7
+  },
+  {
+   "adults_20plus_est": 4869,
+   "dhs": {
+    "men_no_health_insurance_pct": 96.6,
+    "men_smoke_tobacco_pct": 39.1,
+    "population_lowest_wealth_quintile_pct": 75.4,
+    "women_distance_is_problem_pct": 41.2,
+    "women_no_health_insurance_pct": 97.9,
+    "women_overweight_or_obese_pct": 9.2,
+    "women_smoke_tobacco_pct": 21.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 1,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 1
+   },
+   "facilities_per_10k": 1.14,
+   "level": "district",
+   "name_en": "Ta Veaeng",
+   "pcode": "KH1608",
+   "pct_motor_over_30_min": 100,
+   "pct_walk_over_60_min": 100,
+   "population": 8755,
+   "province_pcode": "KH16",
+   "travel_motor_mean_min": 73.3,
+   "travel_walk_mean_min": 487.9
+  },
+  {
+   "adults_20plus_est": 14896,
+   "dhs": {
+    "men_no_health_insurance_pct": 96.6,
+    "men_smoke_tobacco_pct": 39.1,
+    "population_lowest_wealth_quintile_pct": 75.4,
+    "women_distance_is_problem_pct": 41.2,
+    "women_no_health_insurance_pct": 97.9,
+    "women_overweight_or_obese_pct": 9.2,
+    "women_smoke_tobacco_pct": 21.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 2,
+    "health_post": 2,
+    "hospital": 0,
+    "other": 0,
+    "total": 4
+   },
+   "facilities_per_10k": 1.49,
+   "level": "district",
+   "name_en": "Veun Sai",
+   "pcode": "KH1609",
+   "pct_motor_over_30_min": 97.1,
+   "pct_walk_over_60_min": 100,
+   "population": 26782,
+   "province_pcode": "KH16",
+   "travel_motor_mean_min": 53.9,
+   "travel_walk_mean_min": 400.2
+  },
+  {
+   "adults_20plus_est": 38542,
+   "dhs": {
+    "men_no_health_insurance_pct": 86.5,
+    "men_smoke_tobacco_pct": 31.3,
+    "population_lowest_wealth_quintile_pct": 28.1,
+    "women_distance_is_problem_pct": 39,
+    "women_no_health_insurance_pct": 83.2,
+    "women_overweight_or_obese_pct": 29.6,
+    "women_smoke_tobacco_pct": 0.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 5,
+    "health_post": 1,
+    "hospital": 2,
+    "other": 0,
+    "total": 8
+   },
+   "facilities_per_10k": 1.24,
+   "level": "district",
+   "name_en": "Angkor Chum",
+   "pcode": "KH1701",
+   "pct_motor_over_30_min": 3,
+   "pct_walk_over_60_min": 66.5,
+   "population": 64312,
+   "province_pcode": "KH17",
+   "travel_motor_mean_min": 12.8,
+   "travel_walk_mean_min": 101.1
+  },
+  {
+   "adults_20plus_est": 20415,
+   "dhs": {
+    "men_no_health_insurance_pct": 86.5,
+    "men_smoke_tobacco_pct": 31.3,
+    "population_lowest_wealth_quintile_pct": 28.1,
+    "women_distance_is_problem_pct": 39,
+    "women_no_health_insurance_pct": 83.2,
+    "women_overweight_or_obese_pct": 29.6,
+    "women_smoke_tobacco_pct": 0.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 2,
+    "health_post": 1,
+    "hospital": 0,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.88,
+   "level": "district",
+   "name_en": "Angkor Thum",
+   "pcode": "KH1702",
+   "pct_motor_over_30_min": 11.2,
+   "pct_walk_over_60_min": 99.9,
+   "population": 34065,
+   "province_pcode": "KH17",
+   "travel_motor_mean_min": 20.5,
+   "travel_walk_mean_min": 149.7
+  },
+  {
+   "adults_20plus_est": 30642,
+   "dhs": {
+    "men_no_health_insurance_pct": 86.5,
+    "men_smoke_tobacco_pct": 31.3,
+    "population_lowest_wealth_quintile_pct": 28.1,
+    "women_distance_is_problem_pct": 39,
+    "women_no_health_insurance_pct": 83.2,
+    "women_overweight_or_obese_pct": 29.6,
+    "women_smoke_tobacco_pct": 0.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 3,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 4
+   },
+   "facilities_per_10k": 0.78,
+   "level": "district",
+   "name_en": "Banteay Srei",
+   "pcode": "KH1703",
+   "pct_motor_over_30_min": 31.1,
+   "pct_walk_over_60_min": 93.3,
+   "population": 51129,
+   "province_pcode": "KH17",
+   "travel_motor_mean_min": 24.6,
+   "travel_walk_mean_min": 211.5
+  },
+  {
+   "adults_20plus_est": 90185,
+   "dhs": {
+    "men_no_health_insurance_pct": 86.5,
+    "men_smoke_tobacco_pct": 31.3,
+    "population_lowest_wealth_quintile_pct": 28.1,
+    "women_distance_is_problem_pct": 39,
+    "women_no_health_insurance_pct": 83.2,
+    "women_overweight_or_obese_pct": 29.6,
+    "women_smoke_tobacco_pct": 0.4
+   },
+   "facilities": {
+    "clinic": 1,
+    "health_centre": 12,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 13
+   },
+   "facilities_per_10k": 0.86,
+   "level": "district",
+   "name_en": "Chi Kraeng",
+   "pcode": "KH1704",
+   "pct_motor_over_30_min": 83.7,
+   "pct_walk_over_60_min": 100,
+   "population": 150484,
+   "province_pcode": "KH17",
+   "travel_motor_mean_min": 50.1,
+   "travel_walk_mean_min": 358.3
+  },
+  {
+   "adults_20plus_est": 36974,
+   "dhs": {
+    "men_no_health_insurance_pct": 86.5,
+    "men_smoke_tobacco_pct": 31.3,
+    "population_lowest_wealth_quintile_pct": 28.1,
+    "women_distance_is_problem_pct": 39,
+    "women_no_health_insurance_pct": 83.2,
+    "women_overweight_or_obese_pct": 29.6,
+    "women_smoke_tobacco_pct": 0.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 6,
+    "health_post": 0,
+    "hospital": 2,
+    "other": 0,
+    "total": 8
+   },
+   "facilities_per_10k": 1.3,
+   "level": "district",
+   "name_en": "Kralanh",
+   "pcode": "KH1706",
+   "pct_motor_over_30_min": 1.8,
+   "pct_walk_over_60_min": 99.8,
+   "population": 61696,
+   "province_pcode": "KH17",
+   "travel_motor_mean_min": 17.6,
+   "travel_walk_mean_min": 137.5
+  },
+  {
+   "adults_20plus_est": 89867,
+   "dhs": {
+    "men_no_health_insurance_pct": 86.5,
+    "men_smoke_tobacco_pct": 31.3,
+    "population_lowest_wealth_quintile_pct": 28.1,
+    "women_distance_is_problem_pct": 39,
+    "women_no_health_insurance_pct": 83.2,
+    "women_overweight_or_obese_pct": 29.6,
+    "women_smoke_tobacco_pct": 0.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 7,
+    "health_post": 0,
+    "hospital": 4,
+    "other": 0,
+    "total": 11
+   },
+   "facilities_per_10k": 0.73,
+   "level": "district",
+   "name_en": "Puok",
+   "pcode": "KH1707",
+   "pct_motor_over_30_min": 1.7,
+   "pct_walk_over_60_min": 48.2,
+   "population": 149953,
+   "province_pcode": "KH17",
+   "travel_motor_mean_min": 8.5,
+   "travel_walk_mean_min": 63.7
+  },
+  {
+   "adults_20plus_est": 50586,
+   "dhs": {
+    "men_no_health_insurance_pct": 86.5,
+    "men_smoke_tobacco_pct": 31.3,
+    "population_lowest_wealth_quintile_pct": 28.1,
+    "women_distance_is_problem_pct": 39,
+    "women_no_health_insurance_pct": 83.2,
+    "women_overweight_or_obese_pct": 29.6,
+    "women_smoke_tobacco_pct": 0.4
+   },
+   "facilities": {
+    "clinic": 1,
+    "health_centre": 4,
+    "health_post": 1,
+    "hospital": 3,
+    "other": 0,
+    "total": 9
+   },
+   "facilities_per_10k": 1.07,
+   "level": "district",
+   "name_en": "Prasat Bakong",
+   "pcode": "KH1709",
+   "pct_motor_over_30_min": 0.6,
+   "pct_walk_over_60_min": 39.3,
+   "population": 84409,
+   "province_pcode": "KH17",
+   "travel_motor_mean_min": 7.1,
+   "travel_walk_mean_min": 56.2
+  },
+  {
+   "adults_20plus_est": 171936,
+   "dhs": {
+    "men_no_health_insurance_pct": 86.5,
+    "men_smoke_tobacco_pct": 31.3,
+    "population_lowest_wealth_quintile_pct": 28.1,
+    "women_distance_is_problem_pct": 39,
+    "women_no_health_insurance_pct": 83.2,
+    "women_overweight_or_obese_pct": 29.6,
+    "women_smoke_tobacco_pct": 0.4
+   },
+   "facilities": {
+    "clinic": 17,
+    "health_centre": 9,
+    "health_post": 0,
+    "hospital": 8,
+    "other": 0,
+    "total": 34
+   },
+   "facilities_per_10k": 1.19,
+   "level": "district",
+   "name_en": "Siem Reap",
+   "pcode": "KH1710",
+   "pct_motor_over_30_min": 0.1,
+   "pct_walk_over_60_min": 9.3,
+   "population": 286895,
+   "province_pcode": "KH17",
+   "travel_motor_mean_min": 3,
+   "travel_walk_mean_min": 25.2
+  },
+  {
+   "adults_20plus_est": 77454,
+   "dhs": {
+    "men_no_health_insurance_pct": 86.5,
+    "men_smoke_tobacco_pct": 31.3,
+    "population_lowest_wealth_quintile_pct": 28.1,
+    "women_distance_is_problem_pct": 39,
+    "women_no_health_insurance_pct": 83.2,
+    "women_overweight_or_obese_pct": 29.6,
+    "women_smoke_tobacco_pct": 0.4
+   },
+   "facilities": {
+    "clinic": 1,
+    "health_centre": 9,
+    "health_post": 0,
+    "hospital": 2,
+    "other": 0,
+    "total": 12
+   },
+   "facilities_per_10k": 0.93,
+   "level": "district",
+   "name_en": "Soutr Nikom",
+   "pcode": "KH1711",
+   "pct_motor_over_30_min": 1.2,
+   "pct_walk_over_60_min": 58.4,
+   "population": 129241,
+   "province_pcode": "KH17",
+   "travel_motor_mean_min": 11.5,
+   "travel_walk_mean_min": 82.1
+  },
+  {
+   "adults_20plus_est": 24017,
+   "dhs": {
+    "men_no_health_insurance_pct": 86.5,
+    "men_smoke_tobacco_pct": 31.3,
+    "population_lowest_wealth_quintile_pct": 28.1,
+    "women_distance_is_problem_pct": 39,
+    "women_no_health_insurance_pct": 83.2,
+    "women_overweight_or_obese_pct": 29.6,
+    "women_smoke_tobacco_pct": 0.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 3,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.75,
+   "level": "district",
+   "name_en": "Srei Snam",
+   "pcode": "KH1712",
+   "pct_motor_over_30_min": 88.3,
+   "pct_walk_over_60_min": 100,
+   "population": 40075,
+   "province_pcode": "KH17",
+   "travel_motor_mean_min": 39,
+   "travel_walk_mean_min": 282.1
+  },
+  {
+   "adults_20plus_est": 30072,
+   "dhs": {
+    "men_no_health_insurance_pct": 86.5,
+    "men_smoke_tobacco_pct": 31.3,
+    "population_lowest_wealth_quintile_pct": 28.1,
+    "women_distance_is_problem_pct": 39,
+    "women_no_health_insurance_pct": 83.2,
+    "women_overweight_or_obese_pct": 29.6,
+    "women_smoke_tobacco_pct": 0.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 2,
+    "health_post": 1,
+    "hospital": 0,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.6,
+   "level": "district",
+   "name_en": "Svay Leu",
+   "pcode": "KH1713",
+   "pct_motor_over_30_min": 98.6,
+   "pct_walk_over_60_min": 100,
+   "population": 50179,
+   "province_pcode": "KH17",
+   "travel_motor_mean_min": 64,
+   "travel_walk_mean_min": 441.1
+  },
+  {
+   "adults_20plus_est": 32329,
+   "dhs": {
+    "men_no_health_insurance_pct": 86.5,
+    "men_smoke_tobacco_pct": 31.3,
+    "population_lowest_wealth_quintile_pct": 28.1,
+    "women_distance_is_problem_pct": 39,
+    "women_no_health_insurance_pct": 83.2,
+    "women_overweight_or_obese_pct": 29.6,
+    "women_smoke_tobacco_pct": 0.4
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 2,
+    "health_post": 1,
+    "hospital": 0,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.56,
+   "level": "district",
+   "name_en": "Varin",
+   "pcode": "KH1714",
+   "pct_motor_over_30_min": 88.9,
+   "pct_walk_over_60_min": 100,
+   "population": 53944,
+   "province_pcode": "KH17",
+   "travel_motor_mean_min": 59.3,
+   "travel_walk_mean_min": 414.4
+  },
+  {
+   "adults_20plus_est": 59029,
+   "dhs": {
+    "men_no_health_insurance_pct": 77.2,
+    "men_smoke_tobacco_pct": 27.1,
+    "population_lowest_wealth_quintile_pct": 7.5,
+    "women_distance_is_problem_pct": 30.6,
+    "women_no_health_insurance_pct": 81.4,
+    "women_overweight_or_obese_pct": 31.5,
+    "women_smoke_tobacco_pct": 0.9
+   },
+   "facilities": {
+    "clinic": 4,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 4,
+    "other": 0,
+    "total": 10
+   },
+   "facilities_per_10k": 1.18,
+   "level": "district",
+   "name_en": "Preah Sihanouk",
+   "pcode": "KH1801",
+   "pct_motor_over_30_min": 2.1,
+   "pct_walk_over_60_min": 5.8,
+   "population": 84754,
+   "province_pcode": "KH18",
+   "travel_motor_mean_min": 4.1,
+   "travel_walk_mean_min": 45.7
+  },
+  {
+   "adults_20plus_est": 85360,
+   "dhs": {
+    "men_no_health_insurance_pct": 77.2,
+    "men_smoke_tobacco_pct": 27.1,
+    "population_lowest_wealth_quintile_pct": 7.5,
+    "women_distance_is_problem_pct": 30.6,
+    "women_no_health_insurance_pct": 81.4,
+    "women_overweight_or_obese_pct": 31.5,
+    "women_smoke_tobacco_pct": 0.9
+   },
+   "facilities": {
+    "clinic": 1,
+    "health_centre": 7,
+    "health_post": 1,
+    "hospital": 2,
+    "other": 0,
+    "total": 11
+   },
+   "facilities_per_10k": 0.9,
+   "level": "district",
+   "name_en": "Prey Nob",
+   "pcode": "KH1802",
+   "pct_motor_over_30_min": 87.7,
+   "pct_walk_over_60_min": 100,
+   "population": 122559,
+   "province_pcode": "KH18",
+   "travel_motor_mean_min": 46.7,
+   "travel_walk_mean_min": 370.7
+  },
+  {
+   "adults_20plus_est": 20235,
+   "dhs": {
+    "men_no_health_insurance_pct": 77.2,
+    "men_smoke_tobacco_pct": 27.1,
+    "population_lowest_wealth_quintile_pct": 7.5,
+    "women_distance_is_problem_pct": 30.6,
+    "women_no_health_insurance_pct": 81.4,
+    "women_overweight_or_obese_pct": 31.5,
+    "women_smoke_tobacco_pct": 0.9
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 2
+   },
+   "facilities_per_10k": 0.69,
+   "level": "district",
+   "name_en": "Stueng Hav",
+   "pcode": "KH1803",
+   "pct_motor_over_30_min": 34,
+   "pct_walk_over_60_min": 100,
+   "population": 29054,
+   "province_pcode": "KH18",
+   "travel_motor_mean_min": 32.7,
+   "travel_walk_mean_min": 263.2
+  },
+  {
+   "adults_20plus_est": 13000,
+   "dhs": {
+    "men_no_health_insurance_pct": 77.2,
+    "men_smoke_tobacco_pct": 27.1,
+    "population_lowest_wealth_quintile_pct": 7.5,
+    "women_distance_is_problem_pct": 30.6,
+    "women_no_health_insurance_pct": 81.4,
+    "women_overweight_or_obese_pct": 31.5,
+    "women_smoke_tobacco_pct": 0.9
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 1,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 1
+   },
+   "facilities_per_10k": 0.54,
+   "level": "district",
+   "name_en": "Kampong Seila",
+   "pcode": "KH1804",
+   "pct_motor_over_30_min": 100,
+   "pct_walk_over_60_min": 100,
+   "population": 18665,
+   "province_pcode": "KH18",
+   "travel_motor_mean_min": 107.9,
+   "travel_walk_mean_min": 805.3
+  },
+  {
+   "adults_20plus_est": 16726,
+   "dhs": {
+    "men_no_health_insurance_pct": 84.3,
+    "men_smoke_tobacco_pct": 40.7,
+    "population_lowest_wealth_quintile_pct": 68.2,
+    "women_distance_is_problem_pct": 31.8,
+    "women_no_health_insurance_pct": 77.4,
+    "women_overweight_or_obese_pct": 22.3,
+    "women_smoke_tobacco_pct": 9.8
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 2,
+    "health_post": 3,
+    "hospital": 0,
+    "other": 0,
+    "total": 5
+   },
+   "facilities_per_10k": 1.73,
+   "level": "district",
+   "name_en": "Sesan",
+   "pcode": "KH1901",
+   "pct_motor_over_30_min": 92.2,
+   "pct_walk_over_60_min": 100,
+   "population": 28854,
+   "province_pcode": "KH19",
+   "travel_motor_mean_min": 66.8,
+   "travel_walk_mean_min": 423.1
+  },
+  {
+   "adults_20plus_est": 16110,
+   "dhs": {
+    "men_no_health_insurance_pct": 84.3,
+    "men_smoke_tobacco_pct": 40.7,
+    "population_lowest_wealth_quintile_pct": 68.2,
+    "women_distance_is_problem_pct": 31.8,
+    "women_no_health_insurance_pct": 77.4,
+    "women_overweight_or_obese_pct": 22.3,
+    "women_smoke_tobacco_pct": 9.8
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 2
+   },
+   "facilities_per_10k": 0.72,
+   "level": "district",
+   "name_en": "Siem Bouk",
+   "pcode": "KH1902",
+   "pct_motor_over_30_min": 41.9,
+   "pct_walk_over_60_min": 73.2,
+   "population": 27791,
+   "province_pcode": "KH19",
+   "travel_motor_mean_min": 32.7,
+   "travel_walk_mean_min": 162.1
+  },
+  {
+   "adults_20plus_est": 17161,
+   "dhs": {
+    "men_no_health_insurance_pct": 84.3,
+    "men_smoke_tobacco_pct": 40.7,
+    "population_lowest_wealth_quintile_pct": 68.2,
+    "women_distance_is_problem_pct": 31.8,
+    "women_no_health_insurance_pct": 77.4,
+    "women_overweight_or_obese_pct": 22.3,
+    "women_smoke_tobacco_pct": 9.8
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 1,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 1
+   },
+   "facilities_per_10k": 0.34,
+   "level": "district",
+   "name_en": "Siem Pang",
+   "pcode": "KH1903",
+   "pct_motor_over_30_min": 100,
+   "pct_walk_over_60_min": 100,
+   "population": 29605,
+   "province_pcode": "KH19",
+   "travel_motor_mean_min": 146.2,
+   "travel_walk_mean_min": 651.3
+  },
+  {
+   "adults_20plus_est": 25112,
+   "dhs": {
+    "men_no_health_insurance_pct": 84.3,
+    "men_smoke_tobacco_pct": 40.7,
+    "population_lowest_wealth_quintile_pct": 68.2,
+    "women_distance_is_problem_pct": 31.8,
+    "women_no_health_insurance_pct": 77.4,
+    "women_overweight_or_obese_pct": 22.3,
+    "women_smoke_tobacco_pct": 9.8
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.69,
+   "level": "district",
+   "name_en": "Stueng Traeng",
+   "pcode": "KH1904",
+   "pct_motor_over_30_min": 86.1,
+   "pct_walk_over_60_min": 98.5,
+   "population": 43322,
+   "province_pcode": "KH19",
+   "travel_motor_mean_min": 38.1,
+   "travel_walk_mean_min": 262.2
+  },
+  {
+   "adults_20plus_est": 32240,
+   "dhs": {
+    "men_no_health_insurance_pct": 84.3,
+    "men_smoke_tobacco_pct": 40.7,
+    "population_lowest_wealth_quintile_pct": 68.2,
+    "women_distance_is_problem_pct": 31.8,
+    "women_no_health_insurance_pct": 77.4,
+    "women_overweight_or_obese_pct": 22.3,
+    "women_smoke_tobacco_pct": 9.8
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 3,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.54,
+   "level": "district",
+   "name_en": "Thala Barivat",
+   "pcode": "KH1905",
+   "pct_motor_over_30_min": 100,
+   "pct_walk_over_60_min": 99.6,
+   "population": 55618,
+   "province_pcode": "KH19",
+   "travel_motor_mean_min": 89.3,
+   "travel_walk_mean_min": 397.8
+  },
+  {
+   "adults_20plus_est": 22717,
+   "dhs": {
+    "men_no_health_insurance_pct": 67.2,
+    "men_smoke_tobacco_pct": 19.7,
+    "population_lowest_wealth_quintile_pct": 13.4,
+    "women_distance_is_problem_pct": 4.3,
+    "women_no_health_insurance_pct": 58.8,
+    "women_overweight_or_obese_pct": 32.5,
+    "women_smoke_tobacco_pct": 0.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 2
+   },
+   "facilities_per_10k": 0.56,
+   "level": "district",
+   "name_en": "Chantrea",
+   "pcode": "KH2001",
+   "pct_motor_over_30_min": 100,
+   "pct_walk_over_60_min": 100,
+   "population": 35523,
+   "province_pcode": "KH20",
+   "travel_motor_mean_min": 62.9,
+   "travel_walk_mean_min": 162.1
+  },
+  {
+   "adults_20plus_est": 49592,
+   "dhs": {
+    "men_no_health_insurance_pct": 67.2,
+    "men_smoke_tobacco_pct": 19.7,
+    "population_lowest_wealth_quintile_pct": 13.4,
+    "women_distance_is_problem_pct": 4.3,
+    "women_no_health_insurance_pct": 58.8,
+    "women_overweight_or_obese_pct": 32.5,
+    "women_smoke_tobacco_pct": 0.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 6,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 6
+   },
+   "facilities_per_10k": 0.77,
+   "level": "district",
+   "name_en": "Kampong Rou",
+   "pcode": "KH2002",
+   "pct_motor_over_30_min": 95.7,
+   "pct_walk_over_60_min": 91.9,
+   "population": 77549,
+   "province_pcode": "KH20",
+   "travel_motor_mean_min": 45.6,
+   "travel_walk_mean_min": 134.6
+  },
+  {
+   "adults_20plus_est": 36189,
+   "dhs": {
+    "men_no_health_insurance_pct": 67.2,
+    "men_smoke_tobacco_pct": 19.7,
+    "population_lowest_wealth_quintile_pct": 13.4,
+    "women_distance_is_problem_pct": 4.3,
+    "women_no_health_insurance_pct": 58.8,
+    "women_overweight_or_obese_pct": 32.5,
+    "women_smoke_tobacco_pct": 0.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 2
+   },
+   "facilities_per_10k": 0.35,
+   "level": "district",
+   "name_en": "Rumduol",
+   "pcode": "KH2003",
+   "pct_motor_over_30_min": 1.2,
+   "pct_walk_over_60_min": 80.6,
+   "population": 56590,
+   "province_pcode": "KH20",
+   "travel_motor_mean_min": 14.6,
+   "travel_walk_mean_min": 109.3
+  },
+  {
+   "adults_20plus_est": 81257,
+   "dhs": {
+    "men_no_health_insurance_pct": 67.2,
+    "men_smoke_tobacco_pct": 19.7,
+    "population_lowest_wealth_quintile_pct": 13.4,
+    "women_distance_is_problem_pct": 4.3,
+    "women_no_health_insurance_pct": 58.8,
+    "women_overweight_or_obese_pct": 32.5,
+    "women_smoke_tobacco_pct": 0.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 9,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 10
+   },
+   "facilities_per_10k": 0.79,
+   "level": "district",
+   "name_en": "Romeas Haek",
+   "pcode": "KH2004",
+   "pct_motor_over_30_min": 78.4,
+   "pct_walk_over_60_min": 100,
+   "population": 127063,
+   "province_pcode": "KH20",
+   "travel_motor_mean_min": 37,
+   "travel_walk_mean_min": 266.9
+  },
+  {
+   "adults_20plus_est": 90748,
+   "dhs": {
+    "men_no_health_insurance_pct": 67.2,
+    "men_smoke_tobacco_pct": 19.7,
+    "population_lowest_wealth_quintile_pct": 13.4,
+    "women_distance_is_problem_pct": 4.3,
+    "women_no_health_insurance_pct": 58.8,
+    "women_overweight_or_obese_pct": 32.5,
+    "women_smoke_tobacco_pct": 0.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 9,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 9
+   },
+   "facilities_per_10k": 0.63,
+   "level": "district",
+   "name_en": "Svay Chrum",
+   "pcode": "KH2005",
+   "pct_motor_over_30_min": 8.8,
+   "pct_walk_over_60_min": 99.9,
+   "population": 141905,
+   "province_pcode": "KH20",
+   "travel_motor_mean_min": 23,
+   "travel_walk_mean_min": 168.7
+  },
+  {
+   "adults_20plus_est": 31202,
+   "dhs": {
+    "men_no_health_insurance_pct": 67.2,
+    "men_smoke_tobacco_pct": 19.7,
+    "population_lowest_wealth_quintile_pct": 13.4,
+    "women_distance_is_problem_pct": 4.3,
+    "women_no_health_insurance_pct": 58.8,
+    "women_overweight_or_obese_pct": 32.5,
+    "women_smoke_tobacco_pct": 0.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 4,
+    "health_post": 0,
+    "hospital": 2,
+    "other": 0,
+    "total": 6
+   },
+   "facilities_per_10k": 1.23,
+   "level": "district",
+   "name_en": "Svay Rieng",
+   "pcode": "KH2006",
+   "pct_motor_over_30_min": 0.4,
+   "pct_walk_over_60_min": 93.4,
+   "population": 48792,
+   "province_pcode": "KH20",
+   "travel_motor_mean_min": 14.2,
+   "travel_walk_mean_min": 111.9
+  },
+  {
+   "adults_20plus_est": 44462,
+   "dhs": {
+    "men_no_health_insurance_pct": 67.2,
+    "men_smoke_tobacco_pct": 19.7,
+    "population_lowest_wealth_quintile_pct": 13.4,
+    "women_distance_is_problem_pct": 4.3,
+    "women_no_health_insurance_pct": 58.8,
+    "women_overweight_or_obese_pct": 32.5,
+    "women_smoke_tobacco_pct": 0.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 3,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.43,
+   "level": "district",
+   "name_en": "Svay Teab",
+   "pcode": "KH2007",
+   "pct_motor_over_30_min": 31,
+   "pct_walk_over_60_min": 97.5,
+   "population": 69527,
+   "province_pcode": "KH20",
+   "travel_motor_mean_min": 24.5,
+   "travel_walk_mean_min": 177.2
+  },
+  {
+   "adults_20plus_est": 32746,
+   "dhs": {
+    "men_no_health_insurance_pct": 67.2,
+    "men_smoke_tobacco_pct": 19.7,
+    "population_lowest_wealth_quintile_pct": 13.4,
+    "women_distance_is_problem_pct": 4.3,
+    "women_no_health_insurance_pct": 58.8,
+    "women_overweight_or_obese_pct": 32.5,
+    "women_smoke_tobacco_pct": 0.7
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.59,
+   "level": "district",
+   "name_en": "Bavet",
+   "pcode": "KH2008",
+   "pct_motor_over_30_min": 100,
+   "pct_walk_over_60_min": 99.1,
+   "population": 51206,
+   "province_pcode": "KH20",
+   "travel_motor_mean_min": 54.7,
+   "travel_walk_mean_min": 191.4
+  },
+  {
+   "adults_20plus_est": 30698,
+   "dhs": {
+    "men_no_health_insurance_pct": 78.7,
+    "men_smoke_tobacco_pct": 20.2,
+    "population_lowest_wealth_quintile_pct": 9,
+    "women_distance_is_problem_pct": 31.8,
+    "women_no_health_insurance_pct": 73.1,
+    "women_overweight_or_obese_pct": 23.6,
+    "women_smoke_tobacco_pct": 0.6
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 5,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 6
+   },
+   "facilities_per_10k": 1.26,
+   "level": "district",
+   "name_en": "Angkor Borei",
+   "pcode": "KH2101",
+   "pct_motor_over_30_min": 0.7,
+   "pct_walk_over_60_min": 96.5,
+   "population": 47751,
+   "province_pcode": "KH21",
+   "travel_motor_mean_min": 18.1,
+   "travel_walk_mean_min": 129.9
+  },
+  {
+   "adults_20plus_est": 118736,
+   "dhs": {
+    "men_no_health_insurance_pct": 78.7,
+    "men_smoke_tobacco_pct": 20.2,
+    "population_lowest_wealth_quintile_pct": 9,
+    "women_distance_is_problem_pct": 31.8,
+    "women_no_health_insurance_pct": 73.1,
+    "women_overweight_or_obese_pct": 23.6,
+    "women_smoke_tobacco_pct": 0.6
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 9,
+    "health_post": 0,
+    "hospital": 2,
+    "other": 0,
+    "total": 11
+   },
+   "facilities_per_10k": 0.6,
+   "level": "district",
+   "name_en": "Bati",
+   "pcode": "KH2102",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 50,
+   "population": 184694,
+   "province_pcode": "KH21",
+   "travel_motor_mean_min": 8.2,
+   "travel_walk_mean_min": 66.3
+  },
+  {
+   "adults_20plus_est": 17589,
+   "dhs": {
+    "men_no_health_insurance_pct": 78.7,
+    "men_smoke_tobacco_pct": 20.2,
+    "population_lowest_wealth_quintile_pct": 9,
+    "women_distance_is_problem_pct": 31.8,
+    "women_no_health_insurance_pct": 73.1,
+    "women_overweight_or_obese_pct": 23.6,
+    "women_smoke_tobacco_pct": 0.6
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 4,
+    "health_post": 1,
+    "hospital": 0,
+    "other": 0,
+    "total": 5
+   },
+   "facilities_per_10k": 1.83,
+   "level": "district",
+   "name_en": "Borei Cholsar",
+   "pcode": "KH2103",
+   "pct_motor_over_30_min": 29.7,
+   "pct_walk_over_60_min": 92.4,
+   "population": 27359,
+   "province_pcode": "KH21",
+   "travel_motor_mean_min": 33.2,
+   "travel_walk_mean_min": 156.9
+  },
+  {
+   "adults_20plus_est": 65884,
+   "dhs": {
+    "men_no_health_insurance_pct": 78.7,
+    "men_smoke_tobacco_pct": 20.2,
+    "population_lowest_wealth_quintile_pct": 9,
+    "women_distance_is_problem_pct": 31.8,
+    "women_no_health_insurance_pct": 73.1,
+    "women_overweight_or_obese_pct": 23.6,
+    "women_smoke_tobacco_pct": 0.6
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 8,
+    "health_post": 0,
+    "hospital": 3,
+    "other": 0,
+    "total": 11
+   },
+   "facilities_per_10k": 1.07,
+   "level": "district",
+   "name_en": "Kiri Vong",
+   "pcode": "KH2104",
+   "pct_motor_over_30_min": 15.7,
+   "pct_walk_over_60_min": 92.3,
+   "population": 102483,
+   "province_pcode": "KH21",
+   "travel_motor_mean_min": 21.3,
+   "travel_walk_mean_min": 152.5
+  },
+  {
+   "adults_20plus_est": 32228,
+   "dhs": {
+    "men_no_health_insurance_pct": 78.7,
+    "men_smoke_tobacco_pct": 20.2,
+    "population_lowest_wealth_quintile_pct": 9,
+    "women_distance_is_problem_pct": 31.8,
+    "women_no_health_insurance_pct": 73.1,
+    "women_overweight_or_obese_pct": 23.6,
+    "women_smoke_tobacco_pct": 0.6
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 4,
+    "health_post": 0,
+    "hospital": 2,
+    "other": 0,
+    "total": 6
+   },
+   "facilities_per_10k": 1.2,
+   "level": "district",
+   "name_en": "Kaoh Andaet",
+   "pcode": "KH2105",
+   "pct_motor_over_30_min": 0.2,
+   "pct_walk_over_60_min": 57.7,
+   "population": 50130,
+   "province_pcode": "KH21",
+   "travel_motor_mean_min": 10.1,
+   "travel_walk_mean_min": 69.7
+  },
+  {
+   "adults_20plus_est": 73589,
+   "dhs": {
+    "men_no_health_insurance_pct": 78.7,
+    "men_smoke_tobacco_pct": 20.2,
+    "population_lowest_wealth_quintile_pct": 9,
+    "women_distance_is_problem_pct": 31.8,
+    "women_no_health_insurance_pct": 73.1,
+    "women_overweight_or_obese_pct": 23.6,
+    "women_smoke_tobacco_pct": 0.6
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 8,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 9
+   },
+   "facilities_per_10k": 0.79,
+   "level": "district",
+   "name_en": "Prey Kabbas",
+   "pcode": "KH2106",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 72.4,
+   "population": 114468,
+   "province_pcode": "KH21",
+   "travel_motor_mean_min": 9.5,
+   "travel_walk_mean_min": 79.6
+  },
+  {
+   "adults_20plus_est": 94724,
+   "dhs": {
+    "men_no_health_insurance_pct": 78.7,
+    "men_smoke_tobacco_pct": 20.2,
+    "population_lowest_wealth_quintile_pct": 9,
+    "women_distance_is_problem_pct": 31.8,
+    "women_no_health_insurance_pct": 73.1,
+    "women_overweight_or_obese_pct": 23.6,
+    "women_smoke_tobacco_pct": 0.6
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 8,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 9
+   },
+   "facilities_per_10k": 0.61,
+   "level": "district",
+   "name_en": "Samraong",
+   "pcode": "KH2107",
+   "pct_motor_over_30_min": 0.2,
+   "pct_walk_over_60_min": 86.4,
+   "population": 147344,
+   "province_pcode": "KH21",
+   "travel_motor_mean_min": 14,
+   "travel_walk_mean_min": 111.4
+  },
+  {
+   "adults_20plus_est": 32703,
+   "dhs": {
+    "men_no_health_insurance_pct": 78.7,
+    "men_smoke_tobacco_pct": 20.2,
+    "population_lowest_wealth_quintile_pct": 9,
+    "women_distance_is_problem_pct": 31.8,
+    "women_no_health_insurance_pct": 73.1,
+    "women_overweight_or_obese_pct": 23.6,
+    "women_smoke_tobacco_pct": 0.6
+   },
+   "facilities": {
+    "clinic": 1,
+    "health_centre": 3,
+    "health_post": 0,
+    "hospital": 2,
+    "other": 0,
+    "total": 6
+   },
+   "facilities_per_10k": 1.18,
+   "level": "district",
+   "name_en": "Doun Kaev",
+   "pcode": "KH2108",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 11.4,
+   "population": 50869,
+   "province_pcode": "KH21",
+   "travel_motor_mean_min": 3.9,
+   "travel_walk_mean_min": 30.2
+  },
+  {
+   "adults_20plus_est": 128436,
+   "dhs": {
+    "men_no_health_insurance_pct": 78.7,
+    "men_smoke_tobacco_pct": 20.2,
+    "population_lowest_wealth_quintile_pct": 9,
+    "women_distance_is_problem_pct": 31.8,
+    "women_no_health_insurance_pct": 73.1,
+    "women_overweight_or_obese_pct": 23.6,
+    "women_smoke_tobacco_pct": 0.6
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 12,
+    "health_post": 1,
+    "hospital": 3,
+    "other": 0,
+    "total": 16
+   },
+   "facilities_per_10k": 0.8,
+   "level": "district",
+   "name_en": "Tram Kak",
+   "pcode": "KH2109",
+   "pct_motor_over_30_min": 12.1,
+   "pct_walk_over_60_min": 95.5,
+   "population": 199782,
+   "province_pcode": "KH21",
+   "travel_motor_mean_min": 21.8,
+   "travel_walk_mean_min": 172.2
+  },
+  {
+   "adults_20plus_est": 75879,
+   "dhs": {
+    "men_no_health_insurance_pct": 78.7,
+    "men_smoke_tobacco_pct": 20.2,
+    "population_lowest_wealth_quintile_pct": 9,
+    "women_distance_is_problem_pct": 31.8,
+    "women_no_health_insurance_pct": 73.1,
+    "women_overweight_or_obese_pct": 23.6,
+    "women_smoke_tobacco_pct": 0.6
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 10,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 11
+   },
+   "facilities_per_10k": 0.93,
+   "level": "district",
+   "name_en": "Treang",
+   "pcode": "KH2110",
+   "pct_motor_over_30_min": 1.2,
+   "pct_walk_over_60_min": 96,
+   "population": 118030,
+   "province_pcode": "KH21",
+   "travel_motor_mean_min": 15,
+   "travel_walk_mean_min": 116
+  },
+  {
+   "adults_20plus_est": 38478,
+   "dhs": {
+    "men_no_health_insurance_pct": 95.4,
+    "men_smoke_tobacco_pct": 23.8,
+    "population_lowest_wealth_quintile_pct": 45.4,
+    "women_distance_is_problem_pct": 12.5,
+    "women_no_health_insurance_pct": 94.7,
+    "women_overweight_or_obese_pct": 23.7,
+    "women_smoke_tobacco_pct": 3.6
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 1,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 2
+   },
+   "facilities_per_10k": 0.3,
+   "level": "district",
+   "name_en": "Anlong Veaeng",
+   "pcode": "KH2201",
+   "pct_motor_over_30_min": 35.1,
+   "pct_walk_over_60_min": 61.4,
+   "population": 66135,
+   "province_pcode": "KH22",
+   "travel_motor_mean_min": 26.1,
+   "travel_walk_mean_min": 150.3
+  },
+  {
+   "adults_20plus_est": 35066,
+   "dhs": {
+    "men_no_health_insurance_pct": 95.4,
+    "men_smoke_tobacco_pct": 23.8,
+    "population_lowest_wealth_quintile_pct": 45.4,
+    "women_distance_is_problem_pct": 12.5,
+    "women_no_health_insurance_pct": 94.7,
+    "women_overweight_or_obese_pct": 23.7,
+    "women_smoke_tobacco_pct": 3.6
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 4,
+    "health_post": 1,
+    "hospital": 0,
+    "other": 0,
+    "total": 5
+   },
+   "facilities_per_10k": 0.83,
+   "level": "district",
+   "name_en": "Banteay Ampil",
+   "pcode": "KH2202",
+   "pct_motor_over_30_min": 72.8,
+   "pct_walk_over_60_min": 100,
+   "population": 60270,
+   "province_pcode": "KH22",
+   "travel_motor_mean_min": 34.8,
+   "travel_walk_mean_min": 223.9
+  },
+  {
+   "adults_20plus_est": 18941,
+   "dhs": {
+    "men_no_health_insurance_pct": 95.4,
+    "men_smoke_tobacco_pct": 23.8,
+    "population_lowest_wealth_quintile_pct": 45.4,
+    "women_distance_is_problem_pct": 12.5,
+    "women_no_health_insurance_pct": 94.7,
+    "women_overweight_or_obese_pct": 23.7,
+    "women_smoke_tobacco_pct": 3.6
+   },
+   "facilities": {
+    "clinic": 1,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.92,
+   "level": "district",
+   "name_en": "Chong Kal",
+   "pcode": "KH2203",
+   "pct_motor_over_30_min": 75.8,
+   "pct_walk_over_60_min": 100,
+   "population": 32555,
+   "province_pcode": "KH22",
+   "travel_motor_mean_min": 44.4,
+   "travel_walk_mean_min": 295.4
+  },
+  {
+   "adults_20plus_est": 48204,
+   "dhs": {
+    "men_no_health_insurance_pct": 95.4,
+    "men_smoke_tobacco_pct": 23.8,
+    "population_lowest_wealth_quintile_pct": 45.4,
+    "women_distance_is_problem_pct": 12.5,
+    "women_no_health_insurance_pct": 94.7,
+    "women_overweight_or_obese_pct": 23.7,
+    "women_smoke_tobacco_pct": 3.6
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 4,
+    "health_post": 1,
+    "hospital": 1,
+    "other": 0,
+    "total": 6
+   },
+   "facilities_per_10k": 0.72,
+   "level": "district",
+   "name_en": "Samraong",
+   "pcode": "KH2204",
+   "pct_motor_over_30_min": 35.6,
+   "pct_walk_over_60_min": 65.6,
+   "population": 82852,
+   "province_pcode": "KH22",
+   "travel_motor_mean_min": 22.4,
+   "travel_walk_mean_min": 110.8
+  },
+  {
+   "adults_20plus_est": 41789,
+   "dhs": {
+    "men_no_health_insurance_pct": 95.4,
+    "men_smoke_tobacco_pct": 23.8,
+    "population_lowest_wealth_quintile_pct": 45.4,
+    "women_distance_is_problem_pct": 12.5,
+    "women_no_health_insurance_pct": 94.7,
+    "women_overweight_or_obese_pct": 23.7,
+    "women_smoke_tobacco_pct": 3.6
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 2
+   },
+   "facilities_per_10k": 0.28,
+   "level": "district",
+   "name_en": "Trapeang Prasat",
+   "pcode": "KH2205",
+   "pct_motor_over_30_min": 87.1,
+   "pct_walk_over_60_min": 100,
+   "population": 71826,
+   "province_pcode": "KH22",
+   "travel_motor_mean_min": 54.1,
+   "travel_walk_mean_min": 352.9
+  },
+  {
+   "adults_20plus_est": 14308,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.1,
+    "men_smoke_tobacco_pct": 13.2,
+    "population_lowest_wealth_quintile_pct": 6.7,
+    "women_distance_is_problem_pct": 2.4,
+    "women_no_health_insurance_pct": 88.2,
+    "women_overweight_or_obese_pct": 25.6,
+    "women_smoke_tobacco_pct": 1.6
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 2
+   },
+   "facilities_per_10k": 0.87,
+   "level": "district",
+   "name_en": "Damnak Chang'aeur",
+   "pcode": "KH2301",
+   "pct_motor_over_30_min": 1,
+   "pct_walk_over_60_min": 100,
+   "population": 22994,
+   "province_pcode": "KH23",
+   "travel_motor_mean_min": 19.4,
+   "travel_walk_mean_min": 151.7
+  },
+  {
+   "adults_20plus_est": 15671,
+   "dhs": {
+    "men_no_health_insurance_pct": 90.1,
+    "men_smoke_tobacco_pct": 13.2,
+    "population_lowest_wealth_quintile_pct": 6.7,
+    "women_distance_is_problem_pct": 2.4,
+    "women_no_health_insurance_pct": 88.2,
+    "women_overweight_or_obese_pct": 25.6,
+    "women_smoke_tobacco_pct": 1.6
+   },
+   "facilities": {
+    "clinic": 1,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 3,
+    "other": 0,
+    "total": 6
+   },
+   "facilities_per_10k": 2.38,
+   "level": "district",
+   "name_en": "Kaeb",
+   "pcode": "KH2302",
+   "pct_motor_over_30_min": 11.5,
+   "pct_walk_over_60_min": 100,
+   "population": 25185,
+   "province_pcode": "KH23",
+   "travel_motor_mean_min": 25,
+   "travel_walk_mean_min": 196.8
+  },
+  {
+   "adults_20plus_est": 26561,
+   "dhs": {
+    "men_no_health_insurance_pct": 81.1,
+    "men_smoke_tobacco_pct": 18.3,
+    "population_lowest_wealth_quintile_pct": 23.6,
+    "women_distance_is_problem_pct": 11.7,
+    "women_no_health_insurance_pct": 72,
+    "women_overweight_or_obese_pct": 30.5,
+    "women_smoke_tobacco_pct": 1.3
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 2,
+    "health_post": 0,
+    "hospital": 3,
+    "other": 0,
+    "total": 5
+   },
+   "facilities_per_10k": 1.14,
+   "level": "district",
+   "name_en": "Pailin",
+   "pcode": "KH2401",
+   "pct_motor_over_30_min": 2.8,
+   "pct_walk_over_60_min": 35,
+   "population": 43697,
+   "province_pcode": "KH24",
+   "travel_motor_mean_min": 9.1,
+   "travel_walk_mean_min": 62.8
+  },
+  {
+   "adults_20plus_est": 24678,
+   "dhs": {
+    "men_no_health_insurance_pct": 81.1,
+    "men_smoke_tobacco_pct": 18.3,
+    "population_lowest_wealth_quintile_pct": 23.6,
+    "women_distance_is_problem_pct": 11.7,
+    "women_no_health_insurance_pct": 72,
+    "women_overweight_or_obese_pct": 30.5,
+    "women_smoke_tobacco_pct": 1.3
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 3,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 3
+   },
+   "facilities_per_10k": 0.74,
+   "level": "district",
+   "name_en": "Sala Krau",
+   "pcode": "KH2402",
+   "pct_motor_over_30_min": 35.1,
+   "pct_walk_over_60_min": 77.2,
+   "population": 40599,
+   "province_pcode": "KH24",
+   "travel_motor_mean_min": 25.9,
+   "travel_walk_mean_min": 133.5
+  },
+  {
+   "adults_20plus_est": 62986,
+   "dhs": {
+    "men_no_health_insurance_pct": 91.8,
+    "men_smoke_tobacco_pct": 25.3,
+    "population_lowest_wealth_quintile_pct": 25,
+    "women_distance_is_problem_pct": 42.6,
+    "women_no_health_insurance_pct": 92.9,
+    "women_overweight_or_obese_pct": 30,
+    "women_smoke_tobacco_pct": 2.8
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 5,
+    "health_post": 0,
+    "hospital": 0,
+    "other": 0,
+    "total": 5
+   },
+   "facilities_per_10k": 0.49,
+   "level": "district",
+   "name_en": "Dambae",
+   "pcode": "KH2501",
+   "pct_motor_over_30_min": 98.9,
+   "pct_walk_over_60_min": 100,
+   "population": 102195,
+   "province_pcode": "KH25",
+   "travel_motor_mean_min": 49.6,
+   "travel_walk_mean_min": 373
+  },
+  {
+   "adults_20plus_est": 61346,
+   "dhs": {
+    "men_no_health_insurance_pct": 91.8,
+    "men_smoke_tobacco_pct": 25.3,
+    "population_lowest_wealth_quintile_pct": 25,
+    "women_distance_is_problem_pct": 42.6,
+    "women_no_health_insurance_pct": 92.9,
+    "women_overweight_or_obese_pct": 30,
+    "women_smoke_tobacco_pct": 2.8
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 8,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 9
+   },
+   "facilities_per_10k": 0.9,
+   "level": "district",
+   "name_en": "Krouch Chhmar",
+   "pcode": "KH2502",
+   "pct_motor_over_30_min": 89,
+   "pct_walk_over_60_min": 100,
+   "population": 99534,
+   "province_pcode": "KH25",
+   "travel_motor_mean_min": 49.6,
+   "travel_walk_mean_min": 401.9
+  },
+  {
+   "adults_20plus_est": 109317,
+   "dhs": {
+    "men_no_health_insurance_pct": 91.8,
+    "men_smoke_tobacco_pct": 25.3,
+    "population_lowest_wealth_quintile_pct": 25,
+    "women_distance_is_problem_pct": 42.6,
+    "women_no_health_insurance_pct": 92.9,
+    "women_overweight_or_obese_pct": 30,
+    "women_smoke_tobacco_pct": 2.8
+   },
+   "facilities": {
+    "clinic": 1,
+    "health_centre": 10,
+    "health_post": 0,
+    "hospital": 2,
+    "other": 0,
+    "total": 13
+   },
+   "facilities_per_10k": 0.73,
+   "level": "district",
+   "name_en": "Memot",
+   "pcode": "KH2503",
+   "pct_motor_over_30_min": 99.4,
+   "pct_walk_over_60_min": 100,
+   "population": 177366,
+   "province_pcode": "KH25",
+   "travel_motor_mean_min": 61.4,
+   "travel_walk_mean_min": 274.7
+  },
+  {
+   "adults_20plus_est": 57543,
+   "dhs": {
+    "men_no_health_insurance_pct": 91.8,
+    "men_smoke_tobacco_pct": 25.3,
+    "population_lowest_wealth_quintile_pct": 25,
+    "women_distance_is_problem_pct": 42.6,
+    "women_no_health_insurance_pct": 92.9,
+    "women_overweight_or_obese_pct": 30,
+    "women_smoke_tobacco_pct": 2.8
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 7,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 8
+   },
+   "facilities_per_10k": 0.86,
+   "level": "district",
+   "name_en": "Ou Reang Ov",
+   "pcode": "KH2504",
+   "pct_motor_over_30_min": 38.5,
+   "pct_walk_over_60_min": 100,
+   "population": 93364,
+   "province_pcode": "KH25",
+   "travel_motor_mean_min": 26.8,
+   "travel_walk_mean_min": 221.8
+  },
+  {
+   "adults_20plus_est": 105984,
+   "dhs": {
+    "men_no_health_insurance_pct": 91.8,
+    "men_smoke_tobacco_pct": 25.3,
+    "population_lowest_wealth_quintile_pct": 25,
+    "women_distance_is_problem_pct": 42.6,
+    "women_no_health_insurance_pct": 92.9,
+    "women_overweight_or_obese_pct": 30,
+    "women_smoke_tobacco_pct": 2.8
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 11,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 12
+   },
+   "facilities_per_10k": 0.7,
+   "level": "district",
+   "name_en": "Ponhea Kraek",
+   "pcode": "KH2505",
+   "pct_motor_over_30_min": 61.5,
+   "pct_walk_over_60_min": 95.7,
+   "population": 171958,
+   "province_pcode": "KH25",
+   "travel_motor_mean_min": 31.3,
+   "travel_walk_mean_min": 215.2
+  },
+  {
+   "adults_20plus_est": 25229,
+   "dhs": {
+    "men_no_health_insurance_pct": 91.8,
+    "men_smoke_tobacco_pct": 25.3,
+    "population_lowest_wealth_quintile_pct": 25,
+    "women_distance_is_problem_pct": 42.6,
+    "women_no_health_insurance_pct": 92.9,
+    "women_overweight_or_obese_pct": 30,
+    "women_smoke_tobacco_pct": 2.8
+   },
+   "facilities": {
+    "clinic": 1,
+    "health_centre": 3,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 5
+   },
+   "facilities_per_10k": 1.22,
+   "level": "district",
+   "name_en": "Suong",
+   "pcode": "KH2506",
+   "pct_motor_over_30_min": 0,
+   "pct_walk_over_60_min": 19.4,
+   "population": 40934,
+   "province_pcode": "KH25",
+   "travel_motor_mean_min": 4.1,
+   "travel_walk_mean_min": 29.8
+  },
+  {
+   "adults_20plus_est": 127279,
+   "dhs": {
+    "men_no_health_insurance_pct": 91.8,
+    "men_smoke_tobacco_pct": 25.3,
+    "population_lowest_wealth_quintile_pct": 25,
+    "women_distance_is_problem_pct": 42.6,
+    "women_no_health_insurance_pct": 92.9,
+    "women_overweight_or_obese_pct": 30,
+    "women_smoke_tobacco_pct": 2.8
+   },
+   "facilities": {
+    "clinic": 0,
+    "health_centre": 12,
+    "health_post": 0,
+    "hospital": 1,
+    "other": 0,
+    "total": 13
+   },
+   "facilities_per_10k": 0.63,
+   "level": "district",
+   "name_en": "Tboung Khmum",
+   "pcode": "KH2507",
+   "pct_motor_over_30_min": 8.2,
+   "pct_walk_over_60_min": 84.9,
+   "population": 206510,
+   "province_pcode": "KH25",
+   "travel_motor_mean_min": 17.3,
+   "travel_walk_mean_min": 128.8
+  }
+ ],
+ "citation": "SokhaPheap open data (2026), derived from COD-AB, WorldPop, Malaria Atlas Project, MoH, OpenStreetMap and DHS — see data/manifest.json",
+ "dhs_indicators": {
+  "men_no_health_insurance_pct": {
+   "dhs_id": "AH_HINS_M_NON",
+   "label": "No health insurance [Men]"
+  },
+  "men_smoke_tobacco_pct": {
+   "dhs_id": "AH_TOBC_M_ANY",
+   "label": "Men who smoke any type of tobacco"
+  },
+  "population_lowest_wealth_quintile_pct": {
+   "dhs_id": "HC_WIXQ_P_LOW",
+   "label": "Population in the lowest wealth quintile"
+  },
+  "women_distance_is_problem_pct": {
+   "dhs_id": "RH_PAHC_W_DIS",
+   "label": "Problems in accessing health care: Distance to health facility"
+  },
+  "women_no_health_insurance_pct": {
+   "dhs_id": "AH_HINS_W_NON",
+   "label": "No health insurance [Women]"
+  },
+  "women_overweight_or_obese_pct": {
+   "dhs_id": "AN_NUTS_W_OWT",
+   "label": "Women who are overweight or obese according to BMI (>=25.0)"
+  },
+  "women_smoke_tobacco_pct": {
+   "dhs_id": "AH_TOBC_W_ANY",
+   "label": "Women who smoke any type of tobacco"
+  }
+ },
+ "indicators": {
+  "adults_20plus_est": {
+   "note": "WorldPop population × the province's share aged 20+ in COD-PS 2024",
+   "source": "worldpop + cod-ps",
+   "year": "2025 / 2024"
+  },
+  "dhs": {
+   "note": "Province estimates, ages 15–49. Districts and communes inherit their province's value.",
+   "source": "dhs-2021",
+   "year": "2021–22"
+  },
+  "facilities": {
+   "note": "Counts by type inside the area; per 10,000 uses WorldPop 2025",
+   "source": "moh-facilities + osm-facilities",
+   "year": "2010 + 2026"
+  },
+  "nearest": {
+   "note": "Straight-line km from the COD-AB commune centre point",
+   "source": "moh-facilities + osm-facilities + cod-ab",
+   "year": "2010 + 2026"
+  },
+  "population": {
+   "note": "WorldPop constrained 100 m, summed over cells whose centre is inside the area",
+   "source": "worldpop",
+   "year": "2025"
+  },
+  "population_official": {
+   "note": "Province only",
+   "source": "cod-ps",
+   "year": "2024"
+  },
+  "travel": {
+   "note": "Population-weighted mean minutes to the nearest health facility (MAP's 2019 facility list); people where MAP has no value are excluded",
+   "source": "map-travel-time",
+   "year": "2019"
+  }
+ },
+ "level": "district",
+ "licence_of_this_file": "CC BY 4.0 (SokhaPheap processed open data); see sources for each input's licence"
+}

@@ -162,7 +162,9 @@
     "dataCredit": "Data: Ministry of Health (2010), © OpenStreetMap contributors (ODbL). Updated {date}.",
     "noResults": "No facilities found here.",
     "showingCount": "Showing {n} facilities",
-    "callAhead": "Opening hours and services may have changed. Call ahead if you can."
+    "callAhead": "Opening hours and services may have changed. Call ahead if you can.",
+    "showMap": "Show map",
+    "hideMap": "Hide map"
   },
   "lab": {
     "title": "Explain my blood test",

@@ -24,6 +24,8 @@ export function MapExplorer({
   const [province, setProvince] = useState("");
   const [district, setDistrict] = useState("");
   const [loading, setLoading] = useState(false);
+  // List first: the Leaflet map (JS, tiles and all 1,440 markers) only loads when asked for.
+  const [showMap, setShowMap] = useState(false);
 
   async function locate() {
     setMode("locating");
@@ -91,16 +93,23 @@ export function MapExplorer({
         )}
       </div>
 
-      <FacilityMap focus={shown} user={user} lang={lang} ariaLabel={t.map.title} />
+      <button className="btn-secondary" aria-expanded={showMap} aria-controls="facility-map" onClick={() => setShowMap((v) => !v)}>
+        🗺️ {showMap ? t.map.hideMap : t.map.showMap}
+      </button>
 
-      <div aria-label={t.map.legend} className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
-        {(Object.keys(TYPE_STYLE) as FacilityItem["type"][]).filter((k) => k !== "other").map((k) => (
-          <span key={k} className="inline-flex items-center gap-1.5">
-            <span aria-hidden className="inline-block h-3 w-3 rounded-full" style={{ background: TYPE_STYLE[k].color }} />
-            {t.map.types[k]}
-          </span>
-        ))}
-      </div>
+      {showMap && (
+        <div id="facility-map" className="flex flex-col gap-2">
+          <FacilityMap focus={shown} user={user} lang={lang} ariaLabel={t.map.title} />
+          <div aria-label={t.map.legend} className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
+            {(Object.keys(TYPE_STYLE) as FacilityItem["type"][]).filter((k) => k !== "other").map((k) => (
+              <span key={k} className="inline-flex items-center gap-1.5">
+                <span aria-hidden className="inline-block h-3 w-3 rounded-full" style={{ background: TYPE_STYLE[k].color }} />
+                {t.map.types[k]}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
 
       {(mode === "located" || (mode === "area" && province)) && (
         <section aria-live="polite">

@@ -97,11 +97,13 @@ Full results are in `tests/fixtures/ai_eval_report.md`.
 
 ## 🔵 6. Known issues and options
 
-### Map load on Fast 3G: 4.1 s (target < 3 s) ❌
-Measured with `tests/e2e/map-3g.e2e.ts` (cold cache, 562 ms RTT, 1.6 Mbps). The page and controls appear at about 1.3 s; all markers are drawn at about 4.1 s. I tried two fixes: preloading the data and shrinking the payload (5.6 → 4.6 s), then dropping the second font (4.6 → 4.1 s). Your prompt says to stop after two attempts and offer options:
-1. **Accept it.** It's 4.1 s on a cold cache and much faster on repeat visits (data cached for 24 h). The nearest-facility list doesn't depend on the map.
-2. **Show the list first** and load the map only when the user taps "Show map". This should get under 3 s. About 30 minutes of work.
-3. **Pre-render a static map image** for first paint, then swap in the interactive map. More work; I don't think it's worth it before Demo Day.
+### Map load on Fast 3G: fixed (list first) ✅
+The map page now shows the location button, province picker and facility list first. The Leaflet map and all 1,440 markers load only when the user taps **🗺️ បង្ហាញផែនទី / Show map**. Measured with `tests/e2e/map-3g.e2e.ts` (cold cache, 562 ms RTT, 1.6 Mbps), it was 4.1 s before this change:
+- page usable: **2.7 s**
+- Phnom Penh facility list: **3.6 s** (one API round trip after choosing the province)
+- map with all markers after tapping "Show map": **1.9 s**
+
+**Khmer check:** the new button text is បង្ហាញផែនទី / លាក់ផែនទី.
 
 ### Facility data quality
 - OSM includes some mislabelled places, for example "Praram 9 Hospital Cambodia Office" (an office tagged as a hospital), and specialist clinics (eye, dermatology) can appear as "nearest". Fix options: correct them upstream in OSM, keep a small exclusion list, or rank hospitals and health centres first.

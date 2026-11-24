@@ -6,7 +6,7 @@ import { riskInputSchema, type RiskInput } from "@/lib/schemas";
 import { findriscModule } from "./findrisc/definition";
 import { whoCvdModule } from "./who-cvd/definition";
 import { PROFILE_FIELDS, bmi, packYears, type Profile } from "./profile";
-import { MODULES, chooseModules, previewAllowed, runModules, sortByUrgency, visibleModules, type CardResult } from "./registry";
+import { MODULES, PUBLISH_DRAFT_MODULES, chooseModules, previewAllowed, runModules, sortByUrgency, visibleModules, type CardResult } from "./registry";
 import type { ModuleDefinition } from "./types";
 
 type Legacy = Omit<RiskInput, "channel" | "save" | "province" | "orgCode">;
@@ -77,9 +77,14 @@ describe("Checkpoint 1: FINDRISC and WHO CVD give identical results after the re
 describe("Clinician gate and preview", () => {
   const draft: ModuleDefinition = { ...findriscModule, id: "test_draft", status: "draft" };
   const verified: ModuleDefinition = { ...findriscModule, id: "test_verified", status: "clinician_verified" };
-  it("a draft module is hidden in production and visible in preview", () => {
-    expect(visibleModules(false, [draft, verified]).map((m) => m.id)).toEqual(["test_verified"]);
-    expect(visibleModules(true, [draft, verified]).map((m) => m.id)).toEqual(["test_draft", "test_verified"]);
+  it("a draft module is hidden in production unless drafts are published, and visible in preview", () => {
+    expect(visibleModules(false, [draft, verified], false).map((m) => m.id)).toEqual(["test_verified"]);
+    expect(visibleModules(true, [draft, verified], false).map((m) => m.id)).toEqual(["test_draft", "test_verified"]);
+    expect(visibleModules(false, [draft, verified], true).map((m) => m.id)).toEqual(["test_draft", "test_verified"]);
+  });
+  it("drafts are public only because PUBLISH_DRAFT_MODULES is on (owner decision, 24 Nov 2026)", () => {
+    expect(PUBLISH_DRAFT_MODULES).toBe(true);
+    expect(visibleModules(false).map((m) => m.id).sort()).toEqual(MODULES.map((m) => m.id).sort());
   });
   it("preview only works on localhost with ?preview=1", () => {
     expect(previewAllowed("localhost:3100", "1")).toBe(true);

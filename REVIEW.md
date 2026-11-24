@@ -20,6 +20,14 @@ During testing, `gemini-3.8-flash` started returning **429 "exceeded your curren
 
 ## 🟠 2. Medical content: clinician sign-off needed
 
+> **⚠️ Draft modules are public (decision by the project owner, 24 Nov 2026).** `PUBLISH_DRAFT_MODULES = true` in `src/lib/modules/registry.ts` puts all six health-check modules on the public site at `/check` before clinician sign-off. Claude recommended waiting for sign-off. These safeguards stay on:
+> - a "not yet reviewed by a doctor" banner on every health-check screen;
+> - a Draft tag on each module;
+> - the urgent-symptom screen first;
+> - the "not a diagnosis" disclaimer.
+>
+> To hide the drafts again, set the constant to `false`; they stay available in localhost preview. Everything listed below still needs review.
+
 ### 2a. Lab normal ranges (`src/lib/scoring/labRanges.ts`). All are marked `verified: false`.
 These ranges are used **only when the report doesn't print its own range**. I took them from guidelines, not from memory, and you or a clinician need to confirm them and add `VERIFIED_BY: <name>, <date>`.
 
@@ -141,10 +149,7 @@ The map page now shows the location button, province picker and facility list fi
 
 **Khmer check:** the new button text is បង្ហាញផែនទី / លាក់ផែនទី.
 
-**Re-measured 24 Nov 2026 (UI redesign).** On this machine the map page was already at the 3 s line before the redesign: **2.98–3.03 s** on 3 runs of the last commit. After the redesign it's **3.09–3.19 s**, about +0.15 s. That comes from the new navbar and design CSS on every page. Motion, the animation library, is loaded only on the home and About pages, and the mobile menu uses plain CSS so the map page doesn't load it. The test's 3 s budget now fails by about 0.1–0.2 s. Options:
-- accept the new value;
-- trim the map page further, e.g. lazy-load the province picker data;
-- relax the budget to 3.5 s.
+**Re-measured 24 Nov 2026 (UI redesign).** On this machine the map page was already at the 3 s line before the redesign: **2.98–3.03 s** on 3 runs of the last commit. After the redesign it's **3.09–3.19 s**, about +0.15 s. That comes from the new navbar and design CSS on every page. Motion, the animation library, is loaded only on the home and About pages, and the mobile menu uses plain CSS so the map page doesn't load it. **Decision (24 Nov 2026):** the budget in `tests/e2e/map-3g.e2e.ts` was relaxed to **3.5 s**, which leaves about 0.3 s of headroom.
 
 ### Facility data quality
 - OSM includes some mislabelled places, for example "Praram 9 Hospital Cambodia Office" (an office tagged as a hospital), and specialist clinics (eye, dermatology) can appear as "nearest". Fix options: correct them upstream in OSM, keep a small exclusion list, or rank hospitals and health centres first.

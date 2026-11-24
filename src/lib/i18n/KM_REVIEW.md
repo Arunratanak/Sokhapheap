@@ -5,6 +5,7 @@ TODO(KM-REVIEW): every Khmer string below was written by Claude for the redesign
 ## Least sure (please check first)
 | Key | Khmer | English meaning | Why unsure |
 |---|---|---|---|
+| `check.draftBanner` | កំណែដំបូង៖ ការពិនិត្យទាំងនេះធ្វើតាមគោលការណ៍ណែនាំរបស់ WHO … ប៉ុន្តែវេជ្ជបណ្ឌិតមិនទាន់បានពិនិត្យនៅឡើយទេ … | Early version: … a doctor has not reviewed them yet … | **Safety wording on the public health check: please check first** |
 | `nav.cta` | សាកល្បងឥឡូវនេះ | Try it now | Natural for a button? Maybe «ចាប់ផ្តើម» is better |
 | `nav.theme` | ពន្លឺ ឬងងឹត | Light or dark | Wording for a theme switch |
 | `nav.toDark` / `nav.toLight` | ប្តូរទៅពណ៌ងងឹត / ប្តូរទៅពណ៌ភ្លឺ | Switch to dark / light theme | Screen-reader labels |

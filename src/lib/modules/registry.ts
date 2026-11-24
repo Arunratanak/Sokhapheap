@@ -1,7 +1,8 @@
 /**
  * Module registry + the clinician gate.
- * Production shows ONLY `clinician_verified` modules. Drafts appear only in preview,
- * and preview is only honoured on a local machine (see previewAllowed()).
+ * `clinician_verified` modules are always shown. Drafts are shown in preview (?preview=1, localhost only)
+ * and, while PUBLISH_DRAFT_MODULES is true, on the public site too, always with the "not yet reviewed
+ * by a doctor" banner and a Draft tag (see CheckFlow).
  */
 import { findriscModule } from "./findrisc/definition";
 import { whoCvdModule } from "./who-cvd/definition";
@@ -14,9 +15,18 @@ import { HEALTH_AREAS, URGENCY_ORDER, type Answers, type ModuleDefinition, type 
 
 export const MODULES: ModuleDefinition[] = [bpCheckModule, whoCvdModule, whoCvdLabModule, findriscModule, egfrModule, tbSymptomModule];
 
-/** Modules a viewer may see: verified ones, plus drafts when preview is on. */
-export function visibleModules(preview: boolean, all: ModuleDefinition[] = MODULES): ModuleDefinition[] {
-  return all.filter((m) => m.status === "clinician_verified" || preview);
+/**
+ * Publish draft (not yet clinician-reviewed) modules on the public site.
+ * Decision by the project owner, 24 Nov 2026, against the recommendation to wait for clinician sign-off.
+ * Safeguards that stay on: a "not yet reviewed by a doctor" banner on every health-check screen, a Draft tag
+ * on each draft module, the urgent-symptom screen first, and the "not a diagnosis" disclaimer.
+ * Set to false to hide drafts again (they stay available in localhost preview).
+ */
+export const PUBLISH_DRAFT_MODULES = true;
+
+/** Modules a viewer may see: verified ones, plus drafts when preview is on or drafts are published. */
+export function visibleModules(preview: boolean, all: ModuleDefinition[] = MODULES, publishDrafts: boolean = PUBLISH_DRAFT_MODULES): ModuleDefinition[] {
+  return all.filter((m) => m.status === "clinician_verified" || preview || publishDrafts);
 }
 
 /** Preview (?preview=1) only works on localhost — never on the public site. */

@@ -8,6 +8,8 @@
  */
 import fs from "node:fs";
 import { chromium, type Browser } from "playwright-core";
+import en from "../../src/lib/i18n/en.json";
+import { MODULES } from "../../src/lib/modules/registry";
 
 const BASE = process.env.BASE_URL ?? "http://localhost:3100";
 const SHOTS = process.env.SHOTS_DIR ?? "";
@@ -17,7 +19,7 @@ const BROWSERS = [
   "C:/Program Files/Google/Chrome/Application/chrome.exe",
   "/usr/bin/chromium", "/usr/bin/google-chrome",
 ];
-const PAGES = ["", "/risk", "/lab", "/map", "/insights", "/about"];
+const PAGES = ["", "/risk", "/check", "/lab", "/map", "/insights", "/about"];
 const WIDTHS = [360, 768, 1024, 1440];
 
 async function check(browser: Browser, theme: "light" | "dark", lang: "en" | "km", width: number, failures: string[]) {
@@ -74,6 +76,23 @@ async function main() {
   for (const theme of ["light", "dark"] as const)
     for (const lang of ["en", "km"] as const)
       for (const width of WIDTHS) await check(browser, theme, lang, width, failures);
+
+  // Public health check (no ?preview): every module is offered, with the "not yet reviewed by a doctor" banner.
+  {
+    const ctx = await browser.newContext({ viewport: { width: 1024, height: 900 } });
+    const page = await ctx.newPage();
+    await page.goto(`${BASE}/en/check`, { waitUntil: "networkidle" });
+    await page.getByRole("button", { name: en.urgent.none }).click();
+    const text = await page.locator("main").innerText();
+    if (!text.includes(en.check.draftBanner)) failures.push("public /check: draft banner missing");
+    if (text.includes(en.check.previewBanner)) failures.push("public /check: shows the localhost preview banner");
+    await ctx.close();
+    const home = await (await browser.newContext()).newPage();
+    await home.goto(`${BASE}/en`, { waitUntil: "networkidle" });
+    if (!(await home.locator(`a[href="/en/check"]`).count())) failures.push("home/navbar: no link to the public health check");
+    await home.context().close();
+    if (MODULES.length < 6) failures.push(`expected the 6 health modules, found ${MODULES.length}`);
+  }
 
   // Mobile menu at 360 px: opens with all six links on screen, closes on Escape and on link click.
   {

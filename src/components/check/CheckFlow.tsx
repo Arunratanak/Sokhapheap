@@ -27,7 +27,7 @@ const URGENCY_STYLE: Record<Urgency, { bg: string; fg: string; icon: string }> =
   incomplete: { bg: "var(--neutral-bg)", fg: "var(--neutral-fg)", icon: "⚪" },
 };
 
-export function CheckFlow({ lang, t, allowed, preview }: { lang: Locale; t: Dictionary; allowed: string[]; preview: boolean }) {
+export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { lang: Locale; t: Dictionary; allowed: string[]; preview: boolean; hasDrafts?: boolean }) {
   const c = t.check;
   const modules = useMemo(() => MODULES.filter((m) => allowed.includes(m.id)), [allowed]);
   const [phase, setPhase] = useState<Phase>("urgent");
@@ -90,7 +90,11 @@ export function CheckFlow({ lang, t, allowed, preview }: { lang: Locale; t: Dict
   if (phase === "urgent") return <UrgentScreen t={t} headingRef={headingRef} onUrgent={() => go("goNow")} onSafe={() => go("profile")} />;
   if (phase === "goNow") return <GoNowScreen lang={lang} t={t} headingRef={headingRef} onContinue={() => go("urgent")} />;
 
-  const banner = preview ? <p className="rounded-lg border-2 border-dashed border-warn-border bg-warn-soft px-3 py-2 text-sm font-medium">🧪 {c.previewBanner}</p> : null;
+  // Preview (localhost) keeps its own note; on the public site, draft screenings always carry the "not yet reviewed" banner.
+  const bannerText = preview ? `🧪 ${c.previewBanner}` : hasDrafts ? `⚠️ ${c.draftBanner}` : null;
+  const banner = bannerText ? (
+    <p role="note" className="rounded-lg border-2 border-dashed border-warn-border bg-warn-soft px-3 py-2 text-sm font-medium">{bannerText}</p>
+  ) : null;
 
   // ---------------------------------------------------------------- 1. profile
   if (phase === "profile") {

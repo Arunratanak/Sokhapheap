@@ -697,7 +697,8 @@
         "mgdl": "mg/dL",
         "umol": "µmol/L"
       }
-    }
+    },
+    "draftBanner": "Early version: these screenings follow WHO guidelines and published research, but a doctor has not reviewed them yet. Use the results as a guide only, and talk to a health worker about them."
   },
   "nav": {
     "home": "Home",

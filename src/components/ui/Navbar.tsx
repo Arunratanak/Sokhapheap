@@ -17,13 +17,14 @@ export interface NavLabels {
 
 type Tab = { key: string; href: string; label: string; match: (p: string) => boolean };
 
-export function Navbar({ lang, t }: { lang: Locale; t: NavLabels }) {
+/** `healthCheckLive`: the multi-screening health check (/check) has public modules; the tab opens it instead of /risk. */
+export function Navbar({ lang, t, healthCheckLive = false }: { lang: Locale; t: NavLabels; healthCheckLive?: boolean }) {
   const pathname = usePathname() ?? `/${lang}`;
   const base = `/${lang}`;
   const under = (...segs: string[]) => (p: string) => segs.some((s) => p === `${base}/${s}` || p.startsWith(`${base}/${s}/`));
   const tabs: Tab[] = [
     { key: "home", href: base, label: t.home, match: (p) => p === base || p === `${base}/` },
-    { key: "check", href: `${base}/risk`, label: t.check, match: under("risk", "check") },
+    { key: "check", href: healthCheckLive ? `${base}/check` : `${base}/risk`, label: t.check, match: under("risk", "check") },
     { key: "lab", href: `${base}/lab`, label: t.lab, match: under("lab") },
     { key: "map", href: `${base}/map`, label: t.map, match: under("map") },
     { key: "insights", href: `${base}/insights`, label: t.insights, match: under("insights", "org", "plan") },

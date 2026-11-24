@@ -4,10 +4,10 @@ import { LogoMark } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
-export function Footer({ lang, t }: { lang: Locale; t: Dictionary }) {
+export function Footer({ lang, t, healthCheckLive = false }: { lang: Locale; t: Dictionary; healthCheckLive?: boolean }) {
   const base = `/${lang}`;
   const product = [
-    { href: `${base}/risk`, label: t.nav.check },
+    { href: healthCheckLive ? `${base}/check` : `${base}/risk`, label: t.nav.check },
     { href: `${base}/lab`, label: t.nav.lab },
     { href: `${base}/map`, label: t.nav.map },
   ];

@@ -6,7 +6,8 @@
  *  - score() is a pure function: no AI, no network, no randomness.
  *  - Questions, points, cut-offs and ranges come from the archived source (references/methods/<id>/METHOD_CARD.md),
  *    never from memory.
- *  - Only `clinician_verified` modules are visible in production; drafts only with ?preview=1 on localhost.
+ *  - Only `clinician_verified` modules are visible in production, unless PUBLISH_DRAFT_MODULES is on (registry.ts);
+ *    drafts are always visible with ?preview=1 on localhost.
  */
 import type { Profile } from "./profile";
 

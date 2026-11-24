@@ -5,6 +5,7 @@ import { getDictionary, hasLocale, locales } from "@/lib/i18n";
 import { Navbar } from "@/components/ui/Navbar";
 import { Footer } from "@/components/ui/Footer";
 import { THEME_SCRIPT } from "@/components/ui/ThemeToggle";
+import { visibleModules } from "@/lib/modules/registry";
 import "../globals.css";
 
 // Khmer pages: Noto Sans Khmer (covers Khmer and Latin) is the main font and is preloaded.
@@ -66,6 +67,7 @@ export default async function RootLayout({
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
   const t = getDictionary(lang);
+  const healthCheckLive = visibleModules(false).length > 0;
 
   return (
     <html lang={lang} data-theme="light" suppressHydrationWarning className={`${khmer.variable} ${inter.variable} h-full antialiased`}>
@@ -79,6 +81,7 @@ export default async function RootLayout({
         </a>
         <Navbar
           lang={lang}
+          healthCheckLive={healthCheckLive}
           t={{
             appName: t.common.appName,
             home: t.nav.home, check: t.nav.check, lab: t.nav.lab, map: t.nav.map, insights: t.nav.insights, about: t.nav.about,
@@ -89,7 +92,7 @@ export default async function RootLayout({
         <main id="main" className="mx-auto flex w-full max-w-xl flex-1 flex-col px-4 pt-4 pb-12">
           {children}
         </main>
-        <Footer lang={lang} t={t} />
+        <Footer lang={lang} t={t} healthCheckLive={healthCheckLive} />
       </body>
     </html>
   );

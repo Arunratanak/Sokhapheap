@@ -26,8 +26,8 @@ export interface Text { en: string; km: string }
 /** A question the module asks in addition to the shared profile. Text is an i18n key path (e.g. "risk.activity.q"). */
 export type ModuleQuestion =
   | { id: string; kind: "yesno"; textKey: string; helpKey?: string }
-  | { id: string; kind: "choice"; textKey: string; options: { value: string; labelKey: string }[] }
-  | { id: string; kind: "number"; textKey: string; unitKey?: string; min: number; max: number; integer?: boolean; allowUnknown?: boolean };
+  | { id: string; kind: "choice"; textKey: string; helpKey?: string; options: { value: string; labelKey: string }[] }
+  | { id: string; kind: "number"; textKey: string; helpKey?: string; unitKey?: string; min: number; max: number; integer?: boolean; allowUnknown?: boolean };
 
 export type Answers = Record<string, string | number | boolean | null>;
 

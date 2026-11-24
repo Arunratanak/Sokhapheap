@@ -36,6 +36,8 @@ export function CheckFlow({ lang, t, allowed, preview }: { lang: Locale; t: Dict
   const [profile, setProfile] = useState<Profile | null>(null);
   const [selected, setSelected] = useState<string[]>([]);
   const [answers, setAnswers] = useState<Record<string, Answers>>({});
+  /** Raw text typed into module number questions, keyed "moduleId.questionId". */
+  const [numText, setNumText] = useState<Record<string, string>>({});
   const [cards, setCards] = useState<CardResult[]>([]);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const go = (p: Phase) => {
@@ -233,9 +235,57 @@ export function CheckFlow({ lang, t, allowed, preview }: { lang: Locale; t: Dict
   if (phase === "questions" && profile) {
     const chosen = modules.filter((m) => selected.includes(m.id) && m.questions.length);
     const complete = chosen.every((m) => m.questions.every((q) => answers[m.id]?.[q.id] !== undefined));
-    const setA = (mid: string, qid: string, v: Answers[string]) => setAnswers((a) => ({ ...a, [mid]: { ...a[mid], [qid]: v } }));
+    const setA = (mid: string, qid: string, v: Answers[string] | undefined) =>
+      setAnswers((a) => {
+        const next = { ...a[mid] };
+        if (v === undefined) delete next[qid];
+        else next[qid] = v;
+        return { ...a, [mid]: next };
+      });
     const question = (m: ModuleDefinition, q: ModuleQuestion) => {
       const v = answers[m.id]?.[q.id];
+      const help = q.helpKey && <p className="text-sm text-muted">{tr(t, q.helpKey)}</p>;
+      if (q.kind === "choice")
+        return (
+          <fieldset key={q.id} className="flex flex-col gap-2">
+            <legend className="mb-1 font-medium">{tr(t, q.textKey)}</legend>
+            {help}
+            {q.options.map((o) => (
+              <label key={o.value} className={`flex min-h-12 items-center gap-3 rounded-xl border-2 px-3 ${v === o.value ? "border-brand bg-brand-soft" : "border-black/15 bg-surface"}`}>
+                <input type="radio" name={`${m.id}.${q.id}`} checked={v === o.value} onChange={() => setA(m.id, q.id, o.value)} />
+                {tr(t, o.labelKey)}
+              </label>
+            ))}
+          </fieldset>
+        );
+      if (q.kind === "number") {
+        const key = `${m.id}.${q.id}`;
+        const unknown = v === null;
+        const onText = (text: string) => {
+          setNumText((s) => ({ ...s, [key]: text }));
+          const x = parseNumberInput(text);
+          const ok = x !== null && x >= q.min && x <= q.max && (!q.integer || Number.isInteger(x));
+          setA(m.id, q.id, ok ? x : undefined); // incomplete until the number is valid
+        };
+        return (
+          <div key={q.id} className="flex flex-col gap-1">
+            <label className="flex flex-col gap-1 font-medium">
+              {tr(t, q.textKey)}
+              {help}
+              <span className="flex items-center gap-2">
+                <input inputMode="decimal" className="field w-32" value={unknown ? "" : (numText[key] ?? "")} disabled={unknown} onChange={(e) => onText(e.target.value)} />
+                {q.unitKey && <span className="text-sm text-muted">{tr(t, q.unitKey)}</span>}
+              </span>
+            </label>
+            {q.allowUnknown && (
+              <label className="flex min-h-11 items-center gap-3">
+                <input type="checkbox" className="h-5 w-5" checked={unknown} onChange={(e) => (e.target.checked ? setA(m.id, q.id, null) : onText(numText[key] ?? ""))} />
+                {c.unknown}
+              </label>
+            )}
+          </div>
+        );
+      }
       if (q.kind === "yesno")
         return (
           <fieldset key={q.id} className="flex flex-col gap-2">
@@ -251,7 +301,7 @@ export function CheckFlow({ lang, t, allowed, preview }: { lang: Locale; t: Dict
             </div>
           </fieldset>
         );
-      return null; // choice/number module questions arrive with the first modules that need them (Phase 3)
+      return null;
     };
     return (
       <div className="flex flex-col gap-5 pt-2">
@@ -297,10 +347,10 @@ export function CheckFlow({ lang, t, allowed, preview }: { lang: Locale; t: Dict
                 {r && r.band !== "unavailable" ? m.bands[r.band]?.[lang] : c.urgency[urgency]}
               </p>
               {card.redFlag && <p className="mt-2 font-semibold text-[#b42318]">{c.urgentCard}</p>}
-              {r && r.band === "unavailable" && <p className="mt-2">{m.bands.unavailable?.[lang]}</p>}
+              {r && r.band === "unavailable" && <p className="mt-2">{(m.bands[`unavailable:${String(r.details?.reason)}`] ?? m.bands.unavailable)?.[lang]}</p>}
               {r && r.score !== null && (
                 <p className="mt-1 text-sm text-muted">
-                  {c.score}: {digits(r.score)}{m.id === "who_cvd" ? "%" : ""}
+                  {c.score}: {digits(r.score)}{m.id === "who_cvd" || m.id === "who_cvd_lab" ? "%" : ""}
                   {m.id === "findrisc" && <> · {fmtClient(t.results.bmiLabel, { bmi: Number(r.details?.bmi) }, lang)}</>}
                 </p>
               )}
@@ -327,7 +377,7 @@ export function CheckFlow({ lang, t, allowed, preview }: { lang: Locale; t: Dict
         })}
       </ul>
       <Disclaimer text={t.common.disclaimer} />
-      <button className="btn-ghost" onClick={() => { setCards([]); setAnswers({}); go("profile"); }}>↺ {c.startOver}</button>
+      <button className="btn-ghost" onClick={() => { setCards([]); setAnswers({}); setNumText({}); go("profile"); }}>↺ {c.startOver}</button>
     </div>
   );
 }

@@ -58,6 +58,16 @@ When confirmed, change `VERIFIED_BY: TODO(VERIFY)` in `scripts/extract_who_cvd_c
 - **Non-integer BMI:** I treat the columns as `<20 | 20–<25 | 25–<30 | 30–<35 | ≥35`. For example, 24.6 falls in "20-24" and exactly 35 falls in "≥35".
 - **Band words:** the WHO legend only gives percentages. I added the labels **Low** (<5%), **Moderate** (5–<10%), **High** (10–<20%) and **Very high** (20–<30% and ≥30%).
 
+### 2b-lab. WHO lab-based CVD chart (module `who_cvd_lab`, added 24 Nov 2026)
+**Source:** same document, **PDF page 44** (printed page 42), "South-East Asia" laboratory-based chart. The 1400 cells were read automatically from the PDF text layer. Please check the **10 sample cells** and the **`TODO(VERIFY)` decisions** in `references/methods/who-cvd-lab/METHOD_CARD.md`:
+- cholesterol between the printed limits;
+- the 1–20 mmol/L plausibility range;
+- TC ≥ 8 mmol/L raising urgency to high;
+- the diabetes question;
+- whether people with known heart disease or stroke should skip the chart (Table 3).
+
+The next steps now follow the WHO Table 3 follow-up intervals. The non-lab module still uses the simpler rules in 2c.
+
 ### 2c. Rules I chose that a clinician should confirm
 - **"See a doctor in the next few weeks"** is shown when FINDRISC is high or very high (≥15), or WHO risk is ≥20%. The "blood sugar test" step at FINDRISC ≥12 comes from your prompt.
 - **"Check again in about a year"** is shown for low-risk results.

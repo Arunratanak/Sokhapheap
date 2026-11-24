@@ -159,7 +159,11 @@
       "see_doctor_soon": "Visit a doctor or health centre in the next few weeks for a check-up. Show them these results.",
       "glucose_test": "Ask a health centre for a blood sugar test.",
       "check_bp": "Get your blood pressure measured at a health centre or pharmacy, then check again.",
-      "healthy_habits": "Keep up healthy habits and check again in about a year."
+      "healthy_habits": "Keep up healthy habits and check again in about a year.",
+      "cholesterol_test": "Ask a health centre for a blood cholesterol test, then check again.",
+      "cvd_followup_5_10": "Visit a health centre for advice on food, exercise, smoking and alcohol. WHO advises a check-up every 3 months until your targets are met, then every 6 to 9 months.",
+      "cvd_followup_10_20": "Visit a health centre for advice and to check your blood pressure. WHO advises a check-up every 3 to 6 months.",
+      "cholesterol_very_high": "Your total cholesterol is 8 mmol/L (320 mg/dL) or more. WHO advises that a doctor considers treatment for this. Visit a doctor or health centre in the next few weeks and show them this result."
     },
     "bmiLabel": "BMI: {bmi}",
     "glucoseTestRecommended": "A blood sugar test is recommended.",
@@ -174,6 +178,11 @@
       "noFactorsLine": "Your answers did not show major risk factors.",
       "heartLine": "Your 10-year heart attack and stroke risk is: {band}.",
       "heartUnknownLine": "We could not estimate your heart risk yet."
+    },
+    "cvdLabUnavailable": {
+      "cholesterol_unknown": "This check needs a total cholesterol result from a blood test. Until you have one, the heart risk check without blood tests can give an estimate.",
+      "cholesterol_check_unit": "This cholesterol number does not match the unit you chose. Check the unit printed on your lab report and try again.",
+      "diabetes_unknown": "This check needs to know whether you have diabetes. A blood sugar test at a health centre can tell you."
     }
   },
   "map": {
@@ -627,6 +636,24 @@
       "incomplete": "Not checked yet"
     },
     "startOver": "Start again",
-    "draftTag": "Draft"
+    "draftTag": "Draft",
+    "cvdLab": {
+      "cholesterol": {
+        "q": "Total cholesterol from your most recent blood test",
+        "help": "Look at your lab report. Type the number exactly as it is printed."
+      },
+      "unit": {
+        "q": "Which unit is printed next to the cholesterol number?",
+        "mmol": "mmol/L",
+        "mgdl": "mg/dL"
+      },
+      "glucose": {
+        "q": "Has a blood test ever shown high blood sugar?",
+        "help": "High means fasting blood sugar of 7.0 mmol/L (126 mg/dL) or more, or HbA1c of 6.5% or more. If you already said you have diabetes, we use that answer.",
+        "high": "Yes, it was high",
+        "normal": "No, it was normal",
+        "notTested": "Never tested, or I don't know"
+      }
+    }
   }
 }

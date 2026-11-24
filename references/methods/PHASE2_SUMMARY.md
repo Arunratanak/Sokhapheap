@@ -9,7 +9,7 @@ Column key:
 | Area | Module | Tool | Source | Validated in Asia / Cambodia | Khmer | Licence OK | Effort | Recommendation |
 |---|---|---|---|---|---|---|---|---|
 | Heart | CVD risk, non-lab *(built, draft)* | WHO 2019 chart, SE Asia | ✅ | SE Asia chart group; not a Cambodian cohort | N | Y (NC) | — | Keep |
-| Heart | CVD risk, **lab-based** | WHO 2019 lab chart, SE Asia | ✅ | same | N | Y (NC) | M | **Include** |
+| Heart | CVD risk, **lab-based** *(built, draft, 24 Nov)* | WHO 2019 lab chart, SE Asia | ✅ | same | N | Y (NC) | M | **Include** |
 | Heart | **Blood pressure check** | WHO 2021 hypertension guideline | ❌ | WHO guideline | N/A | Y | S | **Include with caution** (red-flag threshold needs a source) |
 | Metabolic | Type 2 diabetes *(built, draft)* | FINDRISC | ❌ (paper blocked) | Indonesia AUC 0.73, Philippines 0.80; none in Cambodia | N | TODO | — | Keep |
 | Metabolic | **Weight and waist** | WHO BMI + Asian action points (Lancet 2004); WHO/IDF waist | ❌ | Asian consultation | N/A | Cite only | S | **Include** (clinician picks the cut-off set) |

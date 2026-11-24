@@ -5,10 +5,11 @@
  */
 import { findriscModule } from "./findrisc/definition";
 import { whoCvdModule } from "./who-cvd/definition";
+import { whoCvdLabModule } from "./who-cvd-lab/definition";
 import type { Profile } from "./profile";
 import { HEALTH_AREAS, URGENCY_ORDER, type Answers, type ModuleDefinition, type ModuleResult } from "./types";
 
-export const MODULES: ModuleDefinition[] = [whoCvdModule, findriscModule];
+export const MODULES: ModuleDefinition[] = [whoCvdModule, whoCvdLabModule, findriscModule];
 
 /** Modules a viewer may see: verified ones, plus drafts when preview is on. */
 export function visibleModules(preview: boolean, all: ModuleDefinition[] = MODULES): ModuleDefinition[] {

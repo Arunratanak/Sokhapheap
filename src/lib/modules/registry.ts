@@ -8,10 +8,11 @@ import { whoCvdModule } from "./who-cvd/definition";
 import { whoCvdLabModule } from "./who-cvd-lab/definition";
 import { tbSymptomModule } from "./tb-symptom/definition";
 import { bpCheckModule } from "./bp-check/definition";
+import { egfrModule } from "./egfr/definition";
 import type { Profile } from "./profile";
 import { HEALTH_AREAS, URGENCY_ORDER, type Answers, type ModuleDefinition, type ModuleResult } from "./types";
 
-export const MODULES: ModuleDefinition[] = [bpCheckModule, whoCvdModule, whoCvdLabModule, findriscModule, tbSymptomModule];
+export const MODULES: ModuleDefinition[] = [bpCheckModule, whoCvdModule, whoCvdLabModule, findriscModule, egfrModule, tbSymptomModule];
 
 /** Modules a viewer may see: verified ones, plus drafts when preview is on. */
 export function visibleModules(preview: boolean, all: ModuleDefinition[] = MODULES): ModuleDefinition[] {

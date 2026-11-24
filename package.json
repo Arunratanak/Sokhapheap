@@ -22,7 +22,7 @@
     "bot:dev": "tsx --conditions=react-server scripts/bot_dev.ts",
     "bot:webhook": "tsx scripts/bot_webhook.ts",
     "ai:eval": "tsx --conditions=react-server scripts/eval_ai.ts",
-    "test:e2e": "tsx tests/e2e/risk-ui.e2e.ts && tsx tests/e2e/a11y.e2e.ts && tsx tests/e2e/demo.e2e.ts && tsx tests/e2e/map-3g.e2e.ts && tsx tests/e2e/check-cvd-lab.e2e.ts && tsx tests/e2e/check-tb.e2e.ts && tsx tests/e2e/check-bp.e2e.ts",
+    "test:e2e": "tsx tests/e2e/risk-ui.e2e.ts && tsx tests/e2e/a11y.e2e.ts && tsx tests/e2e/demo.e2e.ts && tsx tests/e2e/map-3g.e2e.ts && tsx tests/e2e/check-cvd-lab.e2e.ts && tsx tests/e2e/check-tb.e2e.ts && tsx tests/e2e/check-bp.e2e.ts && tsx tests/e2e/check-egfr.e2e.ts",
     "db:check": "tsx scripts/check_db.ts",
     "check:secrets": "tsx scripts/check_bundle_secrets.ts"
   },

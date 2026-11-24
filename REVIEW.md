@@ -86,6 +86,14 @@ The guideline says it doesn't cover diagnosis or hypertensive crisis, so the che
 - how pregnancy is handled;
 - treating "heart disease or stroke" as existing CVD.
 
+### 2b-egfr. Kidney function, eGFR (module `egfr`, added 24 Nov 2026)
+**Source:** CKD-EPI 2021 race-free creatinine equation (Inker et al., NEJM 2021, Table 2). The stages are quoted from the same paper. Please do two things with `references/methods/egfr/METHOD_CARD.md`:
+- cross-check the 4 hand-calculated examples against a CKD-EPI 2021 calculator;
+- confirm the `TODO(VERIFY)` items:
+  - urgency per stage;
+  - the 0.1–20 mg/dL plausibility range;
+  - whether to warn about or exclude pregnancy and acute illness.
+
 ### 2c. Rules I chose that a clinician should confirm
 - **"See a doctor in the next few weeks"** is shown when FINDRISC is high or very high (≥15), or WHO risk is ≥20%. The "blood sugar test" step at FINDRISC ≥12 comes from your prompt.
 - **"Check again in about a year"** is shown for low-risk results.

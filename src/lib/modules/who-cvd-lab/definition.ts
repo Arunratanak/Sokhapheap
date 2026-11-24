@@ -55,6 +55,7 @@ export const whoCvdLabModule: ModuleDefinition = {
   status: "draft", // TODO(VERIFY): clinician check of the sample chart cells in the method card pending
   sensitivity: "normal",
   optIn: true, // needs a cholesterol result; the non-lab heart check is the default
+  scoreUnit: { en: "%", km: "%" },
   // The chart covers ages 40–74 only (chart axes, PDF page 44).
   eligibility: (p) => (p.age >= 40 && p.age <= 74 ? { eligible: true } : { eligible: false, reason: "age_outside_40_74" }),
   requiredProfileFields: ["age", "sex", "smokingStatus", "sbp", "knownDiabetes"],

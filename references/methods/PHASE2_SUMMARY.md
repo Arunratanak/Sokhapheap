@@ -14,7 +14,7 @@ Column key:
 | Metabolic | Type 2 diabetes *(built, draft)* | FINDRISC | ❌ (paper blocked) | Indonesia AUC 0.73, Philippines 0.80; none in Cambodia | N | TODO | — | Keep |
 | Metabolic | **Weight and waist** | WHO BMI + Asian action points (Lancet 2004); WHO/IDF waist | ❌ | Asian consultation | N/A | Cite only | S | **Include** (clinician picks the cut-off set) |
 | Kidney | CKD questionnaire | SCORED | ❌ | Asian study (Indonesia, Vietnam) has no published results | N | ? | M | Skip for now |
-| Kidney | **eGFR from creatinine** | CKD-EPI 2021 (race-free) | 🔒 | US cohorts; widely recommended | N/A | Y (formula) | S | **Include** |
+| Kidney | **eGFR from creatinine** *(built, draft, 24 Nov)* | CKD-EPI 2021 (race-free) | 🔒 | US cohorts; widely recommended | N/A | Y (formula) | S | **Include** |
 | Lungs | **TB symptom screen** *(built, draft, 24 Nov; WHO wording, no CENAT)* | WHO 2021 + CENAT criteria | ✅ (WHO; CENAT wording pending) | Cambodian programme criteria; 43% of TB cases had no cough | N | Y | S | **Include, top priority** |
 | Lungs | **COPD screen** | **COPD-SQ** (vs COPD-PS) | ❌ | China (guideline-endorsed, better in rural areas); COPD-PS: China, Japan | N | TODO | M | **Include with caution** |
 | Lungs | Sleep apnea | STOP-Bang | 🔒 | Singapore, Japan | N | **N (needs permission)** | S | Skip unless permission |

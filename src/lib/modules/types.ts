@@ -57,6 +57,8 @@ export interface ModuleDefinition {
   sensitivity: Sensitivity;
   /** true = shown but not pre-selected (e.g. needs a lab result most people don't have to hand). */
   optIn?: boolean;
+  /** Unit shown after the numeric score on the dashboard (e.g. "%"). */
+  scoreUnit?: Text;
   eligibility: (profile: Profile) => Eligibility;
   /** Shared-profile fields this module uses (the profile asks them once for every module). */
   requiredProfileFields: (keyof Profile)[];

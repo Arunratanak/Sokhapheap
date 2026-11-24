@@ -350,7 +350,7 @@ export function CheckFlow({ lang, t, allowed, preview }: { lang: Locale; t: Dict
               {r && r.band === "unavailable" && <p className="mt-2">{(m.bands[`unavailable:${String(r.details?.reason)}`] ?? m.bands.unavailable)?.[lang]}</p>}
               {r && r.score !== null && (
                 <p className="mt-1 text-sm text-muted">
-                  {c.score}: {digits(r.score)}{m.id === "who_cvd" || m.id === "who_cvd_lab" ? "%" : ""}
+                  {c.score}: {digits(r.score)}{m.scoreUnit?.[lang] ?? ""}
                   {m.id === "findrisc" && <> · {fmtClient(t.results.bmiLabel, { bmi: Number(r.details?.bmi) }, lang)}</>}
                 </p>
               )}

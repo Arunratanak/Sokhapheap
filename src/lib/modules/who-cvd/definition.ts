@@ -22,6 +22,7 @@ export const whoCvdModule: ModuleDefinition = {
   },
   status: "draft", // TODO(VERIFY): clinician check of 10 chart cells pending (REVIEW.md §2b)
   sensitivity: "normal",
+  scoreUnit: { en: "%", km: "%" },
   // The chart covers ages 40–74 only (source: chart axes, PDF page 65).
   eligibility: (p) => (p.age >= 40 && p.age <= 74 ? { eligible: true } : { eligible: false, reason: "age_outside_40_74" }),
   requiredProfileFields: ["age", "sex", "smokingStatus", "sbp", "heightCm", "weightKg"],

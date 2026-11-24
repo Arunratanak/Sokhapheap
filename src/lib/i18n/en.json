@@ -323,8 +323,8 @@
     "notFound": "No data for this organization yet."
   },
   "bot": {
-    "welcome": "Hello! I am the SokhaPheap bot. I can check your diabetes and heart disease risk, explain your blood test, and find health facilities near you.",
-    "help": "Commands:\n/check – start a risk check\n/lab – explain a blood test photo\n/near – find health facilities near you\n/area – health facts about your area (open data)\n/remind – get a reminder to check again\n/language – change language\n/help – show this message",
+    "welcome": "Hello! I am the SokhaPheap bot. I can run a health check (heart, blood pressure, diabetes, kidneys and TB), explain your blood test, and show the nearest health facilities after your results.",
+    "help": "Commands:\n/health – my health check (6 screenings)\n/check – diabetes and heart risk check\n/lab – explain a blood test photo\n/area – health facts about your area (open data)\n/remind – get a reminder to check again\n/language – change language\n/help – show this message",
     "menuCheck": "Check my risk",
     "menuLab": "Explain my blood test",
     "menuNear": "Find care near me",
@@ -354,7 +354,15 @@
     "urgentNo": "No",
     "languageChanged": "Language: English",
     "areaPrompt": "📊 Your area: send your location, or type your province (for example: Siem Reap).",
-    "areaNotFound": "We could not find that province. Type a province name (for example: Takeo), or send your location."
+    "areaNotFound": "We could not find that province. Type a province name (for example: Takeo), or send your location.",
+    "menuHealth": "My health check (6 screenings)",
+    "hcIntro": "My health check: I'll ask a few questions about you once, then you choose which screenings to do (heart, blood pressure, diabetes, kidneys, TB). Nothing is saved.",
+    "hcChoose": "Choose your screenings: tap to tick or untick, then tap Continue.",
+    "hcContinue": "Continue ➡️",
+    "hcNoneSelected": "Please choose at least one screening.",
+    "hcUseButtons": "Please answer with the buttons above.",
+    "typeDbp": "And the bottom number (e.g. 80)? Type it, or tap \"I don't know\".",
+    "typeNumber": "Type a number."
   },
   "insights": {
     "title": "Open Data Insights",

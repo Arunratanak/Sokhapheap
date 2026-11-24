@@ -11,6 +11,7 @@ import { nearestLocal } from "../facilities";
 import { areaSummary, matchProvinceName, type AreaSummary } from "../insights/area";
 import { getServiceClient } from "../db/supabase";
 import { WAIST_INCHES, waistInchesToCm } from "@/lib/units";
+import { handleHealthCallback, handleHealthText, startHealthCheck, type HealthCheckState } from "./healthCheck";
 
 /**
  * Telegram bot. Same scoring, explanation and lab logic as the web app — no duplicated rules.
@@ -23,6 +24,8 @@ interface Session {
   step: string | null;
   answers: Answers;
   lab?: ExtractedLabValue[];
+  /** Multi-screening health check in progress (src/lib/bot/healthCheck.ts). */
+  hc?: HealthCheckState;
   touched: number;
 }
 
@@ -44,7 +47,7 @@ export function getSession(chatId: number): Session {
 // ---------- question flow (mirrors the web questionnaire) ----------
 type Q =
   | { key: string; kind: "number"; min: number; max: number; prompt: (t: T) => string; allowUnknown?: boolean; integer?: boolean; inches?: boolean }
-  | { key: string; kind: "yesno"; prompt: (t: T) => string }
+  | { key: string; kind: "yesno"; prompt: (t: T) => string; info?: (t: T) => string }
   | { key: string; kind: "choice"; prompt: (t: T) => string; options: (t: T) => [string, string][] };
 type T = ReturnType<typeof getRawDictionary>;
 
@@ -57,7 +60,7 @@ export const QUESTIONS: Q[] = [
   { key: "waistCm", kind: "number", min: WAIST_INCHES.min, max: WAIST_INCHES.max, allowUnknown: true, inches: true, prompt: (t) => t.bot.typeWaist },
   { key: "physicallyActive", kind: "yesno", prompt: (t) => t.risk.activity.q },
   { key: "dailyVegFruit", kind: "yesno", prompt: (t) => t.risk.vegFruit.q },
-  { key: "bpMedication", kind: "yesno", prompt: (t) => t.risk.bpMeds.q },
+  { key: "bpMedication", kind: "yesno", prompt: (t) => t.risk.bpMeds.q, info: (t) => t.risk.bpMeds.info },
   { key: "highGlucoseHistory", kind: "yesno", prompt: (t) => t.risk.highGlucose.q },
   {
     key: "familyHistory", kind: "choice", prompt: (t) => t.risk.family.q,
@@ -79,10 +82,11 @@ function disclaimer(t: T) {
 }
 
 function mainMenu(t: T) {
+  // Find care is part of every result (the location prompt after it), not a separate menu item.
   return new InlineKeyboard()
+    .text(`🩺 ${t.bot.menuHealth}`, "menu:health").row()
     .text(`❤️ ${t.bot.menuCheck}`, "menu:check").row()
-    .text(`🩸 ${t.bot.menuLab}`, "menu:lab").row()
-    .text(`📍 ${t.bot.menuNear}`, "menu:near");
+    .text(`🩸 ${t.bot.menuLab}`, "menu:lab");
 }
 
 function locationKeyboard(t: T) {
@@ -95,9 +99,9 @@ async function ask(ctx: Context, s: Session, index: number) {
   s.step = q.key;
   const progress = `(${index + 1}/${QUESTIONS.length}) `;
   if (q.kind === "yesno") {
-    await ctx.reply(progress + q.prompt(t), {
-      reply_markup: new InlineKeyboard().text(t.common.yes, `a:${q.key}:1`).text(t.common.no, `a:${q.key}:0`),
-    });
+    const kb = new InlineKeyboard().text(t.common.yes, `a:${q.key}:1`).text(t.common.no, `a:${q.key}:0`);
+    if (q.info) kb.row().text(`ℹ️ ${t.common.whatIsThis}`, "info:bpmeds");
+    await ctx.reply(progress + q.prompt(t), { reply_markup: kb });
   } else if (q.kind === "choice") {
     const kb = new InlineKeyboard();
     for (const [v, label] of q.options(t)) kb.text(label, `a:${q.key}:${v}`).row();
@@ -234,6 +238,7 @@ export function createBot(token: string) {
     const s = getSession(ctx.chat!.id);
     const t = getRawDictionary(s.lang);
     s.answers = {};
+    s.hc = undefined;
     s.step = "urgent";
     await ctx.reply(t.bot.urgentQ, {
       reply_markup: new InlineKeyboard().text(t.bot.urgentYes, "urgent:yes").row().text(t.bot.urgentNo, "urgent:no"),
@@ -250,6 +255,7 @@ export function createBot(token: string) {
   };
 
   bot.command("check", startCheck);
+  bot.command("health", (ctx) => startHealthCheck(ctx, getSession(ctx.chat.id)));
   bot.command("lab", startLab);
   bot.command("near", startNear);
   bot.command("area", async (ctx) => {
@@ -274,12 +280,15 @@ export function createBot(token: string) {
     const t = getRawDictionary(s.lang);
     await ctx.answerCallbackQuery();
 
+    if (data === "menu:health") return startHealthCheck(ctx, s);
     if (data === "menu:check") return startCheck(ctx);
+    if (await handleHealthCallback(ctx, s, data)) return;
     if (data === "menu:lab") return startLab(ctx);
     if (data === "menu:near") return startNear(ctx);
 
     if (data === "urgent:yes") {
       s.step = null;
+      s.hc = undefined;
       await ctx.reply(`🚑 ${t.urgent.goNowTitle}\n\n${t.urgent.goNowBody}\n\n📞 ${t.urgent.ambulance}`);
       return ctx.reply(t.bot.sendLocationPrompt, { reply_markup: locationKeyboard(t) });
     }
@@ -371,6 +380,7 @@ export function createBot(token: string) {
   bot.on("message:text", async (ctx) => {
     const s = getSession(ctx.chat.id);
     const t = getRawDictionary(s.lang);
+    if (await handleHealthText(ctx, s, ctx.message.text, parseBotNumber)) return;
     const q = QUESTIONS.find((x) => x.key === s.step);
     if (q?.kind === "number") {
       const n = parseBotNumber(ctx.message.text);

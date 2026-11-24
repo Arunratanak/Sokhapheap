@@ -1,56 +1,217 @@
 @import "tailwindcss";
 
+/* Dark mode follows the data-theme attribute set on <html> (see the inline script in [lang]/layout.tsx). */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ------------------------------------------------------------------ design tokens
+   Brand: orange + gold. Light orange and gold fail contrast as text on white, so they are used
+   for fills, icons and accents only. Text and buttons use the "fill"/"strong" tokens, which meet
+   WCAG AA in both themes (checked: white on #C2410C 5.2:1; #1C1917 on #F97316 6.3:1). */
 :root {
-  --background: #f6faf8;
+  color-scheme: light;
+  --background: #fffbf5;
   --surface: #ffffff;
-  --foreground: #14211c;
-  --muted: #4b5d55;
-  --brand: #0f766e;
-  --brand-strong: #0b5c56;
-  --brand-soft: #e3f2ef;
+  --surface-2: #fff6ec;
+  --foreground: #1c1917;
+  --muted: #57534e;
+  --line: #f1e4d3;
+
+  --orange-500: #f97316;
+  --orange-600: #ea580c;
+  --orange-700: #c2410c;
+  --gold-500: #f5b301;
+  --gold-300: #fcd34d;
+  --gold-700: #b45309;
+
+  --brand: #c2410c; /* fills: buttons, active states (white text on it) */
+  --brand-fill-hover: #9a3412;
+  --on-brand: #ffffff;
+  --brand-strong: #9a3412; /* brand-coloured text and links */
+  --brand-soft: #ffedd5; /* tinted backgrounds */
+  --accent: #f97316; /* icons, decoration, focus */
+  --gradient: linear-gradient(135deg, #f97316 0%, #f59e0b 55%, #f5b301 100%);
+  --gradient-text: linear-gradient(135deg, #c2410c 0%, #b45309 100%);
+
   --warn-soft: #fff6e0;
   --warn-border: #e5b94a;
+
+  /* Result colours (risk levels). Kept apart from the brand so an orange button never reads as a warning. */
+  --ok-bg: #e7f6ec;
+  --ok-fg: #14532d;
+  --lime-bg: #f3f9d9;
+  --lime-fg: #3f4d0b;
+  --caution-bg: #fff3d6;
+  --caution-fg: #6b4500;
+  --orange-bg: #ffe4d6;
+  --orange-fg: #7c2d12;
+  --danger-bg: #fde2df;
+  --danger-fg: #7a1610;
+  --neutral-bg: #eef2f6;
+  --neutral-fg: #1f2937;
+  --danger: #b42318; /* red text on the page background */
+  --danger-solid: #b42318; /* red fill with white text (same in both themes) */
+  --danger-soft: #fff4f2;
+  --danger-border: #f3b4ae;
+
+  --elev-sm: 0 1px 2px rgb(28 25 23 / 0.05), 0 1px 1px rgb(28 25 23 / 0.03);
+  --elev-md: 0 1px 2px rgb(28 25 23 / 0.04), 0 6px 16px -4px rgb(28 25 23 / 0.08), 0 12px 32px -16px rgb(194 65 12 / 0.14);
+  --elev-lg: 0 2px 4px rgb(28 25 23 / 0.04), 0 16px 40px -12px rgb(28 25 23 / 0.14), 0 24px 64px -24px rgb(194 65 12 / 0.22);
+  --nav-bg: rgb(255 251 245 / 0.78);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #0f0d0b;
+  --surface: #1a1714;
+  --surface-2: #221e1a;
+  --foreground: #faf7f2;
+  --muted: #a8a29e;
+  --line: #2e2924;
+
+  --brand: #f97316;
+  --brand-fill-hover: #fb923c;
+  --on-brand: #1c1917;
+  --brand-strong: #fdba74;
+  --brand-soft: #2b1a0d;
+  --accent: #fb923c;
+  --gradient-text: linear-gradient(135deg, #fdba74 0%, #fcd34d 100%);
+
+  --warn-soft: #2a2110;
+  --warn-border: #8a6d1f;
+
+  --ok-bg: #12291c;
+  --ok-fg: #9be3b4;
+  --lime-bg: #222812;
+  --lime-fg: #d4e58a;
+  --caution-bg: #2c2210;
+  --caution-fg: #f6d27a;
+  --orange-bg: #2f1b10;
+  --orange-fg: #fdba8c;
+  --danger-bg: #331614;
+  --danger-fg: #fca5a0;
+  --neutral-bg: #23272e;
+  --neutral-fg: #e5e7eb;
+  --danger: #f97066;
+  --danger-soft: #2a1513;
+  --danger-border: #7a2a24;
+
+  --elev-sm: 0 0 0 1px rgb(255 255 255 / 0.03);
+  --elev-md: 0 0 0 1px rgb(255 255 255 / 0.04), 0 8px 24px -12px rgb(0 0 0 / 0.6);
+  --elev-lg: 0 0 0 1px rgb(255 255 255 / 0.05), 0 20px 48px -16px rgb(0 0 0 / 0.7), 0 0 48px -24px rgb(249 115 22 / 0.35);
+  --nav-bg: rgb(15 13 11 / 0.72);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
+  --color-line: var(--line);
   --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-fill-hover);
+  --color-on-brand: var(--on-brand);
   --color-brand-strong: var(--brand-strong);
   --color-brand-soft: var(--brand-soft);
+  --color-accent: var(--accent);
+  --color-gold: var(--gold-500);
+  --color-gold-soft: var(--gold-300);
   --color-warn-soft: var(--warn-soft);
   --color-warn-border: var(--warn-border);
-  --font-sans: var(--font-khmer), system-ui, sans-serif;
+  --color-danger: var(--danger);
+  --font-sans: var(--font-latin), var(--font-khmer), system-ui, sans-serif;
+  --shadow-sm: var(--elev-sm);
+  --shadow-md: var(--elev-md);
+  --shadow-lg: var(--elev-lg);
+}
+
+/* ------------------------------------------------------------------ base */
+html {
+  scroll-padding-top: 5rem;
+}
+/* Khmer: Khmer font first, a slightly larger size and taller lines so stacked vowels and subscripts don't clip. */
+html:lang(km) {
+  font-size: 106.25%;
+}
+html:lang(km) body {
+  font-family: var(--font-khmer), var(--font-latin), system-ui, sans-serif;
+}
+:lang(km) {
+  line-height: 1.75;
+}
+:lang(km) :is(h1, h2, h3) {
+  line-height: 1.45;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans);
+  font-family: var(--font-latin), var(--font-khmer), system-ui, sans-serif;
   /* Last-resort wrapping so nothing ever forces horizontal scroll on phones. */
   overflow-wrap: anywhere;
 }
 
+/* Smooth colour change only while the theme is being switched (no cost the rest of the time). */
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition: background-color 200ms ease-out, color 200ms ease-out, border-color 200ms ease-out, fill 200ms ease-out !important;
+}
+
+/* The theme toggle shows the icon for the *other* theme; chosen by CSS so it is right before hydration. */
+.theme-icon-dark { display: none; }
+[data-theme="dark"] .theme-icon-dark { display: block; }
+[data-theme="dark"] .theme-icon-light { display: none; }
+
+/* ------------------------------------------------------------------ components */
 @layer components {
   .btn-primary {
-    @apply inline-flex min-h-14 items-center justify-center rounded-xl bg-brand px-5 py-3 text-lg font-semibold text-white shadow-sm hover:bg-brand-strong disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex min-h-14 items-center justify-center gap-2 rounded-xl bg-brand px-5 py-3 text-lg font-semibold text-on-brand shadow-sm transition-[background-color,transform,translate,scale,box-shadow] duration-200 ease-out hover:bg-brand-hover hover:shadow-md active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50;
   }
   .btn-secondary {
-    @apply inline-flex min-h-14 items-center justify-center rounded-xl border-2 border-brand bg-surface px-5 py-3 text-lg font-semibold text-brand-strong hover:bg-brand-soft;
+    @apply inline-flex min-h-14 items-center justify-center gap-2 rounded-xl border-2 border-brand bg-surface px-5 py-3 text-lg font-semibold text-brand-strong transition-colors duration-200 hover:bg-brand-soft;
   }
   .btn-ghost {
-    @apply inline-flex min-h-12 items-center justify-center rounded-xl px-4 font-medium text-brand-strong underline-offset-4 hover:underline;
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-4 font-medium text-brand-strong underline-offset-4 hover:underline;
+  }
+  /* Gradient call-to-action: dark text on the orange→gold gradient (passes AA in both themes). */
+  .btn-gradient {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-5 py-3 font-semibold text-[#1c1917] shadow-md transition-[transform,translate,scale,box-shadow,filter] duration-200 ease-out hover:shadow-lg hover:brightness-105 active:scale-[0.98];
+    background-image: var(--gradient);
+  }
+  /* Round icon control (carousel arrows, pause). */
+  .ctrl {
+    @apply inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line bg-surface text-foreground shadow-sm transition-colors duration-200 hover:border-accent hover:text-brand-strong;
   }
   .field {
-    @apply min-h-12 rounded-xl border-2 border-black/20 bg-surface px-3 text-base;
+    @apply min-h-12 rounded-xl border-2 border-line bg-surface px-3 text-base transition-colors focus:border-accent;
+  }
+  .card {
+    @apply rounded-2xl border border-line bg-surface shadow-md;
+  }
+  .eyebrow {
+    @apply text-xs font-semibold tracking-[0.14em] text-brand-strong uppercase;
+  }
+  .text-gradient {
+    background-image: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  /* Facility type label: the type colour as text, lightened in dark mode for contrast. */
+  .type-label {
+    color: var(--type);
+  }
+  [data-theme="dark"] .type-label {
+    color: color-mix(in oklab, var(--type) 50%, white);
   }
 }
 
 :focus-visible {
-  outline: 3px solid #f59e0b;
+  outline: 3px solid var(--accent);
   outline-offset: 2px;
+  border-radius: 6px;
 }
 
 /* Headings receive focus programmatically (for screen readers) — no visible ring needed. */
@@ -59,21 +220,47 @@ body {
   outline: none;
 }
 
-/* Khmer script needs extra line height so stacked vowels and subscripts don't clip. */
-:lang(km) {
-  line-height: 1.75;
-}
-
-/* Wide pages (Open Data Insights): let the main column grow beyond the phone-width layout. */
+/* ------------------------------------------------------------------ page widths */
+/* Default: phone-width column. Wide pages (Open Data Insights) and the full-bleed home page opt out. */
 main:has(> .page-wide) {
   max-width: 72rem;
 }
+main:has(> .page-full) {
+  max-width: none;
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+}
 
-/* Printable screening plan: one A4 page, without the site header and footer. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Printable screening plan: one A4 page, without the site header and footer. Always light. */
 @media print {
   @page {
     size: A4;
     margin: 12mm;
+  }
+  /* Paper is white: print with the light palette even when the screen is in dark mode. */
+  [data-theme="dark"] {
+    color-scheme: light;
+    --background: #ffffff;
+    --surface: #ffffff;
+    --surface-2: #fafaf9;
+    --foreground: #1c1917;
+    --muted: #57534e;
+    --line: #e7e5e4;
+    --brand-strong: #9a3412;
+    --brand-soft: #ffedd5;
   }
   body:has(.print-page) > header,
   body:has(.print-page) > footer {

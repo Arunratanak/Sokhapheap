@@ -91,7 +91,7 @@ export function ScreeningPlanner({
         <>
           <ol className="flex flex-col gap-3" aria-live="polite">
             {plan.top.map((d) => (
-              <li key={d.pcode} className="rounded-xl border border-black/10 p-3">
+              <li key={d.pcode} className="rounded-xl border border-line p-3">
                 <p className="text-lg font-bold">{num(d.rankInProvince)}. {d.name}</p>
                 <p className="text-sm text-muted">{p.colIndex}: {num(d.index)} · {fmtClient(p.nationalRank, { rank: d.rankNational }, lang)}</p>
                 <p className="mt-1 text-sm"><span className="font-medium">{p.colDrivers}:</span> {d.drivers.map((x) => t.insights.components[x as keyof typeof t.insights.components]).join(", ") || "—"}</p>

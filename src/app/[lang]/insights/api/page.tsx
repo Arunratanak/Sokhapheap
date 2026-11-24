@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/insights/a
 
 function Endpoint({ path, desc, example }: { path: string; desc: string; example: string }) {
   return (
-    <li className="flex flex-col gap-1 rounded-xl border border-black/10 bg-surface p-3">
+    <li className="flex flex-col gap-1 rounded-xl border border-line bg-surface p-3">
       <code className="break-all font-mono text-sm font-semibold">GET {path}</code>
       <p className="text-sm">{desc}</p>
       <a href={example} className="break-all font-mono text-xs text-brand-strong underline underline-offset-2">{example}</a>

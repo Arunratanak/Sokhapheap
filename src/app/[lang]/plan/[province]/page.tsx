@@ -74,7 +74,7 @@ export default async function PlanPage({ params }: PageProps<"/[lang]/plan/[prov
         </thead>
         <tbody>
           {plan.top.map((d) => (
-            <tr key={d.pcode} className="border-t border-black/10 align-top">
+            <tr key={d.pcode} className="border-t border-line align-top">
               <td className="p-1.5 font-bold">{n(d.rankInProvince)}</td>
               <td className="p-1.5 font-semibold">{d.name}<br /><span className="font-normal text-muted">{fmt(p.nationalRank, { rank: d.rankNational }, lang)}</span></td>
               <td className="p-1.5 text-right">{n(d.index)}</td>

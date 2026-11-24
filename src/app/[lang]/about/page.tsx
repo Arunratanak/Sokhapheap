@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
-import { getDictionary, hasLocale } from "@/lib/i18n";
+import { fmt, getDictionary, hasLocale } from "@/lib/i18n";
 import Link from "next/link";
+import { TeamGrid } from "@/components/home/TeamGrid";
+import { MotionProvider } from "@/components/ui/MotionProvider";
 import { Disclaimer } from "@/components/Disclaimer";
 import { manifest } from "@/lib/insights/data";
 
@@ -25,6 +27,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
   if (!hasLocale(lang)) notFound();
   const t = getDictionary(lang).about;
   const disclaimer = getDictionary(lang).common.disclaimer;
+  const landing = getDictionary(lang).landing;
   const DATASETS = [
     ...manifest().map((m) => ({ name: m.name, publisher: m.publisher, url: m.url, licence: `${m.licence} · ${m.data_year}` })),
     ...EXTRA_DATASETS,
@@ -46,7 +49,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
         </ul>
       </section>
 
-      <section>
+      <section id="data">
         <h2 className="text-lg font-bold">{t.dataTitle}</h2>
         <ul className="mt-2 flex flex-col gap-3">
           {DATASETS.map((d) => (
@@ -82,6 +85,15 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
       <section>
         <h2 className="text-lg font-bold">{t.privacyTitle}</h2>
         <p className="mt-1">{t.privacy}</p>
+      </section>
+
+      <section id="team" aria-labelledby="team-title" className="mt-4">
+        <p className="eyebrow">{landing.team.eyebrow}</p>
+        <h2 id="team-title" className="mt-2 text-2xl font-bold">{fmt(landing.team.title, { app: getDictionary(lang).common.appName })}</h2>
+        <p className="mt-1 mb-5 text-muted">{landing.team.body}</p>
+        <MotionProvider>
+          <TeamGrid lang={lang} compact />
+        </MotionProvider>
       </section>
     </article>
   );

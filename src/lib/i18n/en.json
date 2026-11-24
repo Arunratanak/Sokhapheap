@@ -698,5 +698,132 @@
         "umol": "µmol/L"
       }
     }
+  },
+  "nav": {
+    "home": "Home",
+    "check": "Health check",
+    "lab": "Lab results",
+    "map": "Find care",
+    "insights": "Open data",
+    "about": "About",
+    "cta": "Try it now",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "skip": "Skip to content",
+    "main": "Main",
+    "toDark": "Switch to dark theme",
+    "toLight": "Switch to light theme",
+    "language": "Language",
+    "theme": "Light or dark"
+  },
+  "landing": {
+    "carousel": {
+      "label": "Highlights",
+      "prev": "Previous slide",
+      "next": "Next slide",
+      "pause": "Pause slideshow",
+      "play": "Play slideshow",
+      "slideOf": "Slide {n} of {total}",
+      "goTo": "Go to slide {n}"
+    },
+    "hero": [
+      {
+        "eyebrow": "Free · Khmer and English",
+        "title": "Know your health risk early",
+        "desc": "Answer a few simple questions to check your risk of diabetes and heart disease in about 3 minutes.",
+        "cta": "Check my risk"
+      },
+      {
+        "eyebrow": "Explained simply",
+        "title": "Understand your blood test",
+        "desc": "Take a photo of your lab report and get a simple explanation of each result, in Khmer or English.",
+        "cta": "Explain my blood test"
+      },
+      {
+        "eyebrow": "Across Cambodia",
+        "title": "Find care near you",
+        "desc": "{count} hospitals, health centres and clinics across Cambodia, with directions from where you are.",
+        "cta": "Find a health facility"
+      },
+      {
+        "eyebrow": "For health planners",
+        "title": "Open data for better health planning",
+        "desc": "See which communes are furthest from care, built from {count} open datasets.",
+        "cta": "Explore the data"
+      }
+    ],
+    "problem": {
+      "eyebrow": "The problem",
+      "title": "Many health problems in Cambodia are found too late",
+      "body": "Diabetes and high blood pressure often cause no symptoms for years. By the time people see a doctor, the disease may already be serious.",
+      "stats": {
+        "diagnosed": "of adults with high blood pressure have been diagnosed",
+        "controlled": "of adults with high blood pressure have it under control",
+        "outOfPocket": "of health spending is paid out of pocket"
+      }
+    },
+    "solution": {
+      "eyebrow": "Our solution",
+      "title": "{app} brings early screening to every phone",
+      "points": [
+        "Trusted screening tools: questions and scoring from WHO and published research, calculated by fixed rules, not AI.",
+        "Clear next steps in plain Khmer or English.",
+        "The nearest care, mapped from Cambodian open data.",
+        "Private: we never ask for your name, phone number or ID."
+      ]
+    },
+    "features": {
+      "eyebrow": "Features",
+      "title": "Everything you need to act early",
+      "open": "Open"
+    },
+    "how": {
+      "eyebrow": "How it works",
+      "title": "From questions to care in four steps",
+      "steps": [
+        {
+          "title": "Answer simple questions",
+          "body": "About your age, body, habits and family. No name needed."
+        },
+        {
+          "title": "Get your result",
+          "body": "Scored instantly with WHO and published tools, by fixed rules."
+        },
+        {
+          "title": "Know what to do next",
+          "body": "Clear advice for your result, from healthy habits to seeing a doctor."
+        },
+        {
+          "title": "Find care nearby",
+          "body": "The closest health centres and hospitals, with directions."
+        }
+      ]
+    },
+    "impact": {
+      "eyebrow": "Built on open data",
+      "title": "Built on Cambodian open data",
+      "body": "Every number here comes from public datasets we cleaned and combined.",
+      "facilities": "health facilities mapped",
+      "provinces": "provinces covered",
+      "communes": "communes analysed",
+      "datasets": "open datasets combined"
+    },
+    "team": {
+      "eyebrow": "Team",
+      "title": "The people behind {app}",
+      "body": "Built in Phnom Penh for the Open Data × AI Venture Hackathon 1.0."
+    },
+    "cta": {
+      "title": "Start using {app}",
+      "body": "Free, private and in your language. It takes about 3 minutes."
+    }
+  },
+  "footer": {
+    "product": "Product",
+    "data": "Data",
+    "settings": "Settings",
+    "allSources": "All data sources",
+    "credit": "Built for the Open Data × AI Venture Hackathon 1.0 · Phnom Penh, December 2026",
+    "dataNote": "Health facilities: Ministry of Health and © OpenStreetMap contributors (ODbL). Population: WorldPop and the National Institute of Statistics. Indicators: WHO, World Bank and the Cambodia DHS 2021–22."
   }
 }

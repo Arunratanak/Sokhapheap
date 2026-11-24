@@ -37,7 +37,7 @@ export default function FacilityMap({
   const focusIds = new Set(focus.map((f) => `${f.lat},${f.lng}`));
 
   return (
-    <div className="h-80 w-full overflow-hidden rounded-2xl border border-black/10 sm:h-96" role="region" aria-label={ariaLabel}>
+    <div className="h-80 w-full overflow-hidden rounded-2xl border border-line sm:h-96" role="region" aria-label={ariaLabel}>
       <MapContainer bounds={CAMBODIA} preferCanvas scrollWheelZoom={false} className="h-full w-full">
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

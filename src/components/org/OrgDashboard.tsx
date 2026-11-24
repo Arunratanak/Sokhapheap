@@ -68,7 +68,7 @@ export function OrgDashboard({ code, lang, t, provinces }: { code: string; lang:
           {t.org.codePrompt}
           <input type="password" className="field" value={accessCode} onChange={(e) => setAccessCode(e.target.value)} autoComplete="off" />
         </label>
-        {state === "error" && <p role="alert" className="font-medium text-[#b42318]">{error}</p>}
+        {state === "error" && <p role="alert" className="font-medium text-[var(--danger)]">{error}</p>}
         <button className="btn-primary" disabled={!accessCode || state === "loading"}>{state === "loading" ? t.common.loading : t.org.submit}</button>
       </form>
     );

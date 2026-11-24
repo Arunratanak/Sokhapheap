@@ -20,11 +20,11 @@ function tr(t: Dictionary, key: string): string {
 }
 
 const URGENCY_STYLE: Record<Urgency, { bg: string; fg: string; icon: string }> = {
-  red_flag: { bg: "#b42318", fg: "#ffffff", icon: "🚨" },
-  high: { bg: "#fde2df", fg: "#7a1610", icon: "🔴" },
-  moderate: { bg: "#fff1d6", fg: "#6b4500", icon: "🟠" },
-  low: { bg: "#e3f2ea", fg: "#14532d", icon: "🟢" },
-  incomplete: { bg: "#eef2f6", fg: "#1f2937", icon: "⚪" },
+  red_flag: { bg: "var(--danger-solid)", fg: "#ffffff", icon: "🚨" },
+  high: { bg: "var(--danger-bg)", fg: "var(--danger-fg)", icon: "🔴" },
+  moderate: { bg: "var(--caution-bg)", fg: "var(--caution-fg)", icon: "🟠" },
+  low: { bg: "var(--ok-bg)", fg: "var(--ok-fg)", icon: "🟢" },
+  incomplete: { bg: "var(--neutral-bg)", fg: "var(--neutral-fg)", icon: "⚪" },
 };
 
 export function CheckFlow({ lang, t, allowed, preview }: { lang: Locale; t: Dictionary; allowed: string[]; preview: boolean }) {
@@ -102,7 +102,7 @@ export function CheckFlow({ lang, t, allowed, preview }: { lang: Locale; t: Dict
         <span className="flex items-center gap-2">
           <input
             inputMode="decimal"
-            className={`field w-32 ${err(k) ? "border-[#b42318]" : ""}`}
+            className={`field w-32 ${err(k) ? "border-[var(--danger)]" : ""}`}
             value={String(draft[k] ?? "")}
             disabled={opts?.disabled}
             aria-invalid={err(k)}
@@ -114,9 +114,9 @@ export function CheckFlow({ lang, t, allowed, preview }: { lang: Locale; t: Dict
     );
     const choice = (k: string, legend: string, options: [string, string][]) => (
       <fieldset className="flex flex-col gap-2">
-        <legend className={`mb-1 font-medium ${err(k) ? "text-[#b42318]" : ""}`}>{legend}</legend>
+        <legend className={`mb-1 font-medium ${err(k) ? "text-[var(--danger)]" : ""}`}>{legend}</legend>
         {options.map(([v, label]) => (
-          <label key={v} className={`flex min-h-12 items-center gap-3 rounded-xl border-2 px-3 ${draft[k] === v ? "border-brand bg-brand-soft" : "border-black/15 bg-surface"}`}>
+          <label key={v} className={`flex min-h-12 items-center gap-3 rounded-xl border-2 px-3 ${draft[k] === v ? "border-brand bg-brand-soft" : "border-line bg-surface"}`}>
             <input type="radio" name={k} checked={draft[k] === v} onChange={() => set(k, v)} />
             {label}
           </label>
@@ -175,7 +175,7 @@ export function CheckFlow({ lang, t, allowed, preview }: { lang: Locale; t: Dict
           <h2 className="text-lg font-bold">{c.profileSection.family}</h2>
           {choice("familyDiabetes", t.risk.family.q, [["none", t.risk.family.none], ["second_degree", t.risk.family.second], ["first_degree", t.risk.family.first]])}
         </section>
-        {errors.length > 0 && <p role="alert" className="font-medium text-[#b42318]">{c.fixErrors}</p>}
+        {errors.length > 0 && <p role="alert" className="font-medium text-[var(--danger)]">{c.fixErrors}</p>}
         <button className="btn-primary" onClick={submitProfile}>{c.continue}</button>
       </div>
     );
@@ -186,7 +186,7 @@ export function CheckFlow({ lang, t, allowed, preview }: { lang: Locale; t: Dict
     const choices = chooseModules(profile, modules);
     const toggle = (id: string) => setSelected((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]));
     const row = (m: ModuleDefinition) => (
-      <label key={m.id} className={`flex items-start gap-3 rounded-xl border-2 p-3 ${selected.includes(m.id) ? "border-brand bg-brand-soft" : "border-black/15 bg-surface"}`}>
+      <label key={m.id} className={`flex items-start gap-3 rounded-xl border-2 p-3 ${selected.includes(m.id) ? "border-brand bg-brand-soft" : "border-line bg-surface"}`}>
         <input type="checkbox" className="mt-1 h-5 w-5" checked={selected.includes(m.id)} onChange={() => toggle(m.id)} />
         <span>
           <span className="block font-semibold">{m.title[lang]}{m.status === "draft" && <span className="ml-2 rounded bg-warn-soft px-1.5 text-xs">{c.draftTag}</span>}</span>
@@ -251,7 +251,7 @@ export function CheckFlow({ lang, t, allowed, preview }: { lang: Locale; t: Dict
             <legend className="mb-1 font-medium">{tr(t, q.textKey)}</legend>
             {help}
             {q.options.map((o) => (
-              <label key={o.value} className={`flex min-h-12 items-center gap-3 rounded-xl border-2 px-3 ${v === o.value ? "border-brand bg-brand-soft" : "border-black/15 bg-surface"}`}>
+              <label key={o.value} className={`flex min-h-12 items-center gap-3 rounded-xl border-2 px-3 ${v === o.value ? "border-brand bg-brand-soft" : "border-line bg-surface"}`}>
                 <input type="radio" name={`${m.id}.${q.id}`} checked={v === o.value} onChange={() => setA(m.id, q.id, o.value)} />
                 {tr(t, o.labelKey)}
               </label>
@@ -293,7 +293,7 @@ export function CheckFlow({ lang, t, allowed, preview }: { lang: Locale; t: Dict
             {q.helpKey && <p className="text-sm text-muted">{tr(t, q.helpKey)}</p>}
             <div className="grid grid-cols-2 gap-2">
               {([[true, t.common.yes], [false, t.common.no]] as const).map(([val, label]) => (
-                <label key={String(val)} className={`flex min-h-12 items-center gap-3 rounded-xl border-2 px-3 ${v === val ? "border-brand bg-brand-soft" : "border-black/15 bg-surface"}`}>
+                <label key={String(val)} className={`flex min-h-12 items-center gap-3 rounded-xl border-2 px-3 ${v === val ? "border-brand bg-brand-soft" : "border-line bg-surface"}`}>
                   <input type="radio" name={`${m.id}.${q.id}`} checked={v === val} onChange={() => setA(m.id, q.id, val)} />
                   {label}
                 </label>
@@ -338,7 +338,7 @@ export function CheckFlow({ lang, t, allowed, preview }: { lang: Locale; t: Dict
           const s = URGENCY_STYLE[urgency];
           const r = card.result;
           return (
-            <li key={card.moduleId} className="rounded-2xl border border-black/10 bg-surface p-4 shadow-sm">
+            <li key={card.moduleId} className="rounded-2xl border border-line bg-surface p-4 shadow-sm">
               <p className="text-xs font-semibold uppercase tracking-wide text-muted">{c.areas[m.healthArea]}</p>
               <h2 className="text-lg font-bold">{m.title[lang]}</h2>
               <p className="mt-2 inline-flex items-center gap-2 rounded-lg px-3 py-1.5 font-semibold" style={{ background: s.bg, color: s.fg }}>
@@ -346,7 +346,7 @@ export function CheckFlow({ lang, t, allowed, preview }: { lang: Locale; t: Dict
                 {/* The tool's own band words; urgency words only where there is no band (urgent / not checked). */}
                 {r && r.band !== "unavailable" ? m.bands[r.band]?.[lang] : c.urgency[urgency]}
               </p>
-              {card.redFlag && <p className="mt-2 font-semibold text-[#b42318]">{c.urgentCard}</p>}
+              {card.redFlag && <p className="mt-2 font-semibold text-[var(--danger)]">{c.urgentCard}</p>}
               {r && r.band === "unavailable" && <p className="mt-2">{(m.bands[`unavailable:${String(r.details?.reason)}`] ?? m.bands.unavailable)?.[lang]}</p>}
               {r && r.score !== null && (
                 <p className="mt-1 text-sm text-muted">

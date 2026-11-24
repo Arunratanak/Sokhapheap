@@ -38,7 +38,7 @@ export default function ChoroplethMap({
   const key = useMemo(() => `${data.features.length}:${layer.id}:${selected}:${breaks.join(",")}`, [data, layer, selected, breaks]);
 
   return (
-    <div className="h-[55vh] min-h-72 w-full overflow-hidden rounded-2xl border border-black/10 lg:h-[34rem]" role="region" aria-label={ariaLabel}>
+    <div className="h-[55vh] min-h-72 w-full overflow-hidden rounded-2xl border border-line lg:h-[34rem]" role="region" aria-label={ariaLabel}>
       <MapContainer bounds={CAMBODIA} preferCanvas scrollWheelZoom={false} className="h-full w-full">
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

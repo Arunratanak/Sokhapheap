@@ -19,11 +19,11 @@ export interface RiskApiResult {
 
 // Colour + icon + words: never colour alone.
 const FINDRISC_STYLE: Record<FindriscBand, { bg: string; fg: string; icon: string; level: number }> = {
-  low: { bg: "#e7f6ec", fg: "#14532d", icon: "🟢", level: 1 },
-  slightly_elevated: { bg: "#f3f9d9", fg: "#3f4d0b", icon: "🟡", level: 2 },
-  moderate: { bg: "#fff3d6", fg: "#6b4500", icon: "🟠", level: 3 },
-  high: { bg: "#ffe4d6", fg: "#7c2d12", icon: "🔴", level: 4 },
-  very_high: { bg: "#fde2e2", fg: "#7f1d1d", icon: "🔴", level: 5 },
+  low: { bg: "var(--ok-bg)", fg: "var(--ok-fg)", icon: "🟢", level: 1 },
+  slightly_elevated: { bg: "var(--lime-bg)", fg: "var(--lime-fg)", icon: "🟡", level: 2 },
+  moderate: { bg: "var(--caution-bg)", fg: "var(--caution-fg)", icon: "🟠", level: 3 },
+  high: { bg: "var(--orange-bg)", fg: "var(--orange-fg)", icon: "🔴", level: 4 },
+  very_high: { bg: "var(--danger-bg)", fg: "var(--danger-fg)", icon: "🔴", level: 5 },
 };
 const CVD_STYLE: Record<CvdBand, { bg: string; fg: string; icon: string; level: number }> = {
   "<5": FINDRISC_STYLE.low,
@@ -88,7 +88,7 @@ export function ResultsView({
 
       <section
         className="rounded-2xl p-5"
-        style={cvd.available ? { background: CVD_STYLE[cvd.band].bg, color: CVD_STYLE[cvd.band].fg } : { background: "#eef2f6", color: "#1f2937" }}
+        style={cvd.available ? { background: CVD_STYLE[cvd.band].bg, color: CVD_STYLE[cvd.band].fg } : { background: "var(--neutral-bg)", color: "var(--neutral-fg)" }}
         aria-labelledby="cvd-title"
       >
         <h2 id="cvd-title" className="text-base font-semibold">{t.results.heartTitle}</h2>

@@ -1,15 +1,25 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Noto_Sans_Khmer } from "next/font/google";
+import { Inter, Noto_Sans_Khmer } from "next/font/google";
 import { getDictionary, hasLocale, locales } from "@/lib/i18n";
-import { LanguageSwitch } from "@/components/LanguageSwitch";
+import { Navbar } from "@/components/ui/Navbar";
+import { Footer } from "@/components/ui/Footer";
+import { THEME_SCRIPT } from "@/components/ui/ThemeToggle";
 import "../globals.css";
 
-// One family (Noto Sans Khmer) covers Khmer and Latin — fewer font downloads on slow 3G.
+// Khmer pages: Noto Sans Khmer (covers Khmer and Latin) is the main font and is preloaded.
 const khmer = Noto_Sans_Khmer({
   subsets: ["khmer", "latin"],
   variable: "--font-khmer",
   display: "swap",
+});
+// English pages: Inter. Not preloaded, so Khmer pages on slow 3G never download it up front;
+// on English pages it is the first font in the stack and loads with the CSS.
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-latin",
+  display: "swap",
+  preload: false,
 });
 
 export function generateStaticParams() {
@@ -40,7 +50,14 @@ export async function generateMetadata({
   };
 }
 
-export const viewport = { themeColor: "#0f766e", width: "device-width", initialScale: 1 };
+export const viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fffbf5" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f0d0b" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+};
 
 export default async function RootLayout({
   children,
@@ -48,24 +65,31 @@ export default async function RootLayout({
 }: LayoutProps<"/[lang]">) {
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
-  const dict = getDictionary(lang);
+  const t = getDictionary(lang);
 
   return (
-    <html lang={lang} className={`${khmer.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
-        <header className="mx-auto flex w-full max-w-xl items-center justify-between px-4 py-3">
-          <a href={`/${lang}`} className="text-xl font-bold text-brand-strong">
-            {dict.common.appName}
-          </a>
-          <LanguageSwitch current={lang} label={dict.common.switchLanguage} />
-        </header>
-        <main className="mx-auto flex w-full max-w-xl flex-1 flex-col px-4 pb-8">
+    <html lang={lang} data-theme="light" suppressHydrationWarning className={`${khmer.variable} ${inter.variable} h-full antialiased`}>
+      <head>
+        {/* Applies the saved (or system) theme before the first paint: no flash of the wrong theme. */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+      </head>
+      <body className="flex min-h-full flex-col">
+        <a href="#main" className="sr-only z-[60] rounded-lg bg-brand px-4 py-2 font-semibold text-on-brand focus:not-sr-only focus:fixed focus:top-3 focus:left-3">
+          {t.nav.skip}
+        </a>
+        <Navbar
+          lang={lang}
+          t={{
+            appName: t.common.appName,
+            home: t.nav.home, check: t.nav.check, lab: t.nav.lab, map: t.nav.map, insights: t.nav.insights, about: t.nav.about,
+            cta: t.nav.cta, openMenu: t.nav.openMenu, closeMenu: t.nav.closeMenu, main: t.nav.main, language: t.nav.language,
+            toDark: t.nav.toDark, toLight: t.nav.toLight, theme: t.nav.theme,
+          }}
+        />
+        <main id="main" className="mx-auto flex w-full max-w-xl flex-1 flex-col px-4 pt-4 pb-12">
           {children}
         </main>
-        <footer className="mx-auto w-full max-w-xl px-4 pb-6 text-sm text-muted">
-          <a href={`/${lang}/insights`} className="mr-4 underline underline-offset-4">{dict.common.insights}</a>
-          <a href={`/${lang}/about`} className="underline underline-offset-4">{dict.common.about}</a>
-        </footer>
+        <Footer lang={lang} t={t} />
       </body>
     </html>
   );

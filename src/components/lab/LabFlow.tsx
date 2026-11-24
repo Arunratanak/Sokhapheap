@@ -37,9 +37,9 @@ async function downscale(file: File, max = 1800): Promise<Blob> {
 }
 
 const FLAG_STYLE = {
-  normal: { icon: "✅", bg: "#e7f6ec", fg: "#14532d" },
-  outside_range: { icon: "⚠️", bg: "#ffe4d6", fg: "#7c2d12" },
-  could_not_read: { icon: "❔", bg: "#eef2f6", fg: "#1f2937" },
+  normal: { icon: "✅", bg: "var(--ok-bg)", fg: "var(--ok-fg)" },
+  outside_range: { icon: "⚠️", bg: "var(--orange-bg)", fg: "var(--orange-fg)" },
+  could_not_read: { icon: "❔", bg: "var(--neutral-bg)", fg: "var(--neutral-fg)" },
 } as const;
 
 export function LabFlow({ lang, t }: { lang: Locale; t: Dictionary }) {
@@ -170,7 +170,7 @@ export function LabFlow({ lang, t }: { lang: Locale; t: Dictionary }) {
         <p className="text-muted">{t.lab.confirmIntro}</p>
         <ul className="flex flex-col gap-3">
           {rows.map((r, i) => (
-            <li key={i} className={`rounded-xl border bg-surface p-3 shadow-sm ${r.confidence < 0.7 ? "border-warn-border" : "border-black/10"}`}>
+            <li key={i} className={`rounded-xl border bg-surface p-3 shadow-sm ${r.confidence < 0.7 ? "border-warn-border" : "border-line"}`}>
               <div className="grid grid-cols-6 gap-2">
                 <label className="col-span-6 flex flex-col gap-1 text-xs font-medium">
                   {t.lab.testName}
@@ -190,7 +190,7 @@ export function LabFlow({ lang, t }: { lang: Locale; t: Dictionary }) {
                   <input aria-label={`${t.lab.range} max`} placeholder="max" className="field" inputMode="decimal" value={r.high} onChange={(e) => update(i, "high", e.target.value)} />
                 </fieldset>
               </div>
-              <button className="mt-2 text-sm text-[#b42318] underline" onClick={() => setRows((rs) => rs.filter((_, j) => j !== i))}>
+              <button className="mt-2 text-sm text-[var(--danger)] underline" onClick={() => setRows((rs) => rs.filter((_, j) => j !== i))}>
                 {t.lab.remove}
               </button>
             </li>

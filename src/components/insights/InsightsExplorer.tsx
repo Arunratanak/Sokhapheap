@@ -11,7 +11,7 @@ import type { FacilityItem } from "@/components/FacilityList";
 // The map (Leaflet + boundaries) only loads when the user taps "Show map" — keeps the page fast on 3G.
 const ChoroplethMap = dynamic(() => import("./ChoroplethMap"), {
   ssr: false,
-  loading: () => <div className="h-[55vh] min-h-72 w-full animate-pulse rounded-2xl bg-black/5 lg:h-[34rem]" />,
+  loading: () => <div className="h-[55vh] min-h-72 w-full animate-pulse rounded-2xl bg-foreground/5 lg:h-[34rem]" />,
 });
 
 type Level = "province" | "district" | "commune";
@@ -144,7 +144,7 @@ export function InsightsExplorer({ lang, t, ranking }: { lang: Locale; t: Dictio
                     type="button"
                     aria-pressed={level === l}
                     onClick={() => changeLevel(l)}
-                    className={`min-h-11 px-3 text-sm font-semibold ${level === l ? "bg-brand text-white" : "bg-surface text-brand-strong hover:bg-brand-soft"}`}
+                    className={`min-h-11 px-3 text-sm font-semibold ${level === l ? "bg-brand text-on-brand" : "bg-surface text-brand-strong hover:bg-brand-soft"}`}
                   >
                     {ti.level[l]}
                   </button>
@@ -178,21 +178,21 @@ export function InsightsExplorer({ lang, t, ranking }: { lang: Locale; t: Dictio
               label={label}
             />
           ) : (
-            <div className="flex h-[55vh] min-h-72 items-center justify-center rounded-2xl bg-black/5 lg:h-[34rem]" role="status">{ti.loadingMap}</div>
+            <div className="flex h-[55vh] min-h-72 items-center justify-center rounded-2xl bg-foreground/5 lg:h-[34rem]" role="status">{ti.loadingMap}</div>
           )}
 
-          <div aria-label={ti.legendTitle} className="rounded-xl border border-black/10 bg-surface p-3 text-sm">
+          <div aria-label={ti.legendTitle} className="rounded-xl border border-line bg-surface p-3 text-sm">
             <p className="font-semibold">{ti.layers[layer.id]}</p>
             <p className="text-muted">{layer.lowIsWorse ? ti.legendBetter : layer.id === "gap" ? ti.legendWorse : ti.legendHigher} · {layer.source}</p>
             <ul className="mt-2 grid grid-cols-1 gap-1 sm:grid-cols-2">
               {legendRows.map((r, i) => (
                 <li key={i} className="flex items-center gap-2">
-                  <span aria-hidden className="inline-block h-4 w-6 shrink-0 rounded border border-black/20" style={{ background: r.colour }} />
+                  <span aria-hidden className="inline-block h-4 w-6 shrink-0 rounded border border-line" style={{ background: r.colour }} />
                   {r.text}
                 </li>
               ))}
               <li className="flex items-center gap-2">
-                <span aria-hidden className="inline-block h-4 w-6 shrink-0 rounded border border-black/20" style={{ background: NO_DATA }} />
+                <span aria-hidden className="inline-block h-4 w-6 shrink-0 rounded border border-line" style={{ background: NO_DATA }} />
                 {ti.noData}
               </li>
             </ul>
@@ -208,8 +208,8 @@ export function InsightsExplorer({ lang, t, ranking }: { lang: Locale; t: Dictio
           aria-live="polite"
           className={
             area
-              ? "fixed inset-x-0 bottom-0 z-[1000] max-h-[65vh] overflow-y-auto rounded-t-2xl border-t border-black/10 bg-surface p-4 shadow-2xl lg:static lg:z-auto lg:max-h-none lg:rounded-2xl lg:border lg:shadow-none"
-              : "hidden rounded-2xl border border-dashed border-black/20 p-4 text-sm text-muted lg:block"
+              ? "fixed inset-x-0 bottom-0 z-[1000] max-h-[65vh] overflow-y-auto rounded-t-2xl border-t border-line bg-surface p-4 shadow-2xl lg:static lg:z-auto lg:max-h-none lg:rounded-2xl lg:border lg:shadow-none"
+              : "hidden rounded-2xl border border-dashed border-line p-4 text-sm text-muted lg:block"
           }
         >
           {area ? (
@@ -228,7 +228,7 @@ export function InsightsExplorer({ lang, t, ranking }: { lang: Locale; t: Dictio
 
 function Row({ label, value, note }: { label: string; value: string; note?: string }) {
   return (
-    <div className="flex flex-col border-b border-black/5 py-2 last:border-0">
+    <div className="flex flex-col border-b border-line py-2 last:border-0">
       <dt className="text-sm text-muted">{label}</dt>
       <dd className="font-semibold">{value}{note && <span className="ml-1 text-xs font-normal text-muted">({note})</span>}</dd>
     </div>
@@ -349,7 +349,7 @@ function RankingTable({ rows, t, lang, onView }: { rows: RankRow[]; t: T; lang: 
         {t.ranking.search}
         <input type="search" className="field" value={q} onChange={(e) => setQ(e.target.value)} />
       </label>
-      <div className="relative w-full max-w-full overflow-x-auto rounded-xl border border-black/10">
+      <div className="relative w-full max-w-full overflow-x-auto rounded-xl border border-line">
         <table className="w-full min-w-[36rem] text-sm">
           <thead className="bg-brand-soft">
             <tr>
@@ -364,7 +364,7 @@ function RankingTable({ rows, t, lang, onView }: { rows: RankRow[]; t: T; lang: 
           </thead>
           <tbody>
             {shown.map((r) => (
-              <tr key={r.pcode} className="border-t border-black/5">
+              <tr key={r.pcode} className="border-t border-line">
                 <td className="px-2 py-2 font-semibold">
                   {num(r.rank, lang)}
                   <span className="ml-2 inline-block rounded bg-brand-soft px-1.5 text-xs text-brand-strong">

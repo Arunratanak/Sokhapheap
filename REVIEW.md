@@ -141,6 +141,11 @@ The map page now shows the location button, province picker and facility list fi
 
 **Khmer check:** the new button text is បង្ហាញផែនទី / លាក់ផែនទី.
 
+**Re-measured 24 Nov 2026 (UI redesign).** On this machine the map page was already at the 3 s line before the redesign: **2.98–3.03 s** on 3 runs of the last commit. After the redesign it's **3.09–3.19 s**, about +0.15 s. That comes from the new navbar and design CSS on every page. Motion, the animation library, is loaded only on the home and About pages, and the mobile menu uses plain CSS so the map page doesn't load it. The test's 3 s budget now fails by about 0.1–0.2 s. Options:
+- accept the new value;
+- trim the map page further, e.g. lazy-load the province picker data;
+- relax the budget to 3.5 s.
+
 ### Facility data quality
 - OSM includes some mislabelled places, for example "Praram 9 Hospital Cambodia Office" (an office tagged as a hospital), and specialist clinics (eye, dermatology) can appear as "nearest". Fix options: correct them upstream in OSM, keep a small exclusion list, or rank hospitals and health centres first.
 - The MoH dataset licence is listed as "Other" on HDX. Please check its dataset page before Demo Day.

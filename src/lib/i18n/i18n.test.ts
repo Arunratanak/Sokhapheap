@@ -34,6 +34,8 @@ describe("i18n", () => {
     expect(out).toContain("​");
     expect(out.replaceAll("​", "")).toBe("ពិនិត្យហានិភ័យរបស់ខ្ញុំ");
     expect(addKhmerLineBreaks("Check my risk")).toBe("Check my risk");
+    // No break before the Khmer full stop (it must not wrap onto a line of its own).
+    expect(addKhmerLineBreaks("បញ្ចូលគ្នា។")).not.toMatch(/​[។៕]/);
     expect(getDictionary("km").common.disclaimer.replaceAll("​", "")).toBe(
       km.common.disclaimer,
     );

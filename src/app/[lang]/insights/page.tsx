@@ -63,7 +63,7 @@ export default async function InsightsPage({ params }: PageProps<"/[lang]/insigh
         <h2 id="national-title" className="mb-2 text-lg font-bold">{ti.national.title}</h2>
         <ul className="grid grid-cols-2 gap-3 lg:grid-cols-4">
           {cards.map((c) => (
-            <li key={c.key} className="rounded-xl border border-black/10 bg-surface p-3">
+            <li key={c.key} className="rounded-xl border border-line bg-surface p-3">
               <p className="text-2xl font-bold text-brand-strong">{c.value}</p>
               <p className="text-sm">{c.label}</p>
               {c.extra && <p className="text-xs text-muted">{c.extra}</p>}
@@ -111,7 +111,7 @@ export default async function InsightsPage({ params }: PageProps<"/[lang]/insigh
         <h2 id="sources-title" className="text-xl font-bold">{ti.sources.title}</h2>
         <ul className="flex flex-col gap-3 text-sm">
           {sources.map((s) => (
-            <li key={s.id} className="rounded-xl border border-black/10 bg-surface p-3">
+            <li key={s.id} className="rounded-xl border border-line bg-surface p-3">
               <a href={s.url} className="font-semibold text-brand-strong underline underline-offset-2" rel="noopener noreferrer" target="_blank">{s.name}</a>
               <p className="text-muted">{s.publisher}</p>
               <p>

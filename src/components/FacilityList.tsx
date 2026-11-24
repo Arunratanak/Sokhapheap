@@ -36,13 +36,13 @@ export function FacilityList({ items, lang, t }: { items: FacilityItem[]; lang: 
         const s = TYPE_STYLE[f.type];
         const name = lang === "km" && f.name_km ? f.name_km : f.name;
         return (
-          <li key={f.id} className="rounded-xl border border-black/10 bg-surface p-4 shadow-sm">
+          <li key={f.id} className="rounded-xl border border-line bg-surface p-4 shadow-sm">
             <div className="flex items-start gap-3">
               <span aria-hidden className="mt-0.5 text-xl">{s.icon}</span>
               <div className="min-w-0 flex-1">
                 <p className="font-semibold leading-snug">{name}</p>
                 <p className="text-sm text-muted">
-                  <span style={{ color: s.color }} className="font-medium">{t.map.types[f.type]}</span>
+                  <span style={{ "--type": s.color } as React.CSSProperties} className="type-label font-medium">{t.map.types[f.type]}</span>
                   {" · "}
                   {[f.district, f.province].filter(Boolean).join(", ")}
                   {f.distance_m !== undefined && <> · {fmtClient(t.map.distanceKm, { km: formatKm(f.distance_m, lang) }, lang)}</>}
@@ -51,7 +51,7 @@ export function FacilityList({ items, lang, t }: { items: FacilityItem[]; lang: 
                   href={directionsUrl(f)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-2 inline-flex min-h-11 items-center rounded-lg bg-brand-soft px-3 text-sm font-semibold text-brand-strong hover:bg-brand hover:text-white"
+                  className="mt-2 inline-flex min-h-11 items-center rounded-lg bg-brand-soft px-3 text-sm font-semibold text-brand-strong hover:bg-brand hover:text-on-brand"
                 >
                   🧭 {t.map.directions}
                 </a>

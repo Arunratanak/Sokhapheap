@@ -86,7 +86,7 @@ export function AreaCard({ lang, t }: { lang: Locale; t: Dictionary }) {
   const n = (v: number) => (Number.isInteger(v) ? v : Math.round(v * 10) / 10);
 
   return (
-    <section aria-labelledby="area-title" aria-live="polite" className="flex flex-col gap-3 rounded-2xl border-2 border-black/10 bg-background p-4">
+    <section aria-labelledby="area-title" aria-live="polite" className="flex flex-col gap-3 rounded-2xl border-2 border-line bg-background p-4">
       <h2 id="area-title" className="text-lg font-bold">📊 {a.title}</h2>
       {!summary && (
         <>

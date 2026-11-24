@@ -10,7 +10,7 @@ export default function OgImage() {
       <div
         style={{
           width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center",
-          padding: 80, background: "linear-gradient(135deg, #0f766e 0%, #0b5c56 100%)", color: "white", fontFamily: "sans-serif",
+          padding: 80, background: "linear-gradient(135deg, #f97316 0%, #f59e0b 55%, #f5b301 100%)", color: "#1c1917", fontFamily: "sans-serif",
         }}
       >
         <div style={{ fontSize: 40, opacity: 0.9, display: "flex" }}>❤️ SokhaPheap</div>

@@ -22,7 +22,8 @@ export function addKhmerLineBreaks(text: string): string {
   const parts = [...segmenter.segment(text.replaceAll(ZWSP, ""))].map((s) => s.segment);
   return parts.reduce((out, part, i) => {
     const prev = parts[i - 1];
-    const needsBreak = i > 0 && KHMER.test(part[0]) && KHMER.test(prev[prev.length - 1]);
+    // Never break before Khmer end-of-sentence marks (។ ៕), so they don't wrap onto a line of their own.
+    const needsBreak = i > 0 && KHMER.test(part[0]) && KHMER.test(prev[prev.length - 1]) && !/^[។៕]/.test(part);
     return out + (needsBreak ? ZWSP : "") + part;
   }, "");
 }

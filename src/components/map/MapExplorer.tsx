@@ -8,7 +8,7 @@ import { FacilityList, TYPE_STYLE, type FacilityItem } from "@/components/Facili
 
 const FacilityMap = dynamic(() => import("./FacilityMap"), {
   ssr: false,
-  loading: () => <div className="h-80 w-full animate-pulse rounded-2xl bg-black/5 sm:h-96" />,
+  loading: () => <div className="h-80 w-full animate-pulse rounded-2xl bg-foreground/5 sm:h-96" />,
 });
 
 type Area = { province: string; districts: string[] };

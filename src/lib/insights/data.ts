@@ -100,6 +100,22 @@ export function manifest(): ManifestDataset[] {
   return m.datasets;
 }
 
+/** Real numbers for the home page (facility, area and dataset counts; WHO / World Bank indicators). */
+export function homeStats() {
+  const count = (file: string) => readJson<{ areas: unknown[] }>(file).areas.length;
+  const ind = nationalContext().indicators;
+  const pick = (k: string) => (ind[k]?.value != null ? { value: ind[k]!.value as number, year: ind[k]!.year, source: ind[k]!.source } : null);
+  return {
+    facilities: readJson<{ features: unknown[] }>("facilities.geojson").features.length,
+    provinces: count("areas_province.json"),
+    communes: count("areas_commune.json"),
+    datasets: manifest().length,
+    htnDiagnosed: pick("hypertension_diagnosed_pct"),
+    htnControlled: pick("hypertension_controlled_pct"),
+    outOfPocket: pick("out_of_pocket_share_of_health_spending_pct"),
+  };
+}
+
 /** Files offered for download (CC BY 4.0) and their content types. */
 export const DOWNLOADS = {
   "areas_district.csv": "text/csv; charset=utf-8",

@@ -147,7 +147,7 @@ export function RiskFlow({
       <div>
         <p className="mb-1 text-sm text-muted">{fmtClient(t.common.stepOf, { n: stepIndex + 1, total }, lang)}</p>
         <div
-          className="h-2 w-full overflow-hidden rounded-full bg-black/10"
+          className="h-2 w-full overflow-hidden rounded-full bg-foreground/10"
           role="progressbar"
           aria-valuemin={1}
           aria-valuemax={total}
@@ -223,7 +223,7 @@ function StepInput({
         <label className="flex flex-col gap-2">
           <span className="sr-only">{t.risk.province.q}</span>
           <select
-            className="min-h-14 rounded-xl border-2 border-black/20 bg-surface px-4 text-lg"
+            className="min-h-14 rounded-xl border-2 border-line bg-surface px-4 text-lg"
             value={answers.province ?? ""}
             onChange={(e) => set("province", e.target.value || null)}
           >
@@ -272,7 +272,7 @@ function NumberStep({
           id={id}
           inputMode="decimal"
           autoComplete="off"
-          className="min-h-14 w-40 rounded-xl border-2 border-black/20 bg-surface px-4 text-2xl font-semibold"
+          className="min-h-14 w-40 rounded-xl border-2 border-line bg-surface px-4 text-2xl font-semibold"
           value={raw}
           onChange={(e) => { setRaw(e.target.value); setError(null); }}
           aria-invalid={Boolean(error)}
@@ -280,7 +280,7 @@ function NumberStep({
         />
         <span className="text-lg text-muted">{unit}</span>
       </div>
-      {error && <p id={`${id}-err`} className="font-medium text-[#b42318]" role="alert">{error}</p>}
+      {error && <p id={`${id}-err`} className="font-medium text-[var(--danger)]" role="alert">{error}</p>}
       <button type="submit" className="btn-primary">{t.common.next} →</button>
       {step.allowUnknown && (
         <button type="button" className="btn-secondary" onClick={() => { set(step.key, null); next(); }}>
@@ -298,7 +298,7 @@ function ChoiceButton({ selected, onClick, children }: { selected: boolean; onCl
       onClick={onClick}
       aria-pressed={selected}
       className={`min-h-14 rounded-xl border-2 px-5 py-3 text-left text-lg font-medium transition ${
-        selected ? "border-brand bg-brand-soft text-brand-strong" : "border-black/15 bg-surface hover:border-brand"
+        selected ? "border-brand bg-brand-soft text-brand-strong" : "border-line bg-surface hover:border-brand"
       }`}
     >
       {children}
@@ -312,14 +312,14 @@ export function UrgentScreen({
   const items = [t.urgent.chestPain, t.urgent.fainting, t.urgent.highSugar];
   return (
     <div className="flex flex-col gap-4 pt-2">
-      <p className="text-sm font-semibold uppercase tracking-wide text-[#b42318]">🚨 {t.urgent.title}</p>
+      <p className="text-sm font-semibold uppercase tracking-wide text-[var(--danger)]">🚨 {t.urgent.title}</p>
       <h1 ref={headingRef} tabIndex={-1} className="text-2xl font-bold leading-snug outline-none">{t.urgent.question}</h1>
       <div className="flex flex-col gap-3">
         {items.map((label) => (
           <button
             key={label}
             onClick={onUrgent}
-            className="min-h-14 rounded-xl border-2 border-[#f3b4ae] bg-[#fff4f2] px-5 py-3 text-left text-lg font-medium hover:border-[#b42318]"
+            className="min-h-14 rounded-xl border-2 border-[var(--danger-border)] bg-[var(--danger-soft)] px-5 py-3 text-left text-lg font-medium hover:border-[var(--danger)]"
           >
             {label}
           </button>
@@ -351,10 +351,10 @@ export function GoNowScreen({
 
   return (
     <div className="flex flex-col gap-4 pt-2" role="alert">
-      <div className="rounded-2xl bg-[#b42318] p-5 text-white">
+      <div className="rounded-2xl bg-[var(--danger-solid)] p-5 text-white">
         <h1 ref={headingRef} tabIndex={-1} className="text-2xl font-bold outline-none">🚑 {t.urgent.goNowTitle}</h1>
         <p className="mt-2">{t.urgent.goNowBody}</p>
-        <a href="tel:119" className="mt-4 inline-flex min-h-12 items-center rounded-xl bg-white px-4 text-lg font-bold text-[#b42318]">
+        <a href="tel:119" className="mt-4 inline-flex min-h-12 items-center rounded-xl bg-white px-4 text-lg font-bold text-[var(--danger)]">
           📞 {t.urgent.ambulance}
         </a>
       </div>

@@ -1,0 +1,152 @@
+[
+ {
+  "id": "who-cvd-lab",
+  "title": "Heart attack and stroke risk, laboratory-based (WHO 2019 chart)",
+  "area": "Heart",
+  "sens": "normal",
+  "rec": "Include",
+  "effort": "M",
+  "khmer": "N (numbers only; band words need Khmer review)",
+  "licence": "Y: CC BY-NC-SA 3.0 IGO (non-commercial)"
+ },
+ {
+  "id": "bp-check",
+  "title": "Blood pressure check",
+  "area": "Heart",
+  "sens": "normal",
+  "rec": "Include with caution (needs a sourced red-flag threshold + clinician)",
+  "effort": "S",
+  "khmer": "N/A (a reading, not a questionnaire); explanation text needs Khmer review",
+  "licence": "Y: CC BY-NC-SA 3.0 IGO"
+ },
+ {
+  "id": "weight-waist",
+  "title": "Weight and waist",
+  "area": "Metabolic",
+  "sens": "normal",
+  "rec": "Include (after sources are archived and the clinician picks the cut-off set)",
+  "effort": "S",
+  "khmer": "N/A (measurements); explanation text needs Khmer review",
+  "licence": "Lancet: copyrighted (cite, don't redistribute); WHO: CC BY-NC-SA"
+ },
+ {
+  "id": "ckd-scored",
+  "title": "Chronic kidney disease risk (questionnaire)",
+  "area": "Kidney",
+  "sens": "normal",
+  "rec": "Skip for now (roadmap); revisit when SCREEN results are published",
+  "effort": "M",
+  "khmer": "N",
+  "licence": "Unknown (TODO)"
+ },
+ {
+  "id": "egfr",
+  "title": "Kidney function from a creatinine result (eGFR)",
+  "area": "Kidney",
+  "sens": "normal",
+  "rec": "Include",
+  "effort": "S",
+  "khmer": "N/A (lab value)",
+  "licence": "Formula: OK to implement; paper copyrighted (not redistributed)"
+ },
+ {
+  "id": "tb-symptom",
+  "title": "Tuberculosis symptom screen",
+  "area": "Lungs",
+  "sens": "normal",
+  "rec": "Include (highest priority)",
+  "effort": "S",
+  "khmer": "N (no validated Khmer item set found; needs CENAT wording or approval)",
+  "licence": "Y (WHO CC BY-NC-SA; national programme criteria)"
+ },
+ {
+  "id": "copd",
+  "title": "COPD (chronic lung disease) screen",
+  "area": "Lungs",
+  "sens": "normal",
+  "rec": "Include with caution (COPD-SQ; no Cambodian validation)",
+  "effort": "M",
+  "khmer": "N",
+  "licence": "TODO (check terms for COPD-SQ; COPD-PS is a published instrument)"
+ },
+ {
+  "id": "stop-bang",
+  "title": "Obstructive sleep apnea",
+  "area": "Lungs",
+  "sens": "normal",
+  "rec": "Skip unless you obtain permission",
+  "effort": "S",
+  "khmer": "N",
+  "licence": "**N: needs permission from the developer** (Dr Frances Chung / University Health Network)"
+ },
+ {
+  "id": "smoking",
+  "title": "Smoking: dependence and quit support",
+  "area": "Lungs",
+  "sens": "normal",
+  "rec": "Include with caution (after you confirm quit services)",
+  "effort": "S",
+  "khmer": "N",
+  "licence": "TODO (FTND/HSI terms)"
+ },
+ {
+  "id": "audit-c",
+  "title": "Harmful alcohol use",
+  "area": "Liver",
+  "sens": "sensitive",
+  "rec": "Include with caution (needs a validated Khmer version or your approval; AUDIT-C cut-off source)",
+  "effort": "S",
+  "khmer": "N (WHO lists English, Spanish, Portuguese, Japanese)",
+  "licence": "Y: WHO manual (AUDIT is free to use)"
+ },
+ {
+  "id": "hepatitis-testing",
+  "title": "Hepatitis B and C: should I get tested?",
+  "area": "Liver",
+  "sens": "sensitive",
+  "rec": "Include with caution",
+  "effort": "S",
+  "khmer": "N (risk questions need Khmer wording + review)",
+  "licence": "Y: CC BY-NC-SA 3.0 IGO"
+ },
+ {
+  "id": "phq9",
+  "title": "Depression (PHQ-2 → PHQ-9)",
+  "area": "Mind",
+  "sens": "sensitive",
+  "rec": "Include with caution (after Phase 4 + Khmer version confirmed)",
+  "effort": "M",
+  "khmer": "Possibly (to confirm from the Cambodian validation paper)",
+  "licence": "Y: PHQ is free to use (no permission needed, per the PHQ screeners terms — TODO confirm)"
+ },
+ {
+  "id": "gad7",
+  "title": "Anxiety (GAD-2 → GAD-7)",
+  "area": "Mind",
+  "sens": "sensitive",
+  "rec": "Include with caution (with PHQ-9)",
+  "effort": "M",
+  "khmer": "Possibly (as PHQ-9)",
+  "licence": "Y: free to use (TODO confirm)"
+ },
+ {
+  "id": "osta",
+  "title": "Osteoporosis risk (OSTA)",
+  "area": "Bones",
+  "sens": "normal",
+  "rec": "Skip for now (roadmap)",
+  "effort": "S",
+  "khmer": "N/A (age + weight)",
+  "licence": "Formula published; paper copyrighted"
+ },
+ {
+  "id": "cervical-reminder",
+  "title": "Cervical cancer screening reminder",
+  "area": "Women's health",
+  "sens": "normal",
+  "rec": "Include (after you confirm Cambodian services)",
+  "effort": "S",
+  "khmer": "N/A (reminder text needs Khmer review)",
+  "licence": "Y: CC BY-NC-SA 3.0 IGO"
+ }
+]

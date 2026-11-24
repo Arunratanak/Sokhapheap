@@ -21,3 +21,6 @@ data/raw/
 next-env.d.ts
 npm-debug.log*
 .vercel
+
+# Copyrighted source documents: archived locally for reference, never published
+references/sources/private/

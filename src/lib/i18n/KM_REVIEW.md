@@ -13,6 +13,7 @@ TODO(KM-REVIEW): every Khmer string below was written by Claude for the redesign
 | `bot.menuHealth`, `bot.hcIntro`, `bot.hcChoose`, `bot.hcContinue`, `bot.hcNoneSelected`, `bot.hcUseButtons`, `bot.typeDbp`, `bot.typeNumber` | ការពិនិត្យសុខភាពរបស់ខ្ញុំ (៦ ប្រភេទ) … | Telegram health check | New bot conversation |
 | `bot.welcome`, `bot.help` | … /health … | Updated: health check added, /near removed from help | |
 | `bot.urgentContinue`, `bot.backToMenu` | ខ្ញុំមានសុវត្ថិភាព បន្តការពិនិត្យ / ត្រឡប់ទៅម៉ឺនុយ | I am safe, continue the check / Back to the menu | Buttons on the bot's "go to hospital" message |
+| `landing.examples.*` | លទ្ធផលឧទាហរណ៍ · ដារ៉ា អាយុ ៤៥ ឆ្នាំ … / លទ្ធផលមន្ទីរពិសោធន៍ឧទាហរណ៍ / ចម្ងាយទៅមណ្ឌលសុខភាពជិតបំផុត … | Hero example cards (result, lab report, distance chart) | Includes «ដារ៉ា» for "Dara" and «គ.ម» for km |
 | `common.whatIsThis` | តើនេះមានន័យថាអ្វី? | What does this mean? | |
 | `nav.cta` | សាកល្បងឥឡូវនេះ | Try it now | Natural for a button? Maybe «ចាប់ផ្តើម» is better |
 | `nav.theme` | ពន្លឺ ឬងងឹត | Light or dark | Wording for a theme switch |

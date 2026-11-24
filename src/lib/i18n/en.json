@@ -837,6 +837,53 @@
       "title": "Check your heart, blood pressure, diabetes, kidneys and TB in one go",
       "desc": "Answer one set of questions about yourself, then choose the screenings you want. Each one follows WHO or published medical guidance.",
       "cta": "Start my health check"
+    },
+    "examples": {
+      "risk": {
+        "title": "Example result · Dara, 45, Phnom Penh",
+        "subtitle": "{n} screenings · example",
+        "heartCaption": "10-year risk of heart attack or stroke",
+        "low": "Low",
+        "diabetes": "Diabetes",
+        "diabetesStatus": "Low risk",
+        "bp": "Blood pressure",
+        "bpStatus": "High reading",
+        "bpNext": "Recheck on another day",
+        "tb": "TB symptoms",
+        "tbValue": "Cough",
+        "tbStatus": "Get tested",
+        "tbNext": "Get a TB test at a health centre",
+        "next": "Next step: nearest health centre · {km} km"
+      },
+      "lab": {
+        "title": "Example lab report",
+        "subtitle": "{n} results explained · ភាសាខ្មែរ / English",
+        "glucose": {
+          "name": "Blood sugar (fasting)",
+          "note": "Your blood sugar is in the normal range."
+        },
+        "cholesterol": {
+          "name": "Cholesterol (total)",
+          "note": "Above the healthy range (under 200 mg/dL). Ask your doctor about diet and a recheck."
+        },
+        "hba1c": {
+          "name": "HbA1c (3-month blood sugar)",
+          "note": "Your long-term blood sugar is in the normal range."
+        },
+        "creatinine": {
+          "name": "Creatinine (kidneys)",
+          "note": "Within the range printed on your report (0.7–1.3)."
+        }
+      },
+      "data": {
+        "title": "Distance to nearest health centre",
+        "subtitle": "Average by district · {province} · straight-line km",
+        "highlight": "{district} · {km} km",
+        "chartLabel": "Bar chart: in {province}, {district} has the longest average distance to a health centre, {km} km.",
+        "communes": "communes analysed",
+        "people": "people live in communes more than 10 km from a health centre",
+        "datasets": "open datasets · HDX, WorldPop, OpenStreetMap"
+      }
     }
   },
   "footer": {

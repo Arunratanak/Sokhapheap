@@ -20,6 +20,8 @@ import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { StatCounter } from "@/components/ui/StatCounter";
 import { formatCount } from "@/lib/format";
 import { MotionProvider } from "@/components/ui/MotionProvider";
+import type { HeroVisualData, Tone } from "@/components/home/HeroVisual";
+import { distanceExample, labExample, riskExample } from "@/lib/heroExamples";
 
 const SOURCE_LABEL: Record<string, string> = {
   "who-gho": "WHO",
@@ -38,17 +40,65 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   const base = `/${lang}`;
   const n = (v: number) => formatCount(v, lang);
 
+  // Example cards: values computed with the real scoring / lab / open-data logic (src/lib/heroExamples.ts).
+  const X = L.examples;
+  const num = (v: number) => formatNumber(v, lang);
+  const risk = riskExample();
+  const tone = (u: string) => (u === "low" ? "ok" : u === "moderate" ? "caution" : "danger") as Tone;
+  const riskVisual: HeroVisualData = {
+    kind: "risk",
+    title: X.risk.title,
+    subtitle: fmt(X.risk.subtitle, { n: num(risk.screenings) }),
+    percent: risk.heartPercent,
+    percentText: `${num(risk.heartPercent)}%`,
+    caption: X.risk.heartCaption,
+    band: X.risk.low,
+    tiles: [
+      { tone: tone(risk.diabetes.urgency), icon: "diabetes", label: X.risk.diabetes, status: X.risk.diabetesStatus },
+      { tone: tone(risk.bp.urgency), icon: "bp", label: X.risk.bp, value: `${num(risk.bp.sbp)}/${num(risk.bp.dbp)}`, status: X.risk.bpStatus, next: X.risk.bpNext },
+      { tone: tone(risk.tb.urgency), icon: "tb", label: X.risk.tb, value: X.risk.tbValue, status: X.risk.tbStatus, next: X.risk.tbNext },
+    ],
+    next: { text: fmt(X.risk.next, { km: num(risk.nearestHealthCentreKm ?? 0) }), href: `${base}/map?type=health_centre` },
+  };
+  const lab = labExample();
+  const labVisual: HeroVisualData = {
+    kind: "lab",
+    title: X.lab.title,
+    subtitle: fmt(X.lab.subtitle, { n: num(lab.length) }),
+    rows: lab.map((r) => ({
+      tone: r.flag === "normal" ? "ok" : "caution",
+      name: X.lab[r.key].name,
+      value: `${r.value} ${r.unit}`,
+      note: X.lab[r.key].note,
+      pill: t.lab.flags[r.flag],
+    })),
+  };
+  const dist = distanceExample();
+  const dataVisual: HeroVisualData = {
+    kind: "data",
+    title: X.data.title,
+    subtitle: fmt(X.data.subtitle, { province: dist.province }),
+    highlight: fmt(X.data.highlight, { district: dist.top.name, km: num(dist.top.km) }),
+    chartLabel: fmt(X.data.chartLabel, { province: dist.province, district: dist.top.name, km: num(dist.top.km) }),
+    bars: dist.bars.map((b) => ({ name: b.name, label: b.name.split(" ")[0], km: b.km, kmText: `${num(b.km)} km`, top: b.name === dist.top.name })),
+    stats: [
+      { value: formatCount(dist.communes, lang), label: X.data.communes },
+      { value: formatCount(dist.peopleOver10km, lang), label: X.data.people },
+      { value: formatCount(dist.datasets, lang), label: X.data.datasets },
+    ],
+  };
+
   const slides: HeroSlide[] = [
     // When the multi-screening health check is public, it leads; otherwise the diabetes + heart check does.
     healthCheckLive
-      ? { ...L.heroCheck, href: `${base}/check`, visual: "risk" }
-      : { ...L.hero[0], href: `${base}/risk`, visual: "risk" },
-    { ...L.hero[1], href: `${base}/lab`, visual: "lab" },
+      ? { ...L.heroCheck, href: `${base}/check`, visual: riskVisual }
+      : { ...L.hero[0], href: `${base}/risk`, visual: riskVisual },
+    { ...L.hero[1], href: `${base}/lab`, visual: labVisual },
     {
       ...L.hero[3],
       desc: fmt(L.hero[3].desc, { count: n(stats.datasets) }),
       href: `${base}/insights`,
-      visual: "data",
+      visual: dataVisual,
     },
   ];
 

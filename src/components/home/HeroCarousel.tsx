@@ -7,7 +7,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { useReducedMotion } from "motion/react";
 import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { toKhmerDigits } from "@/lib/client/util";
-import { HeroVisual, type HeroVisualKind } from "./HeroVisual";
+import { HeroVisual, type HeroVisualData } from "./HeroVisual";
 
 export interface HeroSlide {
   eyebrow: string;
@@ -15,7 +15,7 @@ export interface HeroSlide {
   desc: string;
   cta: string;
   href: string;
-  visual: HeroVisualKind;
+  visual: HeroVisualData;
 }
 
 export interface CarouselLabels {
@@ -113,7 +113,7 @@ export function HeroCarousel({ slides, labels, lang }: { slides: HeroSlide[]; la
                     </div>
                   </div>
                   <div className={`transition-[opacity,transform,translate,scale] delay-100 duration-700 ease-out ${active ? "scale-100 opacity-100" : "scale-[0.97] opacity-0"}`}>
-                    <HeroVisual kind={s.visual} />
+                    <HeroVisual data={s.visual} active={active} />
                   </div>
                 </div>
               </div>

@@ -172,7 +172,15 @@
       "cholesterol_very_high": "Your total cholesterol is 8 mmol/L (320 mg/dL) or more. WHO advises that a doctor considers treatment for this. Visit a doctor or health centre in the next few weeks and show them this result.",
       "tb_test": "Go to a health centre and ask for a TB test. Tell them which symptoms you have. This check is not a diagnosis: many people with these symptoms don't have TB, but only a test can tell.",
       "tb_contact_check": "Go to a health centre, tell them you live with or are close to someone who has TB, and ask to be checked. WHO says close contacts of people with TB should always be screened.",
-      "tb_watch": "A symptom check misses about 3 in 10 people with TB. If you get a cough, fever, night sweats or weight loss, go to a health centre and ask for a TB test."
+      "tb_watch": "A symptom check misses about 3 in 10 people with TB. If you get a cough, fever, night sweats or weight loss, go to a health centre and ask for a TB test.",
+      "bp_very_high": "Your reading is 160/100 or higher. WHO says that when blood pressure is this high, treatment should start without delay. Visit a doctor or health centre as soon as you can and show them this reading.",
+      "bp_recheck": "This reading is 140/90 or higher. One reading is not a diagnosis: high blood pressure is confirmed when it is high on two different days. Get it measured again on another day at a health centre.",
+      "bp_pregnancy": "In pregnancy, a reading of 140/90 or higher needs to be checked by a doctor or midwife soon. WHO says high blood pressure in pregnancy must be diagnosed and followed up carefully.",
+      "bp_above_target": "Your reading is above the WHO treatment target of below 140/90. Talk to your health worker about your treatment. WHO suggests a check every month after a medicine change until you reach the target.",
+      "bp_above_target_130": "Because you have heart disease, diabetes or kidney disease, WHO's target for the top number is below 130. Your reading is above that. Talk to your health worker about your treatment.",
+      "bp_high_risk_130": "Your top number is 130–139. Because you have heart disease, diabetes or kidney disease, WHO advises that a health worker considers treatment at this level. Show them this reading at your next visit.",
+      "bp_at_target": "Your reading is within the WHO treatment target. WHO suggests a check every 3 to 6 months while your blood pressure is under control.",
+      "bp_below": "This reading is below 140/90, the level at which WHO recommends treatment. To keep it healthy: less salt (under 5 g a day), more fruit and vegetables, regular activity, no tobacco and less alcohol."
     },
     "bmiLabel": "BMI: {bmi}",
     "glucoseTestRecommended": "A blood sugar test is recommended.",

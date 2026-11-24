@@ -75,6 +75,17 @@ The next steps now follow the WHO Table 3 follow-up intervals. The non-lab modul
 - whether the app may say TB testing is free;
 - linking to the nearest health centre for testing.
 
+### 2b-bp. Blood pressure check (module `bp_check`, added 24 Nov 2026)
+**Source:** WHO *Guideline for the pharmacological treatment of hypertension in adults* (2021):
+- thresholds 140/90 and 160/100;
+- the <140/90 target, or systolic <130 with heart disease, diabetes or kidney disease;
+- follow-up every month until on target, then every 3–6 months.
+
+The guideline says it doesn't cover diagnosis or hypertensive crisis, so the check has **no emergency level**, and it never calls one reading a diagnosis. Please check the `TODO(VERIFY)` list in `references/methods/bp-check/METHOD_CARD.md`:
+- whether to add an emergency level;
+- how pregnancy is handled;
+- treating "heart disease or stroke" as existing CVD.
+
 ### 2c. Rules I chose that a clinician should confirm
 - **"See a doctor in the next few weeks"** is shown when FINDRISC is high or very high (≥15), or WHO risk is ≥20%. The "blood sugar test" step at FINDRISC ≥12 comes from your prompt.
 - **"Check again in about a year"** is shown for low-risk results.

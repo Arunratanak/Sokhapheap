@@ -84,7 +84,7 @@ export default async function RootLayout({
           healthCheckLive={healthCheckLive}
           t={{
             appName: t.common.appName,
-            home: t.nav.home, check: t.nav.check, lab: t.nav.lab, map: t.nav.map, insights: t.nav.insights, about: t.nav.about,
+            home: t.nav.home, check: t.nav.check, lab: t.nav.lab, insights: t.nav.insights, about: t.nav.about,
             cta: t.nav.cta, openMenu: t.nav.openMenu, closeMenu: t.nav.closeMenu, main: t.nav.main, language: t.nav.language,
             toDark: t.nav.toDark, toLight: t.nav.toLight, theme: t.nav.theme,
           }}

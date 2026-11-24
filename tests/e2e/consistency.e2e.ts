@@ -12,6 +12,7 @@
  */
 import fs from "node:fs";
 import { chromium, type Page } from "playwright-core";
+import { waistCmToInches } from "../../src/lib/units";
 
 // Bot runs offline: no AI, no database, fake token.
 for (const k of ["GEMINI_API_KEY", "NEXT_PUBLIC_SUPABASE_URL", "NEXT_PUBLIC_SUPABASE_ANON_KEY", "SUPABASE_SERVICE_ROLE_KEY"]) delete process.env[k];
@@ -85,7 +86,7 @@ async function ui(page: Page, base: string, p: Profile): Promise<Row> {
   await page.goto(`${base}/en/risk`, { timeout: 120000 });
   await click(page, /None of these/);
   await click(page, p.sex === "male" ? /Man/ : /Woman/);
-  for (const v of [p.age, p.heightCm, p.weightKg, p.waistCm]) await num(page, v);
+  for (const v of [p.age, p.heightCm, p.weightKg, p.waistCm === null ? null : waistCmToInches(p.waistCm)]) await num(page, v); // waist asked in inches
   for (const yes of [p.physicallyActive, p.dailyVegFruit, p.bpMedication, p.highGlucoseHistory]) await click(page, yes ? /^Yes$/ : /^No$/);
   await click(page, p.familyHistory === "none" ? /No \/ I don't know/ : p.familyHistory === "second_degree" ? /grandparent/ : /parent, brother/);
   await click(page, p.smoker ? /^Yes$/ : /^No$/);
@@ -126,7 +127,7 @@ async function bot(p: Profile, chatId: number): Promise<Row> {
   await text("/check");
   await tap("urgent:no");
   await tap(`a:sex:${p.sex}`);
-  for (const [k, v] of [["age", p.age], ["heightCm", p.heightCm], ["weightKg", p.weightKg], ["waistCm", p.waistCm]] as const)
+  for (const [k, v] of [["age", p.age], ["heightCm", p.heightCm], ["weightKg", p.weightKg], ["waistCm", p.waistCm === null ? null : waistCmToInches(p.waistCm)]] as const) // waist in inches
     await (v === null ? tap(`a:${k}:null`) : text(String(v)));
   for (const k of ["physicallyActive", "dailyVegFruit", "bpMedication", "highGlucoseHistory"] as const) await tap(`a:${k}:${p[k] ? 1 : 0}`);
   await tap(`a:familyHistory:${p.familyHistory}`);

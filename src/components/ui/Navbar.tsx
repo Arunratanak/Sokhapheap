@@ -11,7 +11,7 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export interface NavLabels {
   appName: string;
-  home: string; check: string; lab: string; map: string; insights: string; about: string;
+  home: string; check: string; lab: string; insights: string; about: string;
   cta: string; openMenu: string; closeMenu: string; main: string; language: string; toDark: string; toLight: string; theme: string;
 }
 
@@ -26,7 +26,6 @@ export function Navbar({ lang, t, healthCheckLive = false }: { lang: Locale; t: 
     { key: "home", href: base, label: t.home, match: (p) => p === base || p === `${base}/` },
     { key: "check", href: healthCheckLive ? `${base}/check` : `${base}/risk`, label: t.check, match: under("risk", "check") },
     { key: "lab", href: `${base}/lab`, label: t.lab, match: under("lab") },
-    { key: "map", href: `${base}/map`, label: t.map, match: under("map") },
     { key: "insights", href: `${base}/insights`, label: t.insights, match: under("insights", "org", "plan") },
     { key: "about", href: `${base}/about`, label: t.about, match: under("about") },
   ];

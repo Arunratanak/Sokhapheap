@@ -8,6 +8,9 @@ TODO(KM-REVIEW): every Khmer string below was written by Claude for the redesign
 | `check.draftBanner` | កំណែដំបូង៖ ការពិនិត្យទាំងនេះធ្វើតាមគោលការណ៍ណែនាំរបស់ WHO … ប៉ុន្តែវេជ្ជបណ្ឌិតមិនទាន់បានពិនិត្យនៅឡើយទេ … | Early version: … a doctor has not reviewed them yet … | **Safety wording on the public health check: please check first** |
 | `landing.heroCheck.*` | ពិនិត្យបេះដូង សម្ពាធឈាម ទឹកនោមផ្អែម តម្រងនោម និងរបេង ក្នុងពេលតែមួយ … | Check your heart, blood pressure, diabetes, kidneys and TB in one go | First thing visitors read |
 | `landing.cta.bodyCheck` | … សំណួរមួយឈុតគ្របដណ្តប់ការពិនិត្យជាច្រើន។ | One set of questions covers several screenings | |
+| `risk.bpMeds.info` | ថ្នាំសម្ពាធឈាម គឺជាថ្នាំពីវេជ្ជបណ្ឌិត … ឧទាហរណ៍ … amlodipine, telmisartan, hydrochlorothiazide និង chlorthalidone … | What blood pressure medicine is (examples from the WHO 2021 guideline, PDF page 40) | **Medical explanation: please check first** |
+| `risk.waist.unit` / `risk.waist.help` / `bot.typeWaist` | អ៊ីញ / … ទំហំចង្កេះខោរបស់អ្នកជាអ៊ីញ … | Waist now asked in inches | Is «អ៊ីញ» the word people use for trouser size? |
+| `common.whatIsThis` | តើនេះមានន័យថាអ្វី? | What does this mean? | |
 | `nav.cta` | សាកល្បងឥឡូវនេះ | Try it now | Natural for a button? Maybe «ចាប់ផ្តើម» is better |
 | `nav.theme` | ពន្លឺ ឬងងឹត | Light or dark | Wording for a theme switch |
 | `nav.toDark` / `nav.toLight` | ប្តូរទៅពណ៌ងងឹត / ប្តូរទៅពណ៌ភ្លឺ | Switch to dark / light theme | Screen-reader labels |

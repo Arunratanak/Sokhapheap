@@ -65,6 +65,7 @@ export const whoCvdLabModule: ModuleDefinition = {
       id: "cholesterolUnit",
       kind: "choice",
       textKey: "check.cvdLab.unit.q",
+      showIf: (a) => typeof a.totalCholesterol === "number",
       options: [
         { value: "mmol/L", labelKey: "check.cvdLab.unit.mmol" },
         { value: "mg/dL", labelKey: "check.cvdLab.unit.mgdl" },
@@ -74,6 +75,7 @@ export const whoCvdLabModule: ModuleDefinition = {
       id: "glucoseTest",
       kind: "choice",
       textKey: "check.cvdLab.glucose.q",
+      showIf: (_a, p) => !p.knownDiabetes, // known diabetes already counts as diabetes
       helpKey: "check.cvdLab.glucose.help",
       options: [
         { value: "high", labelKey: "check.cvdLab.glucose.high" },

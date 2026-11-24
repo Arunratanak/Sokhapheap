@@ -9,7 +9,6 @@ export function Footer({ lang, t, healthCheckLive = false }: { lang: Locale; t: 
   const product = [
     { href: healthCheckLive ? `${base}/check` : `${base}/risk`, label: t.nav.check },
     { href: `${base}/lab`, label: t.nav.lab },
-    { href: `${base}/map`, label: t.nav.map },
   ];
   const data = [
     { href: `${base}/insights`, label: t.nav.insights },

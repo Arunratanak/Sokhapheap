@@ -27,10 +27,11 @@ async function run(page: Page, lang: "en" | "km", t: Dict, yes: string[]) {
   await page.getByLabel(t.risk.age.q).fill("35");
   await page.getByLabel(t.risk.height.q).fill("155");
   await page.getByLabel(t.risk.weight.q).fill("50");
-  await page.getByLabel(t.risk.waist.q).fill("75");
-  await page.getByLabel(t.check.pregnant.no, { exact: true }).check();
+  await page.getByLabel(t.risk.waist.q).fill("29.5") /* inches */;
+  await page.locator('input[name="pregnant"]').first().check(); // "No" (first option)
   await page.getByLabel(t.check.smokingStatus.never).check();
   await page.getByLabel(t.check.bpUnknown).check();
+  await page.locator('input[name="bpMedication"]').nth(1).check(); // No
   await page.getByLabel(t.risk.family.none).check();
   await page.getByRole("button", { name: t.check.continue }).click();
   await page.getByRole("heading", { name: t.check.chooseTitle }).waitFor();

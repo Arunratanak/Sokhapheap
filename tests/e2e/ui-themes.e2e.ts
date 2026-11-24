@@ -94,7 +94,7 @@ async function main() {
     if (MODULES.length < 6) failures.push(`expected the 6 health modules, found ${MODULES.length}`);
   }
 
-  // Mobile menu at 360 px: opens with all six links on screen, closes on Escape and on link click.
+  // Mobile menu at 360 px: opens with all five links on screen (Find care is part of the results, not a tab), closes on Escape and on link click.
   {
     const ctx = await browser.newContext({ viewport: { width: 360, height: 740 } });
     const page = await ctx.newPage();
@@ -105,7 +105,7 @@ async function main() {
     const links = page.locator("#mobile-menu nav a");
     await links.last().waitFor();
     await page.waitForTimeout(500); // slide-in finished
-    if ((await links.count()) !== 6) failures.push(`mobile menu: ${await links.count()} links, expected 6`);
+    if ((await links.count()) !== 5) failures.push(`mobile menu: ${await links.count()} links, expected 5`);
     for (let i = 0; i < (await links.count()); i++) {
       const box = await links.nth(i).boundingBox();
       if (!box || box.height < 40 || box.y + box.height > 740 || box.x < 0 || box.x + box.width > 361) failures.push(`mobile menu: link ${i + 1} not fully on screen (${JSON.stringify(box)})`);

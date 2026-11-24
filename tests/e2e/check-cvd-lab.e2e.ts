@@ -30,12 +30,11 @@ async function fillProfile(page: Page, t: Dict) {
   await page.getByLabel(t.risk.age.q).fill("61");
   await page.getByLabel(t.risk.height.q).fill("165");
   await page.getByLabel(t.risk.weight.q).fill("78");
-  await page.getByLabel(t.risk.waist.q).fill("98");
+  await page.getByLabel(t.risk.waist.q).fill("38.6") /* inches */;
   await page.getByLabel(t.check.smokingStatus.current).check();
-  await page.getByLabel(t.check.cigarettesPerDay).fill("10");
-  await page.getByLabel(t.check.smokingYears).fill("20");
   await page.getByLabel(t.check.sbp).fill("125");
   await page.getByLabel(t.check.dbp).fill("80");
+  await page.locator('input[name="bpMedication"]').nth(1).check(); // No
   await page.getByLabel(t.risk.family.none).check();
   await page.getByRole("button", { name: t.check.continue }).click();
   await page.getByRole("heading", { name: t.check.chooseTitle }).waitFor();
@@ -60,7 +59,8 @@ async function run(page: Page, lang: "en" | "km", t: Dict, cholesterol: { value:
     await page.getByLabel(cholesterol.unit === "mg/dL" ? t.check.cvdLab.unit.mgdl : t.check.cvdLab.unit.mmol, { exact: true }).check();
   } else {
     await page.getByRole("checkbox", { name: t.check.unknown, exact: true }).check();
-    await page.getByLabel(t.check.cvdLab.unit.mmol, { exact: true }).check();
+    // The unit question only appears once a number is entered.
+    if (await page.getByLabel(t.check.cvdLab.unit.mmol, { exact: true }).count()) throw new Error("unit asked without a cholesterol value");
   }
   await page.getByLabel(t.check.cvdLab.glucose.normal).check();
   await page.getByRole("button", { name: t.check.seeResults }).click();

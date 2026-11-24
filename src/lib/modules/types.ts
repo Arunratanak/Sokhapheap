@@ -24,11 +24,20 @@ export const URGENCY_ORDER: Urgency[] = ["red_flag", "high", "moderate", "low", 
 
 export interface Text { en: string; km: string }
 
-/** A question the module asks in addition to the shared profile. Text is an i18n key path (e.g. "risk.activity.q"). */
+/**
+ * A question the module asks in addition to the shared profile. Text is an i18n key path (e.g. "risk.activity.q").
+ * `showIf`: ask only when it applies (e.g. the unit only after a number was entered); hidden questions are not required.
+ */
+type QuestionBase = { id: string; textKey: string; helpKey?: string; showIf?: (answers: Answers, profile: Profile) => boolean };
 export type ModuleQuestion =
-  | { id: string; kind: "yesno"; textKey: string; helpKey?: string }
-  | { id: string; kind: "choice"; textKey: string; helpKey?: string; options: { value: string; labelKey: string }[] }
-  | { id: string; kind: "number"; textKey: string; helpKey?: string; unitKey?: string; min: number; max: number; integer?: boolean; allowUnknown?: boolean };
+  | (QuestionBase & { kind: "yesno" })
+  | (QuestionBase & { kind: "choice"; options: { value: string; labelKey: string }[] })
+  | (QuestionBase & { kind: "number"; unitKey?: string; min: number; max: number; integer?: boolean; allowUnknown?: boolean });
+
+/** The questions of a module that apply to this person and their answers so far. */
+export function questionsToAsk(questions: ModuleQuestion[], answers: Answers, profile: Profile): ModuleQuestion[] {
+  return questions.filter((q) => !q.showIf || q.showIf(answers, profile));
+}
 
 export type Answers = Record<string, string | number | boolean | null>;
 

@@ -7,7 +7,7 @@ import km from "@/lib/i18n/km.json";
 import { whoCvdLabModule } from "./definition";
 import { MODULES, chooseModules, runModules } from "../registry";
 import type { Profile } from "../profile";
-import type { Answers } from "../types";
+import { questionsToAsk, type Answers } from "../types";
 
 const p: Profile = {
   age: 61, sex: "male", heightCm: 165, weightKg: 78, waistCm: 98, smokingStatus: "current", cigarettesPerDay: 10, smokingYears: 20,
@@ -104,5 +104,17 @@ describe("WHO lab-based CVD module", () => {
     const cards = runModules(p, ["who_cvd", "who_cvd_lab"], { who_cvd_lab: a }, MODULES);
     expect(cards.map((c) => c.moduleId).sort()).toEqual(["who_cvd", "who_cvd_lab"]);
     expect(cards.find((c) => c.moduleId === "who_cvd")!.result).toEqual(MODULES.find((m) => m.id === "who_cvd")!.score({}, p));
+  });
+});
+
+describe("WHO lab-based CVD module: only the questions that apply", () => {
+  const ids = (ans: Answers, prof: Profile) => questionsToAsk(whoCvdLabModule.questions, ans, prof).map((q) => q.id);
+  it("asks the cholesterol unit only after a number was entered", () => {
+    expect(ids({}, p)).toEqual(["totalCholesterol", "glucoseTest"]);
+    expect(ids({ totalCholesterol: null }, p)).toEqual(["totalCholesterol", "glucoseTest"]);
+    expect(ids({ totalCholesterol: 5.2 }, p)).toEqual(["totalCholesterol", "cholesterolUnit", "glucoseTest"]);
+  });
+  it("skips the blood-sugar test question when the profile already says diabetes", () => {
+    expect(ids({}, { ...p, knownDiabetes: true })).toEqual(["totalCholesterol"]);
   });
 });

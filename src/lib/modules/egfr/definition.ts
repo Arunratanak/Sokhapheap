@@ -51,6 +51,7 @@ export const egfrModule: ModuleDefinition = {
       id: "creatinineUnit",
       kind: "choice",
       textKey: "check.egfr.unit.q",
+      showIf: (a) => typeof a.creatinine === "number",
       options: [
         { value: "mg/dL", labelKey: "check.egfr.unit.mgdl" },
         { value: "µmol/L", labelKey: "check.egfr.unit.umol" },

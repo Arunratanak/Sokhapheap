@@ -6,8 +6,10 @@ import type { Dictionary, Locale } from "@/lib/i18n";
 import { fmtClient, parseNumberInput, toKhmerDigits } from "@/lib/client/util";
 import { asksPregnancy, profileSchema, type Profile } from "@/lib/modules/profile";
 import { MODULES, chooseModules, runModules, type CardResult } from "@/lib/modules/registry";
-import type { Answers, ModuleDefinition, ModuleQuestion, Urgency } from "@/lib/modules/types";
+import { questionsToAsk, type Answers, type ModuleDefinition, type ModuleQuestion, type Urgency } from "@/lib/modules/types";
 import { Disclaimer } from "@/components/Disclaimer";
+import { InfoTip } from "@/components/ui/InfoTip";
+import { waistInchesToCm } from "@/lib/units";
 import { GoNowScreen, UrgentScreen } from "@/components/risk/RiskFlow";
 
 type Phase = "urgent" | "goNow" | "profile" | "choose" | "questions" | "dashboard";
@@ -52,12 +54,15 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
     const smoker = draft.smokingStatus as Profile["smokingStatus"] | undefined;
     const candidate = {
       age: n("age"), sex: draft.sex, heightCm: n("heightCm"), weightKg: n("weightKg"),
-      waistCm: draft.waistUnknown ? null : n("waistCm"),
+      // Waist is typed in inches (trouser size) and converted to cm for scoring.
+      waistCm: draft.waistUnknown ? null : (() => { const w = n("waistCm"); return w === null ? null : waistInchesToCm(w); })(),
       smokingStatus: smoker,
-      cigarettesPerDay: smoker && smoker !== "never" ? n("cigarettesPerDay") : null,
-      smokingYears: smoker && smoker !== "never" ? n("smokingYears") : null,
+      // Not asked: no screening uses them (pack-years). The profile keeps the fields for future modules.
+      cigarettesPerDay: null,
+      smokingYears: null,
       sbp: draft.bpUnknown ? null : n("sbp"), dbp: draft.bpUnknown ? null : n("dbp"),
-      bpMedication: draft.bpMedication === true,
+      // Yes/No question that must be answered (an unticked box used to mean "no" silently).
+      bpMedication: draft.bpMedication === "yes" ? true : draft.bpMedication === "no" ? false : undefined,
       knownDiabetes: draft.knownDiabetes === true, knownHighBp: draft.knownHighBp === true,
       knownHeartDisease: draft.knownHeartDisease === true, knownKidneyDisease: draft.knownKidneyDisease === true,
       familyDiabetes: draft.familyDiabetes ?? undefined,
@@ -77,7 +82,7 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
   }
 
   function afterChoose() {
-    const needQuestions = modules.some((m) => selected.includes(m.id) && m.questions.length);
+    const needQuestions = modules.some((m) => selected.includes(m.id) && questionsToAsk(m.questions, answers[m.id] ?? {}, profile!).length);
     if (needQuestions) go("questions");
     else finish(answers);
   }
@@ -135,7 +140,6 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
     );
     const age = n("age");
     const showPregnancy = draft.sex === "female" && age !== null && asksPregnancy({ sex: "female", age });
-    const smoker = draft.smokingStatus;
     return (
       <div className="flex flex-col gap-5 pt-2">
         {banner}
@@ -156,19 +160,14 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
         <section className="flex flex-col gap-4">
           <h2 className="text-lg font-bold">{c.profileSection.smoking}</h2>
           {choice("smokingStatus", c.smokingStatus.q, [["never", c.smokingStatus.never], ["former", c.smokingStatus.former], ["current", c.smokingStatus.current]])}
-          {smoker && smoker !== "never" && (
-            <>
-              {num("cigarettesPerDay", c.cigarettesPerDay)}
-              {num("smokingYears", c.smokingYears)}
-            </>
-          )}
         </section>
         <section className="flex flex-col gap-4">
           <h2 className="text-lg font-bold">{c.profileSection.bp}</h2>
           {num("sbp", c.sbp, "mmHg", { disabled: draft.bpUnknown === true })}
           {num("dbp", c.dbp, "mmHg", { disabled: draft.bpUnknown === true })}
           {check("bpUnknown", c.bpUnknown)}
-          {check("bpMedication", t.risk.bpMeds.q)}
+          {choice("bpMedication", t.risk.bpMeds.q, [["yes", t.common.yes], ["no", t.common.no]])}
+          <InfoTip label={t.common.whatIsThis}>{t.risk.bpMeds.info}</InfoTip>
         </section>
         <section className="flex flex-col gap-2">
           <h2 className="text-lg font-bold">{c.profileSection.conditions}</h2>
@@ -237,8 +236,9 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
 
   // ---------------------------------------------------------------- 3. module questions
   if (phase === "questions" && profile) {
-    const chosen = modules.filter((m) => selected.includes(m.id) && m.questions.length);
-    const complete = chosen.every((m) => m.questions.every((q) => answers[m.id]?.[q.id] !== undefined));
+    const ask = (m: ModuleDefinition) => questionsToAsk(m.questions, answers[m.id] ?? {}, profile);
+    const chosen = modules.filter((m) => selected.includes(m.id) && ask(m).length);
+    const complete = chosen.every((m) => ask(m).every((q) => answers[m.id]?.[q.id] !== undefined));
     const setA = (mid: string, qid: string, v: Answers[string] | undefined) =>
       setAnswers((a) => {
         const next = { ...a[mid] };
@@ -317,7 +317,7 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
         {chosen.map((m) => (
           <section key={m.id} className="flex flex-col gap-4">
             <h2 className="text-lg font-bold">{m.title[lang]}</h2>
-            {m.questions.map((q) => question(m, q))}
+            {ask(m).map((q) => question(m, q))}
           </section>
         ))}
         <button className="btn-primary" disabled={!complete} onClick={() => finish(answers)}>{c.seeResults}</button>

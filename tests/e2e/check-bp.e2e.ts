@@ -27,10 +27,11 @@ async function run(page: Page, lang: "en" | "km", t: Dict, sbp: string, dbp: str
   await page.getByLabel(t.risk.age.q).fill("50");
   await page.getByLabel(t.risk.height.q).fill("165");
   await page.getByLabel(t.risk.weight.q).fill("65");
-  await page.getByLabel(t.risk.waist.q).fill("85");
+  await page.getByLabel(t.risk.waist.q).fill("33.5") /* inches */;
   await page.getByLabel(t.check.smokingStatus.never).check();
   await page.getByLabel(t.check.sbp).fill(sbp);
   await page.getByLabel(t.check.dbp).fill(dbp);
+  await page.locator('input[name="bpMedication"]').nth(1).check(); // No
   await page.getByLabel(t.risk.family.none).check();
   await page.getByRole("button", { name: t.check.continue }).click();
   await page.getByRole("heading", { name: t.check.chooseTitle }).waitFor();

@@ -5,6 +5,8 @@ import type { Dictionary, Locale } from "@/lib/i18n";
 import { fmtClient, getPosition, inCambodia, parseNumberInput } from "@/lib/client/util";
 import { FacilityList, type FacilityItem } from "@/components/FacilityList";
 import { ResultsView, type RiskApiResult } from "./ResultsView";
+import { InfoTip } from "@/components/ui/InfoTip";
+import { WAIST_INCHES, waistCmToInches, waistInchesToCm } from "@/lib/units";
 
 type YesNo = boolean;
 export interface Answers {
@@ -33,7 +35,7 @@ type Step =
   | { key: "sex"; kind: "choice" }
   | { key: "familyHistory"; kind: "choice" }
   | { key: "physicallyActive" | "dailyVegFruit" | "bpMedication" | "highGlucoseHistory" | "smoker"; kind: "yesno" }
-  | { key: "age" | "heightCm" | "weightKg" | "waistCm" | "sbp"; kind: "number"; min: number; max: number; allowUnknown?: boolean }
+  | { key: "age" | "heightCm" | "weightKg" | "waistCm" | "sbp"; kind: "number"; min: number; max: number; allowUnknown?: boolean; inches?: boolean }
   | { key: "province"; kind: "province" };
 
 const STEPS: Step[] = [
@@ -41,7 +43,8 @@ const STEPS: Step[] = [
   { key: "age", kind: "number", min: 18, max: 120 },
   { key: "heightCm", kind: "number", min: 100, max: 230 },
   { key: "weightKg", kind: "number", min: 25, max: 300 },
-  { key: "waistCm", kind: "number", min: 40, max: 200, allowUnknown: true },
+  // Asked in inches (trouser size), stored in cm for scoring.
+  { key: "waistCm", kind: "number", min: WAIST_INCHES.min, max: WAIST_INCHES.max, allowUnknown: true, inches: true },
   { key: "physicallyActive", kind: "yesno" },
   { key: "dailyVegFruit", kind: "yesno" },
   { key: "bpMedication", kind: "yesno" },
@@ -139,7 +142,7 @@ export function RiskFlow({
       />
     );
 
-  const q = t.risk[QKEY[step.key]] as { q: string; help?: string; unit?: string };
+  const q = t.risk[QKEY[step.key]] as { q: string; help?: string; unit?: string; info?: string };
 
   return (
     <div className="flex flex-col gap-5 pt-2">
@@ -160,6 +163,7 @@ export function RiskFlow({
 
       <h1 ref={headingRef} tabIndex={-1} className="text-2xl font-bold leading-snug outline-none">{q.q}</h1>
       {q.help && <p className="text-muted">{q.help}</p>}
+      {q.info && <InfoTip label={t.common.whatIsThis}>{q.info}</InfoTip>}
 
       <StepInput key={step.key} step={step} t={t} answers={answers} set={set} next={next} provinces={provinces} lang={lang} />
 
@@ -248,7 +252,7 @@ function NumberStep({
   set: <K extends keyof Answers>(k: K, v: Answers[K]) => void; next: () => void;
 }) {
   const current = answers[step.key];
-  const [raw, setRaw] = useState(typeof current === "number" ? String(current) : "");
+  const [raw, setRaw] = useState(typeof current === "number" ? String(step.inches ? waistCmToInches(current) : current) : "");
   const [error, setError] = useState<string | null>(null);
   const unit = (t.risk[QKEY[step.key]] as { unit?: string }).unit;
   const id = `q-${step.key}`;
@@ -260,7 +264,7 @@ function NumberStep({
       setError(fmtClient(t.risk.invalidNumber, { min: step.min, max: step.max }, lang));
       return;
     }
-    set(step.key, step.key === "age" || step.key === "sbp" ? Math.round(n) : n);
+    set(step.key, step.inches ? waistInchesToCm(n) : step.key === "age" || step.key === "sbp" ? Math.round(n) : n);
     next();
   }
 

@@ -10,6 +10,7 @@ import { evaluateLabValue, type EvaluatedLabValue, type ExtractedLabValue } from
 import { nearestLocal } from "../facilities";
 import { areaSummary, matchProvinceName, type AreaSummary } from "../insights/area";
 import { getServiceClient } from "../db/supabase";
+import { WAIST_INCHES, waistInchesToCm } from "@/lib/units";
 
 /**
  * Telegram bot. Same scoring, explanation and lab logic as the web app — no duplicated rules.
@@ -42,7 +43,7 @@ export function getSession(chatId: number): Session {
 
 // ---------- question flow (mirrors the web questionnaire) ----------
 type Q =
-  | { key: string; kind: "number"; min: number; max: number; prompt: (t: T) => string; allowUnknown?: boolean; integer?: boolean }
+  | { key: string; kind: "number"; min: number; max: number; prompt: (t: T) => string; allowUnknown?: boolean; integer?: boolean; inches?: boolean }
   | { key: string; kind: "yesno"; prompt: (t: T) => string }
   | { key: string; kind: "choice"; prompt: (t: T) => string; options: (t: T) => [string, string][] };
 type T = ReturnType<typeof getRawDictionary>;
@@ -52,7 +53,8 @@ export const QUESTIONS: Q[] = [
   { key: "age", kind: "number", min: 18, max: 120, integer: true, prompt: (t) => t.bot.typeAge },
   { key: "heightCm", kind: "number", min: 100, max: 230, prompt: (t) => t.bot.typeHeight },
   { key: "weightKg", kind: "number", min: 25, max: 300, prompt: (t) => t.bot.typeWeight },
-  { key: "waistCm", kind: "number", min: 40, max: 200, allowUnknown: true, prompt: (t) => t.bot.typeWaist },
+  // Asked in inches, stored in cm (src/lib/units.ts).
+  { key: "waistCm", kind: "number", min: WAIST_INCHES.min, max: WAIST_INCHES.max, allowUnknown: true, inches: true, prompt: (t) => t.bot.typeWaist },
   { key: "physicallyActive", kind: "yesno", prompt: (t) => t.risk.activity.q },
   { key: "dailyVegFruit", kind: "yesno", prompt: (t) => t.risk.vegFruit.q },
   { key: "bpMedication", kind: "yesno", prompt: (t) => t.risk.bpMeds.q },
@@ -373,7 +375,7 @@ export function createBot(token: string) {
     if (q?.kind === "number") {
       const n = parseBotNumber(ctx.message.text);
       if (n === null || n < q.min || n > q.max) return ctx.reply(fmt(t.bot.sendNumber, { min: q.min, max: q.max }, s.lang));
-      s.answers[q.key] = q.integer ? Math.round(n) : n;
+      s.answers[q.key] = q.inches ? waistInchesToCm(n) : q.integer ? Math.round(n) : n;
       return next(ctx, s);
     }
     if (s.step === "area") {

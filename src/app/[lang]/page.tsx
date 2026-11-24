@@ -7,7 +7,6 @@ import {
   FlaskConical,
   HeartPulse,
   Lock,
-  MapPin,
   Stethoscope,
 } from "lucide-react";
 import { fmt, formatNumber, getDictionary, hasLocale } from "@/lib/i18n";
@@ -46,12 +45,6 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       : { ...L.hero[0], href: `${base}/risk`, visual: "risk" },
     { ...L.hero[1], href: `${base}/lab`, visual: "lab" },
     {
-      ...L.hero[2],
-      desc: fmt(L.hero[2].desc, { count: n(stats.facilities) }),
-      href: `${base}/map`,
-      visual: "map",
-    },
-    {
       ...L.hero[3],
       desc: fmt(L.hero[3].desc, { count: n(stats.datasets) }),
       href: `${base}/insights`,
@@ -81,12 +74,6 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       icon: FlaskConical,
       title: t.home.explainLab,
       body: t.home.explainLabHint,
-    },
-    {
-      href: `${base}/map`,
-      icon: MapPin,
-      title: t.home.findCare,
-      body: t.home.findCareHint,
     },
     {
       href: `${base}/insights`,
@@ -329,13 +316,6 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                     >
                       {healthCheckLive ? L.heroCheck.cta : t.home.checkRisk}
                       <ArrowRight aria-hidden size={20} />
-                    </Link>
-                    <Link
-                      href={`${base}/map`}
-                      className="inline-flex min-h-14 items-center gap-2 rounded-xl border-2 border-[#1c1917]/80 px-6 text-lg font-semibold transition-colors duration-200 hover:bg-white/30"
-                    >
-                      <MapPin aria-hidden size={20} />
-                      {t.home.findCare}
                     </Link>
                   </div>
                 </div>

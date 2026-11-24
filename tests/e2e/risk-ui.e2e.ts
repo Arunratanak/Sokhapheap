@@ -9,6 +9,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { chromium, type Page } from "playwright-core";
 import { calculateFindrisc, type FindriscInput } from "../../src/lib/scoring/findrisc";
+import { waistCmToInches, waistInchesToCm } from "../../src/lib/units";
 
 const BASE = process.env.BASE_URL ?? "http://localhost:3100";
 const SHOTS = process.env.SHOTS_DIR ?? "";
@@ -70,7 +71,7 @@ async function runCase(page: Page, c: Case, i: number) {
   if (i === 0 && SHOTS) await page.screenshot({ path: path.join(SHOTS, "02-question.png"), fullPage: true });
   await answerNumber(page, c.heightCm);
   await answerNumber(page, c.weightKg);
-  await answerNumber(page, c.waistCm);
+  await answerNumber(page, c.waistCm === null ? null : waistCmToInches(c.waistCm)); // the form asks inches
   for (const yes of [c.physicallyActive, c.dailyVegFruit, c.bpMedication, c.highGlucoseHistory]) await clickText(page, yes ? /^Yes$/ : /^No$/);
   await clickText(page, c.familyHistory === "none" ? /No \/ I don't know/ : c.familyHistory === "second_degree" ? /grandparent/ : /parent, brother/);
   await clickText(page, c.smoker ? /^Yes$/ : /^No$/);
@@ -102,7 +103,8 @@ async function main() {
   });
   let pass = 0;
   for (const [i, c] of CASES.entries()) {
-    const expected = calculateFindrisc(c);
+    // The UI asks the waist in inches; score the same rounded value the app stores.
+    const expected = calculateFindrisc({ ...c, waistCm: c.waistCm === null ? null : waistInchesToCm(waistCmToInches(c.waistCm)) });
     try {
       const { ui, uiMax } = await runCase(page, c, i);
       const ok = ui === expected.score && uiMax === expected.scoreMax;

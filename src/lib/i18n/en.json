@@ -23,7 +23,8 @@
     "about": "About & data sources",
     "stepOf": "Question {n} of {total}",
     "demoBanner": "Demo mode — answers are pre-filled and nothing is saved.",
-    "insights": "Open Data Insights"
+    "insights": "Open Data Insights",
+    "whatIsThis": "What does this mean?"
   },
   "home": {
     "tagline": "Know your health risk early, and find care near you.",
@@ -77,8 +78,8 @@
     },
     "waist": {
       "q": "What is your waist size?",
-      "unit": "cm",
-      "help": "Use a string: wrap it around your belly at the level of your belly button, breathe out normally, mark the string, then measure it with a ruler or tape. You can also use your trouser waist size as a rough guide."
+      "unit": "inches",
+      "help": "Wrap a tape measure around your belly at the level of your belly button and breathe out normally. If you don't have one, your trouser waist size in inches is a rough guide."
     },
     "activity": {
       "q": "Do you do at least 30 minutes of physical activity every day?",
@@ -88,7 +89,8 @@
       "q": "Do you eat vegetables or fruit every day?"
     },
     "bpMeds": {
-      "q": "Have you ever taken medicine for high blood pressure?"
+      "q": "Have you ever taken medicine for high blood pressure?",
+      "info": "Blood pressure medicine is medicine from a doctor, nurse, health centre or pharmacy that lowers high blood pressure. It is usually a pill taken every day. Examples in the WHO guideline are amlodipine, telmisartan, hydrochlorothiazide and chlorthalidone. If you're not sure, check the medicine box or ask your pharmacist. Answer \"Yes\" even if you have stopped taking it."
     },
     "highGlucose": {
       "q": "Has a health worker ever told you that your blood sugar was high?",
@@ -332,7 +334,7 @@
     "typeAge": "How old are you? Type a number, e.g. 45.",
     "typeHeight": "How tall are you in cm? e.g. 160",
     "typeWeight": "How much do you weigh in kg? e.g. 60",
-    "typeWaist": "What is your waist size in cm? Use a string around your belly at the belly button. Type a number, or tap \"I don't know\".",
+    "typeWaist": "What is your waist size in inches? Use a tape measure around your belly at the belly button, or your trouser waist size. Type a number, or tap \"I don't know\".",
     "typeSbp": "Do you know your blood pressure? Type the top number (e.g. 130), or tap \"I don't know\".",
     "labPrompt": "Send me a clear photo of your blood test report. Your photo is not saved.",
     "labConfirm": "I read these results. Are they correct?",

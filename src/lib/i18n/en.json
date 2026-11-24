@@ -151,7 +151,13 @@
       "diet": "Not eating vegetables or fruit every day",
       "bp_medication": "Blood pressure medicine",
       "high_glucose_history": "High blood sugar in the past",
-      "family_history": "Diabetes in your family"
+      "family_history": "Diabetes in your family",
+      "tb_symptom_tbCough": "Cough",
+      "tb_symptom_tbCoughBlood": "Coughing up blood",
+      "tb_symptom_tbFever": "Fever",
+      "tb_symptom_tbNightSweats": "Night sweats",
+      "tb_symptom_tbWeightLoss": "Weight loss",
+      "tb_contact": "Close contact with someone who has TB"
     },
     "noFactors": "No major risk factors from your answers.",
     "nextStepTitle": "Your next step",
@@ -163,7 +169,10 @@
       "cholesterol_test": "Ask a health centre for a blood cholesterol test, then check again.",
       "cvd_followup_5_10": "Visit a health centre for advice on food, exercise, smoking and alcohol. WHO advises a check-up every 3 months until your targets are met, then every 6 to 9 months.",
       "cvd_followup_10_20": "Visit a health centre for advice and to check your blood pressure. WHO advises a check-up every 3 to 6 months.",
-      "cholesterol_very_high": "Your total cholesterol is 8 mmol/L (320 mg/dL) or more. WHO advises that a doctor considers treatment for this. Visit a doctor or health centre in the next few weeks and show them this result."
+      "cholesterol_very_high": "Your total cholesterol is 8 mmol/L (320 mg/dL) or more. WHO advises that a doctor considers treatment for this. Visit a doctor or health centre in the next few weeks and show them this result.",
+      "tb_test": "Go to a health centre and ask for a TB test. Tell them which symptoms you have. This check is not a diagnosis: many people with these symptoms don't have TB, but only a test can tell.",
+      "tb_contact_check": "Go to a health centre, tell them you live with or are close to someone who has TB, and ask to be checked. WHO says close contacts of people with TB should always be screened.",
+      "tb_watch": "A symptom check misses about 3 in 10 people with TB. If you get a cough, fever, night sweats or weight loss, go to a health centre and ask for a TB test."
     },
     "bmiLabel": "BMI: {bmi}",
     "glucoseTestRecommended": "A blood sugar test is recommended.",
@@ -605,7 +614,8 @@
     "notForYou": "Not for you right now",
     "reasons": {
       "age_outside_40_74": "For ages 40 to 74 only.",
-      "age_under_18": "For adults 18 and older."
+      "age_under_18": "For adults 18 and older.",
+      "age_under_15": "For ages 15 and older."
     },
     "noneSelected": "Choose at least one screening.",
     "questionsTitle": "A few more questions",
@@ -654,6 +664,16 @@
         "normal": "No, it was normal",
         "notTested": "Never tested, or I don't know"
       }
+    },
+    "tb": {
+      "cough": "Do you have a cough now?",
+      "coughBlood": "Have you coughed up blood recently?",
+      "fever": "Have you had a fever recently?",
+      "nightSweats": "Have you had night sweats recently?",
+      "nightSweatsHelp": "Sweating so much at night that your clothes or bed sheets get wet.",
+      "weightLoss": "Have you lost weight recently without trying?",
+      "contact": "Has someone you live with, or spend a lot of time with, had TB?",
+      "contactHelp": "For example a family member, housemate or co-worker who was diagnosed with TB."
     }
   }
 }

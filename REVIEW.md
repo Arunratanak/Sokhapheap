@@ -68,11 +68,18 @@ When confirmed, change `VERIFIED_BY: TODO(VERIFY)` in `scripts/extract_who_cvd_c
 
 The next steps now follow the WHO Table 3 follow-up intervals. The non-lab module still uses the simpler rules in 2c.
 
+### 2b-tb. TB symptom screen (module `tb_symptom`, added 24 Nov 2026)
+**Source:** WHO TB Module 2: Screening (2021), Table 3 "any TB symptom" (PDF page 36) and Recommendation 4 on close contacts. It doesn't use CENAT wording, which we couldn't obtain. Please check the `TODO(VERIFY)` list in `references/methods/tb-symptom/METHOD_CARD.md`:
+- coughing up blood: positive screen or urgent;
+- whether "recently" needs a time window (e.g. 2 weeks);
+- whether the app may say TB testing is free;
+- linking to the nearest health centre for testing.
+
 ### 2c. Rules I chose that a clinician should confirm
 - **"See a doctor in the next few weeks"** is shown when FINDRISC is high or very high (≥15), or WHO risk is ≥20%. The "blood sugar test" step at FINDRISC ≥12 comes from your prompt.
 - **"Check again in about a year"** is shown for low-risk results.
 - **Urgent screen:** chest pain or tightness, fainting, or signs of very high blood sugar (extreme thirst, lots of urine, confusion, very sleepy) lead to "Go to a hospital now".
-- **Ambulance number 119** is shown on the urgent screen. Please confirm it's the right number to show nationwide.
+- ✅ **Ambulance number 119** is shown on the urgent screen. Confirmed by the project owner on 24 Nov 2026 as the official national ambulance service. Hospitals also run their own ambulances, but our facility data has no phone numbers, so the app can't show them yet (open option: add hospital ambulance numbers from a verified list).
 - **FINDRISC Asian cut-offs** are disabled, with values left as `TODO(VERIFY)` (candidate sources are noted in the code). The standard FINDRISC cut-offs are used.
 
 ---

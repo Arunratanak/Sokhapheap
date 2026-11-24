@@ -40,7 +40,10 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   const n = (v: number) => formatCount(v, lang);
 
   const slides: HeroSlide[] = [
-    { ...L.hero[0], href: `${base}/risk`, visual: "risk" },
+    // When the multi-screening health check is public, it leads; otherwise the diabetes + heart check does.
+    healthCheckLive
+      ? { ...L.heroCheck, href: `${base}/check`, visual: "risk" }
+      : { ...L.hero[0], href: `${base}/risk`, visual: "risk" },
     { ...L.hero[1], href: `${base}/lab`, visual: "lab" },
     {
       ...L.hero[2],
@@ -57,12 +60,6 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   ];
 
   const features = [
-    {
-      href: `${base}/risk`,
-      icon: HeartPulse,
-      title: t.home.checkRisk,
-      body: t.home.checkRiskHint,
-    },
     ...(healthCheckLive
       ? [
           {
@@ -73,6 +70,12 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           },
         ]
       : []),
+    {
+      href: `${base}/risk`,
+      icon: HeartPulse,
+      title: t.home.checkRisk,
+      body: t.home.checkRiskHint,
+    },
     {
       href: `${base}/lab`,
       icon: FlaskConical,
@@ -317,14 +320,14 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                     {fmt(L.cta.title, { app })}
                   </h2>
                   <p className="mx-auto mt-4 max-w-xl text-lg text-[#1c1917]/80">
-                    {L.cta.body}
+                    {healthCheckLive ? L.cta.bodyCheck : L.cta.body}
                   </p>
                   <div className="mt-8 flex flex-wrap justify-center gap-3">
                     <Link
-                      href={`${base}/risk`}
+                      href={healthCheckLive ? `${base}/check` : `${base}/risk`}
                       className="inline-flex min-h-14 items-center gap-2 rounded-xl bg-[#1c1917] px-6 text-lg font-semibold text-white shadow-md transition-transform duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
                     >
-                      {t.home.checkRisk}
+                      {healthCheckLive ? L.heroCheck.cta : t.home.checkRisk}
                       <ArrowRight aria-hidden size={20} />
                     </Link>
                     <Link

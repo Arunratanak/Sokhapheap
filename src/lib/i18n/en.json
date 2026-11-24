@@ -816,7 +816,14 @@
     },
     "cta": {
       "title": "Start using {app}",
-      "body": "Free, private and in your language. It takes about 3 minutes."
+      "body": "Free, private and in your language. It takes about 3 minutes.",
+      "bodyCheck": "Free, private and in your language. One set of questions covers several screenings."
+    },
+    "heroCheck": {
+      "eyebrow": "New · 6 screenings in one check",
+      "title": "Check your heart, blood pressure, diabetes, kidneys and TB in one go",
+      "desc": "Answer one set of questions about yourself, then choose the screenings you want. Each one follows WHO or published medical guidance.",
+      "cta": "Start my health check"
     }
   },
   "footer": {

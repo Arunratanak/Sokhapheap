@@ -30,6 +30,7 @@ export function Navbar({ lang, t, healthCheckLive = false }: { lang: Locale; t: 
     { key: "insights", href: `${base}/insights`, label: t.insights, match: under("insights", "org", "plan") },
     { key: "about", href: `${base}/about`, label: t.about, match: under("about") },
   ];
+  const ctaHref = healthCheckLive ? `${base}/check` : `${base}/risk`;
   const activeKey = tabs.find((x) => x.match(pathname))?.key ?? null;
   const onHome = activeKey === "home";
 
@@ -163,7 +164,7 @@ export function Navbar({ lang, t, healthCheckLive = false }: { lang: Locale; t: 
           <span className="hidden sm:contents">
             <ThemeToggle labels={{ toDark: t.toDark, toLight: t.toLight }} />
           </span>
-          <Link href={`${base}/risk`} className="btn-gradient hidden min-h-10 px-4 py-2 text-sm xl:inline-flex">
+          <Link href={ctaHref} className="btn-gradient hidden min-h-10 px-4 py-2 text-sm xl:inline-flex">
             {t.cta}
             <ArrowRight aria-hidden size={16} />
           </Link>
@@ -238,7 +239,7 @@ export function Navbar({ lang, t, healthCheckLive = false }: { lang: Locale; t: 
             <span className="text-sm font-medium text-muted">{t.theme}</span>
             <ThemeToggle labels={{ toDark: t.toDark, toLight: t.toLight }} />
           </div>
-          <Link href={`${base}/risk`} onClick={() => setOpen(false)} className="btn-gradient w-full">
+          <Link href={ctaHref} onClick={() => setOpen(false)} className="btn-gradient w-full">
             {t.cta}
             <ArrowRight aria-hidden size={18} />
           </Link>

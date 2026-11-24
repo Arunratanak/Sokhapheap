@@ -27,14 +27,14 @@ export interface ModuleChoice {
   module: ModuleDefinition;
   eligible: boolean;
   reason?: string;
-  /** Core modules are pre-selected; sensitive ones are opt-in (unselected). */
+  /** Core modules are pre-selected; sensitive and `optIn` modules start unselected. */
   preselected: boolean;
 }
 
 export function chooseModules(profile: Profile, modules: ModuleDefinition[]): ModuleChoice[] {
   return modules.map((m) => {
     const e = m.eligibility(profile);
-    return { module: m, eligible: e.eligible, reason: e.reason, preselected: e.eligible && m.sensitivity === "normal" };
+    return { module: m, eligible: e.eligible, reason: e.reason, preselected: e.eligible && m.sensitivity === "normal" && !m.optIn };
   });
 }
 

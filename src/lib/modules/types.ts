@@ -55,6 +55,8 @@ export interface ModuleDefinition {
   summary: Text;
   status: ModuleStatus;
   sensitivity: Sensitivity;
+  /** true = shown but not pre-selected (e.g. needs a lab result most people don't have to hand). */
+  optIn?: boolean;
   eligibility: (profile: Profile) => Eligibility;
   /** Shared-profile fields this module uses (the profile asks them once for every module). */
   requiredProfileFields: (keyof Profile)[];

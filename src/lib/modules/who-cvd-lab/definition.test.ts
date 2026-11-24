@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 import en from "@/lib/i18n/en.json";
 import km from "@/lib/i18n/km.json";
 import { whoCvdLabModule } from "./definition";
-import { MODULES, runModules } from "../registry";
+import { MODULES, chooseModules, runModules } from "../registry";
 import type { Profile } from "../profile";
 import type { Answers } from "../types";
 
@@ -92,6 +92,12 @@ describe("WHO lab-based CVD module", () => {
       expect(typeof get(en, k), `en ${k}`).toBe("string");
       expect(typeof get(km, k), `km ${k}`).toBe("string");
     }
+  });
+
+  it("is offered but not pre-selected (opt-in); the non-lab heart check stays pre-selected", () => {
+    const choices = chooseModules(p, MODULES);
+    expect(choices.find((c) => c.module.id === "who_cvd_lab")).toMatchObject({ eligible: true, preselected: false });
+    expect(choices.find((c) => c.module.id === "who_cvd")).toMatchObject({ eligible: true, preselected: true });
   });
 
   it("runs in the registry next to the non-lab chart, which it does not change", () => {

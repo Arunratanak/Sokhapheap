@@ -238,6 +238,12 @@ export async function startHealthCheck(ctx: Context, s: HcSession) {
   });
 }
 
+/** "I am safe, continue the check" after the urgent screen: start the profile questions. */
+export async function continueHealthCheck(ctx: Context, s: HcSession) {
+  s.hc = { draft: {}, selected: [], answers: {} };
+  return askProfile(ctx, s, s.hc);
+}
+
 /** Handles health-check button presses. Returns true if the callback belonged to this flow. */
 export async function handleHealthCallback(ctx: Context, s: HcSession, data: string): Promise<boolean> {
   const t = getRawDictionary(s.lang);

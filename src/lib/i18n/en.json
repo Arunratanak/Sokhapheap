@@ -363,7 +363,9 @@
     "hcUseButtons": "Please answer with the buttons above.",
     "typeDbp": "And the bottom number (e.g. 80)? Type it, or tap \"I don't know\".",
     "typeNumber": "Type a number.",
-    "menuLanguage": "Language / ភាសា"
+    "menuLanguage": "Language / ភាសា",
+    "urgentContinue": "I am safe, continue the check",
+    "backToMenu": "Back to the menu"
   },
   "insights": {
     "title": "Open Data Insights",

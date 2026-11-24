@@ -77,6 +77,40 @@ describe("Telegram bot: language choice", () => {
   });
 });
 
+describe("Telegram bot: urgent symptoms screen", () => {
+  it("shows hospital + ambulance and offers 'I am safe, continue' and 'Back to the menu' (risk check)", async () => {
+    const { sent, text, tap } = fakeChat(9201);
+    await text("/check");
+    await tap("urgent:yes");
+    const goNow = sent.find((m) => m.text.includes(en.urgent.goNowTitle))!;
+    expect(goNow.text).toContain(en.urgent.ambulance);
+    expect(goNow.buttons).toEqual([`✅ ${en.bot.urgentContinue}=safe:risk`, `🏠 ${en.bot.backToMenu}=menu:home`]);
+    expect(sent.at(-1)!.text).toBe(en.bot.sendLocationPrompt); // nearest hospitals still offered
+    await tap("safe:risk");
+    expect(sent.at(-1)!.text).toBe(`(1/12) ${en.risk.sex.q}`); // continues the risk check from question 1
+  });
+
+  it("continues the health check when started from /health", async () => {
+    const { sent, text, tap } = fakeChat(9202);
+    await text("/health");
+    await tap("urgent:yes");
+    expect(sent.find((m) => m.text.includes(en.urgent.goNowTitle))!.buttons[0]).toContain("safe:hc");
+    await tap("safe:hc");
+    expect(sent.at(-1)!.text).toContain(en.risk.sex.q);
+    expect(getSession(9202).step).toBe("hc:p:sex");
+  });
+
+  it("'Back to the menu' shows the welcome and main menu", async () => {
+    const { sent, text, tap } = fakeChat(9203);
+    await text("/check");
+    await tap("urgent:yes");
+    await tap("menu:home");
+    expect(sent.at(-1)!.text).toContain(en.bot.welcome);
+    expect(sent.at(-1)!.buttons.join(" ")).toContain("menu:health");
+    expect(getSession(9203).step).toBeNull();
+  });
+});
+
 describe("Telegram bot: health check", () => {
   it("menu leads with the health check and has no separate Find care button; help has no /near", async () => {
     const { sent, text } = fakeChat(9001);

@@ -363,7 +363,9 @@
     "hcUseButtons": "សូមឆ្លើយដោយប្រើប៊ូតុងខាងលើ។",
     "typeDbp": "ហើយលេខខាងក្រោម (ឧ. ៨០)? វាយលេខ ឬចុច \"ខ្ញុំមិនដឹងទេ\"។",
     "typeNumber": "សូមវាយជាលេខ។",
-    "menuLanguage": "ភាសា / Language"
+    "menuLanguage": "ភាសា / Language",
+    "urgentContinue": "ខ្ញុំមានសុវត្ថិភាព បន្តការពិនិត្យ",
+    "backToMenu": "ត្រឡប់ទៅម៉ឺនុយ"
   },
   "insights": {
     "title": "ការយល់ដឹងពីទិន្នន័យបើកចំហ",

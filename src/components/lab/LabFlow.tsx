@@ -6,6 +6,7 @@ import type { Dictionary, Locale } from "@/lib/i18n";
 import { parseNumberInput } from "@/lib/client/util";
 import { Disclaimer } from "@/components/Disclaimer";
 import type { EvaluatedLabValue, ExtractedLabValue } from "@/lib/scoring/labRanges";
+import { LoadingState } from "@/components/ui/LoadingState";
 
 type Stage = "upload" | "reading" | "confirm" | "evaluating" | "results";
 interface Row { test_name: string; value: string; unit: string; low: string; high: string; confidence: number }
@@ -154,7 +155,7 @@ export function LabFlow({ lang, t }: { lang: Locale; t: Dictionary }) {
             disabled={stage === "reading"}
           />
         </label>
-        {stage === "reading" && <p role="status" className="text-center">{t.lab.reading}</p>}
+        {stage === "reading" && <LoadingState message={t.common.readingReport} delayMs={0} />}
         <button className="btn-secondary" onClick={() => { setRows([emptyRow()]); setStage("confirm"); }}>
           ⌨️ {t.lab.typeManually}
         </button>
@@ -242,7 +243,7 @@ export function LabFlow({ lang, t }: { lang: Locale; t: Dictionary }) {
             <p className="mt-1 text-xs text-muted">{explanation.source === "ai" ? t.results.aiNote : t.results.templateNote}</p>
           </>
         ) : (
-          <p className="mt-1 text-muted" role="status">{t.common.loading}</p>
+          <LoadingState compact message={t.common.explaining} />
         )}
       </section>
 

@@ -24,7 +24,10 @@
     "stepOf": "Question {n} of {total}",
     "demoBanner": "Demo mode — answers are pre-filled and nothing is saved.",
     "insights": "Open Data Insights",
-    "whatIsThis": "What does this mean?"
+    "whatIsThis": "What does this mean?",
+    "calculating": "Calculating your results…",
+    "explaining": "Writing a simple explanation…",
+    "readingReport": "Reading your lab report…"
   },
   "home": {
     "tagline": "Know your health risk early, and find care near you.",
@@ -159,7 +162,8 @@
       "tb_symptom_tbFever": "Fever",
       "tb_symptom_tbNightSweats": "Night sweats",
       "tb_symptom_tbWeightLoss": "Weight loss",
-      "tb_contact": "Close contact with someone who has TB"
+      "tb_contact": "Close contact with someone who has TB",
+      "tb_cough_2w": "Cough for 2 weeks or more"
     },
     "noFactors": "No major risk factors from your answers.",
     "nextStepTitle": "Your next step",
@@ -698,7 +702,8 @@
       "nightSweatsHelp": "Sweating so much at night that your clothes or bed sheets get wet.",
       "weightLoss": "Have you lost weight recently without trying?",
       "contact": "Has someone you live with, or spend a lot of time with, had TB?",
-      "contactHelp": "For example a family member, housemate or co-worker who was diagnosed with TB."
+      "contactHelp": "For example a family member, housemate or co-worker who was diagnosed with TB.",
+      "coughLong": "Have you had this cough for 2 weeks or more?"
     },
     "egfr": {
       "creatinine": {
@@ -711,7 +716,25 @@
         "umol": "µmol/L"
       }
     },
-    "draftBanner": "Early version: these screenings follow WHO guidelines and published research, but a doctor has not reviewed them yet. Use the results as a guide only, and talk to a health worker about them."
+    "draftBanner": "Early version: these screenings follow WHO guidelines and published research, but a doctor has not reviewed them yet. Use the results as a guide only, and talk to a health worker about them.",
+    "welcome": {
+      "eyebrow": "Welcome",
+      "title": "Let's look after your health together",
+      "body": "In a few minutes, you'll answer some simple questions about yourself. Then we check your heart, blood pressure, diabetes, kidneys and TB, and show you what to do next.",
+      "points": [
+        "Answer once, check several things",
+        "Nothing is saved: no name or phone number",
+        "Clear next steps, in Khmer or English"
+      ],
+      "note": "This is a screening, not a diagnosis. If you feel very unwell right now, go to a health centre or call 119.",
+      "start": "Start"
+    },
+    "labReport": {
+      "q": "Do you have a recent blood test report with cholesterol or creatinine on it?",
+      "help": "If yes, we'll also suggest the checks that use these numbers.",
+      "yes": "Yes, I have one",
+      "no": "No / not sure"
+    }
   },
   "nav": {
     "home": "Home",

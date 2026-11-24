@@ -25,6 +25,7 @@ const BROWSERS = [
 type Dict = typeof en;
 
 async function fillProfile(page: Page, t: Dict) {
+  await page.getByRole("button", { name: t.check.welcome.start }).click(); // welcome screen
   await page.getByRole("button", { name: t.urgent.none }).click();
   await page.getByLabel(t.risk.sex.male, { exact: true }).check();
   await page.getByLabel(t.risk.age.q).fill("61");
@@ -56,9 +57,11 @@ async function run(page: Page, lang: "en" | "km", t: Dict, cholesterol: { value:
   if (SHOTS) await page.screenshot({ path: `${SHOTS}/cvd-lab-questions-${lang}.png`, fullPage: true });
   if (cholesterol) {
     await page.getByLabel(t.check.cvdLab.cholesterol.q).fill(cholesterol.value);
+    await page.getByRole("button", { name: new RegExp(`^${t.common.next}`) }).click();
     await page.getByLabel(cholesterol.unit === "mg/dL" ? t.check.cvdLab.unit.mgdl : t.check.cvdLab.unit.mmol, { exact: true }).check();
   } else {
     await page.getByRole("checkbox", { name: t.check.unknown, exact: true }).check();
+    await page.getByRole("button", { name: new RegExp(`^${t.common.next}`) }).click();
     // The unit question only appears once a number is entered.
     if (await page.getByLabel(t.check.cvdLab.unit.mmol, { exact: true }).count()) throw new Error("unit asked without a cholesterol value");
   }

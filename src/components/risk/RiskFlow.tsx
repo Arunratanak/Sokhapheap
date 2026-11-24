@@ -7,6 +7,7 @@ import { FacilityList, type FacilityItem } from "@/components/FacilityList";
 import { ResultsView, type RiskApiResult } from "./ResultsView";
 import { InfoTip } from "@/components/ui/InfoTip";
 import { WAIST_INCHES, waistCmToInches, waistInchesToCm } from "@/lib/units";
+import { LoadingState } from "@/components/ui/LoadingState";
 
 type YesNo = boolean;
 export interface Answers {
@@ -117,7 +118,7 @@ export function RiskFlow({
 
   if (phase === "goNow") return <GoNowScreen lang={lang} t={t} headingRef={headingRef} onContinue={() => setPhase("questions")} />;
 
-  if (phase === "submitting") return <p className="pt-8 text-center text-lg" role="status">{t.common.loading}</p>;
+  if (phase === "submitting") return <LoadingState message={t.common.calculating} />;
 
   if (phase === "error")
     return (

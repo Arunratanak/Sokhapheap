@@ -24,6 +24,7 @@ type Dict = typeof en;
 
 async function run(page: Page, lang: "en" | "km", t: Dict, creatinine: string | null) {
   await page.goto(`${BASE}/${lang}/check?preview=1`);
+  await page.getByRole("button", { name: t.check.welcome.start }).click(); // welcome screen
   await page.getByRole("button", { name: t.urgent.none }).click();
   await page.getByLabel(t.risk.sex.male, { exact: true }).check();
   await page.getByLabel(t.risk.age.q).fill("70");
@@ -42,6 +43,7 @@ async function run(page: Page, lang: "en" | "km", t: Dict, creatinine: string | 
   await page.getByRole("heading", { name: t.check.questionsTitle }).waitFor();
   if (creatinine) {
     await page.getByLabel(t.check.egfr.creatinine.q).fill(creatinine);
+    await page.getByRole("button", { name: new RegExp(`^${t.common.next}`) }).click();
     await page.getByLabel(t.check.egfr.unit.umol, { exact: true }).check(); // shown once a number is entered
   } else await page.getByRole("checkbox", { name: t.check.unknown, exact: true }).check();
   await page.getByRole("button", { name: t.check.seeResults }).click();

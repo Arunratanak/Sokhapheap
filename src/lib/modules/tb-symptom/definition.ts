@@ -9,6 +9,8 @@
  *     should be systematically screened for TB disease".
  *   - Table 2 (PDF pages 32–33): risk factors (diabetes, smoking or a history of smoking, pregnancy, …).
  *   - Section 3 (PDF page 35): "Screening tests need to be followed by a diagnostic test".
+ *   - Table 3 also lists "Prolonged cough (≥ 2 weeks)" as a screen: asked as a follow-up only after "cough = yes".
+ *     It is recorded as a factor for the health worker; it does not change the result (any cough is already positive).
  * A screen is not a diagnosis; a positive screen means "get a TB test".
  * Method card: references/methods/tb-symptom/METHOD_CARD.md
  */
@@ -35,6 +37,8 @@ export const tbSymptomModule: ModuleDefinition = {
   requiredProfileFields: ["age", "knownDiabetes", "smokingStatus", "pregnant"],
   questions: [
     { id: "tbCough", kind: "yesno", textKey: "check.tb.cough" },
+    // Adaptive follow-up (Table 3 "Prolonged cough (≥ 2 weeks)"): only after answering yes to cough.
+    { id: "tbCoughLong", kind: "yesno", textKey: "check.tb.coughLong", showIf: (a) => a.tbCough === true },
     { id: "tbCoughBlood", kind: "yesno", textKey: "check.tb.coughBlood" },
     { id: "tbFever", kind: "yesno", textKey: "check.tb.fever" },
     { id: "tbNightSweats", kind: "yesno", textKey: "check.tb.nightSweats", helpKey: "check.tb.nightSweatsHelp" },
@@ -54,8 +58,9 @@ export const tbSymptomModule: ModuleDefinition = {
     if (p.smokingStatus !== "never") risk.push("smoking"); // "people who smoke or who have a history of smoking"
     if (p.pregnant === true) risk.push("pregnancy");
 
-    const factors = [...symptoms.map((s) => `tb_symptom_${s}`), ...(contact ? ["tb_contact"] : [])].map((factor) => ({ factor }));
-    const details = { symptoms, contact, riskFactors: risk, sensitivity: TB_SYMPTOM_SENSITIVITY };
+    const longCough = a.tbCough === true && a.tbCoughLong === true;
+    const factors = [...symptoms.map((s) => `tb_symptom_${s}`), ...(longCough ? ["tb_cough_2w"] : []), ...(contact ? ["tb_contact"] : [])].map((factor) => ({ factor }));
+    const details = { symptoms, contact, longCough, riskFactors: risk, sensitivity: TB_SYMPTOM_SENSITIVITY };
 
     if (symptoms.length > 0)
       return { score: null, band: "positive", urgency: "high", factors, nextStepKey: "results.nextSteps.tb_test", facilityType: "health_centre", details };

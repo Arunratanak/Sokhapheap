@@ -22,6 +22,7 @@ type Dict = typeof en;
 
 async function run(page: Page, lang: "en" | "km", t: Dict, yes: string[]) {
   await page.goto(`${BASE}/${lang}/check?preview=1`);
+  await page.getByRole("button", { name: t.check.welcome.start }).click(); // welcome screen
   await page.getByRole("button", { name: t.urgent.none }).click();
   await page.getByLabel(t.risk.sex.female, { exact: true }).check();
   await page.getByLabel(t.risk.age.q).fill("35");
@@ -40,7 +41,11 @@ async function run(page: Page, lang: "en" | "km", t: Dict, yes: string[]) {
   await page.getByRole("button", { name: t.check.continue }).click();
 
   await page.getByRole("heading", { name: t.check.questionsTitle }).waitFor();
-  for (const q of tbSymptomModule.questions) await page.locator(`input[name="tb_symptom.${q.id}"]`).nth(yes.includes(q.id) ? 0 : 1).check();
+  // One question per screen; the 2-week follow-up only appears after cough = yes.
+  for (const q of tbSymptomModule.questions) {
+    if (q.id === "tbCoughLong" && !yes.includes("tbCough")) continue;
+    await page.locator(`input[name="tb_symptom.${q.id}"]`).nth(yes.includes(q.id) ? 0 : 1).check();
+  }
   if (SHOTS && yes.length === 0) await page.screenshot({ path: `${SHOTS}/tb-questions-${lang}.png`, fullPage: true });
   await page.getByRole("button", { name: t.check.seeResults }).click();
   await page.getByRole("heading", { name: t.check.dashboardTitle }).waitFor();
@@ -60,6 +65,7 @@ async function main() {
   for (const [lang, t] of [["en", en], ["km", km as unknown as Dict]] as const) {
     const cases: [string[], "positive" | "contact" | "negative", keyof Dict["results"]["nextSteps"], string[]][] = [
       [["tbNightSweats"], "positive", "tb_test", ["tb_symptom_tbNightSweats"]],
+      [["tbCough", "tbCoughLong"], "positive", "tb_test", ["tb_symptom_tbCough", "tb_cough_2w"]], // adaptive follow-up
       [["tbContact"], "contact", "tb_contact_check", ["tb_contact"]],
       [[], "negative", "tb_watch", []],
     ];

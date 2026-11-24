@@ -9,6 +9,7 @@ import { AreaCard } from "@/components/area/AreaCard";
 import type { FindriscBand, FindriscResult } from "@/lib/scoring/findrisc";
 import type { CvdBand, CvdResult } from "@/lib/scoring/whoCvd";
 import type { NextStep } from "@/lib/risk";
+import { LoadingState } from "@/components/ui/LoadingState";
 
 export interface RiskApiResult {
   findrisc: FindriscResult;
@@ -130,7 +131,7 @@ export function ResultsView({
             <p className="mt-1 text-xs text-muted">{explanation.source === "ai" ? t.results.aiNote : t.results.templateNote}</p>
           </>
         ) : (
-          <p className="mt-1 text-muted" role="status">{t.common.loading}</p>
+          <LoadingState compact message={t.common.explaining} />
         )}
       </section>
 

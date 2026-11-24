@@ -1,18 +1,22 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { Dictionary, Locale } from "@/lib/i18n";
 import { fmtClient, parseNumberInput, toKhmerDigits } from "@/lib/client/util";
 import { asksPregnancy, profileSchema, type Profile } from "@/lib/modules/profile";
 import { MODULES, chooseModules, runModules, type CardResult } from "@/lib/modules/registry";
-import { questionsToAsk, type Answers, type ModuleDefinition, type ModuleQuestion, type Urgency } from "@/lib/modules/types";
+import { questionsToAsk, type Answers, type ModuleDefinition, type Urgency } from "@/lib/modules/types";
 import { Disclaimer } from "@/components/Disclaimer";
 import { InfoTip } from "@/components/ui/InfoTip";
 import { waistInchesToCm } from "@/lib/units";
 import { GoNowScreen, UrgentScreen } from "@/components/risk/RiskFlow";
+import { ArrowRight, CircleCheck, Info } from "lucide-react";
+import { IconHealthCheck } from "@/components/ui/BrandIcons";
 
-type Phase = "urgent" | "goNow" | "profile" | "choose" | "questions" | "dashboard";
+type Phase = "intro" | "urgent" | "goNow" | "profile" | "choose" | "questions" | "dashboard";
+/** Opt-in screenings that need a lab report: pre-ticked when the person says they have one. */
+const LAB_REPORT_MODULES = ["who_cvd_lab", "egfr"];
 type Draft = Record<string, string | boolean | null>;
 
 /** Read a dictionary value by dotted path (module questions reference existing i18n keys). */
@@ -32,7 +36,9 @@ const URGENCY_STYLE: Record<Urgency, { bg: string; fg: string; icon: string }> =
 export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { lang: Locale; t: Dictionary; allowed: string[]; preview: boolean; hasDrafts?: boolean }) {
   const c = t.check;
   const modules = useMemo(() => MODULES.filter((m) => allowed.includes(m.id)), [allowed]);
-  const [phase, setPhase] = useState<Phase>("urgent");
+  const [phase, setPhase] = useState<Phase>("intro");
+  /** Index of the current screening question (one question per screen). */
+  const [qStep, setQStep] = useState(0);
   const [draft, setDraft] = useState<Draft>({ waistUnknown: false, bpUnknown: false });
   const [errors, setErrors] = useState<string[]>([]);
   const [profile, setProfile] = useState<Profile | null>(null);
@@ -42,6 +48,10 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
   const [numText, setNumText] = useState<Record<string, string>>({});
   const [cards, setCards] = useState<CardResult[]>([]);
   const headingRef = useRef<HTMLHeadingElement>(null);
+  // Each new screening question gets keyboard / screen-reader focus on its heading.
+  useEffect(() => {
+    if (phase === "questions") headingRef.current?.focus();
+  }, [qStep, phase]);
   const go = (p: Phase) => {
     setPhase(p);
     window.scrollTo(0, 0);
@@ -60,7 +70,8 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
       // Not asked: no screening uses them (pack-years). The profile keeps the fields for future modules.
       cigarettesPerDay: null,
       smokingYears: null,
-      sbp: draft.bpUnknown ? null : n("sbp"), dbp: draft.bpUnknown ? null : n("dbp"),
+      // The bottom number is only asked once a top number is entered (adaptive).
+      sbp: draft.bpUnknown ? null : n("sbp"), dbp: draft.bpUnknown || n("sbp") === null ? null : n("dbp"),
       // Yes/No question that must be answered (an unticked box used to mean "no" silently).
       bpMedication: draft.bpMedication === "yes" ? true : draft.bpMedication === "no" ? false : undefined,
       knownDiabetes: draft.knownDiabetes === true, knownHighBp: draft.knownHighBp === true,
@@ -77,12 +88,16 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
     }
     setErrors([]);
     setProfile(parsed.data);
-    setSelected(chooseModules(parsed.data, modules).filter((x) => x.preselected).map((x) => x.module.id));
+    const choices = chooseModules(parsed.data, modules);
+    // Adaptive: with a lab report at hand, also pre-tick the screenings that use cholesterol / creatinine.
+    const withLab = draft.labReport === "yes" ? choices.filter((x) => x.eligible && LAB_REPORT_MODULES.includes(x.module.id)) : [];
+    setSelected([...new Set([...choices.filter((x) => x.preselected), ...withLab].map((x) => x.module.id))]);
     go("choose");
   }
 
   function afterChoose() {
     const needQuestions = modules.some((m) => selected.includes(m.id) && questionsToAsk(m.questions, answers[m.id] ?? {}, profile!).length);
+    setQStep(0);
     if (needQuestions) go("questions");
     else finish(answers);
   }
@@ -92,6 +107,7 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
     go("dashboard");
   }
 
+  if (phase === "intro") return <WelcomeScreen t={t} headingRef={headingRef} onStart={() => go("urgent")} />;
   if (phase === "urgent") return <UrgentScreen t={t} headingRef={headingRef} onUrgent={() => go("goNow")} onSafe={() => go("profile")} />;
   if (phase === "goNow") return <GoNowScreen lang={lang} t={t} headingRef={headingRef} onContinue={() => go("urgent")} />;
 
@@ -164,7 +180,7 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
         <section className="flex flex-col gap-4">
           <h2 className="text-lg font-bold">{c.profileSection.bp}</h2>
           {num("sbp", c.sbp, "mmHg", { disabled: draft.bpUnknown === true })}
-          {num("dbp", c.dbp, "mmHg", { disabled: draft.bpUnknown === true })}
+          {!draft.bpUnknown && n("sbp") !== null && num("dbp", c.dbp, "mmHg")}
           {check("bpUnknown", c.bpUnknown)}
           {choice("bpMedication", t.risk.bpMeds.q, [["yes", t.common.yes], ["no", t.common.no]])}
           <InfoTip label={t.common.whatIsThis}>{t.risk.bpMeds.info}</InfoTip>
@@ -173,6 +189,10 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
           <h2 className="text-lg font-bold">{c.profileSection.conditions}</h2>
           <p className="text-sm">{c.conditionsQ}</p>
           {(["knownDiabetes", "knownHighBp", "knownHeartDisease", "knownKidneyDisease"] as const).map((k) => <div key={k}>{check(k, c.conditions[k])}</div>)}
+        </section>
+        <section className="flex flex-col gap-2">
+          {choice("labReport", c.labReport.q, [["yes", c.labReport.yes], ["no", c.labReport.no]])}
+          <p className="text-sm text-muted">{c.labReport.help}</p>
         </section>
         <section className="flex flex-col gap-4">
           <h2 className="text-lg font-bold">{c.profileSection.family}</h2>
@@ -234,93 +254,104 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
     );
   }
 
-  // ---------------------------------------------------------------- 3. module questions
+  // ---------------------------------------------------------------- 3. module questions (one per screen, adaptive)
   if (phase === "questions" && profile) {
-    const ask = (m: ModuleDefinition) => questionsToAsk(m.questions, answers[m.id] ?? {}, profile);
-    const chosen = modules.filter((m) => selected.includes(m.id) && ask(m).length);
-    const complete = chosen.every((m) => ask(m).every((q) => answers[m.id]?.[q.id] !== undefined));
-    const setA = (mid: string, qid: string, v: Answers[string] | undefined) =>
+    // The flow is rebuilt from the answers so far: a follow-up (showIf) appears right after the answer that triggers it.
+    const flow = modules
+      .filter((m) => selected.includes(m.id))
+      .flatMap((m) => questionsToAsk(m.questions, answers[m.id] ?? {}, profile).map((q) => ({ m, q })));
+    if (!flow.length) return null;
+    const i = Math.min(qStep, flow.length - 1);
+    const { m, q } = flow[i];
+    const v = answers[m.id]?.[q.id];
+    const answered = v !== undefined;
+    const isLast = i === flow.length - 1;
+    const setA = (mid: string, qid: string, val: Answers[string] | undefined) =>
       setAnswers((a) => {
         const next = { ...a[mid] };
-        if (v === undefined) delete next[qid];
-        else next[qid] = v;
+        if (val === undefined) delete next[qid];
+        else next[qid] = val;
         return { ...a, [mid]: next };
       });
-    const question = (m: ModuleDefinition, q: ModuleQuestion) => {
-      const v = answers[m.id]?.[q.id];
-      const help = q.helpKey && <p className="text-sm text-muted">{tr(t, q.helpKey)}</p>;
-      if (q.kind === "choice")
-        return (
-          <fieldset key={q.id} className="flex flex-col gap-2">
-            <legend className="mb-1 font-medium">{tr(t, q.textKey)}</legend>
-            {help}
-            {q.options.map((o) => (
-              <label key={o.value} className={`flex min-h-12 items-center gap-3 rounded-xl border-2 px-3 ${v === o.value ? "border-brand bg-brand-soft" : "border-line bg-surface"}`}>
-                <input type="radio" name={`${m.id}.${q.id}`} checked={v === o.value} onChange={() => setA(m.id, q.id, o.value)} />
-                {tr(t, o.labelKey)}
-              </label>
-            ))}
-          </fieldset>
-        );
-      if (q.kind === "number") {
-        const key = `${m.id}.${q.id}`;
-        const unknown = v === null;
-        const onText = (text: string) => {
-          setNumText((s) => ({ ...s, [key]: text }));
-          const x = parseNumberInput(text);
-          const ok = x !== null && x >= q.min && x <= q.max && (!q.integer || Number.isInteger(x));
-          setA(m.id, q.id, ok ? x : undefined); // incomplete until the number is valid
-        };
-        return (
-          <div key={q.id} className="flex flex-col gap-1">
-            <label className="flex flex-col gap-1 font-medium">
-              {tr(t, q.textKey)}
-              {help}
-              <span className="flex items-center gap-2">
-                <input inputMode="decimal" className="field w-32" value={unknown ? "" : (numText[key] ?? "")} disabled={unknown} onChange={(e) => onText(e.target.value)} />
-                {q.unitKey && <span className="text-sm text-muted">{tr(t, q.unitKey)}</span>}
-              </span>
-            </label>
-            {q.allowUnknown && (
-              <label className="flex min-h-11 items-center gap-3">
-                <input type="checkbox" className="h-5 w-5" checked={unknown} onChange={(e) => (e.target.checked ? setA(m.id, q.id, null) : onText(numText[key] ?? ""))} />
-                {c.unknown}
-              </label>
-            )}
-          </div>
-        );
-      }
-      if (q.kind === "yesno")
-        return (
-          <fieldset key={q.id} className="flex flex-col gap-2">
-            <legend className="mb-1 font-medium">{tr(t, q.textKey)}</legend>
-            {q.helpKey && <p className="text-sm text-muted">{tr(t, q.helpKey)}</p>}
-            <div className="grid grid-cols-2 gap-2">
-              {([[true, t.common.yes], [false, t.common.no]] as const).map(([val, label]) => (
-                <label key={String(val)} className={`flex min-h-12 items-center gap-3 rounded-xl border-2 px-3 ${v === val ? "border-brand bg-brand-soft" : "border-line bg-surface"}`}>
-                  <input type="radio" name={`${m.id}.${q.id}`} checked={v === val} onChange={() => setA(m.id, q.id, val)} />
-                  {label}
-                </label>
-              ))}
-            </div>
-          </fieldset>
-        );
-      return null;
+    const toStep = (k: number) => {
+      setQStep(k);
+      window.scrollTo(0, 0); // focus moves to the new question in the effect above
+    };
+    // Tap answers move on by themselves (like the risk check); the next question is chosen from the new answers.
+    const pick = (val: Answers[string]) => {
+      setA(m.id, q.id, val);
+      window.setTimeout(() => toStep(i + 1), 180);
+    };
+    const option = (key: string, label: string, selectedNow: boolean, onPick: () => void) => (
+      <label key={key} className={`flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border-2 px-4 text-lg transition-colors ${selectedNow ? "border-brand bg-brand-soft" : "border-line bg-surface hover:border-brand"}`}>
+        <input type="radio" name={`${m.id}.${q.id}`} checked={selectedNow} onChange={onPick} />
+        {label}
+      </label>
+    );
+    const key = `${m.id}.${q.id}`;
+    const unknown = v === null;
+    const onText = (text: string) => {
+      if (q.kind !== "number") return;
+      setNumText((st) => ({ ...st, [key]: text }));
+      const x = parseNumberInput(text);
+      const ok = x !== null && x >= q.min && x <= q.max && (!q.integer || Number.isInteger(x));
+      setA(m.id, q.id, ok ? x : undefined); // not answered until the number is valid
     };
     return (
       <div className="flex flex-col gap-5 pt-2">
         {banner}
         <div>
-          <h1 ref={headingRef} tabIndex={-1} className="text-2xl font-bold outline-none">{c.questionsTitle}</h1>
-          <p className="text-sm text-muted">{c.questionsIntro}</p>
+          <p className="mb-1 text-sm text-muted">{fmtClient(t.common.stepOf, { n: i + 1, total: flow.length }, lang)}</p>
+          <div className="h-2 w-full overflow-hidden rounded-full bg-foreground/10" role="progressbar" aria-valuemin={1} aria-valuemax={flow.length} aria-valuenow={i + 1} aria-label={c.questionsTitle}>
+            <div className="h-full rounded-full bg-brand transition-[width] duration-300 ease-out" style={{ width: `${((i + 1) / flow.length) * 100}%` }} />
+          </div>
         </div>
-        {chosen.map((m) => (
-          <section key={m.id} className="flex flex-col gap-4">
-            <h2 className="text-lg font-bold">{m.title[lang]}</h2>
-            {ask(m).map((q) => question(m, q))}
-          </section>
-        ))}
-        <button className="btn-primary" disabled={!complete} onClick={() => finish(answers)}>{c.seeResults}</button>
+        <div key={key} className="rise-in flex flex-col gap-4">
+          <p className="eyebrow">{m.title[lang]}</p>
+          <h1 ref={headingRef} tabIndex={-1} id={`q-${key}`} className="text-2xl leading-snug font-bold outline-none">{tr(t, q.textKey)}</h1>
+          {q.helpKey && <p className="text-muted">{tr(t, q.helpKey)}</p>}
+          {q.kind === "yesno" && (
+            <div role="radiogroup" aria-labelledby={`q-${key}`} className="flex flex-col gap-3">
+              {option("yes", t.common.yes, v === true, () => pick(true))}
+              {option("no", t.common.no, v === false, () => pick(false))}
+            </div>
+          )}
+          {q.kind === "choice" && (
+            <div role="radiogroup" aria-labelledby={`q-${key}`} className="flex flex-col gap-3">
+              {q.options.map((o) => option(o.value, tr(t, o.labelKey), v === o.value, () => pick(o.value)))}
+            </div>
+          )}
+          {q.kind === "number" && (
+            <div className="flex flex-col gap-3">
+              <span className="flex items-center gap-3">
+                <input
+                  aria-labelledby={`q-${key}`}
+                  inputMode="decimal"
+                  autoComplete="off"
+                  className="min-h-14 w-40 rounded-xl border-2 border-line bg-surface px-4 text-2xl font-semibold"
+                  value={unknown ? "" : (numText[key] ?? "")}
+                  disabled={unknown}
+                  onChange={(e) => onText(e.target.value)}
+                />
+                {q.unitKey && <span className="text-lg text-muted">{tr(t, q.unitKey)}</span>}
+              </span>
+              {q.allowUnknown && (
+                <label className="flex min-h-11 items-center gap-3">
+                  <input type="checkbox" className="h-5 w-5" checked={unknown} onChange={(e) => (e.target.checked ? setA(m.id, q.id, null) : onText(numText[key] ?? ""))} />
+                  {c.unknown}
+                </label>
+              )}
+            </div>
+          )}
+        </div>
+        <div className="mt-2 flex items-center justify-between gap-3">
+          <button className="btn-ghost" onClick={() => (i === 0 ? go("choose") : toStep(i - 1))}>← {t.common.back}</button>
+          {isLast ? (
+            <button className="btn-primary" disabled={!answered} onClick={() => finish(answers)}>{c.seeResults}</button>
+          ) : (
+            <button className="btn-primary" disabled={!answered} onClick={() => toStep(i + 1)}>{t.common.next} →</button>
+          )}
+        </div>
       </div>
     );
   }
@@ -381,7 +412,43 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
         })}
       </ul>
       <Disclaimer text={t.common.disclaimer} />
-      <button className="btn-ghost" onClick={() => { setCards([]); setAnswers({}); setNumText({}); go("profile"); }}>↺ {c.startOver}</button>
+      <button className="btn-ghost" onClick={() => { setCards([]); setAnswers({}); setNumText({}); setQStep(0); go("profile"); }}>↺ {c.startOver}</button>
+    </div>
+  );
+}
+
+/** Warm welcome before the health check: what it does, a gentle note, and a Start button (CSS entrance animation). */
+function WelcomeScreen({ t, headingRef, onStart }: { t: Dictionary; headingRef: React.RefObject<HTMLHeadingElement | null>; onStart: () => void }) {
+  const w = t.check.welcome;
+  return (
+    <div className="flex flex-col gap-6 pt-4">
+      <div className="rise-in card relative overflow-hidden p-6 sm:p-8">
+        <div aria-hidden className="absolute -top-20 -right-16 h-56 w-56 rounded-full opacity-25 blur-3xl [background:var(--gradient)]" />
+        <span className="relative inline-flex h-16 w-16 items-center justify-center rounded-[1.25rem] bg-surface-2 text-brand-strong ring-1 ring-line">
+          <IconHealthCheck size={40} />
+        </span>
+        <p className="eyebrow relative mt-5">{w.eyebrow}</p>
+        <h1 ref={headingRef} tabIndex={-1} className="relative mt-2 text-3xl leading-tight font-bold tracking-tight text-balance outline-none">
+          {w.title}
+        </h1>
+        <p className="relative mt-3 text-lg text-muted">{w.body}</p>
+        <ul className="relative mt-5 flex flex-col gap-3">
+          {w.points.map((p, i) => (
+            <li key={p} className="rise-in flex items-start gap-3" style={{ animationDelay: `${180 + i * 120}ms` }}>
+              <CircleCheck aria-hidden size={22} className="mt-0.5 shrink-0 text-accent" />
+              <span>{p}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <p className="rise-in flex items-start gap-3 rounded-xl border border-warn-border bg-warn-soft px-4 py-3 text-sm" style={{ animationDelay: "560ms" }}>
+        <Info aria-hidden size={18} className="mt-0.5 shrink-0" />
+        <span>{w.note}</span>
+      </p>
+      <button className="rise-in btn-primary group w-full sm:w-auto sm:self-start sm:px-10" style={{ animationDelay: "680ms" }} onClick={onStart}>
+        {w.start}
+        <ArrowRight aria-hidden size={20} className="transition-transform duration-200 group-hover:translate-x-1" />
+      </button>
     </div>
   );
 }

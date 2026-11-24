@@ -4,7 +4,7 @@ import km from "@/lib/i18n/km.json";
 import { TB_SYMPTOMS, tbSymptomModule } from "./definition";
 import { MODULES, chooseModules, runModules } from "../registry";
 import type { Profile } from "../profile";
-import type { Answers } from "../types";
+import { questionsToAsk, type Answers } from "../types";
 
 const p: Profile = {
   age: 35, sex: "female", heightCm: 155, weightKg: 50, waistCm: 75, smokingStatus: "never", cigarettesPerDay: null, smokingYears: null,
@@ -16,7 +16,19 @@ const get = (obj: unknown, key: string) => key.split(".").reduce<unknown>((o, k)
 
 describe("TB symptom screen (WHO Module 2, 2021)", () => {
   it("asks the five Table 3 symptoms (cough, haemoptysis, fever, night sweats, weight loss) plus close contact", () => {
-    expect(tbSymptomModule.questions.map((q) => q.id)).toEqual([...TB_SYMPTOMS, "tbContact"]);
+    expect(tbSymptomModule.questions.map((q) => q.id)).toEqual(["tbCough", "tbCoughLong", "tbCoughBlood", "tbFever", "tbNightSweats", "tbWeightLoss", "tbContact"]);
+  });
+
+  it("adaptive: 'cough for 2 weeks or more' is asked only after cough = yes, and only adds a factor (Table 3 prolonged cough)", () => {
+    const ids = (a: Answers) => questionsToAsk(tbSymptomModule.questions, a, p).map((q) => q.id);
+    expect(ids({})).not.toContain("tbCoughLong");
+    expect(ids({ tbCough: false })).not.toContain("tbCoughLong");
+    expect(ids({ tbCough: true })).toEqual(["tbCough", "tbCoughLong", "tbCoughBlood", "tbFever", "tbNightSweats", "tbWeightLoss", "tbContact"]);
+    const short = tbSymptomModule.score({ ...none, tbCough: true, tbCoughLong: false }, p);
+    const long = tbSymptomModule.score({ ...none, tbCough: true, tbCoughLong: true }, p);
+    expect([short.band, long.band]).toEqual(["positive", "positive"]); // same result either way
+    expect(long.factors.map((f) => f.factor)).toEqual(["tb_symptom_tbCough", "tb_cough_2w"]);
+    expect(short.factors.map((f) => f.factor)).toEqual(["tb_symptom_tbCough"]);
   });
 
   it("any one symptom → positive: get a TB test, high urgency (Table 3 'any TB symptom')", () => {

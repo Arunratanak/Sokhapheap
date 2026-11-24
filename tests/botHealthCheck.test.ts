@@ -4,7 +4,8 @@
  */
 import { describe, expect, it } from "vitest";
 import en from "@/lib/i18n/en.json";
-import { createBot, getSession } from "@/lib/bot/bot";
+import km from "@/lib/i18n/km.json";
+import { CHOOSE_LANGUAGE, createBot, getSession } from "@/lib/bot/bot";
 import { buildProfile, formatHealthCheckMessage, PROFILE_STEPS } from "@/lib/bot/healthCheck";
 import { runModules, visibleModules } from "@/lib/modules/registry";
 import { waistInchesToCm } from "@/lib/units";
@@ -23,6 +24,7 @@ function fakeChat(chatId: number) {
     return { ok: true, result: method === "sendMessage" ? { message_id: sent.length, date: 0, chat: { id: chatId, type: "private" }, text: "" } : true } as never;
   });
   getSession(chatId).lang = "en";
+  getSession(chatId).langChosen = true; // a returning user (the first /start asks for a language)
   const chat = { id: chatId, type: "private" as const, first_name: "T" };
   const from = { id: chatId, is_bot: false, first_name: "T" };
   let uid = 1;
@@ -32,6 +34,48 @@ function fakeChat(chatId: number) {
     message: { message_id: uid, date: 0, chat, text: "" } } } as never);
   return { sent, text, tap };
 }
+
+describe("Telegram bot: language choice", () => {
+  it("first /start asks English or Khmer; choosing one shows the welcome and menu in that language", async () => {
+    const { sent, text, tap } = fakeChat(9101);
+    getSession(9101).langChosen = false; // brand-new user
+    await text("/start");
+    expect(sent[0].text).toBe(CHOOSE_LANGUAGE);
+    expect(sent[0].buttons).toEqual(["English=lang:en", "ខ្មែរ=lang:km"]);
+    await tap("lang:km");
+    expect(getSession(9101).lang).toBe("km");
+    expect(sent[1].text).toContain(km.bot.welcome);
+    expect(sent[1].buttons.join(" ")).toContain(km.bot.menuHealth);
+    await text("/start"); // chosen: not asked again
+    expect(sent[2].text).toContain(km.bot.welcome);
+  });
+
+  it("the menu button and /language show the picker; switching changes every later message", async () => {
+    const { sent, text, tap } = fakeChat(9102);
+    await text("/start");
+    expect(sent[0].buttons.join(" ")).toContain("menu:lang");
+    await tap("menu:lang");
+    expect(sent[1].text).toBe(CHOOSE_LANGUAGE);
+    await tap("lang:km");
+    await text("/help");
+    expect(sent.at(-1)!.text).toContain(km.bot.help);
+    await text("/language");
+    expect(sent.at(-1)!.text).toBe(CHOOSE_LANGUAGE);
+    await tap("lang:en");
+    await text("/help");
+    expect(sent.at(-1)!.text).toContain(en.bot.help);
+  });
+
+  it("switching language mid-check starts fresh instead of mixing languages", async () => {
+    const { text, tap } = fakeChat(9103);
+    await text("/health");
+    await tap("hu:no");
+    expect(getSession(9103).hc).toBeDefined();
+    await tap("lang:km");
+    expect(getSession(9103).hc).toBeUndefined();
+    expect(getSession(9103).step).toBeNull();
+  });
+});
 
 describe("Telegram bot: health check", () => {
   it("menu leads with the health check and has no separate Find care button; help has no /near", async () => {

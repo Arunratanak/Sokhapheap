@@ -362,7 +362,8 @@
     "hcNoneSelected": "Please choose at least one screening.",
     "hcUseButtons": "Please answer with the buttons above.",
     "typeDbp": "And the bottom number (e.g. 80)? Type it, or tap \"I don't know\".",
-    "typeNumber": "Type a number."
+    "typeNumber": "Type a number.",
+    "menuLanguage": "Language / ភាសា"
   },
   "insights": {
     "title": "Open Data Insights",

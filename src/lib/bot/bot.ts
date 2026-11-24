@@ -26,6 +26,8 @@ interface Session {
   lab?: ExtractedLabValue[];
   /** Multi-screening health check in progress (src/lib/bot/healthCheck.ts). */
   hc?: HealthCheckState;
+  /** true once the person picked English or Khmer (asked on the first /start). */
+  langChosen?: boolean;
   touched: number;
 }
 
@@ -86,8 +88,15 @@ function mainMenu(t: T) {
   return new InlineKeyboard()
     .text(`🩺 ${t.bot.menuHealth}`, "menu:health").row()
     .text(`❤️ ${t.bot.menuCheck}`, "menu:check").row()
-    .text(`🩸 ${t.bot.menuLab}`, "menu:lab");
+    .text(`🩸 ${t.bot.menuLab}`, "menu:lab").row()
+    .text(`🌐 ${t.bot.menuLanguage}`, "menu:lang");
 }
+
+/** English / Khmer picker. The prompt is bilingual because it is shown before a language is chosen. */
+function languageKeyboard() {
+  return new InlineKeyboard().text("English", "lang:en").text("ខ្មែរ", "lang:km");
+}
+export const CHOOSE_LANGUAGE = "🌐 Choose your language · ជ្រើសរើសភាសា";
 
 function locationKeyboard(t: T) {
   return new Keyboard().requestLocation(t.bot.sendLocation).resized().oneTime();
@@ -217,8 +226,10 @@ export function createBot(token: string) {
 
   bot.command("start", async (ctx) => {
     const s = getSession(ctx.chat.id);
-    const t = getRawDictionary(s.lang);
     s.step = null;
+    // First visit: ask English or Khmer before anything else.
+    if (!s.langChosen) return ctx.reply(CHOOSE_LANGUAGE, { reply_markup: languageKeyboard() });
+    const t = getRawDictionary(s.lang);
     await ctx.reply(`${t.bot.welcome}\n\n${disclaimer(t)}`, { reply_markup: mainMenu(t) });
   });
 
@@ -227,12 +238,7 @@ export function createBot(token: string) {
     await ctx.reply(`${t.bot.help}\n\n${disclaimer(t)}`);
   });
 
-  bot.command("language", async (ctx) => {
-    const s = getSession(ctx.chat.id);
-    s.lang = s.lang === "km" ? "en" : "km";
-    const t = getRawDictionary(s.lang);
-    await ctx.reply(t.bot.languageChanged, { reply_markup: mainMenu(t) });
-  });
+  bot.command("language", (ctx) => ctx.reply(CHOOSE_LANGUAGE, { reply_markup: languageKeyboard() }));
 
   const startCheck = async (ctx: Context) => {
     const s = getSession(ctx.chat!.id);
@@ -280,6 +286,15 @@ export function createBot(token: string) {
     const t = getRawDictionary(s.lang);
     await ctx.answerCallbackQuery();
 
+    if (data === "menu:lang") return ctx.reply(CHOOSE_LANGUAGE, { reply_markup: languageKeyboard() });
+    if (data === "lang:en" || data === "lang:km") {
+      s.lang = data === "lang:en" ? "en" : "km";
+      s.langChosen = true;
+      s.step = null;
+      s.hc = undefined; // a check in progress was asked in the other language: start fresh
+      const tl = getRawDictionary(s.lang);
+      return ctx.reply(`${tl.bot.languageChanged}\n\n${tl.bot.welcome}\n\n${disclaimer(tl)}`, { reply_markup: mainMenu(tl) });
+    }
     if (data === "menu:health") return startHealthCheck(ctx, s);
     if (data === "menu:check") return startCheck(ctx);
     if (await handleHealthCallback(ctx, s, data)) return;

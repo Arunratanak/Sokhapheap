@@ -118,6 +118,30 @@ export function Navbar({ lang, t, healthCheckLive = false }: { lang: Locale; t: 
         className={`absolute inset-0 -z-10 transition-opacity duration-300 ease-out ${solid ? "opacity-100" : "opacity-0"} bg-[var(--nav-bg)] backdrop-blur-xl backdrop-saturate-150`}
       />
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center gap-3 px-4 sm:px-6">
+        {/* Hamburger → X: on the left on small screens (hidden on desktop, where the tabs show) */}
+        <button
+          ref={buttonRef}
+          type="button"
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          onClick={() => (open ? close(false) : setOpen(true))}
+          className="relative inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line bg-surface lg:hidden"
+        >
+          <span className="sr-only">{open ? t.closeMenu : t.openMenu}</span>
+          <span aria-hidden className="relative block h-3.5 w-4.5">
+            {[0, 1, 2].map((i) => (
+              <span
+                key={i}
+                className="absolute left-0 block h-0.5 w-full rounded-full bg-foreground transition-[transform,translate,scale,opacity,top] duration-300 ease-out"
+                style={{
+                  top: open ? "6px" : `${i * 6}px`,
+                  transform: open ? (i === 0 ? "rotate(45deg)" : i === 2 ? "rotate(-45deg)" : "scaleX(0)") : "none",
+                  opacity: open && i === 1 ? 0 : 1,
+                }}
+              />
+            ))}
+          </span>
+        </button>
         <Link href={base} className="mr-auto inline-flex items-center gap-2.5 rounded-lg text-lg font-bold tracking-tight lg:mr-0">
           <LogoMark size={34} />
           <span className="whitespace-nowrap">{t.appName}</span>
@@ -167,30 +191,6 @@ export function Navbar({ lang, t, healthCheckLive = false }: { lang: Locale; t: 
             {t.cta}
             <ArrowRight aria-hidden size={16} />
           </Link>
-          {/* Hamburger → X */}
-          <button
-            ref={buttonRef}
-            type="button"
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            onClick={() => (open ? close(false) : setOpen(true))}
-            className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-surface lg:hidden"
-          >
-            <span className="sr-only">{open ? t.closeMenu : t.openMenu}</span>
-            <span aria-hidden className="relative block h-3.5 w-4.5">
-              {[0, 1, 2].map((i) => (
-                <span
-                  key={i}
-                  className="absolute left-0 block h-0.5 w-full rounded-full bg-foreground transition-[transform,translate,scale,opacity,top] duration-300 ease-out"
-                  style={{
-                    top: open ? "6px" : `${i * 6}px`,
-                    transform: open ? (i === 0 ? "rotate(45deg)" : i === 2 ? "rotate(-45deg)" : "scaleX(0)") : "none",
-                    opacity: open && i === 1 ? 0 : 1,
-                  }}
-                />
-              ))}
-            </span>
-          </button>
         </div>
       </div>
 
@@ -204,8 +204,8 @@ export function Navbar({ lang, t, healthCheckLive = false }: { lang: Locale; t: 
         id="mobile-menu"
         ref={panelRef}
         inert={!open}
-        className={`fixed top-16 right-0 bottom-0 z-50 flex w-[min(22rem,88vw)] flex-col gap-6 overflow-y-auto border-l border-line bg-background p-5 shadow-lg transition-[transform,translate,scale,visibility] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden ${
-          open ? "visible translate-x-0" : "invisible translate-x-full"
+        className={`fixed top-16 bottom-0 left-0 z-50 flex w-[min(22rem,88vw)] flex-col gap-6 overflow-y-auto border-r border-line bg-background p-5 shadow-lg transition-[transform,translate,scale,visibility] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden ${
+          open ? "visible translate-x-0" : "invisible -translate-x-full"
         }`}
       >
         <nav aria-label={t.main}>
@@ -215,7 +215,7 @@ export function Navbar({ lang, t, healthCheckLive = false }: { lang: Locale; t: 
               return (
                 <li
                   key={tab.key}
-                  className={`transition-[opacity,transform,translate,scale] duration-300 ease-out ${open ? "translate-x-0 opacity-100" : "translate-x-4 opacity-0"}`}
+                  className={`transition-[opacity,transform,translate,scale] duration-300 ease-out ${open ? "translate-x-0 opacity-100" : "-translate-x-4 opacity-0"}`}
                   style={{ transitionDelay: open ? `${80 + i * 45}ms` : "0ms" }}
                 >
                   <Link

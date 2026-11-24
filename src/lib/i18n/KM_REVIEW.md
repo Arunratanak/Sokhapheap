@@ -14,6 +14,7 @@ TODO(KM-REVIEW): every Khmer string below was written by Claude for the redesign
 | `bot.welcome`, `bot.help` | … /health … | Updated: health check added, /near removed from help | |
 | `bot.urgentContinue`, `bot.backToMenu` | ខ្ញុំមានសុវត្ថិភាព បន្តការពិនិត្យ / ត្រឡប់ទៅម៉ឺនុយ | I am safe, continue the check / Back to the menu | Buttons on the bot's "go to hospital" message |
 | `landing.examples.*` | លទ្ធផលឧទាហរណ៍ · ដារ៉ា អាយុ ៤៥ ឆ្នាំ … / លទ្ធផលមន្ទីរពិសោធន៍ឧទាហរណ៍ / ចម្ងាយទៅមណ្ឌលសុខភាពជិតបំផុត … | Hero example cards (result, lab report, distance chart) | Includes «ដារ៉ា» for "Dara" and «គ.ម» for km |
+| Team roles (`src/lib/team.ts`) | អ្នកដឹកនាំផលិតផល និងបទបង្ហាញ / អ្នកអភិវឌ្ឍកម្មវិធី Full-Stack / អ្នកស្រាវជ្រាវ និងវិភាគទិន្នន័យ / ស្រាវជ្រាវអ្នកប្រើប្រាស់ និងការបកប្រែភាសា | Product & Pitch Lead / Full-Stack Developer / Research & Data Analyst / User Research & Localization | Job titles: please check they read naturally |
 | `common.whatIsThis` | តើនេះមានន័យថាអ្វី? | What does this mean? | |
 | `nav.cta` | សាកល្បងឥឡូវនេះ | Try it now | Natural for a button? Maybe «ចាប់ផ្តើម» is better |
 | `nav.theme` | ពន្លឺ ឬងងឹត | Light or dark | Wording for a theme switch |

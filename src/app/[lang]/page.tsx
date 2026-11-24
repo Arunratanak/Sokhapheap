@@ -1,14 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  ArrowRight,
-  ChartColumn,
-  CircleCheck,
-  FlaskConical,
-  HeartPulse,
-  Lock,
-  Stethoscope,
-} from "lucide-react";
+import { ArrowRight, CircleCheck, Lock } from "lucide-react";
 import { fmt, formatNumber, getDictionary, hasLocale } from "@/lib/i18n";
 import { visibleModules } from "@/lib/modules/registry";
 import { homeStats } from "@/lib/insights/data";
@@ -20,6 +12,7 @@ import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { StatCounter } from "@/components/ui/StatCounter";
 import { formatCount } from "@/lib/format";
 import { MotionProvider } from "@/components/ui/MotionProvider";
+import { IconHealthCheck, IconHeartRisk, IconLabTube, IconTempleData } from "@/components/ui/BrandIcons";
 import type { HeroVisualData, Tone } from "@/components/home/HeroVisual";
 import { distanceExample, labExample, riskExample } from "@/lib/heroExamples";
 
@@ -107,7 +100,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       ? [
           {
             href: `${base}/check`,
-            icon: Stethoscope,
+            icon: IconHealthCheck,
             title: t.home.healthCheck,
             body: t.home.healthCheckHint,
           },
@@ -115,19 +108,19 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       : []),
     {
       href: `${base}/risk`,
-      icon: HeartPulse,
+      icon: IconHeartRisk,
       title: t.home.checkRisk,
       body: t.home.checkRiskHint,
     },
     {
       href: `${base}/lab`,
-      icon: FlaskConical,
+      icon: IconLabTube,
       title: t.home.explainLab,
       body: t.home.explainLabHint,
     },
     {
       href: `${base}/insights`,
-      icon: ChartColumn,
+      icon: IconTempleData,
       title: t.home.insights,
       body: t.home.insightsHint,
     },
@@ -242,8 +235,8 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             {features.map((f) => (
               <RevealItem as="li" key={f.href}>
                 <Card interactive className="h-full">
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-soft text-brand-strong transition-transform duration-300 group-hover:scale-110">
-                    <f.icon aria-hidden size={24} />
+                  <span className="inline-flex h-14 w-14 items-center justify-center rounded-[1.1rem] bg-surface-2 text-brand-strong ring-1 ring-line transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110">
+                    <f.icon size={36} />
                   </span>
                   <h3 className="mt-5 text-lg font-bold">
                     <Link

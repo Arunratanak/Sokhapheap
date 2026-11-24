@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowRight, ChartColumn, CircleCheck, Droplet, FlaskConical, Gauge, HeartPulse, OctagonAlert, TriangleAlert, Wind } from "lucide-react";
+import { ArrowRight, CircleCheck, Droplet, Gauge, OctagonAlert, TriangleAlert, Wind } from "lucide-react";
+import { IconHealthCheck, IconLabTube, IconTempleData } from "@/components/ui/BrandIcons";
 
 /**
  * Example "product" cards for the hero slides. All values come from src/lib/heroExamples.ts, which computes them
@@ -38,15 +39,15 @@ const TONE: Record<Tone, { bg: string; fg: string; Icon: typeof CircleCheck }> =
 const TILE_ICON = { diabetes: Droplet, bp: Gauge, tb: Wind } as const;
 
 export function HeroVisual({ data, active = true }: { data: HeroVisualData; active?: boolean }) {
-  const HeaderIcon = data.kind === "risk" ? HeartPulse : data.kind === "lab" ? FlaskConical : ChartColumn;
+  const HeaderIcon = data.kind === "risk" ? IconHealthCheck : data.kind === "lab" ? IconLabTube : IconTempleData;
   return (
     <div className="relative mx-auto w-full max-w-md select-none lg:max-w-none">
       {/* glow */}
       <div aria-hidden className="absolute inset-[8%] rounded-[2.5rem] opacity-60 blur-3xl [background:var(--gradient)] dark:opacity-30" />
       <div className="relative overflow-hidden rounded-3xl border border-line bg-surface/90 p-4 shadow-lg backdrop-blur sm:p-6">
         <div className="mb-4 flex items-center gap-3">
-          <span aria-hidden className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-brand-soft text-brand-strong">
-            <HeaderIcon size={22} />
+          <span aria-hidden className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-[1rem] bg-surface-2 text-brand-strong ring-1 ring-line">
+            <HeaderIcon size={28} />
           </span>
           <div className="min-w-0">
             <p className="text-sm leading-snug font-semibold">{data.title}</p>

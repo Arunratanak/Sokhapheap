@@ -33,8 +33,8 @@ export function TeamGrid({ lang, compact = false }: { lang: Locale; compact?: bo
               )}
             </div>
             <h3 className="mt-5 text-lg font-bold">{p.name[lang]}</h3>
-            <p className="text-sm font-medium text-brand-strong">{p.role[lang]}</p>
-            <p className="mt-2 text-sm text-muted">{p.bio[lang]}</p>
+            {p.role && <p className="text-sm font-medium text-brand-strong">{p.role[lang]}</p>}
+            {p.bio && <p className="mt-2 text-sm text-muted">{p.bio[lang]}</p>}
             {p.links && p.links.length > 0 && (
               <ul className="mt-4 flex justify-center gap-2">
                 {p.links.map((l) => {

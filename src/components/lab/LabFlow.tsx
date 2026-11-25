@@ -22,12 +22,16 @@ const toRow = (v: ExtractedLabValue): Row => ({
 });
 const emptyRow = (): Row => ({ test_name: "", value: "", unit: "mg/dL", low: "", high: "", confidence: 1 });
 
+/** Image types /api/lab/extract accepts (mirrors ALLOWED_IMAGE_TYPES, which is server-only). */
+const SERVER_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp", "image/heic", "image/heif"];
+
 /** Shrink large phone photos before upload (faster on slow networks). Falls back to the original. */
 async function downscale(file: File, max = 1800): Promise<Blob> {
   try {
     const bmp = await createImageBitmap(file);
     const scale = Math.min(1, max / Math.max(bmp.width, bmp.height));
-    if (scale === 1 && file.size < 1_500_000) return file;
+    // Small photos go as-is, but only in a format the server takes (GIF/BMP/AVIF… are re-encoded).
+    if (scale === 1 && file.size < 1_500_000 && SERVER_IMAGE_TYPES.includes(file.type)) return file;
     const canvas = document.createElement("canvas");
     canvas.width = Math.round(bmp.width * scale);
     canvas.height = Math.round(bmp.height * scale);

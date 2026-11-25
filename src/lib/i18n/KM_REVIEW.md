@@ -39,6 +39,7 @@ TODO(KM-REVIEW): every Khmer string below was written by Claude for the redesign
 - `landing.team`, `landing.cta`
 - `footer`: product, data, settings, allSources, credit
 - `src/lib/team.ts`: placeholder names, roles and bios (to be replaced with the real team anyway)
+- `lab.dragHint`, `lab.dropHere`, `lab.unsupportedFile` (drag-and-drop upload, 25 Nov 2026): «ឬអូសរូបថត ឬឯកសារ PDF … មកទីនេះ» / «ទម្លាក់លទ្ធផលរបស់អ្នកនៅទីនេះ». Are «អូស» (drag) and «ទម្លាក់» (drop) the words people use?
 
 ## How to check
 Run the app (`npm run dev`) and open `http://localhost:3000/km`. Go through the home page, the menu (narrow the window or use a phone) and the footer, in light and dark.

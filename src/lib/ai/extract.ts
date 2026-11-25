@@ -3,7 +3,8 @@ import { aiConfigured, generate, loadPrompt } from "./gemini";
 import { extractedLabArraySchema } from "../schemas";
 import type { ExtractedLabValue } from "../scoring/labRanges";
 
-export const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp", "image/heic", "image/heif"];
+/** Photos of the report, or the PDF a lab sends (Gemini reads both as inline data). */
+export const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp", "image/heic", "image/heif", "application/pdf"];
 export const MAX_IMAGE_BYTES = 8 * 1024 * 1024;
 
 export class ExtractionUnavailableError extends Error {}

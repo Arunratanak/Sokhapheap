@@ -169,6 +169,11 @@ describe("POST /api/lab/extract", () => {
     expect(res.status).toBe(503);
     expect(await res.json()).toMatchObject({ error: "ai_unavailable", imageDeleted: true });
   });
+
+  it("accepts a PDF report (reaches the AI step, not a 400)", async () => {
+    const res = await extractPOST(form(new File(["%PDF-1.4"], "report.pdf", { type: "application/pdf" })));
+    expect(res.status).toBe(503);
+  });
 });
 
 describe("GET /api/health", () => {

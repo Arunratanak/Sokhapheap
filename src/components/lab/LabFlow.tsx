@@ -1,7 +1,7 @@
 "use client";
 
 import { API_BASE } from "@/lib/client/api-base";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useEffectEvent, useRef, useState } from "react";
 import Link from "next/link";
 import type { Dictionary, Locale } from "@/lib/i18n";
 import { parseNumberInput } from "@/lib/client/util";
@@ -38,6 +38,11 @@ async function downscale(file: File, max = 1800): Promise<Blob> {
   }
 }
 
+/** Same limits as /api/lab/extract (photos are shrunk first, so only PDFs usually hit the size cap). */
+const MAX_UPLOAD_BYTES = 8 * 1024 * 1024;
+const isPdf = (f: File) => f.type === "application/pdf";
+const isSupported = (f: File) => isPdf(f) || f.type.startsWith("image/");
+
 const FLAG_STYLE = {
   normal: { icon: "✅", bg: "var(--ok-bg)", fg: "var(--ok-fg)" },
   outside_range: { icon: "⚠️", bg: "var(--orange-bg)", fg: "var(--orange-fg)" },
@@ -51,14 +56,24 @@ export function LabFlow({ lang, t }: { lang: Locale; t: Dictionary }) {
   const [results, setResults] = useState<EvaluatedLabValue[]>([]);
   const [explanation, setExplanation] = useState<{ text: string; source: string } | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
+  const [dragging, setDragging] = useState(false);
 
   async function onFile(file: File | undefined) {
     if (!file) return;
+    if (!isSupported(file)) {
+      setNotice(t.lab.unsupportedFile);
+      return;
+    }
+    const blob = isPdf(file) ? file : await downscale(file);
+    if (blob.size > MAX_UPLOAD_BYTES) {
+      setNotice(t.lab.unsupportedFile);
+      if (fileRef.current) fileRef.current.value = "";
+      return;
+    }
     setNotice(null);
     setStage("reading");
     try {
       const fd = new FormData();
-      const blob = await downscale(file);
       fd.set("image", blob instanceof File ? blob : new File([blob], "report.jpg", { type: "image/jpeg" }));
       const res = await fetch(API_BASE + "/api/lab/extract", { method: "POST", body: fd });
       const body = await res.json().catch(() => ({}));
@@ -79,6 +94,44 @@ export function LabFlow({ lang, t }: { lang: Locale; t: Dictionary }) {
       setStage("confirm");
     }
   }
+
+  // Drag and drop: on the upload screen, a file dropped anywhere on the page is read (instead of
+  // the browser opening it). Browsers keep firing dragover while a file is held over the page, so
+  // the highlight stays on while those arrive and switches itself off shortly after they stop
+  // (dragged away, Esc, or left the window). No enter/leave counting, so it can't get stuck.
+  const onDropped = useEffectEvent((file: File | undefined) => onFile(file));
+  useEffect(() => {
+    if (stage !== "upload") return;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const hasFiles = (e: DragEvent) => Array.from(e.dataTransfer?.types ?? []).includes("Files");
+    const stop = () => {
+      clearTimeout(timer);
+      setDragging(false);
+    };
+    const hover = (e: DragEvent) => {
+      if (!hasFiles(e)) return;
+      e.preventDefault(); // allow dropping
+      if (e.dataTransfer) e.dataTransfer.dropEffect = "copy";
+      setDragging(true);
+      clearTimeout(timer);
+      timer = setTimeout(stop, 1000);
+    };
+    const drop = (e: DragEvent) => {
+      if (!hasFiles(e)) return;
+      e.preventDefault();
+      stop();
+      onDropped(e.dataTransfer?.files[0]);
+    };
+    window.addEventListener("dragenter", hover);
+    window.addEventListener("dragover", hover);
+    window.addEventListener("drop", drop);
+    return () => {
+      window.removeEventListener("dragenter", hover);
+      window.removeEventListener("dragover", hover);
+      window.removeEventListener("drop", drop);
+      stop();
+    };
+  }, [stage]);
 
   async function evaluate() {
     const values = rows
@@ -144,20 +197,29 @@ export function LabFlow({ lang, t }: { lang: Locale; t: Dictionary }) {
         <h1 className="text-2xl font-bold">{t.lab.title}</h1>
         <p>{t.lab.intro}</p>
         <p className="text-sm text-muted">{t.lab.photoTips}</p>
-        <label className={`btn-primary cursor-pointer ${stage === "reading" ? "pointer-events-none opacity-60" : ""}`}>
-          📷 {stage === "reading" ? t.lab.reading : t.lab.takePhoto}
-          <input
-            ref={fileRef}
-            type="file"
-            accept="image/*"
-            capture="environment"
-            className="sr-only"
-            onChange={(e) => onFile(e.target.files?.[0])}
-            disabled={stage === "reading"}
-          />
-        </label>
+        {notice && <p className="rounded-lg bg-warn-soft px-3 py-2" role="alert">{notice}</p>}
+        <div
+          className={`flex flex-col gap-2 rounded-2xl border-2 border-dashed p-3 transition-colors duration-150 ${
+            dragging ? "border-brand bg-brand/10" : "border-line"
+          }`}
+        >
+          <label className={`btn-primary cursor-pointer ${stage === "reading" ? "pointer-events-none opacity-60" : ""}`}>
+            {dragging ? <>⬇️ {t.lab.dropHere}</> : <>📷 {stage === "reading" ? t.lab.reading : t.lab.takePhoto}</>}
+            <input
+              ref={fileRef}
+              type="file"
+              accept="image/*,application/pdf"
+              capture="environment"
+              className="sr-only"
+              onChange={(e) => onFile(e.target.files?.[0])}
+              disabled={stage === "reading"}
+            />
+          </label>
+          {/* Dragging only exists with a mouse, so the hint is hidden on touch screens. */}
+          <p className="hidden text-center text-sm text-muted [@media(hover:hover)]:block">{t.lab.dragHint}</p>
+        </div>
         {stage === "reading" && <LoadingState message={t.common.readingReport} delayMs={0} />}
-        <button className="btn-secondary" onClick={() => { setRows([emptyRow()]); setStage("confirm"); }}>
+        <button className="btn-secondary" onClick={() => { setRows([emptyRow()]); setNotice(null); setStage("confirm"); }}>
           ⌨️ {t.lab.typeManually}
         </button>
         <p className="text-sm text-muted">🔒 {t.lab.privacyNote}</p>

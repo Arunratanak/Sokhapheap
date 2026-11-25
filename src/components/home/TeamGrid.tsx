@@ -1,3 +1,4 @@
+import { BASE_PATH } from "@/lib/client/api-base";
 import Image from "next/image";
 import { Globe, Mail, Send } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
@@ -25,7 +26,7 @@ export function TeamGrid({ lang, compact = false }: { lang: Locale; compact?: bo
             <div className="relative mx-auto h-24 w-24">
               <div className="absolute -inset-1 rounded-full opacity-0 blur-md transition-opacity duration-300 [background:var(--gradient)] group-hover:opacity-60" />
               {p.photo ? (
-                <Image src={p.photo} alt={p.name[lang]} width={96} height={96} loading="lazy" className="relative h-24 w-24 rounded-full object-cover ring-4 ring-surface" />
+                <Image src={BASE_PATH + p.photo} alt={p.name[lang]} width={96} height={96} loading="lazy" className="relative h-24 w-24 rounded-full object-cover ring-4 ring-surface" />
               ) : (
                 <span aria-hidden className="relative inline-flex h-24 w-24 items-center justify-center rounded-full text-2xl font-bold text-[#1c1917] ring-4 ring-surface [background:var(--gradient)]">
                   {initials(p.name.en)}

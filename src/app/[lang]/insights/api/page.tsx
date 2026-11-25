@@ -1,3 +1,4 @@
+import { API_BASE } from "@/lib/client/api-base";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -14,7 +15,7 @@ function Endpoint({ path, desc, example }: { path: string; desc: string; example
     <li className="flex flex-col gap-1 rounded-xl border border-line bg-surface p-3">
       <code className="break-all font-mono text-sm font-semibold">GET {path}</code>
       <p className="text-sm">{desc}</p>
-      <a href={example} className="break-all font-mono text-xs text-brand-strong underline underline-offset-2">{example}</a>
+      <a href={API_BASE + example} className="break-all font-mono text-xs text-brand-strong underline underline-offset-2">{example}</a>
     </li>
   );
 }
@@ -43,8 +44,8 @@ export default async function ApiDocsPage({ params }: PageProps<"/[lang]/insight
         <h2 className="text-lg font-bold">{a.downloadsTitle}</h2>
         <p className="text-sm">{a.downloadsDesc}</p>
         <ul className="list-disc pl-5 font-mono text-xs">
-          <li><a className="underline" href="/api/open-data/download/areas_district.csv">/api/open-data/download/areas_district.csv</a></li>
-          <li><a className="underline" href="/api/open-data/download/gap_index.geojson">/api/open-data/download/gap_index.geojson</a></li>
+          <li><a className="underline" href={`${API_BASE}/api/open-data/download/areas_district.csv`}>/api/open-data/download/areas_district.csv</a></li>
+          <li><a className="underline" href={`${API_BASE}/api/open-data/download/gap_index.geojson`}>/api/open-data/download/gap_index.geojson</a></li>
         </ul>
       </section>
 

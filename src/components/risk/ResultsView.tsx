@@ -1,5 +1,6 @@
 "use client";
 
+import { API_BASE } from "@/lib/client/api-base";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import type { Dictionary, Locale } from "@/lib/i18n";
@@ -53,7 +54,7 @@ export function ResultsView({
 
   useEffect(() => {
     let cancelled = false;
-    fetch("/api/explain", {
+    fetch(API_BASE + "/api/explain", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({

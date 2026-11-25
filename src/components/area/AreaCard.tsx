@@ -1,5 +1,6 @@
 "use client";
 
+import { API_BASE } from "@/lib/client/api-base";
 import Link from "next/link";
 import { useState } from "react";
 import type { Dictionary, Locale } from "@/lib/i18n";
@@ -42,7 +43,7 @@ export function AreaCard({ lang, t }: { lang: Locale; t: Dictionary }) {
   async function loadOptions() {
     if (options) return;
     try {
-      setOptions(await (await fetch("/api/area/options")).json());
+      setOptions(await (await fetch(API_BASE + "/api/area/options")).json());
     } catch {
       setStatus("error");
     }
@@ -51,7 +52,7 @@ export function AreaCard({ lang, t }: { lang: Locale; t: Dictionary }) {
   async function fetchArea(q: URLSearchParams) {
     setStatus("loading");
     try {
-      const res = await fetch(`/api/area?${q}`);
+      const res = await fetch(`${API_BASE}/api/area?${q}`);
       if (res.status === 404) {
         setStatus("notfound");
         void loadOptions();

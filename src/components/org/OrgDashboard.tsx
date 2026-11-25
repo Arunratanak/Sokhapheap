@@ -1,5 +1,6 @@
 "use client";
 
+import { API_BASE } from "@/lib/client/api-base";
 import { useState } from "react";
 import type { Dictionary, Locale } from "@/lib/i18n";
 import { CVD_BANDS, FINDRISC_BANDS, type OrgStats, type SafeCount } from "@/lib/orgStats";
@@ -47,7 +48,7 @@ export function OrgDashboard({ code, lang, t, provinces }: { code: string; lang:
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     setState("loading");
-    const res = await fetch(`/api/org/${encodeURIComponent(code)}`, {
+    const res = await fetch(`${API_BASE}/api/org/${encodeURIComponent(code)}`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ accessCode }),

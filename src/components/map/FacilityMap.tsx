@@ -1,5 +1,6 @@
 "use client";
 
+import { API_BASE } from "@/lib/client/api-base";
 import "leaflet/dist/leaflet.css";
 import { useEffect, useState } from "react";
 import { CircleMarker, MapContainer, TileLayer, Tooltip, useMap } from "react-leaflet";
@@ -29,7 +30,7 @@ export default function FacilityMap({
 
   useEffect(() => {
     // Only fetched once the user taps "Show map" (keeps the first load light on slow 3G).
-    fetch("/api/facilities/all").then((r) => r.json()).then(setData).catch(() => {});
+    fetch(API_BASE + "/api/facilities/all").then((r) => r.json()).then(setData).catch(() => {});
   }, []);
 
   const pts = [...focus.map((f) => [f.lat, f.lng] as [number, number]), ...(user ? [[user.lat, user.lng] as [number, number]] : [])];

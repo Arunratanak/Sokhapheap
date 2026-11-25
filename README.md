@@ -106,6 +106,16 @@ npm run bot:webhook           # point the bot back at NEXT_PUBLIC_SITE_URL/api/t
 
 The free plan sleeps after 15 minutes without traffic, so the first request afterwards can take up to about a minute. Warm the app up before demos (see `DEMO_SCRIPT.md`).
 
+## Deploy (GitHub Pages, static frontend)
+
+`.github/workflows/pages.yml` builds a static export on every push to `main` and publishes it to https://arunratanak.github.io/Sokhapheap/. Pages can't run server code, so:
+
+- The `/api` routes stay on Render. The browser calls them at `NEXT_PUBLIC_API_BASE`, which defaults to the Render URL and can be overridden with the repo variable `API_BASE_URL`. Render allows these cross-origin calls from `https://arunratanak.github.io`. To allow other origins, set `CORS_ORIGINS` (comma-separated) in Render.
+- The organisation dashboards (`/[lang]/org/[code]`) and the social preview image are only on Render.
+- One-time setup: **Settings → Pages → Source: GitHub Actions**.
+
+`scripts/build_pages.sh` deletes the server-only files before building, so run it only in CI or in a throwaway copy.
+
 ## Limitations
 
 - FINDRISC and the WHO charts were **developed outside Cambodia** and have not been validated in the Cambodian population. The WHO chart is for ages 40–74 only.

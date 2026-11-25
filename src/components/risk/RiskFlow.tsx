@@ -1,5 +1,6 @@
 "use client";
 
+import { API_BASE } from "@/lib/client/api-base";
 import { useEffect, useRef, useState } from "react";
 import type { Dictionary, Locale } from "@/lib/i18n";
 import { fmtClient, getPosition, inCambodia, parseNumberInput } from "@/lib/client/util";
@@ -92,7 +93,7 @@ export function RiskFlow({
   async function submit() {
     setPhase("submitting");
     try {
-      const res = await fetch("/api/risk", {
+      const res = await fetch(API_BASE + "/api/risk", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ ...answers, channel: "web", orgCode, save: !demo }),
@@ -346,7 +347,7 @@ export function GoNowScreen({
     getPosition()
       .then(async ({ lat, lng }) => {
         if (!inCambodia(lat, lng)) throw new Error("outside");
-        const r = await fetch(`/api/facilities/nearest?lat=${lat}&lng=${lng}&limit=3&type=hospital`);
+        const r = await fetch(`${API_BASE}/api/facilities/nearest?lat=${lat}&lng=${lng}&limit=3&type=hospital`);
         const { facilities } = await r.json();
         if (!cancelled) { setHospitals(facilities); setStatus("done"); }
       })

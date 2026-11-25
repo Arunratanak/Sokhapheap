@@ -1,3 +1,4 @@
+import { API_BASE } from "@/lib/client/api-base";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { fmt, formatNumber, getDictionary, hasLocale } from "@/lib/i18n";
@@ -100,8 +101,8 @@ export default async function InsightsPage({ params }: PageProps<"/[lang]/insigh
         <h2 id="downloads-title" className="text-xl font-bold">{ti.downloads.title}</h2>
         <p className="text-sm">{ti.downloads.body}</p>
         <div className="flex flex-wrap gap-3">
-          <a className="btn-secondary" href="/api/open-data/download/areas_district.csv" download>⬇️ {ti.downloads.csv}</a>
-          <a className="btn-secondary" href="/api/open-data/download/gap_index.geojson" download>⬇️ {ti.downloads.geojson}</a>
+          <a className="btn-secondary" href={`${API_BASE}/api/open-data/download/areas_district.csv`} download>⬇️ {ti.downloads.csv}</a>
+          <a className="btn-secondary" href={`${API_BASE}/api/open-data/download/gap_index.geojson`} download>⬇️ {ti.downloads.geojson}</a>
         </div>
         <p className="text-xs text-muted">{ti.downloads.citation}</p>
         <a href={`/${lang}/insights/api`} className="text-sm font-medium text-brand-strong underline underline-offset-2">🔌 {ti.apiLink}</a>

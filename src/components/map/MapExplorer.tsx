@@ -1,5 +1,6 @@
 "use client";
 
+import { API_BASE } from "@/lib/client/api-base";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import type { Dictionary, Locale } from "@/lib/i18n";
@@ -35,7 +36,7 @@ export function MapExplorer({
       if (!inCambodia(pos.lat, pos.lng)) throw new Error("outside Cambodia");
       setUser(pos);
       const q = new URLSearchParams({ lat: String(pos.lat), lng: String(pos.lng), limit: "5", ...(typeFilter ? { type: typeFilter } : {}) });
-      const { facilities } = await (await fetch(`/api/facilities/nearest?${q}`)).json();
+      const { facilities } = await (await fetch(`${API_BASE}/api/facilities/nearest?${q}`)).json();
       setItems(facilities);
       setMode("located");
     } catch {
@@ -51,7 +52,7 @@ export function MapExplorer({
     setLoading(true);
     try {
       const q = new URLSearchParams({ province: p, ...(d ? { district: d } : {}) });
-      const { facilities } = await (await fetch(`/api/facilities/by-area?${q}`)).json();
+      const { facilities } = await (await fetch(`${API_BASE}/api/facilities/by-area?${q}`)).json();
       setItems((facilities as FacilityItem[]).filter((f) => !typeFilter || f.type === typeFilter));
     } catch {
       setItems([]);

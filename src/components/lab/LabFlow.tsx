@@ -1,5 +1,6 @@
 "use client";
 
+import { API_BASE } from "@/lib/client/api-base";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { Dictionary, Locale } from "@/lib/i18n";
@@ -59,7 +60,7 @@ export function LabFlow({ lang, t }: { lang: Locale; t: Dictionary }) {
       const fd = new FormData();
       const blob = await downscale(file);
       fd.set("image", blob instanceof File ? blob : new File([blob], "report.jpg", { type: "image/jpeg" }));
-      const res = await fetch("/api/lab/extract", { method: "POST", body: fd });
+      const res = await fetch(API_BASE + "/api/lab/extract", { method: "POST", body: fd });
       const body = await res.json().catch(() => ({}));
       if (!res.ok) {
         setNotice(res.status === 503 ? t.lab.aiUnavailable : t.common.error);
@@ -95,7 +96,7 @@ export function LabFlow({ lang, t }: { lang: Locale; t: Dictionary }) {
     if (!values.length) return;
     setStage("evaluating");
     try {
-      const res = await fetch("/api/lab/evaluate", {
+      const res = await fetch(API_BASE + "/api/lab/evaluate", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ values }),
@@ -114,7 +115,7 @@ export function LabFlow({ lang, t }: { lang: Locale; t: Dictionary }) {
   useEffect(() => {
     if (stage !== "results" || !results.length) return;
     let cancelled = false;
-    fetch("/api/explain", {
+    fetch(API_BASE + "/api/explain", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({

@@ -1,5 +1,6 @@
 "use client";
 
+import { API_BASE } from "@/lib/client/api-base";
 import dynamic from "next/dynamic";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { FeatureCollection, Geometry } from "geojson";
@@ -58,7 +59,7 @@ export function InsightsExplorer({ lang, t, ranking }: { lang: Locale; t: Dictio
 
   async function loadLevel(l: Level) {
     if (data[l]) return;
-    const res = await fetch(`/api/insights/${l}`);
+    const res = await fetch(`${API_BASE}/api/insights/${l}`);
     const json = await res.json();
     setData((d) => ({ ...d, [l]: json }));
   }
@@ -103,7 +104,7 @@ export function InsightsExplorer({ lang, t, ranking }: { lang: Locale; t: Dictio
     const province = level === "province" ? area.name_en : area.province_name;
     const district = level === "district" ? area.name_en : level === "commune" ? area.district_name : undefined;
     const q = new URLSearchParams({ province: province ?? "", ...(district ? { district } : {}) });
-    const res = await fetch(`/api/facilities/by-area?${q}`);
+    const res = await fetch(`${API_BASE}/api/facilities/by-area?${q}`);
     const json = res.ok ? await res.json() : { facilities: [] };
     setFacilities(json.facilities ?? []);
     setShowFac(true);

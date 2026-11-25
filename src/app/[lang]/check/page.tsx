@@ -16,10 +16,12 @@ export default async function CheckPage({ params, searchParams }: PageProps<"/[l
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
   const t = getDictionary(lang);
-  const sp = await searchParams;
   // The clinician gate is enforced here, on the server: drafts only in localhost preview, or when
   // PUBLISH_DRAFT_MODULES is on (then the "not yet reviewed by a doctor" banner is shown).
-  const preview = previewAllowed((await headers()).get("host"), sp.preview);
+  // The static GitHub Pages build has no request, so preview is always off there.
+  const preview =
+    process.env.GITHUB_PAGES !== "true" &&
+    previewAllowed((await headers()).get("host"), (await searchParams).preview);
   const visible = visibleModules(preview);
   const allowed = visible.map((m) => m.id);
   const hasDrafts = visible.some((m) => m.status === "draft");

@@ -1,5 +1,6 @@
 "use client";
 
+import { API_BASE } from "@/lib/client/api-base";
 import { useEffect, useState } from "react";
 import type { Dictionary, Locale } from "@/lib/i18n";
 import type { OrgStats } from "@/lib/orgStats";
@@ -38,7 +39,7 @@ export function ScreeningPlanner({
     if (!pc) return;
     setLoading(true);
     try {
-      const res = await fetch(`/api/planner/${pc}`);
+      const res = await fetch(`${API_BASE}/api/planner/${pc}`);
       setPlan(res.ok ? await res.json() : null);
     } finally {
       setLoading(false);
@@ -48,7 +49,7 @@ export function ScreeningPlanner({
   useEffect(() => {
     if (!initial) return;
     let cancelled = false;
-    fetch(`/api/planner/${initial}`)
+    fetch(`${API_BASE}/api/planner/${initial}`)
       .then((r) => (r.ok ? r.json() : null))
       .then((j) => { if (!cancelled) setPlan(j); })
       .catch(() => {});

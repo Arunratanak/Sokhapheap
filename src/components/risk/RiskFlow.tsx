@@ -1,6 +1,6 @@
 "use client";
 
-import { API_BASE } from "@/lib/client/api-base";
+import { API_BASE, BASE_PATH } from "@/lib/client/api-base";
 import { useEffect, useRef, useState } from "react";
 import type { Dictionary, Locale } from "@/lib/i18n";
 import { fmtClient, getPosition, inCambodia, parseNumberInput } from "@/lib/client/util";
@@ -369,7 +369,7 @@ export function GoNowScreen({
       {status === "denied" && (
         <p>
           {t.map.locationDenied}{" "}
-          <a className="font-semibold text-brand-strong underline" href={`/${lang}/map?type=hospital`}>{t.common.findCare}</a>
+          <a className="font-semibold text-brand-strong underline" href={`${BASE_PATH}/${lang}/map?type=hospital`}>{t.common.findCare}</a>
         </p>
       )}
       {hospitals && <FacilityList items={hospitals} lang={lang} t={t} />}

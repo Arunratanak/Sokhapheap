@@ -1,6 +1,6 @@
 "use client";
 
-import { API_BASE } from "@/lib/client/api-base";
+import { API_BASE, BASE_PATH } from "@/lib/client/api-base";
 import { useEffect, useState } from "react";
 import type { Dictionary, Locale } from "@/lib/i18n";
 import type { OrgStats } from "@/lib/orgStats";
@@ -112,7 +112,7 @@ export function ScreeningPlanner({
           </ol>
           <div className="flex flex-wrap gap-3">
             <button type="button" className="btn-secondary" onClick={downloadCsv}>⬇️ {p.csv}</button>
-            <a className="btn-secondary" href={`/${lang}/plan/${plan.province.pcode}?org=${encodeURIComponent(orgCode)}`} target="_blank" rel="noopener">🖨️ {p.print}</a>
+            <a className="btn-secondary" href={`${BASE_PATH}/${lang}/plan/${plan.province.pcode}?org=${encodeURIComponent(orgCode)}`} target="_blank" rel="noopener">🖨️ {p.print}</a>
           </div>
 
           <div className="rounded-xl bg-brand-soft p-3 text-sm">

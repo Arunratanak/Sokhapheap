@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { LOCALE_COOKIE, type Locale } from "@/lib/i18n";
+import { BASE_PATH } from "@/lib/client/api-base";
 
 export const LOCALE_STORAGE_KEY = "sokhapheap-lang";
 
@@ -31,7 +32,8 @@ export function LanguageSwitcher({ current, label, className = "" }: { current: 
     <div role="group" aria-label={label} className={`inline-flex h-10 items-center rounded-full border border-line bg-surface p-1 text-sm font-semibold ${className}`}>
       {options.map((o) => {
         const active = o.lang === current;
-        const href = pathname.replace(/^\/(km|en)(?=\/|$)/, `/${o.lang}`);
+        // Plain <a> (full reload so <html lang> updates), so the basePath has to be added by hand.
+        const href = BASE_PATH + pathname.replace(/^\/(km|en)(?=\/|$)/, `/${o.lang}`);
         return (
           <a
             key={o.lang}

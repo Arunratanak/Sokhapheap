@@ -18,12 +18,18 @@ find src -name '*.test.ts' -o -name '*.test.tsx' | xargs -r rm -f
 
 GITHUB_PAGES=true npx next build
 
-# "/" → default language (the server version does this in proxy.ts).
+# "/" → saved language, else Khmer (the server version does this in proxy.ts).
+# The script uses the choice LanguageSwitcher stores; the meta refresh is the no-JS fallback.
 cat > out/index.html <<EOF
 <!doctype html>
 <meta charset="utf-8">
 <title>SokhaPheap</title>
-<meta http-equiv="refresh" content="0; url=${NEXT_PUBLIC_BASE_PATH:-}/km/">
+<script>
+  var l = "km";
+  try { if (localStorage.getItem("sokhapheap-lang") === "en") l = "en"; } catch (e) {}
+  location.replace("${NEXT_PUBLIC_BASE_PATH:-}/" + l + "/");
+</script>
+<meta http-equiv="refresh" content="1; url=${NEXT_PUBLIC_BASE_PATH:-}/km/">
 <link rel="canonical" href="${NEXT_PUBLIC_BASE_PATH:-}/km/">
 <a href="${NEXT_PUBLIC_BASE_PATH:-}/km/">SokhaPheap</a>
 EOF

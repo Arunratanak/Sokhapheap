@@ -8,6 +8,8 @@ import { parseNumberInput } from "@/lib/client/util";
 import { Disclaimer } from "@/components/ui/Disclaimer";
 import type { EvaluatedLabValue, ExtractedLabValue } from "@/domain/scoring/labRanges";
 import { LoadingState } from "@/components/ui/LoadingState";
+import { SaveRecordButton } from "@/components/features/account/SaveRecordButton";
+import { labRecord } from "@/domain/records";
 
 type Stage = "upload" | "reading" | "confirm" | "evaluating" | "results";
 interface Row { test_name: string; value: string; unit: string; low: string; high: string; confidence: number }
@@ -313,6 +315,8 @@ export function LabFlow({ lang, t }: { lang: Locale; t: Dictionary }) {
           <LoadingState compact message={t.common.explaining} />
         )}
       </section>
+
+      <SaveRecordButton lang={lang} t={t} record={labRecord(results)} />
 
       <Disclaimer text={t.common.disclaimer} />
       <Link href={`/${lang}/map`} className="btn-primary">📍 {t.common.findCare}</Link>

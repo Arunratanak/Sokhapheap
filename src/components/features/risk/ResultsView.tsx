@@ -11,6 +11,8 @@ import type { FindriscBand, FindriscResult } from "@/domain/scoring/findrisc";
 import type { CvdBand, CvdResult } from "@/domain/scoring/whoCvd";
 import type { NextStep } from "@/domain/risk";
 import { LoadingState } from "@/components/ui/LoadingState";
+import { SaveRecordButton } from "@/components/features/account/SaveRecordButton";
+import { riskRecord } from "@/domain/records";
 
 export interface RiskApiResult {
   findrisc: FindriscResult;
@@ -135,6 +137,8 @@ export function ResultsView({
           <LoadingState compact message={t.common.explaining} />
         )}
       </section>
+
+      <SaveRecordButton lang={lang} t={t} record={riskRecord(result)} />
 
       <AreaCard lang={lang} t={t} />
 

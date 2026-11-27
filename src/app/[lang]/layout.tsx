@@ -87,6 +87,7 @@ export default async function RootLayout({
             home: t.nav.home, check: t.nav.check, lab: t.nav.lab, insights: t.nav.insights, about: t.nav.about,
             cta: t.nav.cta, openMenu: t.nav.openMenu, closeMenu: t.nav.closeMenu, main: t.nav.main, language: t.nav.language,
             toDark: t.nav.toDark, toLight: t.nav.toLight, theme: t.nav.theme,
+            login: t.nav.login, account: t.nav.account,
           }}
         />
         <main id="main" className="mx-auto flex w-full max-w-xl flex-1 flex-col px-4 pt-4 pb-12">

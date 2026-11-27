@@ -5,11 +5,14 @@ import { asksPregnancy, profileSchema, type Profile } from "../../domain/modules
 import { chooseModules, runModules, visibleModules, type CardResult } from "../../domain/modules/registry";
 import { questionsToAsk, type Answers as ModuleAnswers, type ModuleDefinition, type ModuleQuestion, type Urgency } from "../../domain/modules/types";
 import { WAIST_INCHES, waistInchesToCm } from "../../domain/units";
+import { healthCheckRecord } from "../../domain/records";
+import { saveBotRecord } from "./records";
 
 /**
  * The multi-screening health check in Telegram. Uses exactly the same module code as the web /check page
  * (profile schema, chooseModules, questionsToAsk, runModules), so both channels give the same results.
- * Same gate as the web: only modules that are public (visibleModules(false)) are offered. Nothing is saved.
+ * Same gate as the web: only modules that are public (visibleModules(false)) are offered.
+ * The result summary (not the answers) is saved to the person's records, shared with the website.
  */
 
 type T = ReturnType<typeof getRawDictionary>;
@@ -223,6 +226,7 @@ async function finish(ctx: Context, s: HcSession, hc: HealthCheckState) {
   for (const msg of formatHealthCheckMessage(cards, s.lang, hasDrafts)) await ctx.reply(msg);
   s.step = null;
   s.hc = undefined;
+  if (cards.length) await saveBotRecord(ctx, s.lang, healthCheckRecord(cards));
   // Find care is part of the result: offer the nearest facilities (handled by the bot's location handler).
   await ctx.reply(t.bot.sendLocationPrompt, { reply_markup: new Keyboard().requestLocation(t.bot.sendLocation).resized().oneTime() });
 }

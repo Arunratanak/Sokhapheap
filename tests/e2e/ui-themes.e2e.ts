@@ -19,7 +19,7 @@ const BROWSERS = [
   "C:/Program Files/Google/Chrome/Application/chrome.exe",
   "/usr/bin/chromium", "/usr/bin/google-chrome",
 ];
-const PAGES = ["", "/risk", "/check", "/lab", "/map", "/insights", "/about"];
+const PAGES = ["", "/risk", "/check", "/lab", "/map", "/insights", "/about", "/account"];
 const WIDTHS = [360, 768, 1024, 1440];
 
 async function check(browser: Browser, theme: "light" | "dark", lang: "en" | "km", width: number, failures: string[]) {

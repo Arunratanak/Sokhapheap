@@ -306,7 +306,7 @@
     "limit2": "Part of the facility data is from 2010. Some facilities may have moved, closed or changed.",
     "limit3": "Lab normal ranges vary between laboratories. We use the range printed on your report when there is one.",
     "privacyTitle": "Privacy",
-    "privacy": "We do not ask for or store your name, phone number or ID. Lab photos are deleted right after reading. Risk results are saved without any personal details, for anonymous statistics.",
+    "privacy": "We do not ask for or store your name, phone number or ID. Lab photos are deleted right after reading. Risk results are saved without any personal details, for anonymous statistics. If you choose to log in with Telegram, we keep only your Telegram ID and the result summaries you save (in the Telegram bot, results are saved automatically), and you can delete them at any time.",
     "how4": "Open Data Insights combines 12 Cambodian and international open datasets into a Screening Gap Index that shows where people are most at risk and furthest from care. Your results show facts about your area from the same data.",
     "roadmapTitle": "Roadmap",
     "roadmap1": "Keep facility data current: replace the Ministry of Health 2010 facility list with newer official data when it is published, and refresh the OpenStreetMap health facilities (HOT export) every month.",
@@ -331,7 +331,7 @@
   },
   "bot": {
     "welcome": "Hello! I am the SokhaPheap bot. I can run a health check (heart, blood pressure, diabetes, kidneys and TB), explain your blood test, and show the nearest health facilities after your results.",
-    "help": "Commands:\n/health – my health check (6 screenings)\n/check – diabetes and heart risk check\n/lab – explain a blood test photo\n/area – health facts about your area (open data)\n/remind – get a reminder to check again\n/language – change language\n/help – show this message",
+    "help": "Commands:\n/health – my health check (6 screenings)\n/check – diabetes and heart risk check\n/lab – explain a blood test photo\n/area – health facts about your area (open data)\n/remind – get a reminder to check again\n/records – my saved records\n/deleterecords – delete my saved records\n/logout – log out of the website on every device\n/language – change language\n/help – show this message",
     "menuCheck": "Check my risk",
     "menuLab": "Explain my blood test",
     "menuNear": "Find care near me",
@@ -363,7 +363,7 @@
     "areaPrompt": "📊 Your area: send your location, or type your province (for example: Siem Reap).",
     "areaNotFound": "We could not find that province. Type a province name (for example: Takeo), or send your location.",
     "menuHealth": "My health check (6 screenings)",
-    "hcIntro": "My health check: I'll ask a few questions about you once, then you choose which screenings to do (heart, blood pressure, diabetes, kidneys, TB). Nothing is saved.",
+    "hcIntro": "My health check: I'll ask a few questions about you once, then you choose which screenings to do (heart, blood pressure, diabetes, kidneys, TB). Your answers are not saved; the results are kept in your records (/records).",
     "hcChoose": "Choose your screenings: tap to tick or untick, then tap Continue.",
     "hcContinue": "Continue ➡️",
     "hcNoneSelected": "Please choose at least one screening.",
@@ -372,7 +372,25 @@
     "typeNumber": "Type a number.",
     "menuLanguage": "Language / ភាសា",
     "urgentContinue": "I am safe, continue the check",
-    "backToMenu": "Back to the menu"
+    "backToMenu": "Back to the menu",
+    "menuRecords": "My records",
+    "recordSaved": "Saved to your records. Send /records to see them, here or on the website.",
+    "recordsEmpty": "You have no saved records yet. Results from /health, /check and /lab are saved here automatically.",
+    "recordsMore": "Showing the latest {n} of {total}.",
+    "recordsWeb": "See all your records on the website (Log in with Telegram): {url}",
+    "recordsDeleteButton": "Delete all my records",
+    "recordsDeleteAsk": "Delete all your saved records, here and on the website? This cannot be undone. You will also be logged out of the website.",
+    "recordsDeleteYes": "Yes, delete everything",
+    "recordsDeleteNo": "No, keep them",
+    "recordsDeleted": "All your records were deleted, and you were logged out of the website.",
+    "recordsKept": "OK, your records were kept.",
+    "loginAsk": "🔐 Log in to the SokhaPheap website?\n\nCode: {code}\n\nCheck that the website shows the same code. Only confirm if you pressed \"Log in with Telegram\" yourself just now. The website will be able to see and save your health records.",
+    "loginConfirm": "Yes, log me in",
+    "loginCancel": "Cancel",
+    "loginDone": "✅ You are logged in. Go back to the website: your records are now shared between the website and this chat.",
+    "loginCancelled": "Login cancelled. Nothing was shared.",
+    "loginExpired": "This login link has expired or was already used. Press \"Log in with Telegram\" on the website again.",
+    "loggedOutEverywhere": "You were logged out of the website on every device."
   },
   "insights": {
     "title": "Open Data Insights",
@@ -754,7 +772,9 @@
     "toDark": "Switch to dark theme",
     "toLight": "Switch to light theme",
     "language": "Language",
-    "theme": "Light or dark"
+    "theme": "Light or dark",
+    "account": "My records",
+    "login": "Log in"
   },
   "landing": {
     "carousel": {
@@ -919,5 +939,49 @@
     "allSources": "All data sources",
     "credit": "Built for the Open Data × AI Venture Hackathon 1.0 · Phnom Penh, December 2026",
     "dataNote": "Health facilities: Ministry of Health and © OpenStreetMap contributors (ODbL). Population: WorldPop and the National Institute of Statistics. Indicators: WHO, World Bank and the Cambodia DHS 2021–22."
+  },
+  "auth": {
+    "title": "Log in with Telegram",
+    "intro": "Log in to save your results and keep track of them over time. Your records are shared with the SokhaPheap Telegram bot.",
+    "button": "Log in with Telegram",
+    "openTelegram": "Open Telegram to confirm",
+    "codeLabel": "Your code",
+    "codeHelp": "Telegram will show the same code. Tap \"Yes, log me in\" there, then come back here.",
+    "waiting": "Waiting for you to confirm in Telegram…",
+    "expired": "The login expired. Please try again.",
+    "denied": "Login was cancelled in Telegram.",
+    "unavailable": "Login is not available right now. Please try again later.",
+    "loggedInAs": "Logged in with Telegram as {name}",
+    "loggedIn": "Logged in with Telegram",
+    "logout": "Log out",
+    "privacy": "We keep only your Telegram ID and your result summaries (not your answers, name or phone number). You can delete them at any time.",
+    "cancel": "Cancel",
+    "sessionExpired": "Your login expired. Please log in again."
+  },
+  "records": {
+    "title": "My records",
+    "intro": "Your saved results from the website and the Telegram bot, newest first.",
+    "empty": "No saved records yet. Save a result from the health check, risk check or lab results, or use the Telegram bot.",
+    "kinds": {
+      "health_check": "Health check",
+      "risk": "Diabetes and heart risk",
+      "lab": "Lab results"
+    },
+    "channel": {
+      "web": "Website",
+      "bot": "Telegram"
+    },
+    "save": "Save to my records",
+    "saving": "Saving…",
+    "saved": "Saved to my records",
+    "view": "See my records",
+    "saveLoginPrompt": "Log in with Telegram to save this result and keep track of it.",
+    "saveFailed": "Could not save. Please try again.",
+    "delete": "Delete",
+    "deleteConfirm": "Delete this record?",
+    "deleteAll": "Delete all my records",
+    "deleteAllConfirm": "Delete all your saved records, on the website and in Telegram? This cannot be undone, and you will be logged out.",
+    "deletedAll": "All your records were deleted.",
+    "loginToSee": "Log in to see your saved records."
   }
 }

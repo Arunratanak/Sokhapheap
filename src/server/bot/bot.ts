@@ -12,6 +12,10 @@ import { areaSummary, matchProvinceName, type AreaSummary } from "../insights/ar
 import { getServiceClient } from "../db/supabase";
 import { WAIST_INCHES, waistInchesToCm } from "@/domain/units";
 import { handleHealthCallback, handleHealthText, startHealthCheck, type HealthCheckState } from "./healthCheck";
+import { answerLogin, findPendingLogin, LOGIN_START_PREFIX, logoutEverywhere } from "../auth/telegramLogin";
+import { deleteAllRecords, listRecords } from "../db/records";
+import { labRecord, riskRecord } from "../../domain/records";
+import { bilingual, formatRecordsMessage, saveBotRecord } from "./records";
 
 /**
  * Telegram bot. Same scoring, explanation and lab logic as the web app — no duplicated rules.
@@ -89,6 +93,7 @@ function mainMenu(t: T) {
     .text(`🩺 ${t.bot.menuHealth}`, "menu:health").row()
     .text(`❤️ ${t.bot.menuCheck}`, "menu:check").row()
     .text(`🩸 ${t.bot.menuLab}`, "menu:lab").row()
+    .text(`📒 ${t.bot.menuRecords}`, "menu:records").row()
     .text(`🌐 ${t.bot.menuLanguage}`, "menu:lang");
 }
 
@@ -182,6 +187,7 @@ async function finishRisk(ctx: Context, s: Session) {
   const result = runRiskCheck(parsed.data);
   await ctx.reply(formatRiskMessage(result, s.lang));
   void saveScreening(result, { channel: "bot" });
+  await saveBotRecord(ctx, s.lang, riskRecord(result));
 
   const f = result.findrisc;
   const e = await explain({
@@ -220,6 +226,20 @@ export function formatLabMessage(results: EvaluatedLabValue[], lang: Locale): st
   return lines.join("\n");
 }
 
+/** Someone opened the website's login link: show the code to match, and ask them to confirm. */
+async function askLogin(ctx: Context, s: Session, linkToken: string) {
+  const chosen = s.langChosen === true;
+  const pending = await findPendingLogin(linkToken);
+  if (!pending) return ctx.reply(bilingual((t) => t.bot.loginExpired, s.lang, chosen));
+  const t = getRawDictionary(chosen ? s.lang : "km");
+  const en = getRawDictionary("en");
+  const text = bilingual((tt, l) => fmt(tt.bot.loginAsk, { code: pending.code.split("").join(" ") }, l), s.lang, chosen);
+  // Buttons carry the link token (43 chars; callback data may be up to 64 bytes).
+  const yes = chosen ? t.bot.loginConfirm : `${t.bot.loginConfirm} · ${en.bot.loginConfirm}`;
+  const no = chosen ? t.bot.loginCancel : `${t.bot.loginCancel} · ${en.bot.loginCancel}`;
+  return ctx.reply(text, { reply_markup: new InlineKeyboard().text(`✅ ${yes}`, `lg:y:${linkToken}`).row().text(`✖️ ${no}`, `lg:n:${linkToken}`) });
+}
+
 // ---------- bot factory ----------
 export function createBot(token: string) {
   const bot = new Bot(token);
@@ -227,6 +247,9 @@ export function createBot(token: string) {
   bot.command("start", async (ctx) => {
     const s = getSession(ctx.chat.id);
     s.step = null;
+    // Website login link: t.me/<bot>?start=login_<token>
+    const payload = typeof ctx.match === "string" ? ctx.match.trim() : "";
+    if (payload.startsWith(LOGIN_START_PREFIX)) return askLogin(ctx, s, payload.slice(LOGIN_START_PREFIX.length));
     // First visit: ask English or Khmer before anything else.
     if (!s.langChosen) return ctx.reply(CHOOSE_LANGUAGE, { reply_markup: languageKeyboard() });
     const t = getRawDictionary(s.lang);
@@ -274,6 +297,28 @@ export function createBot(token: string) {
     const t = getRawDictionary(getSession(ctx.chat.id).lang);
     await ctx.reply(t.bot.remindPrompt, { reply_markup: remindKeyboard(t) });
   });
+  const showRecords = async (ctx: Context) => {
+    const s = getSession(ctx.chat!.id);
+    const t = getRawDictionary(s.lang);
+    const records = await listRecords(ctx.from!.id);
+    if (!records) return ctx.reply(t.common.error);
+    const kb = records.length ? new InlineKeyboard().text(`🗑 ${t.bot.recordsDeleteButton}`, "rec:del") : undefined;
+    return ctx.reply(formatRecordsMessage(records, s.lang), { reply_markup: kb, link_preview_options: { is_disabled: true } });
+  };
+  const askDeleteRecords = (ctx: Context) => {
+    const t = getRawDictionary(getSession(ctx.chat!.id).lang);
+    return ctx.reply(t.bot.recordsDeleteAsk, {
+      reply_markup: new InlineKeyboard().text(t.bot.recordsDeleteYes, "rec:del:yes").row().text(t.bot.recordsDeleteNo, "rec:del:no"),
+    });
+  };
+  bot.command("records", showRecords);
+  bot.command("deleterecords", askDeleteRecords);
+  bot.command("logout", async (ctx) => {
+    const t = getRawDictionary(getSession(ctx.chat.id).lang);
+    const ok = await logoutEverywhere(ctx.from!.id);
+    await ctx.reply(ok ? t.bot.loggedOutEverywhere : t.common.error);
+  });
+
   bot.command("stopremind", async (ctx) => {
     const t = getRawDictionary(getSession(ctx.chat.id).lang);
     await getServiceClient()?.from("reminders").delete().eq("telegram_chat_id", ctx.chat.id).is("sent_at", null);
@@ -300,6 +345,24 @@ export function createBot(token: string) {
     if (await handleHealthCallback(ctx, s, data)) return;
     if (data === "menu:lab") return startLab(ctx);
     if (data === "menu:near") return startNear(ctx);
+    if (data === "menu:records") return showRecords(ctx);
+    if (data === "rec:del") return askDeleteRecords(ctx);
+    if (data === "rec:del:no") return ctx.reply(t.bot.recordsKept);
+    if (data === "rec:del:yes") {
+      const ok = await deleteAllRecords(ctx.from.id);
+      if (ok) await logoutEverywhere(ctx.from.id);
+      return ctx.reply(ok ? t.bot.recordsDeleted : t.common.error);
+    }
+
+    // Website login: "lg:y:<token>" confirm / "lg:n:<token>" cancel (buttons from askLogin).
+    if (data.startsWith("lg:")) {
+      const [, answer, linkToken] = data.split(":");
+      const confirm = answer === "y";
+      const ok = await answerLogin(linkToken ?? "", { id: ctx.from.id, firstName: ctx.from.first_name }, confirm);
+      await ctx.editMessageReplyMarkup({ reply_markup: undefined }).catch(() => {});
+      const text = ok ? (confirm ? (tt: T) => tt.bot.loginDone : (tt: T) => tt.bot.loginCancelled) : (tt: T) => tt.bot.loginExpired;
+      return ctx.reply(bilingual(text, s.lang, s.langChosen === true));
+    }
 
     if (data === "urgent:yes") {
       s.step = null;
@@ -345,6 +408,7 @@ export function createBot(token: string) {
       const results = s.lab.map((v) => evaluateLabValue({ ...v, confidence: Math.max(v.confidence, 0.9) }));
       s.lab = undefined;
       await ctx.reply(formatLabMessage(results, s.lang));
+      await saveBotRecord(ctx, s.lang, labRecord(results));
       const e = await explain({
         lang: s.lang,
         kind: "lab",

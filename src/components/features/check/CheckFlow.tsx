@@ -12,6 +12,8 @@ import { InfoTip } from "@/components/ui/InfoTip";
 import { waistInchesToCm } from "@/domain/units";
 import { ArrowRight, CircleCheck, Info } from "lucide-react";
 import { IconHealthCheck } from "@/components/ui/BrandIcons";
+import { SaveRecordButton } from "@/components/features/account/SaveRecordButton";
+import { healthCheckRecord } from "@/domain/records";
 
 type Phase = "intro" | "profile" | "choose" | "questions" | "dashboard";
 /** Opt-in screenings that need a lab report: pre-ticked when the person says they have one. */
@@ -408,6 +410,7 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
           );
         })}
       </ul>
+      {cards.length > 0 && <SaveRecordButton lang={lang} t={t} record={healthCheckRecord(cards)} />}
       <Disclaimer text={t.common.disclaimer} />
       <button className="btn-ghost" onClick={() => { setCards([]); setAnswers({}); setNumText({}); setQStep(0); go("profile"); }}>↺ {c.startOver}</button>
     </div>

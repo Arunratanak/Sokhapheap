@@ -27,8 +27,10 @@ function cors(request: NextRequest) {
   if (!origin || !CORS_ORIGINS.includes(origin)) return;
   const headers = {
     "Access-Control-Allow-Origin": origin,
-    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
+    // Authorization: the "Log in with Telegram" session token (a bearer token, not a cookie, because the
+    // Pages frontend and the Render API are on different sites).
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
     "Access-Control-Max-Age": "86400",
     Vary: "Origin",
   };

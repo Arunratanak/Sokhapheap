@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CircleUserRound } from "lucide-react";
 import type { Locale } from "@/i18n";
+import { useAuth } from "@/lib/client/auth";
 import { LogoMark } from "../ui/Logo";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -13,6 +14,26 @@ export interface NavLabels {
   appName: string;
   home: string; check: string; lab: string; insights: string; about: string;
   cta: string; openMenu: string; closeMenu: string; main: string; language: string; toDark: string; toLight: string; theme: string;
+  login: string; account: string;
+}
+
+/** "Log in" (logged out) or "My records" (logged in with Telegram); both open /account. */
+function AccountLink({ href, t, active, className = "", onClick }: { href: string; t: NavLabels; active: boolean; className?: string; onClick?: () => void }) {
+  const auth = useAuth();
+  const label = auth ? t.account : t.login;
+  return (
+    <Link
+      href={href}
+      onClick={onClick}
+      aria-current={active ? "page" : undefined}
+      className={`inline-flex min-h-10 items-center gap-1.5 rounded-full border px-3 text-sm font-medium whitespace-nowrap transition-colors ${
+        active ? "border-brand bg-brand-soft text-brand-strong" : "border-line bg-surface text-foreground hover:border-brand"
+      } ${className}`}
+    >
+      <CircleUserRound aria-hidden size={18} />
+      <span>{label}</span>
+    </Link>
+  );
 }
 
 type Tab = { key: string; href: string; label: string; match: (p: string) => boolean };
@@ -30,6 +51,8 @@ export function Navbar({ lang, t, healthCheckLive = false }: { lang: Locale; t: 
     { key: "about", href: `${base}/about`, label: t.about, match: under("about") },
   ];
   const ctaHref = healthCheckLive ? `${base}/check` : `${base}/risk`;
+  const accountHref = `${base}/account`;
+  const onAccount = under("account")(pathname);
   const activeKey = tabs.find((x) => x.match(pathname))?.key ?? null;
   const onHome = activeKey === "home";
 
@@ -183,9 +206,10 @@ export function Navbar({ lang, t, healthCheckLive = false }: { lang: Locale; t: 
 
         <div className="flex items-center gap-2">
           <LanguageSwitcher current={lang} label={t.language} />
-          {/* On phones the theme toggle lives in the menu, so logo + name + language + menu fit in 360 px. */}
+          {/* On phones the theme toggle and the account link live in the menu, so logo + name + language + menu fit in 360 px. */}
           <span className="hidden sm:contents">
             <ThemeToggle labels={{ toDark: t.toDark, toLight: t.toLight }} />
+            <AccountLink href={accountHref} t={t} active={onAccount} />
           </span>
           <Link href={ctaHref} className="btn-gradient hidden min-h-10 px-4 py-2 text-sm xl:inline-flex">
             {t.cta}
@@ -234,6 +258,7 @@ export function Navbar({ lang, t, healthCheckLive = false }: { lang: Locale; t: 
           </ul>
         </nav>
         <div className="mt-auto flex flex-col gap-4">
+          <AccountLink href={accountHref} t={t} active={onAccount} onClick={() => setOpen(false)} className="min-h-12 justify-center rounded-xl text-base sm:hidden" />
           <div className="flex items-center justify-between rounded-xl border border-line bg-surface px-4 py-2 sm:hidden">
             <span className="text-sm font-medium text-muted">{t.theme}</span>
             <ThemeToggle labels={{ toDark: t.toDark, toLight: t.toLight }} />

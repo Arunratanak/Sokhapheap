@@ -10,11 +10,10 @@ import { questionsToAsk, type Answers, type ModuleDefinition, type Urgency } fro
 import { Disclaimer } from "@/components/ui/Disclaimer";
 import { InfoTip } from "@/components/ui/InfoTip";
 import { waistInchesToCm } from "@/domain/units";
-import { GoNowScreen, UrgentScreen } from "@/components/features/risk/RiskFlow";
 import { ArrowRight, CircleCheck, Info } from "lucide-react";
 import { IconHealthCheck } from "@/components/ui/BrandIcons";
 
-type Phase = "intro" | "urgent" | "goNow" | "profile" | "choose" | "questions" | "dashboard";
+type Phase = "intro" | "profile" | "choose" | "questions" | "dashboard";
 /** Opt-in screenings that need a lab report: pre-ticked when the person says they have one. */
 const LAB_REPORT_MODULES = ["who_cvd_lab", "egfr"];
 type Draft = Record<string, string | boolean | null>;
@@ -107,9 +106,7 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
     go("dashboard");
   }
 
-  if (phase === "intro") return <WelcomeScreen t={t} headingRef={headingRef} onStart={() => go("urgent")} />;
-  if (phase === "urgent") return <UrgentScreen t={t} headingRef={headingRef} onUrgent={() => go("goNow")} onSafe={() => go("profile")} />;
-  if (phase === "goNow") return <GoNowScreen lang={lang} t={t} headingRef={headingRef} onContinue={() => go("urgent")} />;
+  if (phase === "intro") return <WelcomeScreen t={t} headingRef={headingRef} onStart={() => go("profile")} />;
 
   // Preview (localhost) keeps its own note; on the public site, draft screenings always carry the "not yet reviewed" banner.
   const bannerText = preview ? `🧪 ${c.previewBanner}` : hasDrafts ? `⚠️ ${c.draftBanner}` : null;

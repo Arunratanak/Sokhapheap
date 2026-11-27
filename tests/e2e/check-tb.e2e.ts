@@ -23,7 +23,6 @@ type Dict = typeof en;
 async function run(page: Page, lang: "en" | "km", t: Dict, yes: string[]) {
   await page.goto(`${BASE}/${lang}/check?preview=1`);
   await page.getByRole("button", { name: t.check.welcome.start }).click(); // welcome screen
-  await page.getByRole("button", { name: t.urgent.none }).click();
   await page.getByLabel(t.risk.sex.female, { exact: true }).check();
   await page.getByLabel(t.risk.age.q).fill("35");
   await page.getByLabel(t.risk.height.q).fill("155");

@@ -26,7 +26,6 @@ type Dict = typeof en;
 
 async function fillProfile(page: Page, t: Dict) {
   await page.getByRole("button", { name: t.check.welcome.start }).click(); // welcome screen
-  await page.getByRole("button", { name: t.urgent.none }).click();
   await page.getByLabel(t.risk.sex.male, { exact: true }).check();
   await page.getByLabel(t.risk.age.q).fill("61");
   await page.getByLabel(t.risk.height.q).fill("165");

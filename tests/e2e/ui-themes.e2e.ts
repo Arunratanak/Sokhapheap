@@ -83,7 +83,6 @@ async function main() {
     const page = await ctx.newPage();
     await page.goto(`${BASE}/en/check`, { waitUntil: "networkidle" });
     await page.getByRole("button", { name: en.check.welcome.start }).click();
-    await page.getByRole("button", { name: en.urgent.none }).click();
     const text = await page.locator("main").innerText();
     if (!text.includes(en.check.draftBanner)) failures.push("public /check: draft banner missing");
     if (text.includes(en.check.previewBanner)) failures.push("public /check: shows the localhost preview banner");

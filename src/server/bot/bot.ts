@@ -11,7 +11,7 @@ import { nearestLocal } from "../data/facilities";
 import { areaSummary, matchProvinceName, type AreaSummary } from "../insights/area";
 import { getServiceClient } from "../db/supabase";
 import { WAIST_INCHES, waistInchesToCm } from "@/domain/units";
-import { continueHealthCheck, handleHealthCallback, handleHealthText, startHealthCheck, type HealthCheckState } from "./healthCheck";
+import { handleHealthCallback, handleHealthText, startHealthCheck, type HealthCheckState } from "./healthCheck";
 
 /**
  * Telegram bot. Same scoring, explanation and lab logic as the web app — no duplicated rules.
@@ -302,12 +302,11 @@ export function createBot(token: string) {
     if (data === "menu:near") return startNear(ctx);
 
     if (data === "urgent:yes") {
-      const flow = s.step === "hc:urgent" ? "hc" : "risk"; // which check the person was starting
       s.step = null;
       s.hc = undefined;
       // Same choice as the web "go now" screen: continue the check if safe, or go back to the menu.
       await ctx.reply(`🚑 ${t.urgent.goNowTitle}\n\n${t.urgent.goNowBody}\n\n📞 ${t.urgent.ambulance}`, {
-        reply_markup: new InlineKeyboard().text(`✅ ${t.bot.urgentContinue}`, `safe:${flow}`).row().text(`🏠 ${t.bot.backToMenu}`, "menu:home"),
+        reply_markup: new InlineKeyboard().text(`✅ ${t.bot.urgentContinue}`, "safe:risk").row().text(`🏠 ${t.bot.backToMenu}`, "menu:home"),
       });
       return ctx.reply(t.bot.sendLocationPrompt, { reply_markup: locationKeyboard(t) });
     }
@@ -315,7 +314,6 @@ export function createBot(token: string) {
       s.answers = {};
       return ask(ctx, s, 0);
     }
-    if (data === "safe:hc") return continueHealthCheck(ctx, s);
     if (data === "menu:home") {
       s.step = null;
       s.hc = undefined;

@@ -69,7 +69,6 @@ describe("Telegram bot: language choice", () => {
   it("switching language mid-check starts fresh instead of mixing languages", async () => {
     const { text, tap } = fakeChat(9103);
     await text("/health");
-    await tap("hu:no");
     expect(getSession(9103).hc).toBeDefined();
     await tap("lang:km");
     expect(getSession(9103).hc).toBeUndefined();
@@ -90,12 +89,10 @@ describe("Telegram bot: urgent symptoms screen", () => {
     expect(sent.at(-1)!.text).toBe(`(1/12) ${en.risk.sex.q}`); // continues the risk check from question 1
   });
 
-  it("continues the health check when started from /health", async () => {
-    const { sent, text, tap } = fakeChat(9202);
+  it("/health skips the urgent screen and goes straight to the profile questions", async () => {
+    const { sent, text } = fakeChat(9202);
     await text("/health");
-    await tap("urgent:yes");
-    expect(sent.find((m) => m.text.includes(en.urgent.goNowTitle))!.buttons[0]).toContain("safe:hc");
-    await tap("safe:hc");
+    expect(sent.some((m) => m.text === en.bot.urgentQ)).toBe(false);
     expect(sent.at(-1)!.text).toContain(en.risk.sex.q);
     expect(getSession(9202).step).toBe("hc:p:sex");
   });
@@ -125,7 +122,6 @@ describe("Telegram bot: health check", () => {
   it("full conversation gives exactly the web results (same module code)", async () => {
     const { sent, text, tap } = fakeChat(9002);
     await text("/health");
-    await tap("hu:no");
     // Profile: man, 61, 165 cm, 70 kg, waist 34 in, current smoker, BP 125/80, no medicine, no conditions, no family diabetes.
     await tap("hp:sex:male");
     for (const v of ["61", "165", "70", "34"]) await text(v);

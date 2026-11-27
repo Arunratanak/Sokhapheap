@@ -231,16 +231,7 @@ async function finish(ctx: Context, s: HcSession, hc: HealthCheckState) {
 export async function startHealthCheck(ctx: Context, s: HcSession) {
   const t = getRawDictionary(s.lang);
   s.hc = { draft: {}, selected: [], answers: {} };
-  s.step = "hc:urgent";
   await ctx.reply(t.bot.hcIntro);
-  await ctx.reply(t.bot.urgentQ, {
-    reply_markup: new InlineKeyboard().text(t.bot.urgentYes, "urgent:yes").row().text(t.bot.urgentNo, "hu:no"),
-  });
-}
-
-/** "I am safe, continue the check" after the urgent screen: start the profile questions. */
-export async function continueHealthCheck(ctx: Context, s: HcSession) {
-  s.hc = { draft: {}, selected: [], answers: {} };
   return askProfile(ctx, s, s.hc);
 }
 
@@ -250,11 +241,6 @@ export async function handleHealthCallback(ctx: Context, s: HcSession, data: str
   const hc = s.hc;
   if (data === "info:bpmeds") {
     await ctx.reply(`ℹ️ ${t.risk.bpMeds.info}`);
-    return true;
-  }
-  if (data === "hu:no") {
-    if (!hc || s.step !== "hc:urgent") return true;
-    await askProfile(ctx, s, hc);
     return true;
   }
   if (data.startsWith("hp:")) {

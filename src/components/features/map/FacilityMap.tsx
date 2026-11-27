@@ -38,7 +38,7 @@ export default function FacilityMap({
   const focusIds = new Set(focus.map((f) => `${f.lat},${f.lng}`));
 
   return (
-    <div className="h-80 w-full overflow-hidden rounded-2xl border border-line sm:h-96" role="region" aria-label={ariaLabel}>
+    <div className="h-80 w-full overflow-hidden rounded-2xl border border-border sm:h-96" role="region" aria-label={ariaLabel}>
       <MapContainer bounds={CAMBODIA} preferCanvas scrollWheelZoom={false} className="h-full w-full">
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -52,16 +52,14 @@ export default function FacilityMap({
               key={i}
               center={[lat, lng]}
               radius={highlighted ? 9 : type === "hospital" ? 6 : 4}
-              pathOptions={{ color: highlighted ? "#111" : "#fff", weight: highlighted ? 2 : 1, fillColor: TYPE_STYLE[type].color, fillOpacity: 0.9 }}
+              pathOptions={{ color: highlighted ? "#0e0d0b" : "#ffffff", weight: highlighted ? 2 : 1, fillColor: TYPE_STYLE[type].color, fillOpacity: 0.9 }}
             >
               <Tooltip>{lang === "km" && nameKm ? nameKm : name}</Tooltip>
             </CircleMarker>
           );
         })}
         {user && (
-          <CircleMarker center={[user.lat, user.lng]} radius={8} pathOptions={{ color: "#fff", weight: 3, fillColor: "#2563eb", fillOpacity: 1 }}>
-            <Tooltip permanent direction="top">📍</Tooltip>
-          </CircleMarker>
+          <CircleMarker center={[user.lat, user.lng]} radius={8} pathOptions={{ color: "#0e0d0b", weight: 3, fillColor: "#c9a24a", fillOpacity: 1 }} />
         )}
         <FitTo bounds={bounds} />
       </MapContainer>

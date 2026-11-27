@@ -9,6 +9,7 @@ import { ResultsView, type RiskApiResult } from "./ResultsView";
 import { InfoTip } from "@/components/ui/InfoTip";
 import { WAIST_INCHES, waistCmToInches, waistInchesToCm } from "@/domain/units";
 import { LoadingState } from "@/components/ui/LoadingState";
+import { Check, CircleAlert, Phone } from "lucide-react";
 
 type YesNo = boolean;
 export interface Answers {
@@ -148,22 +149,22 @@ export function RiskFlow({
 
   return (
     <div className="flex flex-col gap-5 pt-2">
-      {demo && <p className="rounded-lg bg-brand-soft px-3 py-2 text-sm">{t.common.demoBanner}</p>}
+      {demo && <p className="rounded-xl border border-dashed border-border-strong px-3 py-2 text-caption text-secondary">{t.common.demoBanner}</p>}
       <div>
-        <p className="mb-1 text-sm text-muted">{fmtClient(t.common.stepOf, { n: stepIndex + 1, total }, lang)}</p>
+        <p className="mb-1 text-caption text-secondary">{fmtClient(t.common.stepOf, { n: stepIndex + 1, total }, lang)}</p>
         <div
-          className="h-2 w-full overflow-hidden rounded-full bg-foreground/10"
+          className="h-1.5 w-full overflow-hidden rounded-full bg-surface-3"
           role="progressbar"
           aria-valuemin={1}
           aria-valuemax={total}
           aria-valuenow={stepIndex + 1}
           aria-label={t.risk.title}
         >
-          <div className="h-full bg-brand transition-all" style={{ width: `${((stepIndex + 1) / total) * 100}%` }} />
+          <div className="h-full bg-gold transition-[width] duration-300 ease-enter" style={{ width: `${((stepIndex + 1) / total) * 100}%` }} />
         </div>
       </div>
 
-      <h1 ref={headingRef} tabIndex={-1} className="text-2xl font-bold leading-snug outline-none">{q.q}</h1>
+      <h1 ref={headingRef} tabIndex={-1} className="text-h1 font-semibold outline-none">{q.q}</h1>
       {q.help && <p className="text-muted">{q.help}</p>}
       {q.info && <InfoTip label={t.common.whatIsThis}>{q.info}</InfoTip>}
 
@@ -206,8 +207,8 @@ function StepInput({
   if (step.kind === "choice" && step.key === "sex") {
     return (
       <div className="flex flex-col gap-3">
-        <ChoiceButton selected={answers.sex === "male"} onClick={() => choose("sex", "male")}>👨 {t.risk.sex.male}</ChoiceButton>
-        <ChoiceButton selected={answers.sex === "female"} onClick={() => choose("sex", "female")}>👩 {t.risk.sex.female}</ChoiceButton>
+        <ChoiceButton selected={answers.sex === "male"} onClick={() => choose("sex", "male")}>{t.risk.sex.male}</ChoiceButton>
+        <ChoiceButton selected={answers.sex === "female"} onClick={() => choose("sex", "female")}>{t.risk.sex.female}</ChoiceButton>
       </div>
     );
   }
@@ -229,7 +230,7 @@ function StepInput({
         <label className="flex flex-col gap-2">
           <span className="sr-only">{t.risk.province.q}</span>
           <select
-            className="min-h-14 rounded-xl border-2 border-line bg-surface px-4 text-lg"
+            className="field min-h-14 px-4"
             value={answers.province ?? ""}
             onChange={(e) => set("province", e.target.value || null)}
           >
@@ -278,7 +279,7 @@ function NumberStep({
           id={id}
           inputMode="decimal"
           autoComplete="off"
-          className="min-h-14 w-40 rounded-xl border-2 border-line bg-surface px-4 text-2xl font-semibold"
+          className="field min-h-14 w-40 px-4 text-h2 font-semibold"
           value={raw}
           onChange={(e) => { setRaw(e.target.value); setError(null); }}
           aria-invalid={Boolean(error)}
@@ -286,7 +287,7 @@ function NumberStep({
         />
         <span className="text-lg text-muted">{unit}</span>
       </div>
-      {error && <p id={`${id}-err`} className="font-medium text-[var(--danger)]" role="alert">{error}</p>}
+      {error && <p id={`${id}-err`} className="flex items-center gap-1 text-caption text-status-out" role="alert"><CircleAlert aria-hidden size={16} className="shrink-0" />{error}</p>}
       <button type="submit" className="btn-primary">{t.common.next} →</button>
       {step.allowUnknown && (
         <button type="button" className="btn-secondary" onClick={() => { set(step.key, null); next(); }}>
@@ -303,8 +304,8 @@ function ChoiceButton({ selected, onClick, children }: { selected: boolean; onCl
       type="button"
       onClick={onClick}
       aria-pressed={selected}
-      className={`min-h-14 rounded-xl border-2 px-5 py-3 text-left text-lg font-medium transition ${
-        selected ? "border-brand bg-brand-soft text-brand-strong" : "border-line bg-surface hover:border-brand"
+      className={`min-h-14 rounded-xl border px-5 py-3 text-left text-body font-medium transition-colors duration-150 ${
+        selected ? "border-gold bg-gold-subtle text-primary" : "border-border bg-surface-1 hover:border-border-strong"
       }`}
     >
       {children}
@@ -318,19 +319,19 @@ export function UrgentScreen({
   const items = [t.urgent.chestPain, t.urgent.fainting, t.urgent.highSugar];
   return (
     <div className="flex flex-col gap-4 pt-2">
-      <p className="text-sm font-semibold uppercase tracking-wide text-[var(--danger)]">🚨 {t.urgent.title}</p>
-      <h1 ref={headingRef} tabIndex={-1} className="text-2xl font-bold leading-snug outline-none">{t.urgent.question}</h1>
+      <p className="eyebrow flex items-center gap-2"><Phone aria-hidden size={16} />{t.urgent.title}</p>
+      <h1 ref={headingRef} tabIndex={-1} className="text-h1 font-semibold outline-none">{t.urgent.question}</h1>
       <div className="flex flex-col gap-3">
         {items.map((label) => (
           <button
             key={label}
             onClick={onUrgent}
-            className="min-h-14 rounded-xl border-2 border-[var(--danger-border)] bg-[var(--danger-soft)] px-5 py-3 text-left text-lg font-medium hover:border-[var(--danger)]"
+            className="min-h-14 rounded-xl border border-border bg-surface-1 px-5 py-3 text-left text-body font-medium transition-colors duration-150 hover:border-border-strong"
           >
             {label}
           </button>
         ))}
-        <button onClick={onSafe} className="btn-primary mt-2">✓ {t.urgent.none}</button>
+        <button onClick={onSafe} className="btn-primary mt-2"><Check aria-hidden size={20} /> {t.urgent.none}</button>
       </div>
     </div>
   );
@@ -357,19 +358,23 @@ export function GoNowScreen({
 
   return (
     <div className="flex flex-col gap-4 pt-2" role="alert">
-      <div className="rounded-2xl bg-[var(--danger-solid)] p-5 text-white">
-        <h1 ref={headingRef} tabIndex={-1} className="text-2xl font-bold outline-none">🚑 {t.urgent.goNowTitle}</h1>
-        <p className="mt-2">{t.urgent.goNowBody}</p>
-        <a href="tel:119" className="mt-4 inline-flex min-h-12 items-center rounded-xl bg-white px-4 text-lg font-bold text-[var(--danger)]">
-          📞 {t.urgent.ambulance}
+      {/* Pinned urgent card (DESIGN.md §8.3): neutral surface, status-out left border, phone icon. No red fill. */}
+      <div className="card border-l-2 border-l-status-out p-5">
+        <h1 ref={headingRef} tabIndex={-1} className="flex items-start gap-2 text-h1 font-semibold outline-none">
+          <Phone aria-hidden size={24} className="mt-1 shrink-0 text-status-out" />
+          {t.urgent.goNowTitle}
+        </h1>
+        <p className="mt-2 text-body">{t.urgent.goNowBody}</p>
+        <a href="tel:119" className="btn-primary mt-4 w-full">
+          <Phone aria-hidden size={20} /> {t.urgent.ambulance}
         </a>
       </div>
-      <h2 className="text-xl font-bold">{t.urgent.nearestHospital}</h2>
+      <h2 className="text-h2 font-semibold">{t.urgent.nearestHospital}</h2>
       {status === "locating" && <p role="status">{t.map.locating}</p>}
       {status === "denied" && (
         <p>
           {t.map.locationDenied}{" "}
-          <a className="font-semibold text-brand-strong underline" href={`${BASE_PATH}/${lang}/map?type=hospital`}>{t.common.findCare}</a>
+          <a className="font-medium text-gold underline" href={`${BASE_PATH}/${lang}/map?type=hospital`}>{t.common.findCare}</a>
         </p>
       )}
       {hospitals && <FacilityList items={hospitals} lang={lang} t={t} />}

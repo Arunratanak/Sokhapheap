@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { fmt, formatNumber, getDictionary, hasLocale } from "@/i18n";
 import { areas, gap, manifest, nationalContext, provinceNames } from "@/server/insights/data";
 import { InsightsExplorer, type RankRow } from "@/components/features/insights/InsightsExplorer";
+import { Download, Info, Plug } from "lucide-react";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/insights">): Promise<Metadata> {
   const { lang } = await params;
@@ -55,20 +56,20 @@ export default async function InsightsPage({ params }: PageProps<"/[lang]/insigh
   return (
     <div className="page-wide flex w-full min-w-0 flex-col gap-8 pt-2">
       <header className="flex flex-col gap-2">
-        <h1 className="text-2xl font-bold">{ti.title}</h1>
-        <p>{ti.intro}</p>
-        <p className="rounded-xl border-l-4 border-warn-border bg-warn-soft px-3 py-2 text-sm">ℹ️ {ti.planningNote}</p>
+        <h1 className="text-h1 font-semibold">{ti.title}</h1>
+        <p className="text-body text-secondary">{ti.intro}</p>
+        <p className="flex items-start gap-2 rounded-xl border border-border bg-surface-1 px-3 py-2 text-caption text-secondary"><Info aria-hidden size={16} className="mt-0.5 shrink-0" />{ti.planningNote}</p>
       </header>
 
       <section aria-labelledby="national-title">
-        <h2 id="national-title" className="mb-2 text-lg font-bold">{ti.national.title}</h2>
+        <h2 id="national-title" className="mb-3 text-h2 font-semibold">{ti.national.title}</h2>
         <ul className="grid grid-cols-2 gap-3 lg:grid-cols-4">
           {cards.map((c) => (
-            <li key={c.key} className="rounded-xl border border-line bg-surface p-3">
-              <p className="text-2xl font-bold text-brand-strong">{c.value}</p>
-              <p className="text-sm">{c.label}</p>
-              {c.extra && <p className="text-xs text-muted">{c.extra}</p>}
-              <p className="mt-1 text-xs text-muted">{c.source}</p>
+            <li key={c.key} className="card p-5">
+              <p className="text-h1 font-semibold tabular-nums">{c.value}</p>
+              <p className="mt-1 text-label">{c.label}</p>
+              {c.extra && <p className="text-caption text-secondary">{c.extra}</p>}
+              <p className="mt-2 text-caption text-secondary">{c.source}</p>
             </li>
           ))}
         </ul>
@@ -77,9 +78,9 @@ export default async function InsightsPage({ params }: PageProps<"/[lang]/insigh
       <InsightsExplorer lang={lang} t={t} ranking={ranking} />
 
       <section aria-labelledby="method-title" className="flex flex-col gap-2">
-        <h2 id="method-title" className="text-xl font-bold">{ti.method.title}</h2>
+        <h2 id="method-title" className="text-h2 font-semibold">{ti.method.title}</h2>
         <p>{ti.method.p1}</p>
-        <ul className="list-disc space-y-1 pl-5">
+        <ul className="list-disc space-y-2 pl-5">
           <li>{ti.method.risk}</li>
           <li>{ti.method.access}</li>
           <li>{ti.method.capacity}</li>
@@ -88,32 +89,32 @@ export default async function InsightsPage({ params }: PageProps<"/[lang]/insigh
         </ul>
         <p>{ti.method.p2}</p>
         <h3 className="mt-2 font-semibold">{ti.method.limitsTitle}</h3>
-        <ul className="list-disc space-y-1 pl-5 text-sm">
+        <ul className="list-disc space-y-2 pl-5 text-label">
           <li>{ti.method.l1}</li>
           <li>{ti.method.l2}</li>
           <li>{ti.method.l3}</li>
           <li>{ti.method.l4}</li>
         </ul>
-        <p className="text-sm font-medium">ℹ️ {ti.planningNote}</p>
+        <p className="flex items-start gap-2 text-caption text-secondary"><Info aria-hidden size={16} className="mt-0.5 shrink-0" />{ti.planningNote}</p>
       </section>
 
-      <section aria-labelledby="downloads-title" className="flex flex-col gap-2 rounded-2xl bg-brand-soft p-4">
-        <h2 id="downloads-title" className="text-xl font-bold">{ti.downloads.title}</h2>
-        <p className="text-sm">{ti.downloads.body}</p>
+      <section aria-labelledby="downloads-title" className="card flex flex-col gap-3 p-5">
+        <h2 id="downloads-title" className="text-h2 font-semibold">{ti.downloads.title}</h2>
+        <p className="text-body text-secondary">{ti.downloads.body}</p>
         <div className="flex flex-wrap gap-3">
-          <a className="btn-secondary" href={`${API_BASE}/api/open-data/download/areas_district.csv`} download>⬇️ {ti.downloads.csv}</a>
-          <a className="btn-secondary" href={`${API_BASE}/api/open-data/download/gap_index.geojson`} download>⬇️ {ti.downloads.geojson}</a>
+          <a className="btn-secondary" href={`${API_BASE}/api/open-data/download/areas_district.csv`} download><Download aria-hidden size={20} /> {ti.downloads.csv}</a>
+          <a className="btn-secondary" href={`${API_BASE}/api/open-data/download/gap_index.geojson`} download><Download aria-hidden size={20} /> {ti.downloads.geojson}</a>
         </div>
-        <p className="text-xs text-muted">{ti.downloads.citation}</p>
-        <a href={`${BASE_PATH}/${lang}/insights/api`} className="text-sm font-medium text-brand-strong underline underline-offset-2">🔌 {ti.apiLink}</a>
+        <p className="text-caption text-secondary">{ti.downloads.citation}</p>
+        <a href={`${BASE_PATH}/${lang}/insights/api`} className="inline-flex min-h-11 items-center gap-2 text-label font-medium text-gold underline underline-offset-2"><Plug aria-hidden size={16} /> {ti.apiLink}</a>
       </section>
 
       <section aria-labelledby="sources-title" className="flex flex-col gap-2">
-        <h2 id="sources-title" className="text-xl font-bold">{ti.sources.title}</h2>
-        <ul className="flex flex-col gap-3 text-sm">
+        <h2 id="sources-title" className="text-h2 font-semibold">{ti.sources.title}</h2>
+        <ul className="flex flex-col gap-3 text-label">
           {sources.map((s) => (
-            <li key={s.id} className="rounded-xl border border-line bg-surface p-3">
-              <a href={s.url} className="font-semibold text-brand-strong underline underline-offset-2" rel="noopener noreferrer" target="_blank">{s.name}</a>
+            <li key={s.id} className="card p-5">
+              <a href={s.url} className="font-semibold text-gold underline underline-offset-2" rel="noopener noreferrer" target="_blank">{s.name}</a>
               <p className="text-muted">{s.publisher}</p>
               <p>
                 {ti.sources.licence}: {s.licence_url ? <a href={s.licence_url} className="underline" rel="noopener noreferrer" target="_blank">{s.licence}</a> : s.licence}

@@ -5,13 +5,14 @@
 #   - src/app/[lang]/org   → per-organisation pages (unknown codes, can't be prerendered); use Render
 #   - src/proxy.ts         → locale redirect; replaced by a static index.html below
 #   - opengraph-image.tsx  → rendered per request on Render (link previews use that URL)
+#   - src/app/[lang]/dev   → dev-only design reference page (/dev/design)
 # Run it in CI only (it deletes files from the checkout).
 #
 # Env: NEXT_PUBLIC_BASE_PATH (e.g. /Sokhapheap), NEXT_PUBLIC_API_BASE (Render URL),
 #      NEXT_PUBLIC_SITE_URL (public Pages URL).
 set -euo pipefail
 
-rm -rf src/app/api "src/app/[lang]/org" src/proxy.ts "src/app/[lang]/opengraph-image.tsx"
+rm -rf src/app/api "src/app/[lang]/org" src/proxy.ts "src/app/[lang]/opengraph-image.tsx" "src/app/[lang]/dev"
 # Tests import the API routes; they're type-checked and run by ci.yml instead.
 rm -rf tests
 find src -name '*.test.ts' -o -name '*.test.tsx' | xargs -r rm -f

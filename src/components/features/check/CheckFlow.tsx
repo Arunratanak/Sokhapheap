@@ -10,10 +10,11 @@ import { questionsToAsk, type Answers, type ModuleDefinition, type Urgency } fro
 import { Disclaimer } from "@/components/ui/Disclaimer";
 import { InfoTip } from "@/components/ui/InfoTip";
 import { waistInchesToCm } from "@/domain/units";
-import { ArrowRight, CircleCheck, Info } from "lucide-react";
+import { ArrowRight, CircleCheck, FlaskConical, Info, Lock, MapPin, RotateCcw } from "lucide-react";
 import { IconHealthCheck } from "@/components/ui/BrandIcons";
 import { SaveRecordButton } from "@/components/features/account/SaveRecordButton";
 import { healthCheckRecord } from "@/domain/records";
+import { StatusChip, lookFromUrgency } from "@/components/ui/Status";
 
 type Phase = "intro" | "profile" | "choose" | "questions" | "dashboard";
 /** Opt-in screenings that need a lab report: pre-ticked when the person says they have one. */
@@ -26,13 +27,6 @@ function tr(t: Dictionary, key: string): string {
   return typeof v === "string" ? v : key;
 }
 
-const URGENCY_STYLE: Record<Urgency, { bg: string; fg: string; icon: string }> = {
-  red_flag: { bg: "var(--danger-solid)", fg: "#ffffff", icon: "🚨" },
-  high: { bg: "var(--danger-bg)", fg: "var(--danger-fg)", icon: "🔴" },
-  moderate: { bg: "var(--caution-bg)", fg: "var(--caution-fg)", icon: "🟠" },
-  low: { bg: "var(--ok-bg)", fg: "var(--ok-fg)", icon: "🟢" },
-  incomplete: { bg: "var(--neutral-bg)", fg: "var(--neutral-fg)", icon: "⚪" },
-};
 
 export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { lang: Locale; t: Dictionary; allowed: string[]; preview: boolean; hasDrafts?: boolean }) {
   const c = t.check;
@@ -111,9 +105,13 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
   if (phase === "intro") return <WelcomeScreen t={t} headingRef={headingRef} onStart={() => go("profile")} />;
 
   // Preview (localhost) keeps its own note; on the public site, draft screenings always carry the "not yet reviewed" banner.
-  const bannerText = preview ? `🧪 ${c.previewBanner}` : hasDrafts ? `⚠️ ${c.draftBanner}` : null;
+  const bannerText = preview ? c.previewBanner : hasDrafts ? c.draftBanner : null;
+  const BannerIcon = preview ? FlaskConical : Info;
   const banner = bannerText ? (
-    <p role="note" className="rounded-lg border-2 border-dashed border-warn-border bg-warn-soft px-3 py-2 text-sm font-medium">{bannerText}</p>
+    <p role="note" className="flex items-start gap-2 rounded-xl border border-dashed border-border-strong bg-surface-1 px-3 py-2 text-caption text-secondary">
+      <BannerIcon aria-hidden size={16} className="mt-0.5 shrink-0" />
+      {bannerText}
+    </p>
   ) : null;
 
   // ---------------------------------------------------------------- 1. profile
@@ -126,7 +124,7 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
         <span className="flex items-center gap-2">
           <input
             inputMode="decimal"
-            className={`field w-32 ${err(k) ? "border-[var(--danger)]" : ""}`}
+            className={`field w-32 ${err(k) ? "border-status-out" : ""}`}
             value={String(draft[k] ?? "")}
             disabled={opts?.disabled}
             aria-invalid={err(k)}
@@ -138,9 +136,9 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
     );
     const choice = (k: string, legend: string, options: [string, string][]) => (
       <fieldset className="flex flex-col gap-2">
-        <legend className={`mb-1 font-medium ${err(k) ? "text-[var(--danger)]" : ""}`}>{legend}</legend>
+        <legend className={`mb-1 font-medium ${err(k) ? "text-status-out" : ""}`}>{legend}</legend>
         {options.map(([v, label]) => (
-          <label key={v} className={`flex min-h-12 items-center gap-3 rounded-xl border-2 px-3 ${draft[k] === v ? "border-brand bg-brand-soft" : "border-line bg-surface"}`}>
+          <label key={v} className={`flex min-h-12 items-center gap-3 rounded-xl border px-3 ${draft[k] === v ? "border-gold bg-gold-subtle" : "border-border bg-surface-1"}`}>
             <input type="radio" name={k} checked={draft[k] === v} onChange={() => set(k, v)} />
             {label}
           </label>
@@ -159,11 +157,11 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
       <div className="flex flex-col gap-5 pt-2">
         {banner}
         <div>
-          <h1 ref={headingRef} tabIndex={-1} className="text-2xl font-bold outline-none">{c.profileTitle}</h1>
+          <h1 ref={headingRef} tabIndex={-1} className="text-h1 font-semibold outline-none">{c.profileTitle}</h1>
           <p className="text-sm text-muted">{c.profileIntro}</p>
         </div>
         <section className="flex flex-col gap-4">
-          <h2 className="text-lg font-bold">{c.profileSection.body}</h2>
+          <h2 className="text-h3 font-semibold">{c.profileSection.body}</h2>
           {choice("sex", t.risk.sex.q, [["male", t.risk.sex.male], ["female", t.risk.sex.female]])}
           {num("age", t.risk.age.q, t.risk.age.unit)}
           {num("heightCm", t.risk.height.q, t.risk.height.unit)}
@@ -173,11 +171,11 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
           {showPregnancy && choice("pregnant", c.pregnant.q, [["no", c.pregnant.no], ["yes", c.pregnant.yes], ["skip", c.pregnant.skip]])}
         </section>
         <section className="flex flex-col gap-4">
-          <h2 className="text-lg font-bold">{c.profileSection.smoking}</h2>
+          <h2 className="text-h3 font-semibold">{c.profileSection.smoking}</h2>
           {choice("smokingStatus", c.smokingStatus.q, [["never", c.smokingStatus.never], ["former", c.smokingStatus.former], ["current", c.smokingStatus.current]])}
         </section>
         <section className="flex flex-col gap-4">
-          <h2 className="text-lg font-bold">{c.profileSection.bp}</h2>
+          <h2 className="text-h3 font-semibold">{c.profileSection.bp}</h2>
           {num("sbp", c.sbp, "mmHg", { disabled: draft.bpUnknown === true })}
           {!draft.bpUnknown && n("sbp") !== null && num("dbp", c.dbp, "mmHg")}
           {check("bpUnknown", c.bpUnknown)}
@@ -185,7 +183,7 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
           <InfoTip label={t.common.whatIsThis}>{t.risk.bpMeds.info}</InfoTip>
         </section>
         <section className="flex flex-col gap-2">
-          <h2 className="text-lg font-bold">{c.profileSection.conditions}</h2>
+          <h2 className="text-h3 font-semibold">{c.profileSection.conditions}</h2>
           <p className="text-sm">{c.conditionsQ}</p>
           {(["knownDiabetes", "knownHighBp", "knownHeartDisease", "knownKidneyDisease"] as const).map((k) => <div key={k}>{check(k, c.conditions[k])}</div>)}
         </section>
@@ -194,10 +192,10 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
           <p className="text-sm text-muted">{c.labReport.help}</p>
         </section>
         <section className="flex flex-col gap-4">
-          <h2 className="text-lg font-bold">{c.profileSection.family}</h2>
+          <h2 className="text-h3 font-semibold">{c.profileSection.family}</h2>
           {choice("familyDiabetes", t.risk.family.q, [["none", t.risk.family.none], ["second_degree", t.risk.family.second], ["first_degree", t.risk.family.first]])}
         </section>
-        {errors.length > 0 && <p role="alert" className="font-medium text-[var(--danger)]">{c.fixErrors}</p>}
+        {errors.length > 0 && <p role="alert" className="font-medium text-status-out">{c.fixErrors}</p>}
         <button className="btn-primary" onClick={submitProfile}>{c.continue}</button>
       </div>
     );
@@ -208,10 +206,10 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
     const choices = chooseModules(profile, modules);
     const toggle = (id: string) => setSelected((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]));
     const row = (m: ModuleDefinition) => (
-      <label key={m.id} className={`flex items-start gap-3 rounded-xl border-2 p-3 ${selected.includes(m.id) ? "border-brand bg-brand-soft" : "border-line bg-surface"}`}>
+      <label key={m.id} className={`flex items-start gap-3 rounded-xl border p-3 ${selected.includes(m.id) ? "border-gold bg-gold-subtle" : "border-border bg-surface-1"}`}>
         <input type="checkbox" className="mt-1 h-5 w-5" checked={selected.includes(m.id)} onChange={() => toggle(m.id)} />
         <span>
-          <span className="block font-semibold">{m.title[lang]}{m.status === "draft" && <span className="ml-2 rounded bg-warn-soft px-1.5 text-xs">{c.draftTag}</span>}</span>
+          <span className="block font-semibold">{m.title[lang]}{m.status === "draft" && <span className="ml-2 rounded-lg border border-border-strong px-1.5 text-caption font-normal text-secondary">{c.draftTag}</span>}</span>
           <span className="block text-sm text-muted">{c.areas[m.healthArea]} · {m.summary[lang]}</span>
         </span>
       </label>
@@ -223,19 +221,19 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
       <div className="flex flex-col gap-5 pt-2">
         {banner}
         <div>
-          <h1 ref={headingRef} tabIndex={-1} className="text-2xl font-bold outline-none">{c.chooseTitle}</h1>
+          <h1 ref={headingRef} tabIndex={-1} className="text-h1 font-semibold outline-none">{c.chooseTitle}</h1>
           <p className="text-sm text-muted">{c.chooseIntro}</p>
         </div>
         {core.length > 0 && (
           <section className="flex flex-col gap-2">
-            <h2 className="text-lg font-bold">{c.recommended}</h2>
+            <h2 className="text-h3 font-semibold">{c.recommended}</h2>
             {core.map((x) => row(x.module))}
           </section>
         )}
         {optional.length > 0 && (
           <section className="flex flex-col gap-2">
-            <h2 className="text-lg font-bold">{c.optionalTitle}</h2>
-            <p className="text-sm text-muted">🔒 {c.optionalIntro}</p>
+            <h2 className="text-h3 font-semibold">{c.optionalTitle}</h2>
+            <p className="flex items-start gap-2 text-caption text-secondary"><Lock aria-hidden size={16} className="mt-0.5 shrink-0" />{c.optionalIntro}</p>
             {optional.map((x) => row(x.module))}
           </section>
         )}
@@ -282,7 +280,7 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
       window.setTimeout(() => toStep(i + 1), 180);
     };
     const option = (key: string, label: string, selectedNow: boolean, onPick: () => void) => (
-      <label key={key} className={`flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border-2 px-4 text-lg transition-colors ${selectedNow ? "border-brand bg-brand-soft" : "border-line bg-surface hover:border-brand"}`}>
+      <label key={key} className={`flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border px-4 text-body transition-colors duration-150 ${selectedNow ? "border-gold bg-gold-subtle" : "border-border bg-surface-1 hover:border-border-strong"}`}>
         <input type="radio" name={`${m.id}.${q.id}`} checked={selectedNow} onChange={onPick} />
         {label}
       </label>
@@ -301,13 +299,13 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
         {banner}
         <div>
           <p className="mb-1 text-sm text-muted">{fmtClient(t.common.stepOf, { n: i + 1, total: flow.length }, lang)}</p>
-          <div className="h-2 w-full overflow-hidden rounded-full bg-foreground/10" role="progressbar" aria-valuemin={1} aria-valuemax={flow.length} aria-valuenow={i + 1} aria-label={c.questionsTitle}>
-            <div className="h-full rounded-full bg-brand transition-[width] duration-300 ease-out" style={{ width: `${((i + 1) / flow.length) * 100}%` }} />
+          <div className="h-1.5 w-full overflow-hidden rounded-full bg-surface-3" role="progressbar" aria-valuemin={1} aria-valuemax={flow.length} aria-valuenow={i + 1} aria-label={c.questionsTitle}>
+            <div className="h-full rounded-full bg-gold transition-[width] duration-300 ease-enter" style={{ width: `${((i + 1) / flow.length) * 100}%` }} />
           </div>
         </div>
         <div key={key} className="rise-in flex flex-col gap-4">
           <p className="eyebrow">{m.title[lang]}</p>
-          <h1 ref={headingRef} tabIndex={-1} id={`q-${key}`} className="text-2xl leading-snug font-bold outline-none">{tr(t, q.textKey)}</h1>
+          <h1 ref={headingRef} tabIndex={-1} id={`q-${key}`} className="text-2xl font-semibold outline-none">{tr(t, q.textKey)}</h1>
           {q.helpKey && <p className="text-muted">{tr(t, q.helpKey)}</p>}
           {q.kind === "yesno" && (
             <div role="radiogroup" aria-labelledby={`q-${key}`} className="flex flex-col gap-3">
@@ -327,7 +325,7 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
                   aria-labelledby={`q-${key}`}
                   inputMode="decimal"
                   autoComplete="off"
-                  className="min-h-14 w-40 rounded-xl border-2 border-line bg-surface px-4 text-2xl font-semibold"
+                  className="field min-h-14 w-40 px-4 text-h2 font-semibold"
                   value={unknown ? "" : (numText[key] ?? "")}
                   disabled={unknown}
                   onChange={(e) => onText(e.target.value)}
@@ -362,49 +360,47 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
     <div className="flex flex-col gap-5 pt-2">
       {banner}
       <div>
-        <h1 ref={headingRef} tabIndex={-1} className="text-2xl font-bold outline-none">{c.dashboardTitle}</h1>
-        <p className="text-sm text-muted">{c.dashboardIntro}</p>
+        <h1 ref={headingRef} tabIndex={-1} className="text-h1 font-semibold outline-none">{c.dashboardTitle}</h1>
+        <p className="mt-1 text-body text-secondary">{c.dashboardIntro}</p>
       </div>
-      <ul className="flex flex-col gap-4">
+      <ul className="flex flex-col gap-3">
         {cards.map((card) => {
           const m = byId.get(card.moduleId)!;
           const urgency: Urgency = card.redFlag ? "red_flag" : card.result!.urgency;
-          const s = URGENCY_STYLE[urgency];
+          const look = lookFromUrgency(urgency);
           const r = card.result;
           return (
-            <li key={card.moduleId} className="rounded-2xl border border-line bg-surface p-4 shadow-sm">
-              <p className="text-xs font-semibold uppercase tracking-wide text-muted">{c.areas[m.healthArea]}</p>
-              <h2 className="text-lg font-bold">{m.title[lang]}</h2>
-              <p className="mt-2 inline-flex items-center gap-2 rounded-lg px-3 py-1.5 font-semibold" style={{ background: s.bg, color: s.fg }}>
-                <span aria-hidden>{s.icon}</span>
-                {/* The tool's own band words; urgency words only where there is no band (urgent / not checked). */}
-                {r && r.band !== "unavailable" ? m.bands[r.band]?.[lang] : c.urgency[urgency]}
-              </p>
-              {card.redFlag && <p className="mt-2 font-semibold text-[var(--danger)]">{c.urgentCard}</p>}
-              {r && r.band === "unavailable" && <p className="mt-2">{(m.bands[`unavailable:${String(r.details?.reason)}`] ?? m.bands.unavailable)?.[lang]}</p>}
+            // Neutral card; status colour only on the chip. Urgent (red flag): pinned style with a left border (DESIGN.md §8.3).
+            <li key={card.moduleId} className={`card p-5 ${card.redFlag ? "border-l-2 border-l-status-out" : ""}`}>
+              <p className="eyebrow">{c.areas[m.healthArea]}</p>
+              <h2 className="mt-1 text-h3 font-semibold">{m.title[lang]}</h2>
+              {/* The tool's own band words; urgency words only where there is no band (urgent / not checked). */}
+              <StatusChip className="mt-3" look={look} label={(r && r.band !== "unavailable" ? m.bands[r.band]?.[lang] : c.urgency[urgency]) ?? ""} />
+              {card.redFlag && <p className="mt-3 text-body font-medium">{c.urgentCard}</p>}
+              {r && r.band === "unavailable" && <p className="mt-3 text-body">{(m.bands[`unavailable:${String(r.details?.reason)}`] ?? m.bands.unavailable)?.[lang]}</p>}
               {r && r.score !== null && (
-                <p className="mt-1 text-sm text-muted">
-                  {c.score}: {digits(r.score)}{m.scoreUnit?.[lang] ?? ""}
+                <p className="mt-2 text-caption text-secondary">
+                  {c.score}: <span className="tabular-nums">{digits(r.score)}{m.scoreUnit?.[lang] ?? ""}</span>
                   {m.id === "findrisc" && <> · {fmtClient(t.results.bmiLabel, { bmi: Number(r.details?.bmi) }, lang)}</>}
                 </p>
               )}
               {r && r.factors.length > 0 && (
-                <p className="mt-1 text-sm">
+                <p className="mt-1 text-caption text-secondary">
                   <span className="font-medium">{c.topFactors}:</span>{" "}
                   {r.factors.slice(0, 3).map((f) => tr(t, `results.factors.${f.factor}`)).join(", ")}
                 </p>
               )}
               {r && (
-                <div className="mt-3 rounded-xl bg-brand-soft p-3">
-                  <p className="text-sm font-semibold text-brand-strong">👉 {c.nextStep}</p>
-                  <p>{tr(t, r.nextStepKey)}</p>
+                <div className="mt-4 rounded-xl bg-surface-2 p-3">
+                  <p className="text-caption text-secondary">{c.nextStep}</p>
+                  <p className="text-body">{tr(t, r.nextStepKey)}</p>
                 </div>
               )}
               <Link
                 href={`/${lang}/map?type=${r?.facilityType === "referral_hospital" ? "hospital" : "health_centre"}`}
-                className="btn-ghost mt-2 justify-start px-0 text-sm"
+                className="mt-3 inline-flex min-h-11 items-center gap-2 text-label font-medium text-gold hover:underline"
               >
-                📍 {c.findCare} →
+                <MapPin aria-hidden size={16} /> {c.findCare} <ArrowRight aria-hidden size={16} />
               </Link>
             </li>
           );
@@ -412,42 +408,41 @@ export function CheckFlow({ lang, t, allowed, preview, hasDrafts = false }: { la
       </ul>
       {cards.length > 0 && <SaveRecordButton lang={lang} t={t} record={healthCheckRecord(cards)} />}
       <Disclaimer text={t.common.disclaimer} />
-      <button className="btn-ghost" onClick={() => { setCards([]); setAnswers({}); setNumText({}); setQStep(0); go("profile"); }}>↺ {c.startOver}</button>
+      <button className="btn-ghost" onClick={() => { setCards([]); setAnswers({}); setNumText({}); setQStep(0); go("profile"); }}><RotateCcw aria-hidden size={16} /> {c.startOver}</button>
     </div>
   );
 }
 
-/** Warm welcome before the health check: what it does, a gentle note, and a Start button (CSS entrance animation). */
+/** Welcome before the health check: what it does, a gentle note, and a Start button (short CSS fade-in). */
 function WelcomeScreen({ t, headingRef, onStart }: { t: Dictionary; headingRef: React.RefObject<HTMLHeadingElement | null>; onStart: () => void }) {
   const w = t.check.welcome;
   return (
-    <div className="flex flex-col gap-6 pt-4">
-      <div className="rise-in card relative overflow-hidden p-6 sm:p-8">
-        <div aria-hidden className="absolute -top-20 -right-16 h-56 w-56 rounded-full opacity-25 blur-3xl [background:var(--gradient)]" />
-        <span className="relative inline-flex h-16 w-16 items-center justify-center rounded-[1.25rem] bg-surface-2 text-brand-strong ring-1 ring-line">
-          <IconHealthCheck size={40} />
+    <div className="flex flex-col gap-5 pt-4">
+      <div className="rise-in card p-5 sm:p-8">
+        <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-surface-2 text-secondary">
+          <IconHealthCheck size={20} />
         </span>
-        <p className="eyebrow relative mt-5">{w.eyebrow}</p>
-        <h1 ref={headingRef} tabIndex={-1} className="relative mt-2 text-3xl leading-tight font-bold tracking-tight text-balance outline-none">
+        <p className="eyebrow mt-4">{w.eyebrow}</p>
+        <h1 ref={headingRef} tabIndex={-1} className="mt-1 text-h1 font-semibold text-balance outline-none">
           {w.title}
         </h1>
-        <p className="relative mt-3 text-lg text-muted">{w.body}</p>
-        <ul className="relative mt-5 flex flex-col gap-3">
-          {w.points.map((p, i) => (
-            <li key={p} className="rise-in flex items-start gap-3" style={{ animationDelay: `${180 + i * 120}ms` }}>
-              <CircleCheck aria-hidden size={22} className="mt-0.5 shrink-0 text-accent" />
+        <p className="mt-3 text-body text-secondary">{w.body}</p>
+        <ul className="mt-5 flex flex-col gap-3">
+          {w.points.map((p) => (
+            <li key={p} className="flex items-start gap-3">
+              <CircleCheck aria-hidden size={20} className="mt-0.5 shrink-0 text-secondary" />
               <span>{p}</span>
             </li>
           ))}
         </ul>
       </div>
-      <p className="rise-in flex items-start gap-3 rounded-xl border border-warn-border bg-warn-soft px-4 py-3 text-sm" style={{ animationDelay: "560ms" }}>
-        <Info aria-hidden size={18} className="mt-0.5 shrink-0" />
+      <p className="flex items-start gap-3 text-caption text-secondary">
+        <Info aria-hidden size={16} className="mt-0.5 shrink-0" />
         <span>{w.note}</span>
       </p>
-      <button className="rise-in btn-primary group w-full sm:w-auto sm:self-start sm:px-10" style={{ animationDelay: "680ms" }} onClick={onStart}>
+      <button className="btn-primary w-full sm:w-auto sm:self-start sm:px-10" onClick={onStart}>
         {w.start}
-        <ArrowRight aria-hidden size={20} className="transition-transform duration-200 group-hover:translate-x-1" />
+        <ArrowRight aria-hidden size={20} />
       </button>
     </div>
   );

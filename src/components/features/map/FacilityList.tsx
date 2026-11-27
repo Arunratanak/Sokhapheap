@@ -1,5 +1,6 @@
 "use client";
 
+import { BriefcaseMedical, Cross, Hospital, MapPin, Navigation, Stethoscope, type LucideIcon } from "lucide-react";
 import type { Dictionary, Locale } from "@/i18n";
 import { fmtClient, formatKm } from "@/lib/client/util";
 
@@ -16,12 +17,17 @@ export interface FacilityItem {
   distance_m?: number;
 }
 
-export const TYPE_STYLE: Record<FacilityItem["type"], { color: string; icon: string }> = {
-  hospital: { color: "#c0262d", icon: "🏥" },
-  health_centre: { color: "#0f766e", icon: "➕" },
-  health_post: { color: "#7c3aed", icon: "⛑️" },
-  clinic: { color: "#1d4ed8", icon: "🩺" },
-  other: { color: "#57534e", icon: "📍" },
+/**
+ * Facility types: a muted categorical colour (map markers and the legend; Leaflet draws on a canvas, so these
+ * are real colours rather than CSS variables, kept here in one place) and a Lucide icon. None of them is a
+ * status colour, so a hospital marker never reads as "out of range".
+ */
+export const TYPE_STYLE: Record<FacilityItem["type"], { color: string; Icon: LucideIcon }> = {
+  hospital: { color: "#c07a52", Icon: Hospital },
+  health_centre: { color: "#5d9a83", Icon: Cross },
+  health_post: { color: "#a08a4a", Icon: BriefcaseMedical },
+  clinic: { color: "#6f8db3", Icon: Stethoscope },
+  other: { color: "#8d8576", Icon: MapPin },
 };
 
 export function directionsUrl(f: { lat: number; lng: number }) {
@@ -29,31 +35,33 @@ export function directionsUrl(f: { lat: number; lng: number }) {
 }
 
 export function FacilityList({ items, lang, t }: { items: FacilityItem[]; lang: Locale; t: Dictionary }) {
-  if (!items.length) return <p className="text-muted">{t.map.noResults}</p>;
+  if (!items.length) return <p className="text-body text-secondary">{t.map.noResults}</p>;
   return (
     <ul className="flex flex-col gap-3">
       {items.map((f) => {
         const s = TYPE_STYLE[f.type];
         const name = lang === "km" && f.name_km ? f.name_km : f.name;
         return (
-          <li key={f.id} className="rounded-xl border border-line bg-surface p-4 shadow-sm">
+          <li key={f.id} className="card p-5">
             <div className="flex items-start gap-3">
-              <span aria-hidden className="mt-0.5 text-xl">{s.icon}</span>
+              <span aria-hidden className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-surface-2" style={{ color: s.color }}>
+                <s.Icon size={20} />
+              </span>
               <div className="min-w-0 flex-1">
-                <p className="font-semibold leading-snug">{name}</p>
-                <p className="text-sm text-muted">
-                  <span style={{ "--type": s.color } as React.CSSProperties} className="type-label font-medium">{t.map.types[f.type]}</span>
+                <p className="text-h3 font-semibold">{name}</p>
+                <p className="text-caption text-secondary">
+                  <span className="font-medium">{t.map.types[f.type]}</span>
                   {" · "}
                   {[f.district, f.province].filter(Boolean).join(", ")}
-                  {f.distance_m !== undefined && <> · {fmtClient(t.map.distanceKm, { km: formatKm(f.distance_m, lang) }, lang)}</>}
+                  {f.distance_m !== undefined && <> · <span className="tabular-nums">{fmtClient(t.map.distanceKm, { km: formatKm(f.distance_m, lang) }, lang)}</span></>}
                 </p>
                 <a
                   href={directionsUrl(f)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-2 inline-flex min-h-11 items-center rounded-lg bg-brand-soft px-3 text-sm font-semibold text-brand-strong hover:bg-brand hover:text-on-brand"
+                  className="btn-secondary mt-3 min-h-11 px-4"
                 >
-                  🧭 {t.map.directions}
+                  <Navigation aria-hidden size={16} /> {t.map.directions}
                 </a>
               </div>
             </div>

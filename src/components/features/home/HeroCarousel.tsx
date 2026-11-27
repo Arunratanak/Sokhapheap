@@ -95,24 +95,21 @@ export function HeroCarousel({ slides, labels, lang }: { slides: HeroSlide[]; la
                 inert={!active}
                 className="min-w-0 shrink-0 grow-0 basis-full"
               >
-                <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-4 pt-10 pb-6 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:pt-16">
-                  <div className={`transition-[opacity,transform,translate,scale] duration-500 ease-out ${active ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"}`}>
-                    <p className="eyebrow inline-flex items-center gap-2 rounded-full border border-line bg-surface/70 px-3 py-1 backdrop-blur">
-                      <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-accent" />
-                      {s.eyebrow}
-                    </p>
-                    <Heading className="mt-5 text-4xl leading-[1.1] font-extrabold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+                <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-5 pt-10 pb-6 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:pt-16">
+                  <div className={`transition-[opacity,transform,translate,scale] duration-300 ease-enter ${active ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"}`}>
+                    <p className="eyebrow">{s.eyebrow}</p>
+                    <Heading className="mt-3 text-display font-semibold text-balance">
                       {s.title}
                     </Heading>
-                    <p className="mt-5 max-w-xl text-lg text-muted sm:text-xl">{s.desc}</p>
+                    <p className="mt-4 max-w-xl text-body text-secondary">{s.desc}</p>
                     <div className="mt-8 flex flex-wrap gap-3">
-                      <Link href={s.href} className="btn-primary group/cta">
+                      <Link href={s.href} className="btn-primary w-full sm:w-auto">
                         {s.cta}
-                        <ArrowRight aria-hidden size={20} className="transition-transform duration-200 group-hover/cta:translate-x-0.5" />
+                        <ArrowRight aria-hidden size={20} />
                       </Link>
                     </div>
                   </div>
-                  <div className={`transition-[opacity,transform,translate,scale] delay-100 duration-700 ease-out ${active ? "scale-100 opacity-100" : "scale-[0.97] opacity-0"}`}>
+                  <div className={`transition-opacity delay-75 duration-300 ease-enter ${active ? "opacity-100" : "opacity-0"}`}>
                     <HeroVisual data={s.visual} active={active} />
                   </div>
                 </div>
@@ -123,9 +120,9 @@ export function HeroCarousel({ slides, labels, lang }: { slides: HeroSlide[]; la
       </div>
 
       {/* Controls */}
-      <div className="mx-auto flex w-full max-w-6xl items-center gap-3 px-4 pb-4 sm:px-6">
+      <div className="mx-auto flex w-full max-w-6xl items-center gap-3 px-5 pb-4 sm:px-8">
         <button type="button" onClick={togglePause} className="ctrl" aria-label={playing ? labels.pause : labels.play}>
-          {playing ? <Pause aria-hidden size={16} /> : <Play aria-hidden size={16} />}
+          {playing ? <Pause aria-hidden size={20} /> : <Play aria-hidden size={20} />}
         </button>
         <div className="flex items-center gap-1">
           {slides.map((s, i) => (
@@ -135,11 +132,11 @@ export function HeroCarousel({ slides, labels, lang }: { slides: HeroSlide[]; la
               onClick={() => api?.scrollTo(i)}
               aria-label={fill(labels.goTo, { n: digits(i + 1) })}
               aria-current={i === selected ? "true" : undefined}
-              className="group inline-flex h-10 items-center px-1"
+              className="group inline-flex h-11 items-center px-1"
             >
               <span
-                className={`block h-2 rounded-full transition-[width,background-color] duration-300 ease-out ${
-                  i === selected ? "w-8 bg-brand" : "w-2 bg-foreground/20 group-hover:bg-foreground/40"
+                className={`block h-2 rounded-full transition-[width,background-color] duration-200 ease-enter ${
+                  i === selected ? "w-8 bg-gold" : "w-2 bg-surface-3 group-hover:bg-border-strong"
                 }`}
               />
             </button>
@@ -147,10 +144,10 @@ export function HeroCarousel({ slides, labels, lang }: { slides: HeroSlide[]; la
         </div>
         <div className="ml-auto flex gap-2">
           <button type="button" onClick={() => api?.scrollPrev()} className="ctrl" aria-label={labels.prev}>
-            <ChevronLeft aria-hidden size={18} />
+            <ChevronLeft aria-hidden size={20} />
           </button>
           <button type="button" onClick={() => api?.scrollNext()} className="ctrl" aria-label={labels.next}>
-            <ChevronRight aria-hidden size={18} />
+            <ChevronRight aria-hidden size={20} />
           </button>
         </div>
       </div>

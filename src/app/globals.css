@@ -3,151 +3,279 @@
 /* Dark mode follows the data-theme attribute set on <html> (see the inline script in [lang]/layout.tsx). */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
-/* ------------------------------------------------------------------ design tokens
-   Brand: orange + gold. Light orange and gold fail contrast as text on white, so they are used
-   for fills, icons and accents only. Text and buttons use the "fill"/"strong" tokens, which meet
-   WCAG AA in both themes (checked: white on #C2410C 5.2:1; #1C1917 on #F97316 6.3:1). */
-:root {
-  color-scheme: light;
-  --background: #fffbf5;
-  --surface: #ffffff;
-  --surface-2: #fff6ec;
-  --foreground: #1c1917;
-  --muted: #57534e;
-  --line: #f1e4d3;
-
-  --orange-500: #f97316;
-  --orange-600: #ea580c;
-  --orange-700: #c2410c;
-  --gold-500: #f5b301;
-  --gold-300: #fcd34d;
-  --gold-700: #b45309;
-
-  --brand: #c2410c; /* fills: buttons, active states (white text on it) */
-  --brand-fill-hover: #9a3412;
-  --on-brand: #ffffff;
-  --brand-strong: #9a3412; /* brand-coloured text and links */
-  --brand-soft: #ffedd5; /* tinted backgrounds */
-  --accent: #f97316; /* icons, decoration, focus */
-  --gradient: linear-gradient(135deg, #f97316 0%, #f59e0b 55%, #f5b301 100%);
-  --gradient-text: linear-gradient(135deg, #c2410c 0%, #b45309 100%);
-
-  --warn-soft: #fff6e0;
-  --warn-border: #e5b94a;
-
-  /* Result colours (risk levels). Kept apart from the brand so an orange button never reads as a warning. */
-  --ok-bg: #e7f6ec;
-  --ok-fg: #14532d;
-  --lime-bg: #f3f9d9;
-  --lime-fg: #3f4d0b;
-  --caution-bg: #fff3d6;
-  --caution-fg: #6b4500;
-  --orange-bg: #ffe4d6;
-  --orange-fg: #7c2d12;
-  --danger-bg: #fde2df;
-  --danger-fg: #7a1610;
-  --neutral-bg: #eef2f6;
-  --neutral-fg: #1f2937;
-  --danger: #b42318; /* red text on the page background */
-  --danger-solid: #b42318; /* red fill with white text (same in both themes) */
-  --danger-soft: #fff4f2;
-  --danger-border: #f3b4ae;
-
-  --elev-sm: 0 1px 2px rgb(28 25 23 / 0.05), 0 1px 1px rgb(28 25 23 / 0.03);
-  --elev-md: 0 1px 2px rgb(28 25 23 / 0.04), 0 6px 16px -4px rgb(28 25 23 / 0.08), 0 12px 32px -16px rgb(194 65 12 / 0.14);
-  --elev-lg: 0 2px 4px rgb(28 25 23 / 0.04), 0 16px 40px -12px rgb(28 25 23 / 0.14), 0 24px 64px -24px rgb(194 65 12 / 0.22);
-  --nav-bg: rgb(255 251 245 / 0.78);
-}
-
+/* ------------------------------------------------------------------ design tokens (DESIGN.md §3–§5)
+   Dark (default): warm near-black with gold. Light: cream with a darker gold that passes AA on cream.
+   Gold is the brand and action colour only. Health status uses the muted status palette, always with
+   an icon and a word (never colour alone). Components use the semantic names below, never raw hex. */
+:root,
 [data-theme="dark"] {
   color-scheme: dark;
-  --background: #0f0d0b;
-  --surface: #1a1714;
-  --surface-2: #221e1a;
-  --foreground: #faf7f2;
-  --muted: #a8a29e;
-  --line: #2e2924;
+  --bg: #0e0d0b;
+  --surface-1: #16140f;
+  --surface-2: #1e1b15;
+  --surface-3: #272319;
+  --border: #2e2920;
+  --border-strong: #3d372b;
+  --text-primary: #f3eee3;
+  --text-secondary: #a8a091;
+  --text-tertiary: #6f685c;
+  --gold: #c9a24a;
+  --gold-hover: #d9b865;
+  --gold-muted: #8a7034;
+  --gold-subtle: rgb(201 162 74 / 0.1);
+  --on-gold: #0e0d0b;
 
-  --brand: #f97316;
-  --brand-fill-hover: #fb923c;
-  --on-brand: #1c1917;
-  --brand-strong: #fdba74;
-  --brand-soft: #2b1a0d;
-  --accent: #fb923c;
-  --gradient-text: linear-gradient(135deg, #fdba74 0%, #fcd34d 100%);
+  --status-normal: #7fb89a;
+  --status-borderline: #d9925a;
+  --status-out: #e07a72;
+  --status-normal-subtle: rgb(127 184 154 / 0.1);
+  --status-borderline-subtle: rgb(217 146 90 / 0.1);
+  --status-out-subtle: rgb(224 122 114 / 0.1);
 
-  --warn-soft: #2a2110;
-  --warn-border: #8a6d1f;
+  --elev: none;
+  --scrim: rgb(0 0 0 / 0.6);
+}
 
-  --ok-bg: #12291c;
-  --ok-fg: #9be3b4;
-  --lime-bg: #222812;
-  --lime-fg: #d4e58a;
-  --caution-bg: #2c2210;
-  --caution-fg: #f6d27a;
-  --orange-bg: #2f1b10;
-  --orange-fg: #fdba8c;
-  --danger-bg: #331614;
-  --danger-fg: #fca5a0;
-  --neutral-bg: #23272e;
-  --neutral-fg: #e5e7eb;
-  --danger: #f97066;
-  --danger-soft: #2a1513;
-  --danger-border: #7a2a24;
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #faf7f0;
+  --surface-1: #ffffff;
+  --surface-2: #f3eee3;
+  --surface-3: #e9e2d3;
+  --border: #e4dccb;
+  --border-strong: #cfc4ae;
+  --text-primary: #1c1a16;
+  --text-secondary: #5e574b;
+  --text-tertiary: #8d8576;
+  --gold: #7a5e1c;
+  --gold-hover: #664e15;
+  --gold-muted: #a88a45;
+  --gold-subtle: rgb(122 94 28 / 0.08);
+  --on-gold: #ffffff;
 
-  --elev-sm: 0 0 0 1px rgb(255 255 255 / 0.03);
-  --elev-md: 0 0 0 1px rgb(255 255 255 / 0.04), 0 8px 24px -12px rgb(0 0 0 / 0.6);
-  --elev-lg: 0 0 0 1px rgb(255 255 255 / 0.05), 0 20px 48px -16px rgb(0 0 0 / 0.7), 0 0 48px -24px rgb(249 115 22 / 0.35);
-  --nav-bg: rgb(15 13 11 / 0.72);
+  --status-normal: #2f7a55;
+  --status-borderline: #a3561f;
+  --status-out: #b23b33;
+  --status-normal-subtle: rgb(47 122 85 / 0.08);
+  --status-borderline-subtle: rgb(163 86 31 / 0.08);
+  --status-out-subtle: rgb(178 59 51 / 0.08);
+
+  --elev: 0 1px 2px rgb(28 26 22 / 0.06), 0 4px 12px rgb(28 26 22 / 0.04);
+  --scrim: rgb(28 26 22 / 0.3);
+}
+
+/* Older token names, kept so every existing screen picks up the new palette. Result colours map onto the
+   status palette: subtle tint as background, the status colour as text. */
+:root,
+[data-theme="dark"],
+[data-theme="light"] {
+  --background: var(--bg);
+  --surface: var(--surface-1);
+  --foreground: var(--text-primary);
+  --muted: var(--text-secondary);
+  --line: var(--border);
+  --brand: var(--gold);
+  --brand-fill-hover: var(--gold-hover);
+  --on-brand: var(--on-gold);
+  --brand-strong: var(--gold);
+  --brand-soft: var(--gold-subtle);
+  --accent: var(--gold);
+  --gold-500: var(--gold);
+  --gold-300: var(--gold-muted);
+
+  --warn-soft: var(--surface-2);
+  --warn-border: var(--border-strong);
+
+  --ok-bg: var(--status-normal-subtle);
+  --ok-fg: var(--status-normal);
+  --lime-bg: var(--status-borderline-subtle);
+  --lime-fg: var(--status-borderline);
+  --caution-bg: var(--status-borderline-subtle);
+  --caution-fg: var(--status-borderline);
+  --orange-bg: var(--status-out-subtle);
+  --orange-fg: var(--status-out);
+  --danger-bg: var(--status-out-subtle);
+  --danger-fg: var(--status-out);
+  --neutral-bg: var(--surface-2);
+  --neutral-fg: var(--text-secondary);
+  --danger: var(--status-out);
+  --danger-solid: var(--status-out);
+  --danger-soft: var(--status-out-subtle);
+  --danger-border: var(--status-out);
+  --nav-bg: var(--bg);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-surface: var(--surface);
+  /* DESIGN.md names */
+  --color-bg: var(--bg);
+  --color-surface-1: var(--surface-1);
   --color-surface-2: var(--surface-2);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-line: var(--line);
-  --color-brand: var(--brand);
-  --color-brand-hover: var(--brand-fill-hover);
-  --color-on-brand: var(--on-brand);
-  --color-brand-strong: var(--brand-strong);
-  --color-brand-soft: var(--brand-soft);
-  --color-accent: var(--accent);
-  --color-gold: var(--gold-500);
-  --color-gold-soft: var(--gold-300);
-  --color-warn-soft: var(--warn-soft);
-  --color-warn-border: var(--warn-border);
-  --color-danger: var(--danger);
+  --color-surface-3: var(--surface-3);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-primary: var(--text-primary);
+  --color-secondary: var(--text-secondary);
+  --color-tertiary: var(--text-tertiary);
+  --color-gold: var(--gold);
+  --color-gold-hover: var(--gold-hover);
+  --color-gold-muted: var(--gold-muted);
+  --color-gold-subtle: var(--gold-subtle);
+  --color-on-gold: var(--on-gold);
+  --color-status-normal: var(--status-normal);
+  --color-status-borderline: var(--status-borderline);
+  --color-status-out: var(--status-out);
+  --color-status-normal-subtle: var(--status-normal-subtle);
+  --color-status-borderline-subtle: var(--status-borderline-subtle);
+  --color-status-out-subtle: var(--status-out-subtle);
+  --color-scrim: var(--scrim);
+
+  /* Existing names used across the app (same tokens) */
+  --color-background: var(--bg);
+  --color-surface: var(--surface-1);
+  --color-foreground: var(--text-primary);
+  --color-muted: var(--text-secondary);
+  --color-line: var(--border);
+  --color-brand: var(--gold);
+  --color-brand-hover: var(--gold-hover);
+  --color-on-brand: var(--on-gold);
+  --color-brand-strong: var(--gold);
+  --color-brand-soft: var(--gold-subtle);
+  --color-accent: var(--gold);
+  --color-gold-soft: var(--gold-muted);
+  --color-warn-soft: var(--surface-2);
+  --color-warn-border: var(--border-strong);
+  --color-danger: var(--status-out);
+
   --font-sans: var(--font-latin), var(--font-khmer), system-ui, sans-serif;
-  --shadow-sm: var(--elev-sm);
-  --shadow-md: var(--elev-md);
-  --shadow-lg: var(--elev-lg);
+  --shadow-sm: var(--elev);
+  --shadow-md: var(--elev);
+  --shadow-lg: var(--elev);
+  --shadow-xl: var(--elev);
+  --shadow-2xl: var(--elev);
+}
+
+/* Type scale (DESIGN.md §4.2): the only sizes. Tailwind's names are remapped onto it, so any size
+   class lands on an allowed step: xs 12 (micro), sm 14 (label), base 16 (body), lg 18 (h3), xl 22 (h2),
+   2xl/3xl 28 (h1), 4xl+ 40 (display). Not `inline`, so Khmer can override the values below. */
+@theme {
+  --text-micro: 12px;
+  --text-micro--line-height: 16px;
+  --text-caption: 13px;
+  --text-caption--line-height: 18px;
+  --text-label: 14px;
+  --text-label--line-height: 20px;
+  --text-body: 16px;
+  --text-body--line-height: 24px;
+  --text-h3: 18px;
+  --text-h3--line-height: 24px;
+  --text-h2: 22px;
+  --text-h2--line-height: 28px;
+  --text-h1: 28px;
+  --text-h1--line-height: 34px;
+  --text-display: 40px;
+  --text-display--line-height: 44px;
+
+  --text-xs: 12px;
+  --text-xs--line-height: 16px;
+  --text-sm: 14px;
+  --text-sm--line-height: 20px;
+  --text-base: 16px;
+  --text-base--line-height: 24px;
+  --text-lg: 18px;
+  --text-lg--line-height: 24px;
+  --text-xl: 22px;
+  --text-xl--line-height: 28px;
+  --text-2xl: 28px;
+  --text-2xl--line-height: 34px;
+  --text-3xl: 28px;
+  --text-3xl--line-height: 34px;
+  --text-4xl: 40px;
+  --text-4xl--line-height: 44px;
+  --text-5xl: 40px;
+  --text-5xl--line-height: 44px;
+  --text-6xl: 40px;
+  --text-6xl--line-height: 44px;
+
+  /* Radius (DESIGN.md §5.3): 8 chips · 12 buttons/inputs · 16 cards · 24 sheets · full.
+     rounded-lg = 8, rounded-xl = 12, rounded-2xl = 16, rounded-3xl = 24; smaller names snap to 8. */
+  --radius-xs: 8px;
+  --radius-sm: 8px;
+  --radius-md: 8px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
+  --radius-4xl: 24px;
+
+  --ease-enter: cubic-bezier(0.2, 0, 0, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);
+  --default-transition-duration: 150ms;
+  --default-transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
 }
 
 /* ------------------------------------------------------------------ base */
 html {
   scroll-padding-top: 5rem;
 }
-/* Khmer: Khmer font first, a slightly larger size and taller lines so stacked vowels and subscripts don't clip. */
-html:lang(km) {
-  font-size: 106.25%;
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-latin), var(--font-khmer), system-ui, sans-serif;
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
+  /* Last-resort wrapping so nothing ever forces horizontal scroll on phones. */
+  overflow-wrap: anywhere;
 }
-html:lang(km) body {
-  font-family: var(--font-khmer), var(--font-latin), system-ui, sans-serif;
+/* Display and h1: slightly tighter tracking (Latin only, DESIGN.md §4.2). */
+:is(.text-display, .text-h1, .text-2xl, .text-3xl, .text-4xl, .text-5xl, .text-6xl):not(:lang(km)) {
+  letter-spacing: -0.01em;
 }
-:lang(km) {
-  line-height: 1.75;
+/* Lucide icons: 1.5 stroke everywhere (DESIGN.md §6). CSS wins over the icon's stroke-width attribute. */
+svg.lucide {
+  stroke-width: 1.5;
 }
-:lang(km) :is(h1, h2, h3) {
-  line-height: 1.45;
+/* Typed numbers line up in columns. */
+input[inputmode="decimal"] {
+  font-variant-numeric: tabular-nums;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
+/* Khmer (DESIGN.md §4.3): taller lines (× 1.25) and +1 px on sizes of 14 px and below, so stacked vowels
+   and subscripts never clip; no letter-spacing, no capitals; break between words, not inside them.
+   Also applies to a lang="km" block inside an English page (e.g. the /dev/design preview). */
+html:lang(km),
+[lang="km"] {
+  --text-micro: 13px;
+  --text-micro--line-height: 20px;
+  --text-caption: 14px;
+  --text-caption--line-height: 22.5px;
+  --text-label: 15px;
+  --text-label--line-height: 25px;
+  --text-body--line-height: 30px;
+  --text-h3--line-height: 30px;
+  --text-h2--line-height: 35px;
+  --text-h1--line-height: 42.5px;
+  --text-display--line-height: 55px;
+  --text-xs: 13px;
+  --text-xs--line-height: 20px;
+  --text-sm: 15px;
+  --text-sm--line-height: 25px;
+  --text-base--line-height: 30px;
+  --text-lg--line-height: 30px;
+  --text-xl--line-height: 35px;
+  --text-2xl--line-height: 42.5px;
+  --text-3xl--line-height: 42.5px;
+  --text-4xl--line-height: 55px;
+  --text-5xl--line-height: 55px;
+  --text-6xl--line-height: 55px;
+}
+html:lang(km) body {
   font-family: var(--font-latin), var(--font-khmer), system-ui, sans-serif;
-  /* Last-resort wrapping so nothing ever forces horizontal scroll on phones. */
+}
+:lang(km) {
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  word-break: normal;
   overflow-wrap: anywhere;
 }
 
@@ -156,7 +284,7 @@ body {
 .theme-transition *,
 .theme-transition *::before,
 .theme-transition *::after {
-  transition: background-color 200ms ease-out, color 200ms ease-out, border-color 200ms ease-out, fill 200ms ease-out !important;
+  transition: background-color 200ms var(--ease-enter), color 200ms var(--ease-enter), border-color 200ms var(--ease-enter), fill 200ms var(--ease-enter) !important;
 }
 
 /* The theme toggle shows the icon for the *other* theme; chosen by CSS so it is right before hydration. */
@@ -164,54 +292,54 @@ body {
 [data-theme="dark"] .theme-icon-dark { display: block; }
 [data-theme="dark"] .theme-icon-light { display: none; }
 
-/* ------------------------------------------------------------------ components */
+/* ------------------------------------------------------------------ components (DESIGN.md §7) */
 @layer components {
-  .btn-primary {
-    @apply inline-flex min-h-14 items-center justify-center gap-2 rounded-xl bg-brand px-5 py-3 text-lg font-semibold text-on-brand shadow-sm transition-[background-color,transform,translate,scale,box-shadow] duration-200 ease-out hover:bg-brand-hover hover:shadow-md active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50;
+  /* Buttons: one gold primary per screen; secondary outlined; ghost quiet. Height 48 px (grows for Khmer). */
+  .btn-primary,
+  .btn-gradient {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-gold px-5 py-3 text-label font-semibold text-on-gold transition-[background-color,scale] duration-150 hover:bg-gold-hover active:scale-[0.98] active:duration-100 disabled:cursor-not-allowed disabled:opacity-40 disabled:active:scale-100;
   }
   .btn-secondary {
-    @apply inline-flex min-h-14 items-center justify-center gap-2 rounded-xl border-2 border-brand bg-surface px-5 py-3 text-lg font-semibold text-brand-strong transition-colors duration-200 hover:bg-brand-soft;
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-border-strong bg-transparent px-5 py-3 text-label font-semibold text-primary transition-[background-color,border-color,scale] duration-150 hover:border-gold-muted hover:bg-surface-2 active:scale-[0.98] active:duration-100 disabled:cursor-not-allowed disabled:opacity-40;
   }
   .btn-ghost {
-    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-4 font-medium text-brand-strong underline-offset-4 hover:underline;
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-3 text-label font-medium text-secondary transition-colors duration-150 hover:text-primary disabled:opacity-40;
   }
-  /* Gradient call-to-action: dark text on the orange→gold gradient (passes AA in both themes). */
-  .btn-gradient {
-    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-5 py-3 font-semibold text-[#1c1917] shadow-md transition-[transform,translate,scale,box-shadow,filter] duration-200 ease-out hover:shadow-lg hover:brightness-105 active:scale-[0.98];
-    background-image: var(--gradient);
+  .btn-destructive {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-3 text-label font-medium text-status-out transition-opacity duration-150 hover:opacity-80;
   }
   /* Round icon control (carousel arrows, pause). */
   .ctrl {
-    @apply inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line bg-surface text-foreground shadow-sm transition-colors duration-200 hover:border-accent hover:text-brand-strong;
+    @apply inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border bg-surface-1 text-secondary transition-colors duration-150 hover:border-border-strong hover:text-primary;
   }
   .field {
-    @apply min-h-12 rounded-xl border-2 border-line bg-surface px-3 text-base transition-colors focus:border-accent;
+    @apply min-h-12 rounded-xl border border-border-strong bg-surface-2 px-3 text-base text-primary transition-colors duration-150 placeholder:text-tertiary focus:border-gold;
   }
   .card {
-    @apply rounded-2xl border border-line bg-surface shadow-md;
+    @apply rounded-2xl border border-border bg-surface-1 shadow-md;
   }
   .eyebrow {
-    @apply text-xs font-semibold tracking-[0.14em] text-brand-strong uppercase;
+    @apply text-caption font-medium text-secondary;
   }
+  /* Gradient text is not used any more (DESIGN.md §2): plain primary text. */
   .text-gradient {
-    background-image: var(--gradient-text);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: var(--text-primary);
   }
-  /* Facility type label: the type colour as text, lightened in dark mode for contrast. */
+  /* Facility type label: the type colour as text. */
   .type-label {
     color: var(--type);
   }
-  [data-theme="dark"] .type-label {
-    color: color-mix(in oklab, var(--type) 50%, white);
+  /* Loading skeleton (DESIGN.md §7): surface-2 blocks pulsing 0.5 → 1 → 0.5 over 1.6 s. */
+  .skeleton {
+    @apply rounded-lg bg-surface-2;
+    animation: skeleton-pulse 1.6s ease-in-out infinite;
   }
 }
 
+/* Visible gold focus ring on every interactive element (2 px, 2 px offset). */
 :focus-visible {
-  outline: 3px solid var(--accent);
+  outline: 2px solid var(--gold);
   outline-offset: 2px;
-  border-radius: 6px;
 }
 
 /* Headings receive focus programmatically (for screen readers) — no visible ring needed. */
@@ -221,7 +349,7 @@ body {
 }
 
 /* ------------------------------------------------------------------ page widths */
-/* Default: phone-width column. Wide pages (Open Data Insights) and the full-bleed home page opt out. */
+/* Default: phone-shaped column (max 560 px). Wide pages (Open Data Insights, About) and the home page opt out. */
 main:has(> .page-wide) {
   max-width: 72rem;
 }
@@ -233,27 +361,18 @@ main:has(> .page-full) {
   padding-bottom: 0;
 }
 
-/* Entrance animation (welcome screen): fade + rise, staggered with animation-delay. CSS only, no library. */
+/* Entrance (welcome screen): fade + 12 px rise, 300 ms. */
 @keyframes rise-in {
-  from { opacity: 0; transform: translateY(14px); }
+  from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: none; }
 }
 .rise-in {
-  animation: rise-in 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: rise-in 300ms var(--ease-enter) both;
 }
-/* Loading: gentle heartbeat + bouncing dots. */
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  15% { transform: scale(1.12); }
-  30% { transform: scale(0.98); }
-  45% { transform: scale(1.08); }
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
 }
-@keyframes dot-bounce {
-  0%, 80%, 100% { transform: translateY(0); opacity: 0.35; }
-  40% { transform: translateY(-5px); opacity: 1; }
-}
-.heartbeat { animation: heartbeat 1.4s ease-in-out infinite; }
-.dot-bounce { animation: dot-bounce 1.1s ease-in-out infinite; }
 
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -266,23 +385,26 @@ main:has(> .page-full) {
   }
 }
 
-/* Printable screening plan: one A4 page, without the site header and footer. Always light. */
+/* Printable screening plan: one A4 page, without the site header and footer. Always the light tokens. */
 @media print {
   @page {
     size: A4;
     margin: 12mm;
   }
-  /* Paper is white: print with the light palette even when the screen is in dark mode. */
   [data-theme="dark"] {
     color-scheme: light;
-    --background: #ffffff;
-    --surface: #ffffff;
-    --surface-2: #fafaf9;
-    --foreground: #1c1917;
-    --muted: #57534e;
-    --line: #e7e5e4;
-    --brand-strong: #9a3412;
-    --brand-soft: #ffedd5;
+    --bg: #ffffff;
+    --surface-1: #ffffff;
+    --surface-2: #f3eee3;
+    --surface-3: #e9e2d3;
+    --border: #e4dccb;
+    --border-strong: #cfc4ae;
+    --text-primary: #1c1a16;
+    --text-secondary: #5e574b;
+    --text-tertiary: #8d8576;
+    --gold: #7a5e1c;
+    --gold-subtle: rgb(122 94 28 / 0.08);
+    --on-gold: #ffffff;
   }
   body:has(.print-page) > header,
   body:has(.print-page) > footer {

@@ -145,17 +145,9 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <div className="page-full">
         {/* 1. Hero carousel (sits under the transparent navbar) */}
         <div className="relative -mt-16 overflow-hidden pt-16">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 -z-10"
-          >
-            <div className="absolute -top-40 -right-32 h-[36rem] w-[36rem] rounded-full opacity-25 blur-3xl [background:var(--gradient)] dark:opacity-15" />
-            <div className="absolute top-1/3 -left-40 h-[28rem] w-[28rem] rounded-full bg-gold-soft opacity-30 blur-3xl dark:opacity-10" />
-            <div className="absolute inset-0 [background-image:radial-gradient(var(--line)_1px,transparent_1px)] [background-size:22px_22px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)] opacity-70" />
-          </div>
           <HeroCarousel slides={slides} labels={L.carousel} lang={lang} />
-          <p className="mx-auto flex w-full max-w-6xl items-center gap-2 px-4 pb-10 text-sm text-muted sm:px-6">
-            <Lock aria-hidden size={15} className="shrink-0 text-accent" />
+          <p className="mx-auto flex w-full max-w-6xl items-center gap-2 px-5 pb-10 text-caption text-secondary sm:px-8">
+            <Lock aria-hidden size={16} className="shrink-0" />
             {t.home.privacy}
           </p>
         </div>
@@ -168,17 +160,17 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                 <p className="eyebrow">{L.problem.eyebrow}</p>
               </RevealItem>
               <RevealItem>
-                <h2 className="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl">
+                <h2 className="mt-2 text-h1 font-semibold text-balance">
                   {L.problem.title}
                 </h2>
               </RevealItem>
               <RevealItem>
-                <p className="mt-4 text-lg text-muted">{L.problem.body}</p>
+                <p className="mt-3 text-body text-secondary">{L.problem.body}</p>
               </RevealItem>
-              <div className="mt-8 grid gap-4 sm:grid-cols-3">
+              <div className="mt-8 grid gap-3 sm:grid-cols-3">
                 {problemStats.map(({ s, label }) => (
                   <RevealItem key={label} className="card p-5">
-                    <p className="text-3xl font-extrabold tracking-tight text-brand-strong">
+                    <p className="text-h1 font-semibold">
                       <StatCounter
                         value={s!.value}
                         lang={lang}
@@ -186,8 +178,8 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                         decimals={Number.isInteger(s!.value) ? 0 : 1}
                       />
                     </p>
-                    <p className="mt-2 text-sm">{label}</p>
-                    <p className="mt-2 text-xs text-muted">
+                    <p className="mt-1 text-label">{label}</p>
+                    <p className="mt-2 text-caption text-secondary">
                       {SOURCE_LABEL[s!.source] ?? s!.source},{" "}
                       {formatNumber(s!.year, lang)}
                     </p>
@@ -196,22 +188,18 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               </div>
             </Reveal>
             <Reveal>
-              <RevealItem className="card relative overflow-hidden p-7 sm:p-9">
-                <div
-                  aria-hidden
-                  className="absolute -top-24 -right-24 h-56 w-56 rounded-full opacity-20 blur-2xl [background:var(--gradient)]"
-                />
+              <RevealItem className="card p-5 sm:p-8">
                 <p className="eyebrow">{L.solution.eyebrow}</p>
-                <h2 className="mt-3 text-2xl font-bold tracking-tight text-balance sm:text-3xl">
+                <h2 className="mt-2 text-h2 font-semibold text-balance">
                   {fmt(L.solution.title, { app })}
                 </h2>
-                <ul className="mt-6 flex flex-col gap-4">
+                <ul className="mt-5 flex flex-col gap-3">
                   {L.solution.points.map((p) => (
                     <li key={p} className="flex gap-3">
                       <CircleCheck
                         aria-hidden
-                        size={22}
-                        className="mt-0.5 shrink-0 text-accent"
+                        size={20}
+                        className="mt-0.5 shrink-0 text-secondary"
                       />
                       <span>{p}</span>
                     </li>
@@ -230,15 +218,15 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         >
           <Reveal
             as="ul"
-            className={`grid gap-5 sm:grid-cols-2 ${features.length > 4 ? "lg:grid-cols-3" : "lg:grid-cols-4"}`}
+            className={`grid gap-3 sm:grid-cols-2 ${features.length > 4 ? "lg:grid-cols-3" : "lg:grid-cols-4"}`}
           >
             {features.map((f) => (
               <RevealItem as="li" key={f.href}>
                 <Card interactive className="h-full">
-                  <span className="inline-flex h-14 w-14 items-center justify-center rounded-[1.1rem] bg-surface-2 text-brand-strong ring-1 ring-line transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110">
-                    <f.icon size={36} />
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-surface-2 text-secondary">
+                    <f.icon size={20} />
                   </span>
-                  <h3 className="mt-5 text-lg font-bold">
+                  <h3 className="mt-4 text-h3 font-semibold">
                     <Link
                       href={f.href}
                       className="after:absolute after:inset-0 after:rounded-2xl focus-visible:outline-none"
@@ -246,14 +234,10 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                       {f.title}
                     </Link>
                   </h3>
-                  <p className="mt-2 text-sm text-muted">{f.body}</p>
-                  <p className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-strong">
+                  <p className="mt-1 text-body text-secondary">{f.body}</p>
+                  <p className="mt-4 inline-flex items-center gap-1 text-label font-medium text-gold">
                     {L.features.open}
-                    <ArrowRight
-                      aria-hidden
-                      size={16}
-                      className="transition-transform duration-200 group-hover:translate-x-1"
-                    />
+                    <ArrowRight aria-hidden size={16} />
                   </p>
                 </Card>
               </RevealItem>
@@ -270,25 +254,21 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         >
           <Reveal
             as="ol"
-            className="relative grid gap-8 md:grid-cols-4 md:gap-6"
-            stagger={0.12}
+            className="grid gap-8 md:grid-cols-4 md:gap-6"
+            stagger={0.08}
           >
-            <span
-              aria-hidden
-              className="absolute top-6 bottom-6 left-6 w-0.5 bg-gradient-to-b from-accent/60 via-gold/50 to-transparent md:top-6 md:right-[12.5%] md:bottom-auto md:left-[12.5%] md:h-0.5 md:w-auto md:bg-gradient-to-r"
-            />
             {L.how.steps.map((s, i) => (
               <RevealItem
                 as="li"
                 key={s.title}
-                className="relative flex gap-5 md:flex-col md:items-center md:text-center"
+                className="flex gap-4 md:flex-col"
               >
-                <span className="relative z-10 inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-lg font-bold text-[#1c1917] shadow-md ring-4 ring-background [background:var(--gradient)]">
+                <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border-strong text-label font-semibold text-gold tabular-nums">
                   {formatNumber(i + 1, lang)}
                 </span>
                 <div>
-                  <h3 className="text-lg font-bold">{s.title}</h3>
-                  <p className="mt-1.5 text-sm text-muted">{s.body}</p>
+                  <h3 className="text-h3 font-semibold">{s.title}</h3>
+                  <p className="mt-1 text-body text-secondary">{s.body}</p>
                 </div>
               </RevealItem>
             ))}
@@ -304,18 +284,18 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         >
           <Reveal
             as="ul"
-            className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6"
+            className="grid grid-cols-2 gap-3 lg:grid-cols-4"
           >
             {impact.map((s) => (
               <RevealItem
                 as="li"
                 key={s.label}
-                className="card px-3 py-6 text-center sm:p-6"
+                className="card p-5"
               >
-                <p className="text-gradient px-1 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
+                <p className="text-h1 font-semibold">
                   <StatCounter value={s.value} lang={lang} />
                 </p>
-                <p className="mt-2 text-sm text-muted">{s.label}</p>
+                <p className="mt-1 text-label text-secondary">{s.label}</p>
               </RevealItem>
             ))}
           </Reveal>
@@ -334,34 +314,23 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
 
         {/* 7. Call to action */}
         <section className="py-16 sm:py-24">
-          <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
+          <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
             <Reveal>
-              <RevealItem className="relative overflow-hidden rounded-3xl px-6 py-14 text-center text-[#1c1917] shadow-lg sm:px-12 [background:var(--gradient)]">
-                <div
-                  aria-hidden
-                  className="absolute inset-0 opacity-30 [background-image:radial-gradient(rgb(255_255_255/0.6)_1px,transparent_1px)] [background-size:18px_18px]"
-                />
-                <div
-                  aria-hidden
-                  className="absolute -right-16 -bottom-24 h-72 w-72 rounded-full bg-white/25 blur-2xl"
-                />
-                <div className="relative">
-                  <h2 className="text-3xl font-extrabold tracking-tight text-balance sm:text-4xl">
-                    {fmt(L.cta.title, { app })}
-                  </h2>
-                  <p className="mx-auto mt-4 max-w-xl text-lg text-[#1c1917]/80">
-                    {healthCheckLive ? L.cta.bodyCheck : L.cta.body}
-                  </p>
-                  <div className="mt-8 flex flex-wrap justify-center gap-3">
-                    <Link
-                      href={healthCheckLive ? `${base}/check` : `${base}/risk`}
-                      className="inline-flex min-h-14 items-center gap-2 rounded-xl bg-[#1c1917] px-6 text-lg font-semibold text-white shadow-md transition-transform duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
-                    >
-                      {healthCheckLive ? L.heroCheck.cta : t.home.checkRisk}
-                      <ArrowRight aria-hidden size={20} />
-                    </Link>
-                  </div>
-                </div>
+              {/* Quiet closing card (was a gradient panel). Its button is the only gold one in view. */}
+              <RevealItem className="card flex flex-col items-start gap-4 p-5 sm:p-10">
+                <h2 className="text-h1 font-semibold text-balance">
+                  {fmt(L.cta.title, { app })}
+                </h2>
+                <p className="max-w-xl text-body text-secondary">
+                  {healthCheckLive ? L.cta.bodyCheck : L.cta.body}
+                </p>
+                <Link
+                  href={healthCheckLive ? `${base}/check` : `${base}/risk`}
+                  className="btn-primary w-full sm:w-auto"
+                >
+                  {healthCheckLive ? L.heroCheck.cta : t.home.checkRisk}
+                  <ArrowRight aria-hidden size={20} />
+                </Link>
               </RevealItem>
             </Reveal>
           </div>

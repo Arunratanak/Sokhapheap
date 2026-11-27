@@ -38,7 +38,7 @@ export default function ChoroplethMap({
   const key = useMemo(() => `${data.features.length}:${layer.id}:${selected}:${breaks.join(",")}`, [data, layer, selected, breaks]);
 
   return (
-    <div className="h-[55vh] min-h-72 w-full overflow-hidden rounded-2xl border border-line lg:h-[34rem]" role="region" aria-label={ariaLabel}>
+    <div className="h-[55vh] min-h-72 w-full overflow-hidden rounded-2xl border border-border lg:h-136" role="region" aria-label={ariaLabel}>
       <MapContainer bounds={CAMBODIA} preferCanvas scrollWheelZoom={false} className="h-full w-full">
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -54,7 +54,7 @@ export default function ChoroplethMap({
             return {
               fillColor: colourFor(layer.get(p), breaks, layer.lowIsWorse),
               fillOpacity: 0.8,
-              color: isSel ? "#111827" : "#ffffff",
+              color: isSel ? "#0e0d0b" : "#ffffff",
               weight: isSel ? 3 : 0.6,
             };
           }}
@@ -69,7 +69,7 @@ export default function ChoroplethMap({
             key={f.id}
             center={[f.lat, f.lng]}
             radius={f.type === "hospital" ? 7 : 5}
-            pathOptions={{ color: "#111827", weight: 1.5, fillColor: TYPE_STYLE[f.type].color, fillOpacity: 1 }}
+            pathOptions={{ color: "#0e0d0b", weight: 1.5, fillColor: TYPE_STYLE[f.type].color, fillOpacity: 1 }}
           >
             <Tooltip>{f.name}</Tooltip>
           </CircleMarker>

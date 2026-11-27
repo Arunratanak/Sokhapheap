@@ -29,7 +29,7 @@ export function LanguageSwitcher({ current, label, className = "" }: { current: 
   ];
 
   return (
-    <div role="group" aria-label={label} className={`inline-flex h-10 items-center rounded-full border border-line bg-surface p-1 text-sm font-semibold ${className}`}>
+    <div role="group" aria-label={label} className={`inline-flex min-h-11 items-center rounded-full border border-border bg-surface-2 p-1 text-label font-semibold ${className}`}>
       {options.map((o) => {
         const active = o.lang === current;
         // Plain <a> (full reload so <html lang> updates), so the basePath has to be added by hand.
@@ -42,8 +42,8 @@ export function LanguageSwitcher({ current, label, className = "" }: { current: 
             hrefLang={o.lang}
             aria-current={active ? "true" : undefined}
             onClick={() => rememberLocale(o.lang)}
-            className={`inline-flex h-8 min-w-11 items-center justify-center rounded-full px-2.5 transition-colors duration-200 ${
-              active ? "bg-brand text-on-brand shadow-sm" : "text-muted hover:text-foreground"
+            className={`inline-flex min-h-9 min-w-11 items-center justify-center rounded-full px-3 transition-colors duration-150 ${
+              active ? "bg-surface-3 text-primary" : "text-secondary hover:text-primary"
             }`}
           >
             {o.text}

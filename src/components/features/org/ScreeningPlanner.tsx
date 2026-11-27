@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import type { Dictionary, Locale } from "@/i18n";
 import type { OrgStats } from "@/domain/orgStats";
 import { fmtClient, toKhmerDigits } from "@/lib/client/util";
+import { Download, Printer } from "lucide-react";
 
 interface PlanJson {
   province: { pcode: string; name: string };
@@ -76,10 +77,10 @@ export function ScreeningPlanner({
   const r1 = (v: number | null | undefined) => (v === null || v === undefined ? "—" : Math.round(v * 10) / 10);
 
   return (
-    <section aria-labelledby="planner-title" className="flex flex-col gap-3 rounded-2xl border-2 border-brand bg-surface p-4">
-      <h2 id="planner-title" className="text-xl font-bold">🗺️ {p.title}</h2>
-      <p className="text-sm">{p.intro}</p>
-      <label className="flex flex-col gap-1 text-sm font-medium">
+    <section aria-labelledby="planner-title" className="card flex flex-col gap-3 p-5">
+      <h2 id="planner-title" className="text-h2 font-semibold">{p.title}</h2>
+      <p className="text-body text-secondary">{p.intro}</p>
+      <label className="flex flex-col gap-1 text-label font-medium">
         {p.province}
         <select className="field" value={province} onChange={(e) => load(e.target.value)}>
           <option value="">{p.select}</option>
@@ -92,8 +93,8 @@ export function ScreeningPlanner({
         <>
           <ol className="flex flex-col gap-3" aria-live="polite">
             {plan.top.map((d) => (
-              <li key={d.pcode} className="rounded-xl border border-line p-3">
-                <p className="text-lg font-bold">{num(d.rankInProvince)}. {d.name}</p>
+              <li key={d.pcode} className="rounded-xl border border-border p-4">
+                <p className="text-h3 font-semibold">{num(d.rankInProvince)}. {d.name}</p>
                 <p className="text-sm text-muted">{p.colIndex}: {num(d.index)} · {fmtClient(p.nationalRank, { rank: d.rankNational }, lang)}</p>
                 <p className="mt-1 text-sm"><span className="font-medium">{p.colDrivers}:</span> {d.drivers.map((x) => t.insights.components[x as keyof typeof t.insights.components]).join(", ") || "—"}</p>
                 <p className="text-sm">
@@ -111,11 +112,11 @@ export function ScreeningPlanner({
             ))}
           </ol>
           <div className="flex flex-wrap gap-3">
-            <button type="button" className="btn-secondary" onClick={downloadCsv}>⬇️ {p.csv}</button>
-            <a className="btn-secondary" href={`${BASE_PATH}/${lang}/plan/${plan.province.pcode}?org=${encodeURIComponent(orgCode)}`} target="_blank" rel="noopener">🖨️ {p.print}</a>
+            <button type="button" className="btn-secondary" onClick={downloadCsv}><Download aria-hidden size={20} /> {p.csv}</button>
+            <a className="btn-secondary" href={`${BASE_PATH}/${lang}/plan/${plan.province.pcode}?org=${encodeURIComponent(orgCode)}`} target="_blank" rel="noopener"><Printer aria-hidden size={20} /> {p.print}</a>
           </div>
 
-          <div className="rounded-xl bg-brand-soft p-3 text-sm">
+          <div className="rounded-xl bg-surface-2 p-4 text-label">
             <h3 className="font-semibold">{p.compareTitle}</h3>
             <p className="mt-1">
               {pct === null || total === null || stats.moderatePlus === null
@@ -131,7 +132,7 @@ export function ScreeningPlanner({
                 dmYear: plan.nationalDiabetes?.year ?? 0,
               }, lang)}
             </p>
-            <p className="mt-1 text-xs text-muted">ℹ️ {p.compareNote}</p>
+            <p className="mt-2 text-caption text-secondary">{p.compareNote}</p>
           </div>
         </>
       )}

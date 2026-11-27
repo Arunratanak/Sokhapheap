@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Inter, Noto_Sans_Khmer } from "next/font/google";
+import { Inter, Kantumruy_Pro } from "next/font/google";
 import { getDictionary, hasLocale, locales } from "@/i18n";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -8,14 +8,14 @@ import { THEME_SCRIPT } from "@/components/layout/ThemeToggle";
 import { visibleModules } from "@/domain/modules/registry";
 import "../globals.css";
 
-// Khmer pages: Noto Sans Khmer (covers Khmer and Latin) is the main font and is preloaded.
-const khmer = Noto_Sans_Khmer({
+// Fonts (DESIGN.md §4.1): Inter first, Khmer characters fall through to Kantumruy Pro. Both variable.
+// Kantumruy Pro (Khmer) is preloaded. Inter is not, so Khmer pages on slow 3G don't download it up
+// front; it arrives with the CSS (display: swap).
+const khmer = Kantumruy_Pro({
   subsets: ["khmer", "latin"],
   variable: "--font-khmer",
   display: "swap",
 });
-// English pages: Inter. Not preloaded, so Khmer pages on slow 3G never download it up front;
-// on English pages it is the first font in the stack and loads with the CSS.
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-latin",
@@ -52,10 +52,8 @@ export async function generateMetadata({
 }
 
 export const viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fffbf5" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f0d0b" },
-  ],
+  // Dark is the default theme (DESIGN.md §3, §13).
+  themeColor: "#0e0d0b",
   width: "device-width",
   initialScale: 1,
 };
@@ -70,13 +68,13 @@ export default async function RootLayout({
   const healthCheckLive = visibleModules(false).length > 0;
 
   return (
-    <html lang={lang} data-theme="light" suppressHydrationWarning className={`${khmer.variable} ${inter.variable} h-full antialiased`}>
+    <html lang={lang} data-theme="dark" suppressHydrationWarning className={`${khmer.variable} ${inter.variable} h-full antialiased`}>
       <head>
-        {/* Applies the saved (or system) theme before the first paint: no flash of the wrong theme. */}
+        {/* Applies the saved theme (dark by default) before the first paint: no flash of the wrong theme. */}
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
       <body className="flex min-h-full flex-col">
-        <a href="#main" className="sr-only z-[60] rounded-lg bg-brand px-4 py-2 font-semibold text-on-brand focus:not-sr-only focus:fixed focus:top-3 focus:left-3">
+        <a href="#main" className="sr-only z-60 rounded-xl bg-gold px-4 py-2 text-label font-semibold text-on-gold focus:not-sr-only focus:fixed focus:top-3 focus:left-3">
           {t.nav.skip}
         </a>
         <Navbar
@@ -90,7 +88,8 @@ export default async function RootLayout({
             login: t.nav.login, account: t.nav.account,
           }}
         />
-        <main id="main" className="mx-auto flex w-full max-w-xl flex-1 flex-col px-4 pt-4 pb-12">
+        {/* Phone-shaped column: 560 px max, 20 px side padding (32 px from tablet up). DESIGN.md §5. */}
+        <main id="main" className="mx-auto flex w-full max-w-140 flex-1 flex-col px-5 pt-4 pb-12 sm:px-8">
           {children}
         </main>
         <Footer lang={lang} t={t} healthCheckLive={healthCheckLive} />

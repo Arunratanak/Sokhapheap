@@ -1,13 +1,14 @@
 import Link from "next/link";
 
-/** Surface card. `interactive` adds the hover lift and gradient border glow (for cards that are links). */
+/**
+ * Surface card (DESIGN.md §7): surface-1, 1 px border, radius-lg, 20 px padding. No gradients or glows.
+ * `interactive` (cards that are links) only strengthens the border on hover / keyboard focus.
+ */
 export function Card({ children, className = "", interactive = false }: { children: React.ReactNode; className?: string; interactive?: boolean }) {
   return (
     <div
-      className={`card relative p-6 ${
-        interactive
-          ? "group transition-[transform,translate,scale,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-lg before:pointer-events-none before:absolute before:inset-0 before:rounded-2xl before:p-px before:opacity-0 before:transition-opacity before:duration-300 before:[background:var(--gradient)] before:[mask:linear-gradient(#000_0_0)_content-box_exclude,linear-gradient(#000_0_0)] hover:before:opacity-100 focus-within:before:opacity-100"
-          : ""
+      className={`card relative p-5 ${
+        interactive ? "group transition-colors duration-150 hover:border-border-strong focus-within:border-gold" : ""
       } ${className}`}
     >
       {children}
@@ -15,7 +16,7 @@ export function Card({ children, className = "", interactive = false }: { childr
   );
 }
 
-/** Button-styled link. */
+/** Button-styled link. ("gradient" is kept as a name; it now renders as the plain primary button.) */
 export function ButtonLink({
   href,
   children,
@@ -27,7 +28,7 @@ export function ButtonLink({
   variant?: "primary" | "secondary" | "gradient" | "ghost";
   className?: string;
 }) {
-  const cls = { primary: "btn-primary", secondary: "btn-secondary", gradient: "btn-gradient", ghost: "btn-ghost" }[variant];
+  const cls = { primary: "btn-primary", secondary: "btn-secondary", gradient: "btn-primary", ghost: "btn-ghost" }[variant];
   return (
     <Link href={href} className={`${cls} ${className}`}>
       {children}

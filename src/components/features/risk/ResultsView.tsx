@@ -10,9 +10,10 @@ import { AreaCard } from "@/components/features/area/AreaCard";
 import type { FindriscBand, FindriscResult } from "@/domain/scoring/findrisc";
 import type { CvdBand, CvdResult } from "@/domain/scoring/whoCvd";
 import type { NextStep } from "@/domain/risk";
-import { LoadingState } from "@/components/ui/LoadingState";
 import { SaveRecordButton } from "@/components/features/account/SaveRecordButton";
 import { riskRecord } from "@/domain/records";
+import { AiCard, SkeletonLines, StatusChip, lookFromCvd, lookFromFindrisc, statusVar, type StatusLook } from "@/components/ui/Status";
+import { Droplet, MapPin, RotateCcw } from "lucide-react";
 
 export interface RiskApiResult {
   findrisc: FindriscResult;
@@ -21,27 +22,16 @@ export interface RiskApiResult {
   saved: boolean;
 }
 
-// Colour + icon + words: never colour alone.
-const FINDRISC_STYLE: Record<FindriscBand, { bg: string; fg: string; icon: string; level: number }> = {
-  low: { bg: "var(--ok-bg)", fg: "var(--ok-fg)", icon: "🟢", level: 1 },
-  slightly_elevated: { bg: "var(--lime-bg)", fg: "var(--lime-fg)", icon: "🟡", level: 2 },
-  moderate: { bg: "var(--caution-bg)", fg: "var(--caution-fg)", icon: "🟠", level: 3 },
-  high: { bg: "var(--orange-bg)", fg: "var(--orange-fg)", icon: "🔴", level: 4 },
-  very_high: { bg: "var(--danger-bg)", fg: "var(--danger-fg)", icon: "🔴", level: 5 },
-};
-const CVD_STYLE: Record<CvdBand, { bg: string; fg: string; icon: string; level: number }> = {
-  "<5": FINDRISC_STYLE.low,
-  "5-10": FINDRISC_STYLE.slightly_elevated,
-  "10-20": FINDRISC_STYLE.moderate,
-  "20-30": FINDRISC_STYLE.high,
-  ">=30": FINDRISC_STYLE.very_high,
-};
+// Position of each band on the 5-step meter (display only). Colour + icon + words: never colour alone.
+const FINDRISC_LEVEL: Record<FindriscBand, number> = { low: 1, slightly_elevated: 2, moderate: 3, high: 4, very_high: 5 };
+const CVD_LEVEL: Record<CvdBand, number> = { "<5": 1, "5-10": 2, "10-20": 3, "20-30": 4, ">=30": 5 };
 
-function LevelMeter({ level, label }: { level: number; label: string }) {
+/** Five-step level meter: filled steps in the status colour on the surface-3 track. */
+function LevelMeter({ level, label, look }: { level: number; label: string; look: StatusLook }) {
   return (
-    <div className="mt-3 flex gap-1" role="img" aria-label={label}>
+    <div className="mt-4 flex gap-1" role="img" aria-label={label}>
       {[1, 2, 3, 4, 5].map((i) => (
-        <span key={i} className="h-2 flex-1 rounded-full" style={{ background: i <= level ? "currentColor" : "rgba(0,0,0,0.12)" }} />
+        <span key={i} className={`h-1.5 flex-1 rounded-full ${i <= level ? "" : "bg-surface-3"}`} style={i <= level ? { background: statusVar(look.status) } : undefined} />
       ))}
     </div>
   );
@@ -51,7 +41,7 @@ export function ResultsView({
   lang, t, result, onRestart,
 }: { lang: Locale; t: Dictionary; result: RiskApiResult; onRestart: () => void }) {
   const { findrisc: f, cvd, nextStep } = result;
-  const fs = FINDRISC_STYLE[f.band];
+  const fLook = lookFromFindrisc(f.band);
   const [explanation, setExplanation] = useState<{ text: string; source: "ai" | "template" } | null>(null);
 
   useEffect(() => {
@@ -80,73 +70,77 @@ export function ResultsView({
 
   return (
     <div className="flex flex-col gap-5 pt-2">
-      <h1 className="text-2xl font-bold">{t.results.title}</h1>
+      <h1 className="text-h1 font-semibold">{t.results.title}</h1>
 
-      <section className="rounded-2xl p-5" style={{ background: fs.bg, color: fs.fg }} aria-labelledby="dm-title">
-        <h2 id="dm-title" className="text-base font-semibold">{t.results.diabetesTitle}</h2>
-        <p className="mt-1 text-2xl font-bold">{fs.icon} {t.results.findriscBands[f.band]}</p>
-        <LevelMeter level={fs.level} label={t.results.findriscBands[f.band]} />
-        <p className="mt-2 text-sm">{scoreText} · {fmtClient(t.results.bmiLabel, { bmi: f.bmi }, lang)}</p>
-        {f.recommendGlucoseTest && <p className="mt-1 text-sm font-semibold">🩸 {t.results.glucoseTestRecommended}</p>}
-      </section>
-
-      <section
-        className="rounded-2xl p-5"
-        style={cvd.available ? { background: CVD_STYLE[cvd.band].bg, color: CVD_STYLE[cvd.band].fg } : { background: "var(--neutral-bg)", color: "var(--neutral-fg)" }}
-        aria-labelledby="cvd-title"
-      >
-        <h2 id="cvd-title" className="text-base font-semibold">{t.results.heartTitle}</h2>
-        {cvd.available ? (
-          <>
-            <p className="mt-1 text-2xl font-bold">{CVD_STYLE[cvd.band].icon} {t.results.cvdBands[cvd.band]}</p>
-            <LevelMeter level={CVD_STYLE[cvd.band].level} label={t.results.cvdBands[cvd.band]} />
-          </>
-        ) : (
-          <p className="mt-2 text-lg font-semibold">🩺 {t.results.cvdUnavailable[cvd.reason]}</p>
+      {/* Neutral cards; status colour only on the chip and the meter (DESIGN.md §3.3). */}
+      <section className="card p-5" aria-labelledby="dm-title">
+        <div className="flex flex-wrap items-start justify-between gap-2">
+          <h2 id="dm-title" className="text-h3 font-semibold">{t.results.diabetesTitle}</h2>
+          <StatusChip look={fLook} label={t.results.findriscBands[f.band]} />
+        </div>
+        <LevelMeter level={FINDRISC_LEVEL[f.band]} look={fLook} label={t.results.findriscBands[f.band]} />
+        <p className="mt-3 text-caption text-secondary">{scoreText} · {fmtClient(t.results.bmiLabel, { bmi: f.bmi }, lang)}</p>
+        {f.recommendGlucoseTest && (
+          <p className="mt-2 flex items-start gap-2 text-body"><Droplet aria-hidden size={20} className="mt-0.5 shrink-0 text-secondary" />{t.results.glucoseTestRecommended}</p>
         )}
       </section>
 
+      <section className="card p-5" aria-labelledby="cvd-title">
+        <div className="flex flex-wrap items-start justify-between gap-2">
+          <h2 id="cvd-title" className="text-h3 font-semibold">{t.results.heartTitle}</h2>
+          {cvd.available && <StatusChip look={lookFromCvd(cvd.band)} label={t.results.cvdBands[cvd.band]} />}
+        </div>
+        {cvd.available ? (
+          <LevelMeter level={CVD_LEVEL[cvd.band]} look={lookFromCvd(cvd.band)} label={t.results.cvdBands[cvd.band]} />
+        ) : (
+          <div className="mt-3 flex flex-col items-start gap-2">
+            <StatusChip look={{ status: "none" }} label={t.lab.flags.could_not_read} />
+            <p className="text-body">{t.results.cvdUnavailable[cvd.reason]}</p>
+          </div>
+        )}
+      </section>
+
+      <section className="card p-5" aria-labelledby="next-title">
+        <h2 id="next-title" className="eyebrow">{t.results.nextStepTitle}</h2>
+        <p className="mt-1 text-body">{t.results.nextSteps[nextStep]}</p>
+      </section>
+
       <section aria-labelledby="factors-title">
-        <h2 id="factors-title" className="text-lg font-bold">{t.results.factorsTitle}</h2>
+        <h2 id="factors-title" className="text-h3 font-semibold">{t.results.factorsTitle}</h2>
         {f.factors.length ? (
           <ul className="mt-2 flex flex-col gap-2">
             {f.factors.slice(0, 3).map((x) => (
-              <li key={x.factor} className="flex items-center gap-2 rounded-lg bg-surface px-3 py-2 shadow-sm">
-                <span aria-hidden>•</span> {t.results.factors[x.factor]}
+              <li key={x.factor} className="rounded-xl border border-border bg-surface-1 px-4 py-3 text-body">
+                {t.results.factors[x.factor]}
               </li>
             ))}
           </ul>
         ) : (
-          <p className="mt-1 text-muted">{t.results.noFactors}</p>
+          <p className="mt-1 text-secondary">{t.results.noFactors}</p>
         )}
       </section>
 
-      <section className="rounded-2xl border-2 border-brand bg-brand-soft p-5" aria-labelledby="next-title">
-        <h2 id="next-title" className="text-lg font-bold text-brand-strong">👉 {t.results.nextStepTitle}</h2>
-        <p className="mt-1 text-lg">{t.results.nextSteps[nextStep]}</p>
-      </section>
-
-      <section aria-labelledby="exp-title" aria-live="polite">
-        <h2 id="exp-title" className="text-lg font-bold">{t.results.explanationTitle}</h2>
-        {explanation ? (
-          <>
-            <p className="mt-1">{explanation.text}</p>
-            <p className="mt-1 text-xs text-muted">{explanation.source === "ai" ? t.results.aiNote : t.results.templateNote}</p>
-          </>
-        ) : (
-          <LoadingState compact message={t.common.explaining} />
+      <AiCard
+        label={t.results.explanationTitle}
+        live
+        note={explanation ? (explanation.source === "ai" ? t.results.aiNote : t.results.templateNote) : undefined}
+      >
+        {explanation ? <p>{explanation.text}</p> : (
+          <div role="status" className="flex flex-col gap-3">
+            <p className="text-secondary">{t.common.explaining}</p>
+            <SkeletonLines />
+          </div>
         )}
-      </section>
+      </AiCard>
 
       <SaveRecordButton lang={lang} t={t} record={riskRecord(result)} />
 
       <AreaCard lang={lang} t={t} />
 
+      <Link href={`/${lang}/map`} className="btn-primary"><MapPin aria-hidden size={20} /> {t.common.findCare}</Link>
       <Disclaimer text={t.common.disclaimer} />
-
-      <Link href={`/${lang}/map`} className="btn-primary text-center">📍 {t.common.findCare}</Link>
-      <p className="text-center text-sm text-muted">{t.results.printNote}</p>
-      <button className="btn-ghost" onClick={onRestart}>↺ {t.results.startOver}</button>
+      <p className="text-caption text-secondary">{t.results.printNote}</p>
+      <button className="btn-ghost" onClick={onRestart}><RotateCcw aria-hidden size={16} /> {t.results.startOver}</button>
     </div>
   );
 }

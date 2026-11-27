@@ -10,6 +10,8 @@ import type { EvaluatedLabValue, ExtractedLabValue } from "@/domain/scoring/labR
 import { LoadingState } from "@/components/ui/LoadingState";
 import { SaveRecordButton } from "@/components/features/account/SaveRecordButton";
 import { labRecord } from "@/domain/records";
+import { AiCard, RangeBar, SkeletonLines, StatusChip, lookFromLab } from "@/components/ui/Status";
+import { ArrowRight, Camera, FileUp, Keyboard, Lock, MapPin, Plus, RotateCcw, TriangleAlert } from "lucide-react";
 
 type Stage = "upload" | "reading" | "confirm" | "evaluating" | "results";
 interface Row { test_name: string; value: string; unit: string; low: string; high: string; confidence: number }
@@ -49,11 +51,8 @@ const MAX_UPLOAD_BYTES = 8 * 1024 * 1024;
 const isPdf = (f: File) => f.type === "application/pdf";
 const isSupported = (f: File) => isPdf(f) || f.type.startsWith("image/");
 
-const FLAG_STYLE = {
-  normal: { icon: "✅", bg: "var(--ok-bg)", fg: "var(--ok-fg)" },
-  outside_range: { icon: "⚠️", bg: "var(--orange-bg)", fg: "var(--orange-fg)" },
-  could_not_read: { icon: "❔", bg: "var(--neutral-bg)", fg: "var(--neutral-fg)" },
-} as const;
+/** Display order only (DESIGN.md §8.1): out of range first, then values that couldn't be checked, then in range. */
+const FLAG_ORDER = { outside_range: 0, could_not_read: 1, normal: 2 } as const;
 
 export function LabFlow({ lang, t }: { lang: Locale; t: Dictionary }) {
   const [stage, setStage] = useState<Stage>("upload");
@@ -199,18 +198,20 @@ export function LabFlow({ lang, t }: { lang: Locale; t: Dictionary }) {
 
   if (stage === "upload" || stage === "reading")
     return (
-      <div className="flex flex-col gap-4 pt-2">
-        <h1 className="text-2xl font-bold">{t.lab.title}</h1>
-        <p>{t.lab.intro}</p>
-        <p className="text-sm text-muted">{t.lab.photoTips}</p>
-        {notice && <p className="rounded-lg bg-warn-soft px-3 py-2" role="alert">{notice}</p>}
+      <div className="flex flex-col gap-5 pt-2">
+        <div className="flex flex-col gap-2">
+          <h1 className="text-h1 font-semibold">{t.lab.title}</h1>
+          <p className="text-body">{t.lab.intro}</p>
+          <p className="text-caption text-secondary">{t.lab.photoTips}</p>
+        </div>
+        {notice && <p className="card flex items-start gap-3 p-4 text-body" role="alert"><TriangleAlert aria-hidden size={20} className="mt-0.5 shrink-0 text-secondary" />{notice}</p>}
         <div
-          className={`flex flex-col gap-2 rounded-2xl border-2 border-dashed p-3 transition-colors duration-150 ${
-            dragging ? "border-brand bg-brand/10" : "border-line"
+          className={`flex flex-col gap-2 rounded-2xl border border-dashed p-3 transition-colors duration-150 ${
+            dragging ? "border-gold bg-gold-subtle" : "border-border-strong"
           }`}
         >
-          <label className={`btn-primary cursor-pointer ${stage === "reading" ? "pointer-events-none opacity-60" : ""}`}>
-            {dragging ? <>⬇️ {t.lab.dropHere}</> : <>📷 {stage === "reading" ? t.lab.reading : t.lab.takePhoto}</>}
+          <label className={`btn-primary cursor-pointer ${stage === "reading" ? "pointer-events-none opacity-40" : ""}`}>
+            {dragging ? <><FileUp aria-hidden size={20} /> {t.lab.dropHere}</> : <><Camera aria-hidden size={20} /> {stage === "reading" ? t.lab.reading : t.lab.takePhoto}</>}
             <input
               ref={fileRef}
               type="file"
@@ -222,51 +223,63 @@ export function LabFlow({ lang, t }: { lang: Locale; t: Dictionary }) {
             />
           </label>
           {/* Dragging only exists with a mouse, so the hint is hidden on touch screens. */}
-          <p className="hidden text-center text-sm text-muted [@media(hover:hover)]:block">{t.lab.dragHint}</p>
+          <p className="hidden text-center text-caption text-secondary [@media(hover:hover)]:block">{t.lab.dragHint}</p>
         </div>
         {stage === "reading" && <LoadingState message={t.common.readingReport} delayMs={0} />}
         <button className="btn-secondary" onClick={() => { setRows([emptyRow()]); setNotice(null); setStage("confirm"); }}>
-          ⌨️ {t.lab.typeManually}
+          <Keyboard aria-hidden size={20} /> {t.lab.typeManually}
         </button>
-        <p className="text-sm text-muted">🔒 {t.lab.privacyNote}</p>
+        <p className="flex items-start gap-2 text-caption text-secondary"><Lock aria-hidden size={16} className="mt-0.5 shrink-0" />{t.lab.privacyNote}</p>
       </div>
     );
 
   if (stage === "confirm" || stage === "evaluating")
     return (
-      <div className="flex flex-col gap-4 pt-2">
-        <h1 className="text-2xl font-bold">{t.lab.confirmTitle}</h1>
-        {notice && <p className="rounded-lg bg-warn-soft px-3 py-2" role="status">{notice}</p>}
-        <p className="text-muted">{t.lab.confirmIntro}</p>
+      <div className="flex flex-col gap-5 pt-2">
+        <div className="flex flex-col gap-2">
+          <h1 className="text-h1 font-semibold">{t.lab.confirmTitle}</h1>
+          <p className="text-body text-secondary">{t.lab.confirmIntro}</p>
+        </div>
+        {notice && <p className="card flex items-start gap-3 p-4 text-body" role="status"><TriangleAlert aria-hidden size={20} className="mt-0.5 shrink-0 text-secondary" />{notice}</p>}
         <ul className="flex flex-col gap-3">
-          {rows.map((r, i) => (
-            <li key={i} className={`rounded-xl border bg-surface p-3 shadow-sm ${r.confidence < 0.7 ? "border-warn-border" : "border-line"}`}>
-              <div className="grid grid-cols-6 gap-2">
-                <label className="col-span-6 flex flex-col gap-1 text-xs font-medium">
-                  {t.lab.testName}
-                  <input className="field" value={r.test_name} onChange={(e) => update(i, "test_name", e.target.value)} />
-                </label>
-                <label className="col-span-3 flex flex-col gap-1 text-xs font-medium">
-                  {t.lab.value}
-                  <input className="field text-lg font-semibold" inputMode="decimal" value={r.value} onChange={(e) => update(i, "value", e.target.value)} />
-                </label>
-                <label className="col-span-3 flex flex-col gap-1 text-xs font-medium">
-                  {t.lab.unit}
-                  <input className="field" value={r.unit} onChange={(e) => update(i, "unit", e.target.value)} />
-                </label>
-                <fieldset className="col-span-6 grid grid-cols-2 gap-2">
-                  <legend className="mb-1 text-xs font-medium">{t.lab.range}</legend>
-                  <input aria-label={`${t.lab.range} min`} placeholder="min" className="field" inputMode="decimal" value={r.low} onChange={(e) => update(i, "low", e.target.value)} />
-                  <input aria-label={`${t.lab.range} max`} placeholder="max" className="field" inputMode="decimal" value={r.high} onChange={(e) => update(i, "high", e.target.value)} />
-                </fieldset>
-              </div>
-              <button className="mt-2 text-sm text-[var(--danger)] underline" onClick={() => setRows((rs) => rs.filter((_, j) => j !== i))}>
-                {t.lab.remove}
-              </button>
-            </li>
-          ))}
+          {rows.map((r, i) => {
+            // Values the reader wasn't sure about: borderline-coloured border + icon (DESIGN.md §9.3).
+            const unsure = r.confidence < 0.7;
+            return (
+              <li key={i} className={`card p-4 ${unsure ? "border-status-borderline" : ""}`}>
+                {unsure && (
+                  <p className="mb-3 flex items-start gap-2 text-caption text-status-borderline">
+                    <TriangleAlert aria-hidden size={16} className="mt-0.5 shrink-0" />
+                    {t.lab.reasons.low_confidence}
+                  </p>
+                )}
+                <div className="grid grid-cols-6 gap-3">
+                  <label className="col-span-6 flex flex-col gap-1 text-label font-medium">
+                    {t.lab.testName}
+                    <input className="field" value={r.test_name} onChange={(e) => update(i, "test_name", e.target.value)} />
+                  </label>
+                  <label className="col-span-3 flex flex-col gap-1 text-label font-medium">
+                    {t.lab.value}
+                    <input className={`field font-semibold ${unsure ? "border-status-borderline" : ""}`} inputMode="decimal" value={r.value} onChange={(e) => update(i, "value", e.target.value)} />
+                  </label>
+                  <label className="col-span-3 flex flex-col gap-1 text-label font-medium">
+                    {t.lab.unit}
+                    <input className="field" value={r.unit} onChange={(e) => update(i, "unit", e.target.value)} />
+                  </label>
+                  <fieldset className="col-span-6 grid grid-cols-2 gap-3">
+                    <legend className="mb-1 text-label font-medium">{t.lab.range}</legend>
+                    <input aria-label={`${t.lab.range} min`} placeholder="min" className="field" inputMode="decimal" value={r.low} onChange={(e) => update(i, "low", e.target.value)} />
+                    <input aria-label={`${t.lab.range} max`} placeholder="max" className="field" inputMode="decimal" value={r.high} onChange={(e) => update(i, "high", e.target.value)} />
+                  </fieldset>
+                </div>
+                <button className="btn-destructive mt-2 -ml-3" onClick={() => setRows((rs) => rs.filter((_, j) => j !== i))}>
+                  {t.lab.remove}
+                </button>
+              </li>
+            );
+          })}
         </ul>
-        <button className="btn-secondary" onClick={() => setRows((rs) => [...rs, emptyRow()])}>＋ {t.lab.addRow}</button>
+        <button className="btn-secondary" onClick={() => setRows((rs) => [...rs, emptyRow()])}><Plus aria-hidden size={20} /> {t.lab.addRow}</button>
         <button className="btn-primary" onClick={evaluate} disabled={stage === "evaluating" || !rows.some((r) => r.test_name.trim())}>
           {stage === "evaluating" ? t.common.loading : t.lab.evaluate}
         </button>
@@ -275,53 +288,76 @@ export function LabFlow({ lang, t }: { lang: Locale; t: Dictionary }) {
     );
 
   const anyOutside = results.some((r) => r.flag === "outside_range");
+  // Sorted for display only; the results themselves are unchanged.
+  const sorted = results.map((r, i) => ({ r, i })).sort((a, b) => FLAG_ORDER[a.r.flag] - FLAG_ORDER[b.r.flag] || a.i - b.i);
   return (
-    <div className="flex flex-col gap-4 pt-2">
-      <h1 className="text-2xl font-bold">{t.lab.resultsTitle}</h1>
+    <div className="flex flex-col gap-5 pt-2">
+      <h1 className="text-h1 font-semibold">{t.lab.resultsTitle}</h1>
+
+      {/* Overview first: the explanation (AI or template) and the next step. */}
+      <AiCard
+        label={t.results.explanationTitle}
+        live
+        note={explanation ? (explanation.source === "ai" ? t.results.aiNote : t.results.templateNote) : undefined}
+      >
+        {explanation ? <p>{explanation.text}</p> : (
+          <div role="status" className="flex flex-col gap-3">
+            <p className="text-secondary">{t.common.explaining}</p>
+            <SkeletonLines />
+          </div>
+        )}
+      </AiCard>
+
+      <section className="card p-5">
+        <p className="eyebrow">{t.results.nextStepTitle}</p>
+        <p className="mt-1 text-body">{t.lab.nextSteps[anyOutside ? "lab_follow_up" : "lab_all_normal"]}</p>
+      </section>
+
       <ul className="flex flex-col gap-3">
-        {results.map((r, i) => {
-          const s = FLAG_STYLE[r.flag];
-          const range = r.rangeUsed
-            ? `${r.rangeUsed.low ?? ""}${r.rangeUsed.low !== null && r.rangeUsed.high !== null ? "–" : r.rangeUsed.low !== null ? "+" : "< "}${r.rangeUsed.high ?? ""} ${r.rangeUsed.unit}`
+        {sorted.map(({ r, i }) => {
+          const look = lookFromLab(r.flag, r.direction);
+          const name = r.name ? r.name[lang] : r.printedName;
+          const label = `${t.lab.flags[r.flag]}${r.direction ? ` · ${t.lab.direction[r.direction]}` : ""}`;
+          const ru = r.rangeUsed;
+          const range = ru
+            ? `${ru.low ?? ""}${ru.low !== null && ru.high !== null ? "–" : ru.low !== null ? "+" : "< "}${ru.high ?? ""} ${ru.unit}`
             : null;
+          // The bar compares the value with the range in the same unit: only when the range came from the report
+          // itself, or the value is already in the table's unit (no unit conversion is done here).
+          const sameUnit = ru && (ru.source === "report" || (r.unit ?? "").toLowerCase() === ru.unit.toLowerCase());
           return (
-            <li key={i} className="rounded-xl p-4" style={{ background: s.bg, color: s.fg }}>
-              <p className="font-semibold">{r.name ? r.name[lang] : r.printedName}</p>
-              <p className="text-2xl font-bold">{r.value ?? "—"} <span className="text-base font-medium">{r.unit}</span></p>
-              <p className="font-semibold">
-                {s.icon} {t.lab.flags[r.flag]}
-                {r.direction && <> · {t.lab.direction[r.direction]}</>}
-              </p>
-              {range && <p className="text-sm">{t.lab.rangeSource[r.rangeUsed!.source]}: {range}</p>}
-              {r.reason && <p className="text-sm">{t.lab.reasons[r.reason]}</p>}
+            <li key={i} className="card p-5">
+              <div className="flex flex-wrap items-start justify-between gap-2">
+                <h2 className="text-h3 font-semibold">{name}</h2>
+                <StatusChip look={look} label={label} />
+              </div>
+              {ru && sameUnit && r.value !== null ? (
+                <RangeBar
+                  value={r.value}
+                  low={ru.low}
+                  high={ru.high}
+                  unit={r.unit ?? ""}
+                  look={look}
+                  ariaLabel={`${name} ${r.value} ${r.unit ?? ""}. ${t.lab.range}: ${range}. ${label}.`}
+                />
+              ) : (
+                <p className="mt-2 text-h2 font-semibold tabular-nums">
+                  {r.value ?? "—"} <span className="text-caption font-normal text-secondary">{r.unit}</span>
+                </p>
+              )}
+              {range && <p className="text-caption text-secondary">{t.lab.rangeSource[ru!.source]}: {range}</p>}
+              {r.reason && <p className="mt-1 text-caption text-secondary">{t.lab.reasons[r.reason]}</p>}
             </li>
           );
         })}
       </ul>
 
-      <section className="rounded-2xl border-2 border-brand bg-brand-soft p-5">
-        <h2 className="text-lg font-bold text-brand-strong">👉 {t.results.nextStepTitle}</h2>
-        <p className="mt-1 text-lg">{t.lab.nextSteps[anyOutside ? "lab_follow_up" : "lab_all_normal"]}</p>
-      </section>
-
-      <section aria-live="polite">
-        <h2 className="text-lg font-bold">{t.results.explanationTitle}</h2>
-        {explanation ? (
-          <>
-            <p className="mt-1">{explanation.text}</p>
-            <p className="mt-1 text-xs text-muted">{explanation.source === "ai" ? t.results.aiNote : t.results.templateNote}</p>
-          </>
-        ) : (
-          <LoadingState compact message={t.common.explaining} />
-        )}
-      </section>
-
       <SaveRecordButton lang={lang} t={t} record={labRecord(results)} />
 
+      <Link href={`/${lang}/map`} className="btn-primary"><MapPin aria-hidden size={20} /> {t.common.findCare} <ArrowRight aria-hidden size={20} /></Link>
       <Disclaimer text={t.common.disclaimer} />
-      <Link href={`/${lang}/map`} className="btn-primary">📍 {t.common.findCare}</Link>
       <button className="btn-ghost" onClick={() => { setResults([]); setRows([]); setExplanation(null); setStage("upload"); }}>
-        ↺ {t.results.startOver}
+        <RotateCcw aria-hidden size={16} /> {t.results.startOver}
       </button>
     </div>
   );

@@ -29,9 +29,9 @@ export default async function CheckPage({ params, searchParams }: PageProps<"/[l
   if (!allowed.length) {
     return (
       <div className="flex flex-col gap-4 pt-2">
-        <h1 className="text-2xl font-bold">{t.check.title}</h1>
+        <h1 className="text-h1 font-semibold">{t.check.title}</h1>
         <p>{t.check.noneLive}</p>
-        <Link href={`/${lang}/risk`} className="btn-primary text-center">❤️ {t.check.goRisk}</Link>
+        <Link href={`/${lang}/risk`} className="btn-primary">{t.check.goRisk}</Link>
       </div>
     );
   }

@@ -2,7 +2,8 @@
 
 import * as m from "motion/react-m";
 
-const EASE = [0.22, 1, 0.36, 1] as const;
+// DESIGN.md §11: enter easing, 300 ms, a 12 px slide.
+const EASE = [0.2, 0, 0, 1] as const;
 
 /** Fades and slides its children in once, when scrolled into view. Children with `RevealItem` stagger. */
 export function Reveal({
@@ -36,8 +37,8 @@ export function RevealItem({ children, className, as = "div" }: { children: Reac
     <Comp
       className={className}
       variants={{
-        hidden: { opacity: 0, y: 18 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: EASE } },
+        hidden: { opacity: 0, y: 12 },
+        show: { opacity: 1, y: 0, transition: { duration: 0.3, ease: EASE } },
       }}
     >
       {children}

@@ -2,44 +2,27 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
-import { LogOut, Trash2 } from "lucide-react";
+import { ClipboardList, Lock, LogOut, Trash2, TriangleAlert } from "lucide-react";
 import type { Dictionary, Locale } from "@/i18n";
 import type { SavedRecord } from "@/domain/records";
 import { MODULES } from "@/domain/modules/registry";
-import type { Urgency } from "@/domain/modules/types";
 import { LAB_RANGES } from "@/domain/scoring/labRanges";
+import { StatusChip, lookFromCvd, lookFromFindrisc, lookFromLab, lookFromUrgency, type StatusLook } from "@/components/ui/Status";
 import { authFetch, logoutHere, setAuth, useAuth } from "@/lib/client/auth";
 import { fmtClient, toKhmerDigits } from "@/lib/client/util";
 import { Disclaimer } from "@/components/ui/Disclaimer";
 import { LoadingState } from "@/components/ui/LoadingState";
 import { TelegramLogin } from "./TelegramLogin";
 
-// Colour + icon + words, as on the result pages.
-const TONE = {
-  ok: { bg: "var(--ok-bg)", fg: "var(--ok-fg)" },
-  mild: { bg: "var(--lime-bg)", fg: "var(--lime-fg)" },
-  caution: { bg: "var(--caution-bg)", fg: "var(--caution-fg)" },
-  high: { bg: "var(--orange-bg)", fg: "var(--orange-fg)" },
-  danger: { bg: "var(--danger-bg)", fg: "var(--danger-fg)" },
-  neutral: { bg: "var(--neutral-bg)", fg: "var(--neutral-fg)" },
-} as const;
-type Tone = keyof typeof TONE;
-const URGENCY: Record<Urgency, { tone: Tone; icon: string }> = {
-  red_flag: { tone: "danger", icon: "🚨" }, high: { tone: "danger", icon: "🔴" }, moderate: { tone: "caution", icon: "🟠" },
-  low: { tone: "ok", icon: "🟢" }, incomplete: { tone: "neutral", icon: "⚪" },
-};
-const FINDRISC = {
-  low: { tone: "ok", icon: "🟢" }, slightly_elevated: { tone: "mild", icon: "🟡" }, moderate: { tone: "caution", icon: "🟠" },
-  high: { tone: "high", icon: "🔴" }, very_high: { tone: "danger", icon: "🔴" },
-} as const;
-const CVD = { "<5": FINDRISC.low, "5-10": FINDRISC.slightly_elevated, "10-20": FINDRISC.moderate, "20-30": FINDRISC.high, ">=30": FINDRISC.very_high } as const;
-const LAB = { normal: { tone: "ok", icon: "✅" }, outside_range: { tone: "high", icon: "⚠️" }, could_not_read: { tone: "neutral", icon: "❔" } } as const;
-
-function Row({ tone, icon, label, value }: { tone: Tone; icon: string; label: string; value: string }) {
+/** One result line: label, then status chip (colour + icon + words) and the value. Neutral row, no colour fill. */
+function Row({ look, label, status, value }: { look: StatusLook; label: string; status: string; value?: string }) {
   return (
-    <li className="flex flex-col rounded-lg px-3 py-2" style={{ background: TONE[tone].bg, color: TONE[tone].fg }}>
-      <span className="text-sm font-medium">{label}</span>
-      <span className="font-semibold"><span aria-hidden>{icon}</span> {value}</span>
+    <li className="flex flex-col gap-1 border-b border-border py-3 last:border-0">
+      <span className="text-label text-secondary">{label}</span>
+      <span className="flex flex-wrap items-center gap-2">
+        <StatusChip look={look} label={status} />
+        {value && <span className="text-body tabular-nums">{value}</span>}
+      </span>
     </li>
   );
 }
@@ -49,37 +32,41 @@ function RecordBody({ r, lang, t }: { r: SavedRecord; lang: Locale; t: Dictionar
   if (r.kind === "health_check") {
     const byId = new Map(MODULES.map((m) => [m.id, m]));
     return (
-      <ul className="flex flex-col gap-2">
+      <ul className="flex flex-col">
         {r.data.cards.map((c) => {
           const m = byId.get(c.moduleId);
           if (!m) return null;
-          const u = URGENCY[c.urgency];
           const band = c.redFlag ? t.check.urgency.red_flag : c.band && c.band !== "unavailable" ? (m.bands[c.band]?.[lang] ?? "") : t.check.urgency[c.urgency];
-          const score = c.score !== null ? ` · ${t.check.score}: ${digits(c.score)}${m.scoreUnit?.[lang] ?? ""}` : "";
-          return <Row key={c.moduleId} tone={u.tone} icon={u.icon} label={m.title[lang]} value={band + score} />;
+          const score = c.score !== null ? `${t.check.score}: ${digits(c.score)}${m.scoreUnit?.[lang] ?? ""}` : undefined;
+          return <Row key={c.moduleId} look={lookFromUrgency(c.redFlag ? "red_flag" : c.urgency)} label={m.title[lang]} status={band} value={score} />;
         })}
       </ul>
     );
   }
   if (r.kind === "risk") {
     const { findrisc: f, cvd } = r.data;
-    const fs = FINDRISC[f.band];
-    const cs = cvd.band ? CVD[cvd.band] : { tone: "neutral" as const, icon: "🩺" };
     return (
-      <ul className="flex flex-col gap-2">
-        <Row tone={fs.tone} icon={fs.icon} label={t.results.diabetesTitle} value={`${t.results.findriscBands[f.band]} · ${fmtClient(t.results.diabetesScore, { score: f.score }, lang)}`} />
-        <Row tone={cs.tone} icon={cs.icon} label={t.results.heartTitle} value={cvd.band ? t.results.cvdBands[cvd.band] : t.results.cvdUnavailable[cvd.reason ?? "bp_unknown"]} />
-        <li className="text-sm">👉 {t.results.nextSteps[r.data.nextStep]}</li>
+      <ul className="flex flex-col">
+        <Row look={lookFromFindrisc(f.band)} label={t.results.diabetesTitle} status={t.results.findriscBands[f.band]} value={fmtClient(t.results.diabetesScore, { score: f.score }, lang)} />
+        {cvd.band
+          ? <Row look={lookFromCvd(cvd.band)} label={t.results.heartTitle} status={t.results.cvdBands[cvd.band]} />
+          : <Row look={{ status: "none" }} label={t.results.heartTitle} status={t.results.cvdUnavailable[cvd.reason ?? "bp_unknown"]} />}
+        <li className="pt-3 text-body">
+          <span className="block text-caption text-secondary">{t.results.nextStepTitle}</span>
+          {t.results.nextSteps[r.data.nextStep]}
+        </li>
       </ul>
     );
   }
+  // Lab values keep Western digits (DESIGN.md §4.1). Saved records have no reference range, so no range bar here.
+  // DESIGN-TODO: range bars need the reference range stored in the record (src/domain/records.ts).
   return (
-    <ul className="flex flex-col gap-2">
+    <ul className="flex flex-col">
       {r.data.values.map((v, i) => {
-        const s = LAB[v.flag];
         const name = v.testId ? LAB_RANGES[v.testId].name[lang] : v.printedName;
-        const value = v.value === null ? "—" : `${lang === "km" ? toKhmerDigits(v.value) : v.value} ${v.unit ?? ""}`.trim();
-        return <Row key={i} tone={s.tone} icon={s.icon} label={name} value={`${value} · ${t.lab.flags[v.flag]}${v.direction ? ` (${t.lab.direction[v.direction]})` : ""}`} />;
+        const value = v.value === null ? "—" : `${v.value} ${v.unit ?? ""}`.trim();
+        const status = `${t.lab.flags[v.flag]}${v.direction ? ` · ${t.lab.direction[v.direction]}` : ""}`;
+        return <Row key={i} look={lookFromLab(v.flag, v.direction)} label={name} status={status} value={value} />;
       })}
     </ul>
   );
@@ -134,9 +121,9 @@ export function RecordsView({ lang, t }: { lang: Locale; t: Dictionary }) {
   if (!auth)
     return (
       <div className="flex flex-col gap-4 pt-2">
-        <h1 className="text-2xl font-bold">{r.title}</h1>
-        {notice && <p role="status" className="rounded-lg bg-warn-soft px-3 py-2">{notice}</p>}
-        <p>{t.auth.intro}</p>
+        <h1 className="text-h1 font-semibold">{r.title}</h1>
+        {notice && <p role="status" className="card p-4 text-body">{notice}</p>}
+        <p className="text-body text-secondary">{t.auth.intro}</p>
         <TelegramLogin t={t} />
       </div>
     );
@@ -145,39 +132,44 @@ export function RecordsView({ lang, t }: { lang: Locale; t: Dictionary }) {
     <div className="flex flex-col gap-5 pt-2">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold">{r.title}</h1>
-          <p className="text-sm text-muted">{auth.name ? fmtClient(t.auth.loggedInAs, { name: auth.name }, lang) : t.auth.loggedIn}</p>
+          <h1 className="text-h1 font-semibold">{r.title}</h1>
+          <p className="text-caption text-secondary">{auth.name ? fmtClient(t.auth.loggedInAs, { name: auth.name }, lang) : t.auth.loggedIn}</p>
         </div>
-        <button className="btn-ghost text-sm" onClick={() => void logoutHere()}>
+        <button className="btn-ghost" onClick={() => void logoutHere()}>
           <LogOut aria-hidden size={16} /> {t.auth.logout}
         </button>
       </div>
-      <p className="text-muted">{r.intro}</p>
-      {notice && <p role="status" className="rounded-lg bg-warn-soft px-3 py-2">{notice}</p>}
+      <p className="text-body text-secondary">{r.intro}</p>
+      {notice && <p role="status" className="card p-4 text-body">{notice}</p>}
 
       {load.kind === "loading" && <LoadingState message={t.common.loading} />}
       {load.kind === "error" && (
-        <div className="flex flex-col gap-2">
-          <p role="alert">{t.common.error}</p>
-          <button className="btn-secondary" onClick={() => void refresh()}>{t.common.tryAgain}</button>
+        <div className="card flex items-start gap-3 p-5" role="alert">
+          <TriangleAlert aria-hidden size={20} className="mt-0.5 shrink-0 text-secondary" />
+          <div className="flex flex-col gap-3">
+            <p className="text-body">{t.common.error}</p>
+            <button className="btn-secondary self-start" onClick={() => void refresh()}>{t.common.tryAgain}</button>
+          </div>
         </div>
       )}
       {load.kind === "ok" && !load.records.length && (
-        <div className="flex flex-col gap-3 rounded-2xl border border-dashed border-line p-5">
-          <p>{r.empty}</p>
-          <Link href={`/${lang}/check`} className="btn-primary">{t.nav.check}</Link>
+        <div className="card flex flex-col items-center gap-3 p-5 text-center">
+          <ClipboardList aria-hidden size={40} className="text-tertiary" />
+          <p className="text-h3 font-semibold">{r.title}</p>
+          <p className="text-body text-secondary">{r.empty}</p>
+          <Link href={`/${lang}/check`} className="btn-primary w-full">{t.nav.check}</Link>
         </div>
       )}
       {load.kind === "ok" && load.records.length > 0 && (
-        <ul className="flex flex-col gap-4">
+        <ul className="flex flex-col gap-3">
           {load.records.map((rec) => (
-            <li key={rec.id} className="rounded-2xl border border-line bg-surface p-4 shadow-sm">
-              <div className="mb-3 flex items-start justify-between gap-2">
+            <li key={rec.id} className="card p-5">
+              <div className="mb-1 flex items-start justify-between gap-2">
                 <div>
-                  <h2 className="text-lg font-bold">{r.kinds[rec.kind]}</h2>
-                  <p className="text-sm text-muted">{date(rec.createdAt)} · {r.channel[rec.channel]}</p>
+                  <h2 className="text-h3 font-semibold">{r.kinds[rec.kind]}</h2>
+                  <p className="text-caption text-secondary">{date(rec.createdAt)} · {r.channel[rec.channel]}</p>
                 </div>
-                <button className="btn-ghost min-h-10 px-2 text-sm" onClick={() => void remove(rec.id)} aria-label={`${r.delete}: ${r.kinds[rec.kind]}, ${date(rec.createdAt)}`}>
+                <button className="btn-destructive -mr-3" onClick={() => void remove(rec.id)} aria-label={`${r.delete}: ${r.kinds[rec.kind]}, ${date(rec.createdAt)}`}>
                   <Trash2 aria-hidden size={16} /> {r.delete}
                 </button>
               </div>
@@ -189,11 +181,11 @@ export function RecordsView({ lang, t }: { lang: Locale; t: Dictionary }) {
 
       <Disclaimer text={t.common.disclaimer} />
       {load.kind === "ok" && load.records.length > 0 && (
-        <button className="btn-ghost text-sm text-[var(--danger)]" onClick={() => void removeAll()}>
+        <button className="btn-destructive self-start" onClick={() => void removeAll()}>
           <Trash2 aria-hidden size={16} /> {r.deleteAll}
         </button>
       )}
-      <p className="text-xs text-muted">🔒 {t.auth.privacy}</p>
+      <p className="flex items-start gap-2 text-caption text-secondary"><Lock aria-hidden size={16} className="mt-0.5 shrink-0" />{t.auth.privacy}</p>
     </div>
   );
 }

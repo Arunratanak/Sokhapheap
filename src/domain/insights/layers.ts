@@ -56,9 +56,10 @@ export const LAYERS: LayerDef[] = [
   { id: "poverty", unit: "percent", notForCommune: true, get: dhs("population_lowest_wealth_quintile_pct"), source: "DHS 2021–22" },
 ];
 
-/** ColorBrewer YlOrRd, 5 classes (light → dark). */
-export const PALETTE = ["#ffffb2", "#fecc5c", "#fd8d3c", "#f03b20", "#bd0026"] as const;
-export const NO_DATA = "#d4d4d8";
+/** 5 classes (light → dark). */
+// Sequential gold → brown (DESIGN.md §10: calm, no alarm-red; darkest = worst). Readable on map tiles and on paper.
+export const PALETTE = ["#f3e8c8", "#e0c47f", "#c9a24a", "#94702a", "#5c4317"] as const;
+export const NO_DATA = "#d6d0c4";
 
 /** Quantile class breaks: returns the 4 inner thresholds for 5 classes (deduplicated). */
 export function quantileBreaks(values: number[], classes = 5): number[] {

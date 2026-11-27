@@ -10,11 +10,11 @@ export default function OgImage() {
       <div
         style={{
           width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center",
-          padding: 80, background: "linear-gradient(135deg, #f97316 0%, #f59e0b 55%, #f5b301 100%)", color: "#1c1917", fontFamily: "sans-serif",
+          padding: 80, background: "#0e0d0b", color: "#f3eee3", fontFamily: "sans-serif", borderLeft: "16px solid #c9a24a",
         }}
       >
-        <div style={{ fontSize: 40, opacity: 0.9, display: "flex" }}>❤️ SokhaPheap</div>
-        <div style={{ fontSize: 72, fontWeight: 800, marginTop: 24, lineHeight: 1.1, display: "flex" }}>
+        <div style={{ fontSize: 40, color: "#c9a24a", display: "flex" }}>SokhaPheap</div>
+        <div style={{ fontSize: 72, fontWeight: 600, marginTop: 24, lineHeight: 1.1, display: "flex" }}>
           Know your health risk early, and find care near you.
         </div>
         <div style={{ fontSize: 30, marginTop: 32, opacity: 0.9, display: "flex" }}>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useEffectEvent, useState } from "react";
-import { Send } from "lucide-react";
+import { Lock, Send } from "lucide-react";
 import type { Dictionary } from "@/i18n";
 import { API_BASE } from "@/lib/client/api-base";
 import { setAuth } from "@/lib/client/auth";
@@ -79,34 +79,34 @@ export function TelegramLogin({ t, prompt, compact = false, onLoggedIn }: { t: D
 
   if (stage.kind === "waiting") {
     return (
-      <div className="flex flex-col gap-3 rounded-2xl border border-line bg-surface p-4 shadow-sm" aria-live="polite">
+      <div className="card flex flex-col gap-3 p-5" aria-live="polite">
         <a href={stage.url} target="_blank" rel="noopener noreferrer" className="btn-primary">
-          <Send aria-hidden size={18} />
+          <Send aria-hidden size={20} />
           {a.openTelegram}
         </a>
         <div className="text-center">
-          <p className="text-sm text-muted">{a.codeLabel}</p>
-          <p className="font-mono text-3xl font-bold tracking-[0.3em]">{stage.code}</p>
+          <p className="text-caption text-secondary">{a.codeLabel}</p>
+          <p className="text-display font-semibold tracking-widest tabular-nums">{stage.code}</p>
         </div>
-        <p className="text-sm">{a.codeHelp}</p>
-        <p role="status" className="flex items-center gap-2 text-sm text-muted">
-          <span aria-hidden className="inline-block h-2 w-2 animate-pulse rounded-full bg-brand" />
+        <p className="text-body">{a.codeHelp}</p>
+        <p role="status" className="flex items-center gap-2 text-caption text-secondary">
+          <span aria-hidden className="skeleton inline-block h-2 w-2 rounded-full" />
           {a.waiting}
         </p>
-        <button className="btn-ghost text-sm" onClick={() => setStage({ kind: "idle" })}>{a.cancel}</button>
+        <button className="btn-ghost" onClick={() => setStage({ kind: "idle" })}>{a.cancel}</button>
       </div>
     );
   }
 
   return (
-    <div className={`flex flex-col gap-3 ${compact ? "" : "rounded-2xl border border-line bg-surface p-4 shadow-sm"}`}>
-      {prompt && <p>{prompt}</p>}
-      {stage.kind === "idle" && stage.notice && <p role="alert" className="rounded-lg bg-warn-soft px-3 py-2 text-sm">{stage.notice}</p>}
+    <div className={`flex flex-col gap-3 ${compact ? "" : "card p-5"}`}>
+      {prompt && <p className="text-body">{prompt}</p>}
+      {stage.kind === "idle" && stage.notice && <p role="alert" className="rounded-xl bg-surface-2 px-3 py-2 text-body">{stage.notice}</p>}
       <button className="btn-primary" onClick={start} disabled={stage.kind === "starting"}>
-        <Send aria-hidden size={18} />
+        <Send aria-hidden size={20} />
         {stage.kind === "starting" ? t.common.loading : a.button}
       </button>
-      <p className="text-xs text-muted">🔒 {a.privacy}</p>
+      <p className="flex items-start gap-2 text-caption text-secondary"><Lock aria-hidden size={16} className="mt-0.5 shrink-0" />{a.privacy}</p>
     </div>
   );
 }

@@ -16,8 +16,8 @@ export default async function MapPage({ params }: PageProps<"/[lang]/map">) {
 
   // ?type= is read in the browser so this page stays static.
   return (
-    <div className="flex flex-col gap-4 pt-2">
-      <h1 className="text-2xl font-bold">{t.map.title}</h1>
+    <div className="flex flex-col gap-5 pt-2">
+      <h1 className="text-h1 font-semibold">{t.map.title}</h1>
       <Suspense fallback={<MapExplorer lang={lang} t={t} areas={areas} typeFilter={null} dataUpdated={DATA_UPDATED} />}>
         <MapExplorerFromQuery lang={lang} t={t} areas={areas} types={FACILITY_TYPES} dataUpdated={DATA_UPDATED} />
       </Suspense>

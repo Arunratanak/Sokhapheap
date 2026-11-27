@@ -8,11 +8,12 @@ import type { Dictionary, Locale } from "@/i18n";
 import { fmtClient, toKhmerDigits } from "@/lib/client/util";
 import { LAYERS, NO_DATA, quantileBreaks, colourFor, type AreaProps, type LayerDef, type LayerId } from "@/domain/insights/layers";
 import type { FacilityItem } from "@/components/features/map/FacilityList";
+import { Hospital, Map as MapIcon, X } from "lucide-react";
 
 // The map (Leaflet + boundaries) only loads when the user taps "Show map" — keeps the page fast on 3G.
 const ChoroplethMap = dynamic(() => import("./ChoroplethMap"), {
   ssr: false,
-  loading: () => <div className="h-[55vh] min-h-72 w-full animate-pulse rounded-2xl bg-foreground/5 lg:h-[34rem]" />,
+  loading: () => <div className="skeleton h-[55vh] min-h-72 w-full rounded-2xl lg:h-136" />,
 });
 
 type Level = "province" | "district" | "commune";
@@ -137,32 +138,32 @@ export function InsightsExplorer({ lang, t, ranking }: { lang: Locale; t: Dictio
         <div className="flex min-w-0 flex-col gap-3">
           <div className="flex flex-wrap items-end gap-3">
             <fieldset className="flex flex-col gap-1">
-              <legend className="text-sm font-medium">{ti.levelLabel}</legend>
-              <div className="flex overflow-hidden rounded-xl border-2 border-brand" role="group">
+              <legend className="text-label font-medium">{ti.levelLabel}</legend>
+              <div className="flex gap-1 rounded-xl border border-border bg-surface-2 p-1" role="group">
                 {(["province", "district", "commune"] as Level[]).map((l) => (
                   <button
                     key={l}
                     type="button"
                     aria-pressed={level === l}
                     onClick={() => changeLevel(l)}
-                    className={`min-h-11 px-3 text-sm font-semibold ${level === l ? "bg-brand text-on-brand" : "bg-surface text-brand-strong hover:bg-brand-soft"}`}
+                    className={`min-h-10 rounded-lg px-3 text-label font-medium transition-colors duration-150 ${level === l ? "bg-surface-3 text-primary" : "text-secondary hover:text-primary"}`}
                   >
                     {ti.level[l]}
                   </button>
                 ))}
               </div>
             </fieldset>
-            <label className="flex min-w-0 flex-1 flex-col gap-1 text-sm font-medium">
+            <label className="flex min-w-0 flex-1 flex-col gap-1 text-label font-medium">
               {ti.layerLabel}
               <select className="field w-full" value={layerId} onChange={(e) => setLayerId(e.target.value as LayerId)}>
                 {available.map((l) => <option key={l.id} value={l.id}>{ti.layers[l.id]}</option>)}
               </select>
             </label>
           </div>
-          {level === "commune" && <p className="rounded-lg bg-warn-soft px-3 py-2 text-sm">{ti.communeNote}</p>}
+          {level === "commune" && <p className="rounded-xl bg-surface-2 px-3 py-2 text-caption text-secondary">{ti.communeNote}</p>}
 
           <button type="button" className="btn-secondary" aria-expanded={showMap} aria-controls="insights-map" onClick={toggleMap}>
-            🗺️ {showMap ? t.map.hideMap : t.map.showMap}
+            <MapIcon aria-hidden size={20} /> {showMap ? t.map.hideMap : t.map.showMap}
           </button>
 
           {showMap && (
@@ -179,21 +180,21 @@ export function InsightsExplorer({ lang, t, ranking }: { lang: Locale; t: Dictio
               label={label}
             />
           ) : (
-            <div className="flex h-[55vh] min-h-72 items-center justify-center rounded-2xl bg-foreground/5 lg:h-[34rem]" role="status">{ti.loadingMap}</div>
+            <div className="skeleton flex h-[55vh] min-h-72 items-center justify-center rounded-2xl text-secondary lg:h-136" role="status">{ti.loadingMap}</div>
           )}
 
-          <div aria-label={ti.legendTitle} className="rounded-xl border border-line bg-surface p-3 text-sm">
+          <div aria-label={ti.legendTitle} className="card p-4 text-label">
             <p className="font-semibold">{ti.layers[layer.id]}</p>
-            <p className="text-muted">{layer.lowIsWorse ? ti.legendBetter : layer.id === "gap" ? ti.legendWorse : ti.legendHigher} · {layer.source}</p>
+            <p className="text-caption text-secondary">{layer.lowIsWorse ? ti.legendBetter : layer.id === "gap" ? ti.legendWorse : ti.legendHigher} · {layer.source}</p>
             <ul className="mt-2 grid grid-cols-1 gap-1 sm:grid-cols-2">
               {legendRows.map((r, i) => (
                 <li key={i} className="flex items-center gap-2">
-                  <span aria-hidden className="inline-block h-4 w-6 shrink-0 rounded border border-line" style={{ background: r.colour }} />
+                  <span aria-hidden className="inline-block h-4 w-6 shrink-0 rounded-lg border border-border" style={{ background: r.colour }} />
                   {r.text}
                 </li>
               ))}
               <li className="flex items-center gap-2">
-                <span aria-hidden className="inline-block h-4 w-6 shrink-0 rounded border border-line" style={{ background: NO_DATA }} />
+                <span aria-hidden className="inline-block h-4 w-6 shrink-0 rounded-lg border border-border" style={{ background: NO_DATA }} />
                 {ti.noData}
               </li>
             </ul>
@@ -209,8 +210,8 @@ export function InsightsExplorer({ lang, t, ranking }: { lang: Locale; t: Dictio
           aria-live="polite"
           className={
             area
-              ? "fixed inset-x-0 bottom-0 z-[1000] max-h-[65vh] overflow-y-auto rounded-t-2xl border-t border-line bg-surface p-4 shadow-2xl lg:static lg:z-auto lg:max-h-none lg:rounded-2xl lg:border lg:shadow-none"
-              : "hidden rounded-2xl border border-dashed border-line p-4 text-sm text-muted lg:block"
+              ? "fixed inset-x-0 bottom-0 z-1000 max-h-[65vh] overflow-y-auto rounded-t-3xl border-t border-border bg-surface-1 p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] lg:static lg:z-auto lg:max-h-none lg:rounded-2xl lg:border"
+              : "hidden rounded-2xl border border-dashed border-border p-5 text-body text-secondary lg:block"
           }
         >
           {area ? (
@@ -220,7 +221,7 @@ export function InsightsExplorer({ lang, t, ranking }: { lang: Locale; t: Dictio
           )}
         </div>
       </div>
-      {!area && <p className="text-sm text-muted lg:hidden">{ti.tapHint}</p>}
+      {!area && <p className="text-caption text-secondary lg:hidden">{ti.tapHint}</p>}
 
       <RankingTable rows={ranking} t={ti} lang={lang} onView={(pcode) => select(pcode, "district")} />
     </div>
@@ -229,9 +230,9 @@ export function InsightsExplorer({ lang, t, ranking }: { lang: Locale; t: Dictio
 
 function Row({ label, value, note }: { label: string; value: string; note?: string }) {
   return (
-    <div className="flex flex-col border-b border-line py-2 last:border-0">
-      <dt className="text-sm text-muted">{label}</dt>
-      <dd className="font-semibold">{value}{note && <span className="ml-1 text-xs font-normal text-muted">({note})</span>}</dd>
+    <div className="flex flex-col border-b border-border py-2 last:border-0">
+      <dt className="text-label text-secondary">{label}</dt>
+      <dd className="font-semibold tabular-nums">{value}{note && <span className="ml-1 text-caption font-normal text-secondary">({note})</span>}</dd>
     </div>
   );
 }
@@ -246,27 +247,27 @@ function AreaPanel({
     <div className="flex flex-col gap-3">
       <div className="flex items-start justify-between gap-2">
         <div>
-          <h2 className="text-xl font-bold">{area.name_en}</h2>
-          <p className="text-sm text-muted">{t.level[level]}{sub ? ` · ${sub}` : ""}</p>
+          <h2 className="text-h2 font-semibold">{area.name_en}</h2>
+          <p className="text-caption text-secondary">{t.level[level]}{sub ? ` · ${sub}` : ""}</p>
         </div>
-        <button type="button" onClick={onClose} className="btn-ghost min-h-10 shrink-0 text-sm">✕ {t.panel.close}</button>
+        <button type="button" onClick={onClose} className="btn-ghost shrink-0"><X aria-hidden size={16} /> {t.panel.close}</button>
       </div>
 
       {area.gap && (
-        <section className="rounded-xl bg-brand-soft p-3">
-          <p className="text-sm font-medium">{t.panel.gapIndex}</p>
-          <p className="text-3xl font-bold">
-            {num(area.gap.index, lang)} <span className="text-base font-normal">/ {num(100, lang)}</span>
+        <section className="rounded-xl bg-surface-2 p-4">
+          <p className="text-label text-secondary">{t.panel.gapIndex}</p>
+          <p className="text-h1 font-semibold tabular-nums">
+            {num(area.gap.index, lang)} <span className="text-caption font-normal text-secondary">/ {num(100, lang)}</span>
           </p>
-          <p className="text-sm">{fmtClient(t.panel.rank, { rank: num(area.gap.rank, lang), of: num(area.gap.of, lang) }, lang)}</p>
-          <p className="mt-2 text-sm font-medium">{t.panel.drivers}</p>
+          <p className="text-label">{fmtClient(t.panel.rank, { rank: num(area.gap.rank, lang), of: num(area.gap.of, lang) }, lang)}</p>
+          <p className="mt-3 text-label font-medium">{t.panel.drivers}</p>
           {area.gap.drivers.length ? (
-            <ul className="text-sm">
+            <ul className="text-label">
               {area.gap.drivers.map((d) => (
                 <li key={d}>• {t.components[d as keyof T["components"]]} ({num(area.gap!.components[d] ?? 0, lang)}/{num(100, lang)})</li>
               ))}
             </ul>
-          ) : <p className="text-sm">{t.panel.noDrivers}</p>}
+          ) : <p className="text-label">{t.panel.noDrivers}</p>}
         </section>
       )}
 
@@ -309,8 +310,8 @@ function AreaPanel({
         </section>
       )}
 
-      <button type="button" className="btn-secondary min-h-12 text-base" onClick={onToggleFac} aria-pressed={showFac}>
-        🏥 {showFac ? `${t.panel.hideFacilities} (${num(facCount, lang)})` : t.panel.showFacilities}
+      <button type="button" className="btn-secondary" onClick={onToggleFac} aria-pressed={showFac}>
+        <Hospital aria-hidden size={20} /> {showFac ? `${t.panel.hideFacilities} (${num(facCount, lang)})` : t.panel.showFacilities}
       </button>
     </div>
   );
@@ -334,7 +335,7 @@ function RankingTable({ rows, t, lang, onView }: { rows: RankRow[]; t: T; lang: 
 
   const th = (key: SortKey, label: string, className = "") => (
     <th scope="col" className={`px-2 py-2 text-left ${className}`} aria-sort={sort.key === key ? (sort.asc ? "ascending" : "descending") : "none"}>
-      <button type="button" className="font-semibold underline-offset-2 hover:underline" onClick={() => setSort((s) => ({ key, asc: s.key === key ? !s.asc : true }))} aria-label={fmtClient(t.ranking.sortBy, { col: label }, lang)}>
+      <button type="button" className="min-h-11 font-semibold underline-offset-2 hover:underline" onClick={() => setSort((s) => ({ key, asc: s.key === key ? !s.asc : true }))} aria-label={fmtClient(t.ranking.sortBy, { col: label }, lang)}>
         {label} {sort.key === key ? (sort.asc ? "▲" : "▼") : ""}
       </button>
     </th>
@@ -343,16 +344,16 @@ function RankingTable({ rows, t, lang, onView }: { rows: RankRow[]; t: T; lang: 
   return (
     <section aria-labelledby="ranking-title" className="flex min-w-0 flex-col gap-3">
       <div>
-        <h2 id="ranking-title" className="text-xl font-bold">{t.ranking.title}</h2>
-        <p className="text-sm text-muted">{t.ranking.subtitle}</p>
+        <h2 id="ranking-title" className="text-h2 font-semibold">{t.ranking.title}</h2>
+        <p className="text-caption text-secondary">{t.ranking.subtitle}</p>
       </div>
-      <label className="flex flex-col gap-1 text-sm font-medium">
+      <label className="flex flex-col gap-1 text-label font-medium">
         {t.ranking.search}
         <input type="search" className="field" value={q} onChange={(e) => setQ(e.target.value)} />
       </label>
-      <div className="relative w-full max-w-full overflow-x-auto rounded-xl border border-line">
-        <table className="w-full min-w-[36rem] text-sm">
-          <thead className="bg-brand-soft">
+      <div className="relative w-full max-w-full overflow-x-auto rounded-2xl border border-border bg-surface-1">
+        <table className="w-full min-w-xl text-label">
+          <thead className="bg-surface-2 text-secondary">
             <tr>
               {th("rank", t.ranking.rank)}
               {th("name", t.ranking.district)}
@@ -365,10 +366,10 @@ function RankingTable({ rows, t, lang, onView }: { rows: RankRow[]; t: T; lang: 
           </thead>
           <tbody>
             {shown.map((r) => (
-              <tr key={r.pcode} className="border-t border-line">
+              <tr key={r.pcode} className="border-t border-border">
                 <td className="px-2 py-2 font-semibold">
                   {num(r.rank, lang)}
-                  <span className="ml-2 inline-block rounded bg-brand-soft px-1.5 text-xs text-brand-strong">
+                  <span className="ml-2 inline-block rounded-lg bg-surface-2 px-1.5 text-caption text-secondary">
                     {num(r.index, lang)}
                   </span>
                 </td>
@@ -378,13 +379,13 @@ function RankingTable({ rows, t, lang, onView }: { rows: RankRow[]; t: T; lang: 
                 <td className="px-2 py-2 text-right">{r.motor === null ? "—" : num(r.motor, lang)}</td>
                 <td className="px-2 py-2 text-right">{r.per10k === null ? "—" : num(r.per10k, lang, 2)}</td>
                 <td className="px-2 py-2 text-right">
-                  <button type="button" className="btn-ghost min-h-10 text-sm" onClick={() => onView(r.pcode)}>{t.ranking.view} <span className="sr-only">{r.name}</span></button>
+                  <button type="button" className="btn-ghost" onClick={() => onView(r.pcode)}>{t.ranking.view} <span className="sr-only">{r.name}</span></button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        {!shown.length && <p className="p-3 text-sm">{t.ranking.noResults}</p>}
+        {!shown.length && <p className="p-4 text-body text-secondary">{t.ranking.noResults}</p>}
       </div>
     </section>
   );

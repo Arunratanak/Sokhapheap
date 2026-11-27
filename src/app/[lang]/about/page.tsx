@@ -27,12 +27,12 @@ const EXTRA_DATASETS = [
 /** Section card: brand icon tile + heading + content. */
 function InfoCard({ icon: Icon, title, id, children, className = "" }: { icon: React.ComponentType<{ size?: number }>; title: string; id?: string; children: React.ReactNode; className?: string }) {
   return (
-    <section id={id} aria-labelledby={id ? `${id}-title` : undefined} className={`card flex flex-col gap-4 p-6 ${className}`}>
+    <section id={id} aria-labelledby={id ? `${id}-title` : undefined} className={`card flex flex-col gap-4 p-5 ${className}`}>
       <div className="flex items-center gap-3">
-        <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-[1rem] bg-surface-2 text-brand-strong ring-1 ring-line">
-          <Icon size={28} />
+        <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-surface-2 text-secondary">
+          <Icon size={20} />
         </span>
-        <h2 id={id ? `${id}-title` : undefined} className="text-lg font-bold">{title}</h2>
+        <h2 id={id ? `${id}-title` : undefined} className="text-h3 font-semibold">{title}</h2>
       </div>
       {children}
     </section>
@@ -41,10 +41,10 @@ function InfoCard({ icon: Icon, title, id, children, className = "" }: { icon: R
 
 function Bullets({ items }: { items: React.ReactNode[] }) {
   return (
-    <ul className="flex flex-col gap-2.5 text-sm leading-relaxed">
+    <ul className="flex flex-col gap-2 text-body">
       {items.map((it, i) => (
-        <li key={i} className="flex gap-2.5">
-          <span aria-hidden className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full [background:var(--gradient)]" />
+        <li key={i} className="flex gap-3">
+          <span aria-hidden className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-border-strong" />
           <span>{it}</span>
         </li>
       ))}
@@ -70,12 +70,12 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
       <div className="grid gap-6 lg:grid-cols-[1.6fr_1fr] lg:items-start">
         <header className="flex flex-col gap-4">
           <p className="eyebrow">{dict.nav.about}</p>
-          <h1 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl">{t.title}</h1>
-          <p className="max-w-3xl text-lg text-muted">{t.body}</p>
+          <h1 className="text-h1 font-semibold text-balance">{t.title}</h1>
+          <p className="max-w-3xl text-body text-secondary">{t.body}</p>
           <Disclaimer text={dict.common.disclaimer} />
         </header>
         <InfoCard icon={IconShieldLock} title={t.privacyTitle} id="privacy">
-          <p className="text-sm leading-relaxed">{t.privacy}</p>
+          <p className="text-body">{t.privacy}</p>
         </InfoCard>
       </div>
 
@@ -89,7 +89,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
               t.how3,
               <>
                 {t.how4}{" "}
-                <Link href={`/${lang}/insights`} className="font-semibold text-brand-strong underline underline-offset-4">{t.insightsLink}</Link>
+                <Link href={`/${lang}/insights`} className="font-medium text-gold underline underline-offset-4">{t.insightsLink}</Link>
               </>,
             ]}
           />
@@ -105,20 +105,20 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
       {/* Data sources */}
       <section id="data" aria-labelledby="data-title" className="flex flex-col gap-5">
         <div className="flex items-center gap-3">
-          <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-[1rem] bg-surface-2 text-brand-strong ring-1 ring-line">
-            <IconLayers size={28} />
+          <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-surface-2 text-secondary">
+            <IconLayers size={20} />
           </span>
-          <h2 id="data-title" className="text-2xl font-bold">{t.dataTitle}</h2>
+          <h2 id="data-title" className="text-h2 font-semibold">{t.dataTitle}</h2>
         </div>
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {DATASETS.map((d) => (
             <li key={d.name} lang="en" className="card flex flex-col gap-2 p-5">
-              <a href={d.url} target="_blank" rel="noopener noreferrer" className="group inline-flex items-start gap-1 font-semibold leading-snug text-brand-strong hover:underline">
+              <a href={d.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-start gap-1 font-semibold text-gold hover:underline">
                 <span>{d.name}</span>
-                <ArrowUpRight aria-hidden size={16} className="mt-0.5 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <ArrowUpRight aria-hidden size={16} className="mt-1 shrink-0" />
               </a>
-              <p className="mt-auto text-sm text-muted">{d.publisher}</p>
-              <p className="text-xs text-muted">{d.licence}</p>
+              <p className="mt-auto text-label text-secondary">{d.publisher}</p>
+              <p className="text-caption text-secondary">{d.licence}</p>
             </li>
           ))}
         </ul>
@@ -127,12 +127,12 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
       {/* Team */}
       <section id="team" aria-labelledby="team-title" className="flex flex-col gap-5">
         <div className="flex items-center gap-3">
-          <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-[1rem] bg-surface-2 text-brand-strong ring-1 ring-line">
-            <IconPeople size={28} />
+          <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-surface-2 text-secondary">
+            <IconPeople size={20} />
           </span>
           <div>
-            <h2 id="team-title" className="text-2xl font-bold">{fmt(landing.team.title, { app: dict.common.appName })}</h2>
-            <p className="text-muted">{landing.team.body}</p>
+            <h2 id="team-title" className="text-h2 font-semibold">{fmt(landing.team.title, { app: dict.common.appName })}</h2>
+            <p className="text-body text-secondary">{landing.team.body}</p>
           </div>
         </div>
         <MotionProvider>

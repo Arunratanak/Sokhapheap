@@ -26,11 +26,11 @@ function AccountLink({ href, t, active, className = "", onClick }: { href: strin
       href={href}
       onClick={onClick}
       aria-current={active ? "page" : undefined}
-      className={`inline-flex min-h-10 items-center gap-1.5 rounded-full border px-3 text-sm font-medium whitespace-nowrap transition-colors ${
-        active ? "border-brand bg-brand-soft text-brand-strong" : "border-line bg-surface text-foreground hover:border-brand"
+      className={`inline-flex min-h-11 items-center gap-2 rounded-full border px-3 text-label font-medium whitespace-nowrap transition-colors duration-150 ${
+        active ? "border-gold text-gold" : "border-border bg-surface-1 text-primary hover:border-border-strong"
       } ${className}`}
     >
-      <CircleUserRound aria-hidden size={18} />
+      <CircleUserRound aria-hidden size={20} />
       <span>{label}</span>
     </Link>
   );
@@ -130,17 +130,16 @@ export function Navbar({ lang, t, healthCheckLive = false }: { lang: Locale; t: 
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full border-b transition-[border-color,box-shadow] duration-300 ease-out print:hidden ${
-        solid ? "border-line shadow-sm" : "border-transparent"
+      className={`sticky top-0 z-50 w-full border-b transition-colors duration-200 ease-enter print:hidden ${
+        solid ? "border-border" : "border-transparent"
       }`}
     >
-      {/* Frosted background on its own layer: backdrop-filter on the header itself would become the
-          containing block for the fixed mobile menu and clip it to the header's height. */}
+      {/* Solid background on its own layer (no blur: DESIGN.md allows blur only on a bottom nav). */}
       <div
         aria-hidden
-        className={`absolute inset-0 -z-10 transition-opacity duration-300 ease-out ${solid ? "opacity-100" : "opacity-0"} bg-[var(--nav-bg)] backdrop-blur-xl backdrop-saturate-150`}
+        className={`absolute inset-0 -z-10 bg-bg transition-opacity duration-200 ease-enter ${solid ? "opacity-100" : "opacity-0"}`}
       />
-      <div className="mx-auto flex h-16 w-full max-w-6xl items-center gap-3 px-4 sm:px-6">
+      <div className="mx-auto flex h-16 w-full max-w-6xl items-center gap-3 px-5 sm:px-8">
         {/* Hamburger → X: on the left on small screens (hidden on desktop, where the tabs show) */}
         <button
           ref={buttonRef}
@@ -148,14 +147,14 @@ export function Navbar({ lang, t, healthCheckLive = false }: { lang: Locale; t: 
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => (open ? close(false) : setOpen(true))}
-          className="relative inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line bg-surface lg:hidden"
+          className="relative inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border bg-surface-1 lg:hidden"
         >
           <span className="sr-only">{open ? t.closeMenu : t.openMenu}</span>
           <span aria-hidden className="relative block h-3.5 w-4.5">
             {[0, 1, 2].map((i) => (
               <span
                 key={i}
-                className="absolute left-0 block h-0.5 w-full rounded-full bg-foreground transition-[transform,translate,scale,opacity,top] duration-300 ease-out"
+                className="absolute left-0 block h-0.5 w-full rounded-full bg-primary transition-[transform,translate,scale,opacity,top] duration-300 ease-enter"
                 style={{
                   top: open ? "6px" : `${i * 6}px`,
                   transform: open ? (i === 0 ? "rotate(45deg)" : i === 2 ? "rotate(-45deg)" : "scaleX(0)") : "none",
@@ -165,7 +164,7 @@ export function Navbar({ lang, t, healthCheckLive = false }: { lang: Locale; t: 
             ))}
           </span>
         </button>
-        <Link href={base} className="mr-auto inline-flex items-center gap-2.5 rounded-lg text-lg font-bold tracking-tight lg:mr-0">
+        <Link href={base} className="mr-auto inline-flex items-center gap-3 rounded-xl text-h3 font-semibold lg:mr-0">
           <LogoMark size={34} />
           <span className="whitespace-nowrap">{t.appName}</span>
         </Link>
@@ -175,7 +174,7 @@ export function Navbar({ lang, t, healthCheckLive = false }: { lang: Locale; t: 
           <ul ref={listRef} className="relative flex items-center gap-0.5" onMouseLeave={() => setHoverKey(null)}>
             <span
               aria-hidden
-              className={`absolute top-1/2 left-0 h-9 rounded-full bg-brand-soft ${pillReady ? "transition-[transform,translate,scale,width,opacity] duration-300 ease-out" : ""}`}
+              className={`absolute top-1/2 left-0 h-9 rounded-full bg-surface-2 ${pillReady ? "transition-[transform,translate,scale,width,opacity] duration-200 ease-enter" : ""}`}
               style={{ width: pill.w, transform: `translate(${pill.x}px, -50%)`, opacity: pill.visible ? 1 : 0 }}
             />
             {tabs.map((tab) => {
@@ -192,8 +191,8 @@ export function Navbar({ lang, t, healthCheckLive = false }: { lang: Locale; t: 
                     onMouseEnter={() => setHoverKey(tab.key)}
                     onFocus={() => setHoverKey(tab.key)}
                     onBlur={() => setHoverKey(null)}
-                    className={`relative inline-flex h-9 items-center rounded-full px-3 text-sm font-medium whitespace-nowrap transition-colors duration-200 xl:px-3.5 ${
-                      active ? "text-brand-strong" : "text-muted hover:text-foreground"
+                    className={`relative inline-flex min-h-9 items-center rounded-full px-3 text-label font-medium whitespace-nowrap transition-colors duration-150 xl:px-4 ${
+                      active ? "text-gold" : "text-secondary hover:text-primary"
                     }`}
                   >
                     {tab.label}
@@ -211,9 +210,10 @@ export function Navbar({ lang, t, healthCheckLive = false }: { lang: Locale; t: 
             <ThemeToggle labels={{ toDark: t.toDark, toLight: t.toLight }} />
             <AccountLink href={accountHref} t={t} active={onAccount} />
           </span>
-          <Link href={ctaHref} className="btn-gradient hidden min-h-10 px-4 py-2 text-sm xl:inline-flex">
+          {/* Secondary here: the page below owns the one gold button. */}
+          <Link href={ctaHref} className="btn-secondary hidden min-h-11 px-4 py-2 xl:inline-flex">
             {t.cta}
-            <ArrowRight aria-hidden size={16} />
+            <ArrowRight aria-hidden size={20} />
           </Link>
         </div>
       </div>
@@ -222,13 +222,13 @@ export function Navbar({ lang, t, healthCheckLive = false }: { lang: Locale; t: 
           Always in the DOM; while closed it is off-screen, invisible and inert (not focusable, hidden from screen readers). */}
       <div
         aria-hidden
-        className={`fixed inset-0 top-16 z-40 bg-black/30 backdrop-blur-[2px] transition-opacity duration-200 lg:hidden ${open ? "opacity-100" : "pointer-events-none opacity-0"}`}
+        className={`fixed inset-0 top-16 z-40 bg-scrim transition-opacity duration-200 lg:hidden ${open ? "opacity-100" : "pointer-events-none opacity-0"}`}
       />
       <div
         id="mobile-menu"
         ref={panelRef}
         inert={!open}
-        className={`fixed top-16 bottom-0 left-0 z-50 flex w-[min(22rem,88vw)] flex-col gap-6 overflow-y-auto border-r border-line bg-background p-5 shadow-lg transition-[transform,translate,scale,visibility] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden ${
+        className={`fixed top-16 bottom-0 left-0 z-50 flex w-full max-w-88 flex-col gap-6 overflow-y-auto border-r border-border bg-surface-1 p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] transition-[transform,translate,scale,visibility] duration-300 ease-enter lg:hidden ${
           open ? "visible translate-x-0" : "invisible -translate-x-full"
         }`}
       >
@@ -239,15 +239,15 @@ export function Navbar({ lang, t, healthCheckLive = false }: { lang: Locale; t: 
               return (
                 <li
                   key={tab.key}
-                  className={`transition-[opacity,transform,translate,scale] duration-300 ease-out ${open ? "translate-x-0 opacity-100" : "-translate-x-4 opacity-0"}`}
-                  style={{ transitionDelay: open ? `${80 + i * 45}ms` : "0ms" }}
+                  className={`transition-[opacity,transform,translate,scale] duration-200 ease-enter ${open ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0"}`}
+                  style={{ transitionDelay: open ? `${60 + i * 30}ms` : "0ms" }}
                 >
                   <Link
                     href={tab.href}
                     onClick={() => setOpen(false)}
                     aria-current={active ? "page" : undefined}
-                    className={`flex min-h-12 items-center rounded-xl px-4 text-base font-medium transition-colors ${
-                      active ? "bg-brand-soft text-brand-strong" : "text-foreground hover:bg-surface-2"
+                    className={`flex min-h-12 items-center rounded-xl px-4 text-base font-medium transition-colors duration-150 ${
+                      active ? "bg-surface-3 text-gold" : "text-primary hover:bg-surface-2"
                     }`}
                   >
                     {tab.label}
@@ -259,13 +259,13 @@ export function Navbar({ lang, t, healthCheckLive = false }: { lang: Locale; t: 
         </nav>
         <div className="mt-auto flex flex-col gap-4">
           <AccountLink href={accountHref} t={t} active={onAccount} onClick={() => setOpen(false)} className="min-h-12 justify-center rounded-xl text-base sm:hidden" />
-          <div className="flex items-center justify-between rounded-xl border border-line bg-surface px-4 py-2 sm:hidden">
-            <span className="text-sm font-medium text-muted">{t.theme}</span>
+          <div className="flex items-center justify-between rounded-xl border border-border bg-surface-2 px-4 py-2 sm:hidden">
+            <span className="text-label font-medium text-secondary">{t.theme}</span>
             <ThemeToggle labels={{ toDark: t.toDark, toLight: t.toLight }} />
           </div>
-          <Link href={ctaHref} onClick={() => setOpen(false)} className="btn-gradient w-full">
+          <Link href={ctaHref} onClick={() => setOpen(false)} className="btn-primary w-full">
             {t.cta}
-            <ArrowRight aria-hidden size={18} />
+            <ArrowRight aria-hidden size={20} />
           </Link>
         </div>
       </div>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import type { Dictionary, Locale } from "@/i18n";
 import { fmtClient, getPosition, inCambodia, toKhmerDigits } from "@/lib/client/util";
+import { ArrowRight, ChartColumn, Info, LocateFixed } from "lucide-react";
 
 /** Response of GET /api/area (see src/server/insights/area.ts). */
 export interface AreaSummaryJson {
@@ -25,9 +26,9 @@ type Options = { pcode: string; name: string; districts: { pcode: string; name: 
 
 function Fact({ children, source }: { children: React.ReactNode; source: string }) {
   return (
-    <li className="rounded-lg bg-surface px-3 py-2 shadow-sm">
+    <li className="rounded-xl bg-surface-2 px-3 py-3">
       <p>{children}</p>
-      <p className="mt-0.5 text-xs text-muted">{source}</p>
+      <p className="mt-1 text-caption text-secondary">{source}</p>
     </li>
   );
 }
@@ -87,13 +88,13 @@ export function AreaCard({ lang, t }: { lang: Locale; t: Dictionary }) {
   const n = (v: number) => (Number.isInteger(v) ? v : Math.round(v * 10) / 10);
 
   return (
-    <section aria-labelledby="area-title" aria-live="polite" className="flex flex-col gap-3 rounded-2xl border-2 border-line bg-background p-4">
-      <h2 id="area-title" className="text-lg font-bold">📊 {a.title}</h2>
+    <section aria-labelledby="area-title" aria-live="polite" className="card flex flex-col gap-3 p-5">
+      <h2 id="area-title" className="flex items-center gap-2 text-h3 font-semibold"><ChartColumn aria-hidden size={20} className="text-secondary" />{a.title}</h2>
       {!summary && (
         <>
           <p className="text-sm">{a.intro}</p>
           <button type="button" className="btn-secondary" onClick={useLocation} disabled={status === "loading"}>
-            📍 {status === "loading" ? a.locating : a.useLocation}
+            <LocateFixed aria-hidden size={20} /> {status === "loading" ? a.locating : a.useLocation}
           </button>
           {status === "notfound" && <p className="rounded-lg bg-warn-soft px-3 py-2 text-sm" role="status">{a.notFound}</p>}
           {status === "error" && <p className="rounded-lg bg-warn-soft px-3 py-2 text-sm" role="status">{a.error}</p>}
@@ -113,7 +114,7 @@ export function AreaCard({ lang, t }: { lang: Locale; t: Dictionary }) {
               </select>
             </label>
           </div>
-          <button type="button" className="btn-primary" disabled={!district || status === "loading"} onClick={() => fetchArea(new URLSearchParams({ district }))}>
+          <button type="button" className="btn-secondary" disabled={!district || status === "loading"} onClick={() => fetchArea(new URLSearchParams({ district }))}>
             {a.show}
           </button>
         </>
@@ -151,7 +152,7 @@ export function AreaCard({ lang, t }: { lang: Locale; t: Dictionary }) {
             )}
             {summary.vegPrice && (
               <Fact source={fmtClient(a.srcWfp, { from: lang === "km" ? toKhmerDigits(summary.vegPrice.from.slice(0, 7)) : summary.vegPrice.from.slice(0, 7), to: lang === "km" ? toKhmerDigits(summary.vegPrice.to.slice(0, 7)) : summary.vegPrice.to.slice(0, 7) }, lang)}>
-                🥬 {fmtClient(a.veg, {
+                {fmtClient(a.veg, {
                   veg: a.veggies[summary.vegPrice.commodity as keyof typeof a.veggies] ?? summary.vegPrice.commodity,
                   price: lang === "km" ? toKhmerDigits(summary.vegPrice.khrPerKg.toLocaleString("en")) : summary.vegPrice.khrPerKg.toLocaleString("en"),
                   province: summary.province.name,
@@ -159,9 +160,9 @@ export function AreaCard({ lang, t }: { lang: Locale; t: Dictionary }) {
               </Fact>
             )}
           </ul>
-          <p className="text-xs text-muted">ℹ️ {a.areaNote}</p>
-          <Link href={`/${lang}/${summary.insightsLink}`} className="btn-ghost justify-start px-0 text-sm">
-            {fmtClient(a.seeInsights, { district: summary.district.name }, lang)} →
+          <p className="flex items-start gap-2 text-caption text-secondary"><Info aria-hidden size={16} className="mt-0.5 shrink-0" />{a.areaNote}</p>
+          <Link href={`/${lang}/${summary.insightsLink}`} className="inline-flex min-h-11 items-center gap-1 self-start text-label font-medium text-gold hover:underline">
+            {fmtClient(a.seeInsights, { district: summary.district.name }, lang)} <ArrowRight aria-hidden size={16} />
           </Link>
         </>
       )}

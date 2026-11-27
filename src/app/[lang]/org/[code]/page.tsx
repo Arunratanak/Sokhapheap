@@ -12,7 +12,7 @@ export default async function OrgPage({ params }: PageProps<"/[lang]/org/[code]"
   const t = getDictionary(lang);
   return (
     <div className="flex flex-col gap-4 pt-2">
-      <h1 className="text-2xl font-bold">{t.org.title}</h1>
+      <h1 className="text-h1 font-semibold">{t.org.title}</h1>
       <OrgDashboard code={code} lang={lang} t={t} provinces={provinces()} />
     </div>
   );

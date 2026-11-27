@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Bookmark, CircleCheck } from "lucide-react";
+import { ArrowRight, Bookmark, CircleCheck } from "lucide-react";
 import type { Dictionary, Locale } from "@/i18n";
 import type { RecordInput } from "@/domain/records";
 import { authFetch, useAuth } from "@/lib/client/auth";
@@ -35,9 +35,9 @@ export function SaveRecordButton({ lang, t, record }: { lang: Locale; t: Diction
 
   if (state === "saved")
     return (
-      <p role="status" className="flex flex-wrap items-center justify-between gap-2 rounded-xl px-4 py-3 font-semibold" style={{ background: "var(--ok-bg)", color: "var(--ok-fg)" }}>
-        <span className="inline-flex items-center gap-2"><CircleCheck aria-hidden size={20} /> {r.saved}</span>
-        <Link href={`/${lang}/account`} className="underline">{r.view} →</Link>
+      <p role="status" className="card flex flex-wrap items-center justify-between gap-2 px-5 py-3">
+        <span className="inline-flex items-center gap-2 text-label font-medium"><CircleCheck aria-hidden size={20} className="text-secondary" /> {r.saved}</span>
+        <Link href={`/${lang}/account`} className="inline-flex min-h-11 items-center gap-1 text-label font-medium text-gold hover:underline">{r.view} <ArrowRight aria-hidden size={16} /></Link>
       </p>
     );
 
@@ -47,10 +47,10 @@ export function SaveRecordButton({ lang, t, record }: { lang: Locale; t: Diction
   return (
     <div className="flex flex-col gap-2">
       <button className="btn-secondary" onClick={() => (auth ? save() : setState("login"))} disabled={state === "saving"}>
-        <Bookmark aria-hidden size={18} />
+        <Bookmark aria-hidden size={20} />
         {state === "saving" ? r.saving : r.save}
       </button>
-      {state === "failed" && <p role="alert" className="text-sm text-[var(--danger)]">{r.saveFailed}</p>}
+      {state === "failed" && <p role="alert" className="text-caption text-status-out">{r.saveFailed}</p>}
     </div>
   );
 }

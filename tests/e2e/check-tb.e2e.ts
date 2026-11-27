@@ -6,9 +6,9 @@
  */
 import fs from "node:fs";
 import { chromium, type Page } from "playwright-core";
-import en from "../../src/lib/i18n/en.json";
-import km from "../../src/lib/i18n/km.json";
-import { TB_SYMPTOMS, tbSymptomModule } from "../../src/lib/modules/tb-symptom/definition";
+import en from "../../src/i18n/en.json";
+import km from "../../src/i18n/km.json";
+import { TB_SYMPTOMS, tbSymptomModule } from "../../src/domain/modules/tb-symptom/definition";
 
 const BASE = process.env.BASE_URL ?? "http://localhost:3100";
 const SHOTS = process.env.SHOTS_DIR ?? "";

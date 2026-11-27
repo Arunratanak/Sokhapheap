@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { explainInputSchema } from "@/lib/schemas";
-import { badRequest, limitAi, readJson, zodError } from "@/lib/api";
-import { explain } from "@/lib/ai/explain";
+import { explainInputSchema } from "@/domain/schemas";
+import { badRequest, limitAi, readJson, zodError } from "@/server/http/api";
+import { explain } from "@/server/ai/explain";
 
 export async function POST(req: Request) {
   const limited = limitAi(req, "explain", 15);

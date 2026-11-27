@@ -6,11 +6,11 @@
  */
 import fs from "node:fs";
 import { chromium, type Page } from "playwright-core";
-import en from "../../src/lib/i18n/en.json";
-import km from "../../src/lib/i18n/km.json";
+import en from "../../src/i18n/en.json";
+import km from "../../src/i18n/km.json";
 import { toKhmerDigits } from "../../src/lib/client/util";
-import { creatinineToMgdl, egfrCkdEpi2021 } from "../../src/lib/scoring/ckdEpi2021";
-import { egfrModule } from "../../src/lib/modules/egfr/definition";
+import { creatinineToMgdl, egfrCkdEpi2021 } from "../../src/domain/scoring/ckdEpi2021";
+import { egfrModule } from "../../src/domain/modules/egfr/definition";
 
 const BASE = process.env.BASE_URL ?? "http://localhost:3100";
 const SHOTS = process.env.SHOTS_DIR ?? "";

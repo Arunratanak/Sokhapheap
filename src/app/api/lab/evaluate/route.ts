@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { labEvaluateInputSchema } from "@/lib/schemas";
-import { badRequest, readJson, zodError } from "@/lib/api";
-import { evaluateLabValue } from "@/lib/scoring/labRanges";
+import { labEvaluateInputSchema } from "@/domain/schemas";
+import { badRequest, readJson, zodError } from "@/server/http/api";
+import { evaluateLabValue } from "@/domain/scoring/labRanges";
 
 export async function POST(req: Request) {
   const body = await readJson(req);

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
-import { getDictionary, hasLocale } from "@/lib/i18n";
-import { previewAllowed, visibleModules } from "@/lib/modules/registry";
-import { CheckFlow } from "@/components/check/CheckFlow";
+import { getDictionary, hasLocale } from "@/i18n";
+import { previewAllowed, visibleModules } from "@/domain/modules/registry";
+import { CheckFlow } from "@/components/features/check/CheckFlow";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/check">): Promise<Metadata> {
   const { lang } = await params;

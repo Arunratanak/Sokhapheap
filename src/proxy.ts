@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { defaultLocale, hasLocale, LOCALE_COOKIE } from "@/lib/i18n";
+import { defaultLocale, hasLocale, LOCALE_COOKIE } from "@/i18n";
 
 /** Sites allowed to call /api from the browser: the static GitHub Pages frontend. */
 const CORS_ORIGINS = (process.env.CORS_ORIGINS ?? "https://arunratanak.github.io")

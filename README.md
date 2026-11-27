@@ -11,9 +11,9 @@ SokhaPheap is a Khmer-first web app and Telegram bot that helps Cambodian adults
 ## Architecture
 
 ```
-Browser (Next.js, km/en) ─┐                ┌─ src/lib/scoring   FINDRISC · WHO CVD table · lab ranges   (pure code, no AI)
-Telegram (@SokhaPheapBot) ┼─► Next.js API ─┼─ src/lib/ai        Gemini: lab extraction + explanation    (fallback: templates)
-GitHub Actions (daily) ───┘   routes       ├─ src/lib/facilities  data/clean/facilities.geojson         (open data)
+Browser (Next.js, km/en) ─┐                ┌─ src/domain/scoring   FINDRISC · WHO CVD table · lab ranges   (pure code, no AI)
+Telegram (@SokhaPheapBot) ┼─► Next.js API ─┼─ src/server/ai     Gemini: lab extraction + explanation    (fallback: templates)
+GitHub Actions (daily) ───┘   routes       ├─ src/server/data  data/clean/facilities.geojson         (open data)
                                            └─ Supabase          facilities (public read) · screenings · reminders · organizations (RLS)
 ```
 
@@ -30,6 +30,52 @@ GitHub Actions (daily) ───┘   routes       ├─ src/lib/facilities  da
 | Bot | grammy, webhook at `/api/telegram` (secret token), long polling for local dev |
 | Tests | Vitest (unit and API), Playwright-core with Edge (UI e2e, axe accessibility) |
 | Hosting | Render free Web Service (Singapore) via `render.yaml`. Daily reminders run from GitHub Actions. |
+
+## Project structure
+
+```
+src/
+  app/                 Next.js App Router: pages under [lang]/ (km, en) and API routes under api/
+  proxy.ts             Locale redirect (Next.js proxy, formerly middleware)
+  components/
+    ui/                Reusable building blocks (Card, Section, InfoTip, Disclaimer, …)
+    layout/            Page frame: Navbar, Footer, LanguageSwitcher, ThemeToggle
+    providers/         App-wide React providers (motion)
+    features/<name>/   One folder per feature: area, check, home, insights, lab, map, org, risk
+  domain/              Pure business logic, safe on server and client, no I/O
+    scoring/           Validated risk calculators (FINDRISC, WHO CVD, CKD-EPI, lab ranges)
+    modules/           Screening modules: definitions, shared profile, registry
+    insights/          Gap index and map-layer definitions
+    risk.ts, schemas.ts, units.ts, orgStats.ts
+  server/              Server-only code (imports "server-only")
+    ai/                Gemini client, extraction, explanation, templates, prompts/
+    bot/               Telegram bot logic (shared by webhook and polling)
+    db/                Supabase client, saving screenings
+    data/              Readers for the bundled open data (facilities, home-page examples)
+    insights/          Area, planner and public open-data API loaders
+    http/              API response helpers and rate limiting
+  lib/                 Small shared helpers (client/ for browser API calls, format.ts)
+  i18n/                Khmer and English strings
+  config/              Editable content config (team.ts)
+data/                  Cleaned open data (data/clean) and its sources, manifest and inventory
+docs/                  Plan, review items, demo script, verification report
+  references/          Method cards, clinician reviews and source documents for each module
+public/                Static files served as-is (team photos)
+scripts/
+  data/                Download and build the open data, extract the WHO charts
+  db/                  Migrations and database checks
+  bot/                 Run the Telegram bot locally or set the webhook
+  ai/                  AI evaluation, smoke test and lab-report fixtures
+  ci/                  GitHub Pages build and bundle secret scan
+  env.ts               Loads .env for scripts
+supabase/migrations/   SQL migrations
+tests/
+  integration/         Vitest tests of API routes, bot and AI guards
+  e2e/                 Browser tests (Playwright-core) against a running server
+  fixtures/, stubs/    Test inputs and module stubs
+```
+
+Unit tests sit next to the code they test (`*.test.ts`).
 
 ## Open data
 
@@ -53,7 +99,7 @@ Open data is used throughout SokhaPheap: in the facility map, the personal resul
 ```mermaid
 flowchart LR
   raw["data/raw (downloaded, git-ignored)<br/>COD-AB · COD-PS · WorldPop · MAP · MoH · OSM<br/>DHS · WHO · World Bank · HeiGIT · WFP"]
-  raw -->|npm run data:build| pipe["scripts/opendata/build.ts<br/>rasterise communes · population-weighted travel time<br/>facility counts · DHS name matching · manifest + SHA-256"]
+  raw -->|npm run data:build| pipe["scripts/data/opendata/build.ts<br/>rasterise communes · population-weighted travel time<br/>facility counts · DHS name matching · manifest + SHA-256"]
   pipe --> clean["data/clean<br/>areas_*.json · boundaries_*.geojson<br/>national_context.json · food_prices_province.json"]
   clean -->|npm run data:gap-index| gap["Screening Gap Index<br/>gap_index_*.json · gap_index.geojson · areas_district.csv<br/>sensitivity report"]
   clean --> app1["/insights map + ranking"]
@@ -66,7 +112,7 @@ flowchart LR
 
 **Rebuild everything:** `npm run data:build` (about 30 seconds; downloads anything missing). Two runs give byte-identical outputs.
 
-**Screening Gap Index** (`src/lib/insights/gapIndexConfig.ts`): five equally weighted parts.
+**Screening Gap Index** (`src/domain/insights/gapIndexConfig.ts`): five equally weighted parts.
 - **Risk:** DHS women overweight, men and women smoking.
 - **Access:** MAP travel time, % more than 1 h walk, DHS "distance is a problem".
 - **Capacity:** facilities per 10,000 people, inverted.
@@ -104,7 +150,7 @@ npm run bot:webhook           # point the bot back at NEXT_PUBLIC_SITE_URL/api/t
 3. After the first deploy, set `NEXT_PUBLIC_SITE_URL=https://<name>.onrender.com` in Render and in your local `.env`, then run `npm run bot:webhook`.
 4. In GitHub, go to **Settings → Secrets → Actions** and add `APP_URL` and `CRON_SECRET` for the daily reminder workflow.
 
-The free plan sleeps after 15 minutes without traffic, so the first request afterwards can take up to about a minute. Warm the app up before demos (see `DEMO_SCRIPT.md`).
+The free plan sleeps after 15 minutes without traffic, so the first request afterwards can take up to about a minute. Warm the app up before demos (see `docs/DEMO_SCRIPT.md`).
 
 ## Deploy (GitHub Pages, static frontend)
 
@@ -114,19 +160,19 @@ The free plan sleeps after 15 minutes without traffic, so the first request afte
 - The organisation dashboards (`/[lang]/org/[code]`) and the social preview image are only on Render.
 - One-time setup: **Settings → Pages → Source: GitHub Actions**.
 
-`scripts/build_pages.sh` deletes the server-only files before building, so run it only in CI or in a throwaway copy.
+`scripts/ci/build_pages.sh` deletes the server-only files before building, so run it only in CI or in a throwaway copy.
 
 ## Limitations
 
 - FINDRISC and the WHO charts were **developed outside Cambodia** and have not been validated in the Cambodian population. The WHO chart is for ages 40–74 only.
 - Part of the facility data is **from 2010**. OSM coverage is uneven and includes some mislabelled places, such as offices tagged as hospitals.
-- Lab "normal ranges" vary between laboratories. The app prefers the range printed on the report. The fallback table needs clinician sign-off (see `REVIEW.md`).
+- Lab "normal ranges" vary between laboratories. The app prefers the range printed on the report. The fallback table needs clinician sign-off (see `docs/REVIEW.md`).
 - Bot conversation state is held in memory, so it's lost if the free instance restarts mid-conversation.
 - The in-memory rate limiter resets on restart. That's acceptable for one instance.
 
 ## Known issues and roadmap
 
-See [`REVIEW.md`](REVIEW.md) for open items. The roadmap is built on the open datasets above:
+See [`docs/REVIEW.md`](docs/REVIEW.md) for open items. The roadmap is built on the open datasets above:
 
 - **Facility data:** replace the **Ministry of Health 2010** facility list with newer official data when it is published, and refresh the **OpenStreetMap health facilities (HOT export)** every month.
 - **Blood pressure and blood sugar:** add province-level data from the next **Cambodia DHS** or **WHO STEPS** survey, so the gap index can include them. Not available in DHS 2021–22.

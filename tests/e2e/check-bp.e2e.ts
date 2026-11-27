@@ -6,9 +6,9 @@
  */
 import fs from "node:fs";
 import { chromium, type Page } from "playwright-core";
-import en from "../../src/lib/i18n/en.json";
-import km from "../../src/lib/i18n/km.json";
-import { bpCheckModule } from "../../src/lib/modules/bp-check/definition";
+import en from "../../src/i18n/en.json";
+import km from "../../src/i18n/km.json";
+import { bpCheckModule } from "../../src/domain/modules/bp-check/definition";
 
 const BASE = process.env.BASE_URL ?? "http://localhost:3100";
 const SHOTS = process.env.SHOTS_DIR ?? "";

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { zodError } from "@/lib/api";
-import { areaSummary } from "@/lib/insights/area";
+import { zodError } from "@/server/http/api";
+import { areaSummary } from "@/server/insights/area";
 
 /**
  * "Your area" card data. Either ?lat=&lng= (the user's location) or ?district=<P-code> (dropdowns).

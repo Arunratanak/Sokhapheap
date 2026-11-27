@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import { timingSafeEqual } from "node:crypto";
-import { getServiceClient } from "@/lib/db/supabase";
-import { getBot } from "@/lib/bot/bot";
-import { getRawDictionary } from "@/lib/i18n";
+import { getServiceClient } from "@/server/db/supabase";
+import { getBot } from "@/server/bot/bot";
+import { getRawDictionary } from "@/i18n";
 
 function authorized(req: Request): boolean {
   const expected = process.env.CRON_SECRET;

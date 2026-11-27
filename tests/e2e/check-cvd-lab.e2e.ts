@@ -6,11 +6,11 @@
  * Run (server must be running): BASE_URL=http://localhost:3100 npx tsx tests/e2e/check-cvd-lab.e2e.ts
  */
 import { chromium, type Page } from "playwright-core";
-import en from "../../src/lib/i18n/en.json";
-import km from "../../src/lib/i18n/km.json";
-import { calculateWhoCvdLab, toMmol } from "../../src/lib/scoring/whoCvdLab";
+import en from "../../src/i18n/en.json";
+import km from "../../src/i18n/km.json";
+import { calculateWhoCvdLab, toMmol } from "../../src/domain/scoring/whoCvdLab";
 import { toKhmerDigits } from "../../src/lib/client/util";
-import { whoCvdLabModule } from "../../src/lib/modules/who-cvd-lab/definition";
+import { whoCvdLabModule } from "../../src/domain/modules/who-cvd-lab/definition";
 import fs from "node:fs";
 
 const BASE = process.env.BASE_URL ?? "http://localhost:3100";
@@ -69,7 +69,7 @@ async function run(page: Page, lang: "en" | "km", t: Dict, cholesterol: { value:
   await page.getByRole("button", { name: t.check.seeResults }).click();
   await page.getByRole("heading", { name: t.check.dashboardTitle }).waitFor();
   if (SHOTS) await page.screenshot({ path: `${SHOTS}/cvd-lab-dashboard-${lang}-${cholesterol ? "value" : "unknown"}.png`, fullPage: true });
-  // Khmer strings get zero-width spaces between words for line wrapping (src/lib/i18n/index.ts); compare without them.
+  // Khmer strings get zero-width spaces between words for line wrapping (src/i18n/index.ts); compare without them.
   return { text: (await page.locator("main").innerText()).replaceAll("​", ""), overflow: await overflow(page) };
 }
 

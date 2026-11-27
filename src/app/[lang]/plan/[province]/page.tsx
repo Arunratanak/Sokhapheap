@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { fmt, formatNumber, getDictionary, hasLocale } from "@/lib/i18n";
-import { gap } from "@/lib/insights/data";
-import { planFor, provinceSvg, provinces } from "@/lib/insights/planner";
-import { PALETTE, colourFor, quantileBreaks } from "@/lib/insights/layers";
-import { PrintButton } from "@/components/org/PrintButton";
+import { fmt, formatNumber, getDictionary, hasLocale } from "@/i18n";
+import { gap } from "@/server/insights/data";
+import { planFor, provinceSvg, provinces } from "@/server/insights/planner";
+import { PALETTE, colourFor, quantileBreaks } from "@/domain/insights/layers";
+import { PrintButton } from "@/components/features/org/PrintButton";
 
 /** Printable one-page screening plan (open data only). Linked from the organization dashboard. */
 export const metadata: Metadata = { robots: { index: false, follow: false } };

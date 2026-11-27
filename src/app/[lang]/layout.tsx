@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Inter, Noto_Sans_Khmer } from "next/font/google";
-import { getDictionary, hasLocale, locales } from "@/lib/i18n";
-import { Navbar } from "@/components/ui/Navbar";
-import { Footer } from "@/components/ui/Footer";
-import { THEME_SCRIPT } from "@/components/ui/ThemeToggle";
-import { visibleModules } from "@/lib/modules/registry";
+import { getDictionary, hasLocale, locales } from "@/i18n";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { THEME_SCRIPT } from "@/components/layout/ThemeToggle";
+import { visibleModules } from "@/domain/modules/registry";
 import "../globals.css";
 
 // Khmer pages: Noto Sans Khmer (covers Khmer and Latin) is the main font and is preloaded.

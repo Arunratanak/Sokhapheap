@@ -23,7 +23,7 @@ export default defineConfig({
     },
     coverage: {
       provider: "v8",
-      include: ["src/lib/scoring/**"],
+      include: ["src/domain/scoring/**"],
     },
   },
 });

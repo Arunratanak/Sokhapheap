@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import { nearestQuerySchema } from "@/lib/schemas";
-import { zodError } from "@/lib/api";
-import { getAnonClient, withTimeout } from "@/lib/db/supabase";
-import { nearestLocal, type FacilityWithDistance } from "@/lib/facilities";
+import { nearestQuerySchema } from "@/domain/schemas";
+import { zodError } from "@/server/http/api";
+import { getAnonClient, withTimeout } from "@/server/db/supabase";
+import { nearestLocal, type FacilityWithDistance } from "@/server/data/facilities";
 
 export async function GET(req: Request) {
   const q = Object.fromEntries(new URL(req.url).searchParams);

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { planFor, provinces } from "@/lib/insights/planner";
+import { planFor, provinces } from "@/server/insights/planner";
 
 /** Screening plan for a province (open data only, no personal data). Prebuilt for all 25 provinces. */
 export const dynamic = "force-static";

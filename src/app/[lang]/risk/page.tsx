@@ -1,9 +1,9 @@
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
-import { getDictionary, hasLocale } from "@/lib/i18n";
-import { listAreas } from "@/lib/facilities";
-import { RiskFlow } from "@/components/risk/RiskFlow";
-import { RiskFlowFromQuery } from "@/components/risk/RiskFlowFromQuery";
+import { getDictionary, hasLocale } from "@/i18n";
+import { listAreas } from "@/server/data/facilities";
+import { RiskFlow } from "@/components/features/risk/RiskFlow";
+import { RiskFlowFromQuery } from "@/components/features/risk/RiskFlowFromQuery";
 
 export default async function RiskPage({ params }: PageProps<"/[lang]/risk">) {
   const { lang } = await params;

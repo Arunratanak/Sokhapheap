@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { areaOptions } from "@/lib/insights/area";
+import { areaOptions } from "@/server/insights/area";
 
 /** Provinces and their districts (P-codes) for the "Your area" dropdowns. Prebuilt at build time. */
 export const dynamic = "force-static";

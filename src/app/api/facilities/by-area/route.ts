@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { byAreaQuerySchema } from "@/lib/schemas";
-import { badRequest, zodError } from "@/lib/api";
-import { byAreaLocal, listAreas } from "@/lib/facilities";
+import { byAreaQuerySchema } from "@/domain/schemas";
+import { badRequest, zodError } from "@/server/http/api";
+import { byAreaLocal, listAreas } from "@/server/data/facilities";
 
 export async function GET(req: Request) {
   const parsed = byAreaQuerySchema.safeParse(Object.fromEntries(new URL(req.url).searchParams));

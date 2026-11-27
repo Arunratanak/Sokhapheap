@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 import { timingSafeEqual } from "node:crypto";
-import { getServiceClient, withTimeout } from "@/lib/db/supabase";
-import { aggregate } from "@/lib/orgStats";
-import { readJson } from "@/lib/api";
-import { clientIp, rateLimit } from "@/lib/rateLimit";
+import { getServiceClient, withTimeout } from "@/server/db/supabase";
+import { aggregate } from "@/domain/orgStats";
+import { readJson } from "@/server/http/api";
+import { clientIp, rateLimit } from "@/server/http/rateLimit";
 
 function codeOk(given: unknown): boolean {
   const expected = process.env.ORG_DASHBOARD_ACCESS_CODE;

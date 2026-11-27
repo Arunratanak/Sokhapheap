@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { FACILITY_TYPES, loadFacilities } from "@/lib/facilities";
+import { FACILITY_TYPES, loadFacilities } from "@/server/data/facilities";
 
 /**
  * Compact list of every facility for the map: [lat, lng, typeIndex, name, name_km].

@@ -1,9 +1,9 @@
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
-import { getDictionary, hasLocale } from "@/lib/i18n";
-import { FACILITY_TYPES, listAreas } from "@/lib/facilities";
-import { MapExplorer } from "@/components/map/MapExplorer";
-import { MapExplorerFromQuery } from "@/components/map/MapExplorerFromQuery";
+import { getDictionary, hasLocale } from "@/i18n";
+import { FACILITY_TYPES, listAreas } from "@/server/data/facilities";
+import { MapExplorer } from "@/components/features/map/MapExplorer";
+import { MapExplorerFromQuery } from "@/components/features/map/MapExplorerFromQuery";
 
 /** Date the open datasets were downloaded and cleaned (see data/SOURCES.md). */
 const DATA_UPDATED = "2026-11-22";

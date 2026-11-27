@@ -8,8 +8,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { chromium, type Page } from "playwright-core";
-import { calculateFindrisc, type FindriscInput } from "../../src/lib/scoring/findrisc";
-import { waistCmToInches, waistInchesToCm } from "../../src/lib/units";
+import { calculateFindrisc, type FindriscInput } from "../../src/domain/scoring/findrisc";
+import { waistCmToInches, waistInchesToCm } from "../../src/domain/units";
 
 const BASE = process.env.BASE_URL ?? "http://localhost:3100";
 const SHOTS = process.env.SHOTS_DIR ?? "";

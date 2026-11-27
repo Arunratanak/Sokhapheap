@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { webhookCallback } from "grammy";
 import { timingSafeEqual } from "node:crypto";
-import { getBot } from "@/lib/bot/bot";
+import { getBot } from "@/server/bot/bot";
 
 function secretOk(req: Request): boolean {
   const expected = process.env.TELEGRAM_WEBHOOK_SECRET;

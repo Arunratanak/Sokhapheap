@@ -1,12 +1,12 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { fmt, getDictionary, hasLocale } from "@/lib/i18n";
-import { TeamGrid } from "@/components/home/TeamGrid";
-import { MotionProvider } from "@/components/ui/MotionProvider";
-import { Disclaimer } from "@/components/Disclaimer";
+import { fmt, getDictionary, hasLocale } from "@/i18n";
+import { TeamGrid } from "@/components/features/home/TeamGrid";
+import { MotionProvider } from "@/components/providers/MotionProvider";
+import { Disclaimer } from "@/components/ui/Disclaimer";
 import { IconCaution, IconLayers, IconPathSteps, IconPeople, IconShieldLock, IconSignpost } from "@/components/ui/BrandIcons";
-import { manifest } from "@/lib/insights/data";
+import { manifest } from "@/server/insights/data";
 
 /** Datasets used outside the open-data pipeline (the pipeline ones come from data/manifest.json). */
 const EXTRA_DATASETS = [

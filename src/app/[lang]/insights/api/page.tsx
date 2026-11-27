@@ -2,7 +2,7 @@ import { API_BASE } from "@/lib/client/api-base";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getDictionary, hasLocale } from "@/lib/i18n";
+import { getDictionary, hasLocale } from "@/i18n";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/insights/api">): Promise<Metadata> {
   const { lang } = await params;

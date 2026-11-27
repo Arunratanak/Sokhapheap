@@ -8,8 +8,8 @@
  */
 import fs from "node:fs";
 import { chromium, type Browser } from "playwright-core";
-import en from "../../src/lib/i18n/en.json";
-import { MODULES } from "../../src/lib/modules/registry";
+import en from "../../src/i18n/en.json";
+import { MODULES } from "../../src/domain/modules/registry";
 
 const BASE = process.env.BASE_URL ?? "http://localhost:3100";
 const SHOTS = process.env.SHOTS_DIR ?? "";

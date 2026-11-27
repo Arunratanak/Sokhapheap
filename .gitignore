@@ -23,4 +23,4 @@ npm-debug.log*
 .vercel
 
 # Copyrighted source documents: archived locally for reference, never published
-references/sources/private/
+docs/references/sources/private/

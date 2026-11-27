@@ -1,20 +1,20 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, CircleCheck, Lock } from "lucide-react";
-import { fmt, formatNumber, getDictionary, hasLocale } from "@/lib/i18n";
-import { visibleModules } from "@/lib/modules/registry";
-import { homeStats } from "@/lib/insights/data";
-import { HeroCarousel, type HeroSlide } from "@/components/home/HeroCarousel";
-import { TeamGrid } from "@/components/home/TeamGrid";
+import { fmt, formatNumber, getDictionary, hasLocale } from "@/i18n";
+import { visibleModules } from "@/domain/modules/registry";
+import { homeStats } from "@/server/insights/data";
+import { HeroCarousel, type HeroSlide } from "@/components/features/home/HeroCarousel";
+import { TeamGrid } from "@/components/features/home/TeamGrid";
 import { Section } from "@/components/ui/Section";
 import { Card } from "@/components/ui/Card";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { StatCounter } from "@/components/ui/StatCounter";
 import { formatCount } from "@/lib/format";
-import { MotionProvider } from "@/components/ui/MotionProvider";
+import { MotionProvider } from "@/components/providers/MotionProvider";
 import { IconHealthCheck, IconHeartRisk, IconLabTube, IconTempleData } from "@/components/ui/BrandIcons";
-import type { HeroVisualData, Tone } from "@/components/home/HeroVisual";
-import { distanceExample, labExample, riskExample } from "@/lib/heroExamples";
+import type { HeroVisualData, Tone } from "@/components/features/home/HeroVisual";
+import { distanceExample, labExample, riskExample } from "@/server/data/heroExamples";
 
 const SOURCE_LABEL: Record<string, string> = {
   "who-gho": "WHO",
@@ -33,7 +33,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   const base = `/${lang}`;
   const n = (v: number) => formatCount(v, lang);
 
-  // Example cards: values computed with the real scoring / lab / open-data logic (src/lib/heroExamples.ts).
+  // Example cards: values computed with the real scoring / lab / open-data logic (src/server/data/heroExamples.ts).
   const X = L.examples;
   const num = (v: number) => formatNumber(v, lang);
   const risk = riskExample();

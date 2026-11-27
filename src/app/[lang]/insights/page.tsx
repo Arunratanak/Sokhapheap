@@ -1,9 +1,9 @@
 import { API_BASE, BASE_PATH } from "@/lib/client/api-base";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { fmt, formatNumber, getDictionary, hasLocale } from "@/lib/i18n";
-import { areas, gap, manifest, nationalContext, provinceNames } from "@/lib/insights/data";
-import { InsightsExplorer, type RankRow } from "@/components/insights/InsightsExplorer";
+import { fmt, formatNumber, getDictionary, hasLocale } from "@/i18n";
+import { areas, gap, manifest, nationalContext, provinceNames } from "@/server/insights/data";
+import { InsightsExplorer, type RankRow } from "@/components/features/insights/InsightsExplorer";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/insights">): Promise<Metadata> {
   const { lang } = await params;

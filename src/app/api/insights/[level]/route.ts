@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { LEVELS, mapGeoJson, type Level } from "@/lib/insights/data";
+import { LEVELS, mapGeoJson, type Level } from "@/server/insights/data";
 
 /** Map layer for the Insights page: simplified boundaries + indicators. Prebuilt at build time. */
 export const dynamic = "force-static";

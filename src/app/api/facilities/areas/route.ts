@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { listAreas } from "@/lib/facilities";
+import { listAreas } from "@/server/data/facilities";
 
 /** Province → district list for the "no location" dropdowns. */
 export async function GET() {

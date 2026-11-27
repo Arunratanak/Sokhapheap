@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { badRequest, limitAi } from "@/lib/api";
-import { ALLOWED_IMAGE_TYPES, extractLabValues, ExtractionUnavailableError, MAX_IMAGE_BYTES } from "@/lib/ai/extract";
+import { badRequest, limitAi } from "@/server/http/api";
+import { ALLOWED_IMAGE_TYPES, extractLabValues, ExtractionUnavailableError, MAX_IMAGE_BYTES } from "@/server/ai/extract";
 
 /**
  * Accepts multipart/form-data with an `image` file (a photo or a PDF). The file is held in memory only and is

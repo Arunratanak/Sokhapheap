@@ -1,5 +1,5 @@
-import { mergedAreas, type Level } from "@/lib/insights/data";
-import { limited, notFound, ok } from "@/lib/insights/publicApi";
+import { mergedAreas, type Level } from "@/server/insights/data";
+import { limited, notFound, ok } from "@/server/insights/publicApi";
 
 /** GET /api/open-data/areas/<P-code> — one province (KH12), district (KH1201) or commune (KH120101). */
 export async function GET(req: Request, ctx: RouteContext<"/api/open-data/areas/[pcode]">) {

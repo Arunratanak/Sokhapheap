@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { loadFacilities } from "@/lib/facilities";
-import { aiConfigured } from "@/lib/ai/gemini";
+import { loadFacilities } from "@/server/data/facilities";
+import { aiConfigured } from "@/server/ai/gemini";
 
 /** Uptime check for Render's health check and external monitors. Never exposes secrets. */
 export async function GET() {

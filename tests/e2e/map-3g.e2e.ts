@@ -3,7 +3,7 @@
  * 1.6 Mbps down, 750 kbps up), cold cache. The page is list-first:
  *   1. controls usable (JS hydrated, the province picker opens)
  *   2. facility list shown after choosing Phnom Penh (no thinking time, so this is the page's own cost)
- * Pass = controls usable under 3.5 s (relaxed from 3 s on 24 Nov 2026 after the UI redesign, see REVIEW.md). The list adds one API round trip (~0.6 s at 562 ms RTT),
+ * Pass = controls usable under 3.5 s (relaxed from 3 s on 24 Nov 2026 after the UI redesign, see docs/REVIEW.md). The list adds one API round trip (~0.6 s at 562 ms RTT),
  * and the interactive map is timed from the "Show map" tap until all markers are drawn; both printed.
  *
  * Run (server must be running): BASE_URL=http://localhost:3100 npx tsx tests/e2e/map-3g.e2e.ts

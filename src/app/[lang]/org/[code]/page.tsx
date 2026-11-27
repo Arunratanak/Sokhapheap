@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getDictionary, hasLocale } from "@/lib/i18n";
-import { OrgDashboard } from "@/components/org/OrgDashboard";
-import { provinces } from "@/lib/insights/planner";
+import { getDictionary, hasLocale } from "@/i18n";
+import { OrgDashboard } from "@/components/features/org/OrgDashboard";
+import { provinces } from "@/server/insights/planner";
 
 export const metadata: Metadata = { robots: { index: false, follow: false } };
 

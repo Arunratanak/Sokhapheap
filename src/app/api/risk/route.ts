@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
-import { riskInputSchema } from "@/lib/schemas";
-import { badRequest, readJson, zodError } from "@/lib/api";
-import { runRiskCheck } from "@/lib/risk";
-import { saveScreening } from "@/lib/screenings";
-import { rateLimit, clientIp } from "@/lib/rateLimit";
+import { riskInputSchema } from "@/domain/schemas";
+import { badRequest, readJson, zodError } from "@/server/http/api";
+import { runRiskCheck } from "@/domain/risk";
+import { saveScreening } from "@/server/db/screenings";
+import { rateLimit, clientIp } from "@/server/http/rateLimit";
 
 export async function POST(req: Request) {
   if (!rateLimit(`risk:${clientIp(req)}`, 30, 60_000).ok)

@@ -12,7 +12,7 @@
  */
 import fs from "node:fs";
 import { chromium, type Page } from "playwright-core";
-import { waistCmToInches } from "../../src/lib/units";
+import { waistCmToInches } from "../../src/domain/units";
 
 // Bot runs offline: no AI, no database, fake token.
 for (const k of ["GEMINI_API_KEY", "NEXT_PUBLIC_SUPABASE_URL", "NEXT_PUBLIC_SUPABASE_ANON_KEY", "SUPABASE_SERVICE_ROLE_KEY"]) delete process.env[k];
@@ -47,8 +47,8 @@ type Row = { score: number; band: string; cvd: string };
 const fmtRow = (r: Row | string) => (typeof r === "string" ? r : `${r.score} ${r.band} · CVD ${r.cvd}`);
 
 async function unit(p: Profile): Promise<Row> {
-  const { calculateFindrisc } = await import("../../src/lib/scoring/findrisc");
-  const { calculateWhoCvd } = await import("../../src/lib/scoring/whoCvd");
+  const { calculateFindrisc } = await import("../../src/domain/scoring/findrisc");
+  const { calculateWhoCvd } = await import("../../src/domain/scoring/whoCvd");
   const f = calculateFindrisc(p);
   const c = calculateWhoCvd({ age: p.age, sex: p.sex, smoker: p.smoker, sbp: p.sbp, bmi: f.bmi });
   return { score: f.score, band: f.band, cvd: c.available ? `${c.riskPercent}% (${c.band})` : c.reason };
@@ -82,7 +82,7 @@ async function num(page: Page, v: number | null) {
 }
 
 async function ui(page: Page, base: string, p: Profile): Promise<Row> {
-  const en = JSON.parse(fs.readFileSync("src/lib/i18n/en.json", "utf8"));
+  const en = JSON.parse(fs.readFileSync("src/i18n/en.json", "utf8"));
   await page.goto(`${base}/en/risk`, { timeout: 120000 });
   await click(page, /None of these/);
   await click(page, p.sex === "male" ? /Man/ : /Woman/);
@@ -105,7 +105,7 @@ async function ui(page: Page, base: string, p: Profile): Promise<Row> {
 
 // ---------- Telegram bot (real handlers, fake Telegram API) ----------
 async function bot(p: Profile, chatId: number): Promise<Row> {
-  const { createBot, getSession } = await import("../../src/lib/bot/bot");
+  const { createBot, getSession } = await import("../../src/server/bot/bot");
   const b = createBot("123456:TEST");
   b.botInfo = { id: 1, is_bot: true, first_name: "Test", username: "test_bot", can_join_groups: false,
     can_read_all_group_messages: false, supports_inline_queries: false, can_connect_to_business: false,
@@ -136,7 +136,7 @@ async function bot(p: Profile, chatId: number): Promise<Row> {
 
   const msg = sent.find((s) => /26/.test(s) && /%|blood pressure|40/.test(s)) ?? sent.find((s) => /26/.test(s));
   if (!msg) throw new Error(`no result message; got: ${sent.slice(-3).join(" | ").slice(0, 200)}`);
-  const en = JSON.parse(fs.readFileSync("src/lib/i18n/en.json", "utf8"));
+  const en = JSON.parse(fs.readFileSync("src/i18n/en.json", "utf8"));
   const clean = msg.replaceAll("\u200b", "");
   const score = Number(clean.match(/(\d+)(?:–\d+)?\s*(?:\/|out of)\s*26/)?.[1] ?? NaN);
   const band = Object.entries(en.results.findriscBands as Record<string, string>).find(([, l]) => clean.includes(l))?.[0] ?? "?";

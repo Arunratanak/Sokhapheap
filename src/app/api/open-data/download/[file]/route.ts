@@ -1,4 +1,4 @@
-import { DOWNLOADS, readDownload, type DownloadFile } from "@/lib/insights/data";
+import { DOWNLOADS, readDownload, type DownloadFile } from "@/server/insights/data";
 
 /** Processed open data given back as open data (CC BY 4.0). Prebuilt at build time. */
 export const dynamic = "force-static";

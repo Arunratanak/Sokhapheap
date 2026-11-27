@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { mergedAreas } from "@/lib/insights/data";
-import { limited, ok } from "@/lib/insights/publicApi";
+import { mergedAreas } from "@/server/insights/data";
+import { limited, ok } from "@/server/insights/publicApi";
 
 /** GET /api/open-data/areas?level=province|district — every area with its indicators and gap index. */
 export async function GET(req: Request) {
